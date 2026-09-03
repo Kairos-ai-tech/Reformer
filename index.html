@@ -1242,28 +1242,31 @@ if(statsEl) statsIo.observe(statsEl);
 
   /* best-effort, real, client-side probes of the actual typed address — no server involved.
      Both degrade to null ("unknown") on any failure/timeout so we never fabricate a result. */
-  function withTimeout(promise, ms){
-    return Promise.race([
-      promise,
-      new Promise(function(_,reject){ setTimeout(function(){ reject(new Error('timeout')); }, ms); })
-    ]);
+  function fetchWithTimeout(url, opts, ms){
+    var ctrl=new AbortController();
+    var timer=setTimeout(function(){ ctrl.abort(); }, ms);
+    return fetch(url, Object.assign({}, opts, {signal:ctrl.signal})).finally(function(){ clearTimeout(timer); });
   }
   async function probeDns(hostname){
     try{
-      var r=await withTimeout(fetch('https://dns.google/resolve?name='+encodeURIComponent(hostname)+'&type=A',{cache:'no-store'}), 3500);
+      var r=await fetchWithTimeout('https://dns.google/resolve?name='+encodeURIComponent(hostname)+'&type=A', {cache:'no-store'}, 3500);
       if(r && r.ok){
         var j=await r.json();
         if(j.Status===3) return false;
         if(j.Status===0 && j.Answer && j.Answer.length) return true;
       }
-    }catch(e){ /* our probe failed (offline/CORS/timeout) — unknown, don't penalize */ }
+    }catch(e){ /* our probe failed/timed out/offline — unknown, don't penalize */ }
     return null;
   }
   async function probeHttps(hostname){
     try{
-      await withTimeout(fetch('https://'+hostname+'/', {mode:'no-cors', cache:'no-store'}), 3500);
+      await fetchWithTimeout('https://'+hostname+'/', {mode:'no-cors', cache:'no-store'}, 3500);
       return true;
-    }catch(e){ return false; }
+    }catch(e){
+      // a timeout means we don't know (slow host, not necessarily broken) — only a real
+      // connection/TLS error is a confirmed "this site is unreachable" signal
+      return (e && e.name==='AbortError') ? null : false;
+    }
   }
   async function probeTarget(hostname){
     var r=await Promise.all([probeDns(hostname), probeHttps(hostname)]);
@@ -1338,7 +1341,7 @@ if(statsEl) statsIo.observe(statsEl);
     var en=window.CURRENT_LANG==='en';
     h.probe = h.probe || {dnsOk:null, httpsOk:null};
     h.dnsDown = h.probe.dnsOk===false;
-    h.httpsProblem = h.dnsDown || h.probe.httpsOk===false || (h.probe.httpsOk===null && h.probe.dnsOk===null && !h.https);
+    h.httpsProblem = h.dnsDown || h.probe.httpsOk===false;
     var rnd=hashStr(h.hostname);
     var seo=Math.round(40+rnd()*40);
     var aeo=Math.round(10+rnd()*35);
