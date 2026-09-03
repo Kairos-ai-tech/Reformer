@@ -59,14 +59,12 @@
       {
         "@type": "Offer",
         "itemOffered": {"@type": "Service", "name": "快速官網", "description": "5–7 頁形象官網,14 天上線,HTTPS + 響應式設計,基礎 SEO + 結構化資料(AEO ready),含第一年主機與維護。"},
-        "price": "59800",
-        "priceCurrency": "TWD"
+        "priceSpecification": {"@type": "PriceSpecification", "minPrice": "59800", "priceCurrency": "TWD"}
       },
       {
         "@type": "Offer",
         "itemOffered": {"@type": "Service", "name": "官網重建 Plus", "description": "快速官網全部內容,客製視覺設計與品牌文案,線上訂購或預約系統,英文版翻譯,產品/服務頁最多 20 頁。"},
-        "price": "99800",
-        "priceCurrency": "TWD"
+        "priceSpecification": {"@type": "PriceSpecification", "minPrice": "99800", "priceCurrency": "TWD"}
       }
     ]
   }
@@ -554,6 +552,7 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
 .scan-target b{color:var(--ink)}
 .scan-impression{background:var(--ground);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:22px}
 .scan-impression h3{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin:0 0 10px;font-weight:700}
+html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
 .scan-impression-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:4px 20px}
 .scan-fact{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
 .scan-fact:last-child{border-bottom:0}
@@ -1047,7 +1046,7 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
     <address class="footer-nap">
       <span data-i18n="footer-nap-addr">104502 台北市中山區立行里復興北路48號10樓之1</span>
       <a href="tel:+886933399704">+886-933-399-704</a>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=10F.-1%2C+No.+48%2C+Fuxing+N+Rd%2C+Lixing+Village%2C+Zhongshan+District%2C+Taipei+City+104502%2C+Taiwan" target="_blank" rel="noopener" data-i18n="footer-nap-maplabel">Google 地圖 →</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=10F.-1%2C+No.+48%2C+Fuxing+N+Rd%2C+Lixing+Village%2C+Zhongshan+District%2C+Taipei+City+104502%2C+Taiwan" target="_blank" rel="noopener" data-i18n="footer-nap-maplabel" data-i18n-aria="footer-nap-maplabel" aria-label="Google 地圖 — 另開新分頁">Google 地圖 →</a>
     </address>
   </div>
 </footer>
@@ -1614,11 +1613,14 @@ if(statsEl) statsIo.observe(statsEl);
     'footer-nap-maplabel':'Google Maps →'
   };
   var I18N_PH={'scan-placeholder':'Enter a URL, e.g. www.yourbusiness.com or yourbusiness.tw'};
+  var I18N_ARIA={'footer-nap-maplabel':'Google Maps — opens in a new tab'};
 
   var i18nEls=document.querySelectorAll('[data-i18n]');
   i18nEls.forEach(function(el){ el.dataset.zh=el.innerHTML; });
   var phEls=document.querySelectorAll('[data-i18n-ph]');
   phEls.forEach(function(el){ el.dataset.zhPh=el.getAttribute('placeholder'); });
+  var ariaEls=document.querySelectorAll('[data-i18n-aria]');
+  ariaEls.forEach(function(el){ el.dataset.zhAria=el.getAttribute('aria-label'); });
 
   var toggleBtn=document.getElementById('langToggle');
 
@@ -1631,6 +1633,10 @@ if(statsEl) statsIo.observe(statsEl);
     phEls.forEach(function(el){
       var key=el.getAttribute('data-i18n-ph');
       el.setAttribute('placeholder', lang==='en' && I18N_PH[key]!==undefined ? I18N_PH[key] : el.dataset.zhPh);
+    });
+    ariaEls.forEach(function(el){
+      var key=el.getAttribute('data-i18n-aria');
+      el.setAttribute('aria-label', lang==='en' && I18N_ARIA[key]!==undefined ? I18N_ARIA[key] : el.dataset.zhAria);
     });
     document.documentElement.setAttribute('lang', lang==='en' ? 'en' : 'zh-Hant-TW');
     if(toggleBtn){
