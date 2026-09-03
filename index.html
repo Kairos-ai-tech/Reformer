@@ -200,7 +200,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .hero h1 em{font-style:normal;color:var(--ink);position:relative;white-space:nowrap}
 .hero p{font-size:18px;color:var(--ink-soft);max-width:34em;margin-bottom:32px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 26px;border-radius:8px;font-weight:700;font-size:15.5px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.btn{display:inline-block;padding:13px 26px;border-radius:8px;font-weight:700;font-size:15.5px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;border:0;background:transparent;cursor:pointer;font-family:inherit}
 .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow)}
 .btn-primary:hover{transform:translateY(-2px)}
 .btn-ghost{border:1.5px solid var(--line);color:var(--ink)}
@@ -493,7 +493,8 @@ html.retro-mode h1,html.retro-mode h2,html.retro-mode h3{color:#000080 !importan
 html.retro-mode .btn,html.retro-mode .time-toggle{background:#C0C0C0 !important;color:#000 !important;border:2px outset #fff !important;border-radius:0 !important}
 html.retro-mode .btn:active,html.retro-mode .time-toggle:active{border-style:inset !important}
 html.retro-mode header{background:#C0C0C0 !important;border-bottom:2px solid #000}
-html.retro-mode .card,html.retro-mode .price,html.retro-mode .scan-box,html.retro-mode .addons,html.retro-mode .faq-item,html.retro-mode .leak,html.retro-mode .compare-badge,html.retro-mode .scan-impression{border:1px solid #000 !important}
+html.retro-mode .card,html.retro-mode .price,html.retro-mode .scan-box,html.retro-mode .addons,html.retro-mode .faq-item,html.retro-mode .leak,html.retro-mode .compare-badge,html.retro-mode .scan-impression,html.retro-mode .lead-form{border:1px solid #000 !important}
+html.retro-mode .lead-form input,html.retro-mode .lead-form textarea{border:1px solid #000 !important;background:#fff !important}
 html.retro-mode .hero-network,html.retro-mode .hero-stamp-wrap,html.retro-mode .scan-radar,html.retro-mode .wave-div,html.retro-mode .compare-handle::after{display:none !important}
 html.retro-mode .ring{background:#fff !important;border:1px solid #000 !important}
 html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !important}
@@ -555,6 +556,16 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
 .scan-cta{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .scan-note{font-size:12px;color:var(--ink-faint);margin-top:16px}
 
+.lead-form{margin-top:18px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--ground);animation:leadIn .3s ease-out}
+.lead-form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.lead-form label{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--ink-soft)}
+.lead-form input,.lead-form textarea{font:inherit;font-size:14.5px;padding:11px 13px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);resize:vertical}
+.lead-form input:focus-visible,.lead-form textarea:focus-visible{outline:2.5px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.lead-form-msg{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--ink-soft);margin-top:14px}
+.lead-form-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.lead-form-note{font-size:12px;color:var(--ink-faint);margin-top:12px}
+@keyframes leadIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
 @media (prefers-reduced-motion: reduce){
   .reveal,.r-item{opacity:1!important;transform:none!important;transition:none!important}
   .hero h1 em{animation:none;text-decoration-color:var(--accent)}
@@ -562,6 +573,7 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
   .hn-pulse{animation:none}
   .cons-list li{opacity:1!important;transform:none!important}
   .scan-radar-sweep{animation:none}
+  .lead-form{animation:none!important}
 }
 </style>
 </head>
@@ -693,9 +705,23 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
         </div>
         <ul class="cons-list" id="consList"></ul>
         <div class="scan-cta">
-          <a class="btn btn-primary" id="scanCtaBtn" data-i18n="scan-cta-btn" href="mailto:kairos.ai.tech@gmail.com?subject=索取免費網站健檢報告">索取完整免費健檢 →</a>
+          <button type="button" class="btn btn-primary" id="scanCtaBtn" data-i18n="scan-cta-btn">索取完整免費健檢 →</button>
           <span style="font-size:13px;color:var(--ink-faint)" data-i18n="scan-cta-note">三個工作天內收到白話版報告</span>
         </div>
+        <form class="lead-form" id="leadForm" hidden>
+          <div class="lead-form-grid">
+            <label><span data-i18n="lead-name">店名/聯絡人</span><input type="text" id="leadName" required></label>
+            <label><span data-i18n="lead-phone">聯絡電話</span><input type="tel" id="leadPhone" required></label>
+            <label><span data-i18n="lead-email">Email(選填)</span><input type="email" id="leadEmail"></label>
+            <label><span data-i18n="lead-url">網址或粉專</span><input type="text" id="leadUrl"></label>
+          </div>
+          <label class="lead-form-msg"><span data-i18n="lead-msg">補充說明(選填)</span><textarea id="leadMsg" rows="3"></textarea></label>
+          <div class="lead-form-actions">
+            <button type="submit" class="btn btn-primary" data-i18n="lead-submit">送出,索取免費健檢 →</button>
+            <button type="button" class="btn btn-ghost" id="leadCancel" data-i18n="lead-cancel">取消</button>
+          </div>
+          <div class="lead-form-note" data-i18n="lead-note">送出後會開啟您的郵件軟體,確認寄出即完成申請;若沒有反應,也可直接寫信到 kairos.ai.tech@gmail.com。</div>
+        </form>
         <div class="scan-note" data-i18n="scan-note">快篩會對此網址嘗試即時連線與 DNS 檢查,並依網址特徵做自動化估算,非逐頁人工檢測;正式分數以免費健檢報告為準。</div>
       </div>
     </div>
@@ -1336,8 +1362,6 @@ if(statsEl) statsIo.observe(statsEl);
     var finalCons=forced.concat(chosen).slice(0,4);
 
     document.getElementById('scanTargetUrl').textContent=h.hostname;
-    var ctaBtn=document.getElementById('scanCtaBtn');
-    if(ctaBtn) ctaBtn.href='mailto:kairos.ai.tech@gmail.com?subject=索取免費網站健檢報告&body='+encodeURIComponent('網址:'+h.hostname+'\n')+'%0D%0A店名/公司:%0D%0A聯絡電話:';
     var list=document.getElementById('consList');
     list.innerHTML='';
     finalCons.forEach(function(c,i){
@@ -1393,6 +1417,43 @@ if(statsEl) statsIo.observe(statsEl);
       }, 420);
     });
   }
+
+  /* ---- full-report lead form (opens visitor's mail client with the filled-in details) ---- */
+  (function(){
+    var ctaBtn=document.getElementById('scanCtaBtn'),
+        leadForm=document.getElementById('leadForm'),
+        cancelBtn=document.getElementById('leadCancel'),
+        urlInput=document.getElementById('leadUrl');
+    if(!ctaBtn || !leadForm) return;
+    ctaBtn.addEventListener('click', function(){
+      if(lastTarget && !urlInput.value) urlInput.value=lastTarget.hostname;
+      leadForm.hidden=!leadForm.hidden;
+      if(!leadForm.hidden){
+        leadForm.scrollIntoView({behavior:'smooth', block:'nearest'});
+        document.getElementById('leadName').focus();
+      }
+    });
+    if(cancelBtn) cancelBtn.addEventListener('click', function(){ leadForm.hidden=true; });
+    leadForm.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var en=window.CURRENT_LANG==='en';
+      var name=document.getElementById('leadName').value.trim();
+      var phone=document.getElementById('leadPhone').value.trim();
+      var email=document.getElementById('leadEmail').value.trim();
+      var url=urlInput.value.trim();
+      var msg=document.getElementById('leadMsg').value.trim();
+      var lines=[
+        (en?'Name/Business: ':'店名/聯絡人:')+name,
+        (en?'Phone: ':'聯絡電話:')+phone
+      ];
+      if(email) lines.push((en?'Email: ':'Email:')+email);
+      lines.push((en?'Website/Page: ':'網址/粉專:')+(url||'-'));
+      if(msg) lines.push((en?'Notes: ':'補充說明:')+msg);
+      var mailto='mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent('索取免費網站健檢報告')+'&body='+encodeURIComponent(lines.join('\n'));
+      window.location.href=mailto;
+    });
+  })();
+
   window.__rerenderScan=function(){ if(lastTarget) runAnalysis(lastTarget); };
 })();
 
@@ -1427,6 +1488,10 @@ if(statsEl) statsIo.observe(statsEl);
     'scan-cta-btn':'Get the full free health check →',
     'scan-cta-note':'Get a plain-language report within 3 business days',
     'scan-note':'This quick scan attempts a live connection & DNS check on this address, plus an automated estimate based on URL features — not a page-by-page manual review; official scores come from the free health check report.',
+    'lead-name':'Business name / contact','lead-phone':'Phone number','lead-email':'Email (optional)',
+    'lead-url':'Website or page','lead-msg':'Notes (optional)',
+    'lead-submit':'Submit, request my free check →','lead-cancel':'Cancel',
+    'lead-note':"Submitting opens your email app with everything filled in — just hit send. No email app? Write to us directly at kairos.ai.tech@gmail.com.",
     'leaks-eyebrow':'Four Common Leaks',
     'leaks-h2':'Your website may be sending customers to your competitors',
     'leak1-flag':'Expired cert · unreachable','leak1-h3':'The browser flashes an "unsafe" warning',
