@@ -493,7 +493,7 @@ html.retro-mode h1,html.retro-mode h2,html.retro-mode h3{color:#000080 !importan
 html.retro-mode .btn,html.retro-mode .time-toggle{background:#C0C0C0 !important;color:#000 !important;border:2px outset #fff !important;border-radius:0 !important}
 html.retro-mode .btn:active,html.retro-mode .time-toggle:active{border-style:inset !important}
 html.retro-mode header{background:#C0C0C0 !important;border-bottom:2px solid #000}
-html.retro-mode .card,html.retro-mode .price,html.retro-mode .scan-box,html.retro-mode .addons,html.retro-mode .faq-item,html.retro-mode .leak,html.retro-mode .compare-badge{border:1px solid #000 !important}
+html.retro-mode .card,html.retro-mode .price,html.retro-mode .scan-box,html.retro-mode .addons,html.retro-mode .faq-item,html.retro-mode .leak,html.retro-mode .compare-badge,html.retro-mode .scan-impression{border:1px solid #000 !important}
 html.retro-mode .hero-network,html.retro-mode .hero-stamp-wrap,html.retro-mode .scan-radar,html.retro-mode .wave-div,html.retro-mode .compare-handle::after{display:none !important}
 html.retro-mode .ring{background:#fff !important;border:1px solid #000 !important}
 html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !important}
@@ -521,6 +521,18 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
 .scan-result{display:none;margin-top:30px}
 .scan-target{font-size:13px;color:var(--ink-faint);margin-bottom:18px;word-break:break-all}
 .scan-target b{color:var(--ink)}
+.scan-impression{background:var(--ground);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:22px}
+.scan-impression h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin:0 0 10px;font-weight:700}
+.scan-impression-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:4px 20px}
+.scan-fact{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.scan-fact:last-child{border-bottom:0}
+.scan-fact .label{color:var(--ink-faint)}
+.scan-fact .val{font-weight:700;color:var(--ink);text-align:right;word-break:break-all}
+.scan-fact .val.ok{color:var(--teal)}
+.scan-fact .val.bad{color:var(--seal)}
+.scan-fact .val.unknown{color:var(--ink-faint);font-weight:400}
+.scan-fact.wide{flex-direction:column;align-items:flex-start;grid-column:1/-1;gap:2px}
+.scan-fact.wide .val{text-align:left}
 .rings{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-bottom:8px}
 .ring-card{text-align:center}
 .ring{width:118px;height:118px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;position:relative;
@@ -658,6 +670,10 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
 
       <div class="scan-result" id="scanResult">
         <div class="scan-target"><span data-i18n="scan-checking">正在檢查:</span><b id="scanTargetUrl"></b></div>
+        <div class="scan-impression" id="scanImpression">
+          <h4 data-i18n="impression-title">網址初步印象</h4>
+          <div class="scan-impression-grid" id="scanImpressionGrid"></div>
+        </div>
         <div class="rings">
           <div class="ring-card">
             <div class="ring" id="ringSeo" style="--ring-color:var(--accent)"><b id="ringSeoNum">0</b></div>
@@ -680,7 +696,7 @@ html.retro-mode .retro-marquee span{animation:retroMarquee 14s linear infinite !
           <a class="btn btn-primary" id="scanCtaBtn" data-i18n="scan-cta-btn" href="mailto:kairos.ai.tech@gmail.com?subject=索取免費網站健檢報告">索取完整免費健檢 →</a>
           <span style="font-size:13px;color:var(--ink-faint)" data-i18n="scan-cta-note">三個工作天內收到白話版報告</span>
         </div>
-        <div class="scan-note" data-i18n="scan-note">快篩僅依網址與公開特徵做自動化初步估算,非逐頁人工檢測;正式分數以免費健檢報告為準。</div>
+        <div class="scan-note" data-i18n="scan-note">快篩會對此網址嘗試即時連線與 DNS 檢查,並依網址特徵做自動化估算,非逐頁人工檢測;正式分數以免費健檢報告為準。</div>
       </div>
     </div>
   </div>
@@ -1154,8 +1170,10 @@ if(statsEl) statsIo.observe(statsEl);
       result=document.getElementById('scanResult');
 
   var CONS_POOL=[
-    {test:function(h){return !h.https;}, text:'沒有 HTTPS 加密,瀏覽器可能顯示「不安全」警告,客人容易被嚇跑', textEn:'No HTTPS encryption — browsers may show an "unsafe" warning that scares visitors away'},
+    {test:function(h){return h.dnsDown;}, text:'這個網址目前偵測不到有效的網域紀錄,可能已經過期或設定錯誤', textEn:'No valid DNS record detected for this domain — it may be expired or misconfigured'},
+    {test:function(h){return !h.dnsDown && h.httpsProblem;}, text:'嘗試連線這個網址的 HTTPS 版本失敗,瀏覽器可能顯示「不安全」警告或根本打不開', textEn:'A live connection attempt to the HTTPS version of this address failed — visitors may see an "unsafe" warning or the site may not load at all'},
     {test:function(h){return h.socialOnly;}, text:'只找到社群/粉專頁面,沒有自己擁有的網域,Google 幾乎搜不到完整內容', textEn:'Only a social/fan page found, no owned domain — Google can barely index the content'},
+    {test:function(h){return !h.socialOnly && h.builderPlatform;}, text:'使用免費建站平台的子網域,而不是自己擁有的網域,不利於品牌與長期 SEO 經營', textEn:"Running on a free website-builder subdomain instead of a domain you own — hurts branding and long-term SEO"},
     {test:function(h){return true;}, text:'頁面缺少可被 AI 引用的結構化資料(FAQ / Schema),ChatGPT 等 AI 搜尋不易推薦你', textEn:'Missing structured data (FAQ / Schema) that AI can cite — ChatGPT and similar AI search rarely recommend you', weight:1},
     {test:function(h){return true;}, text:'手機版排版可能跑版或字體過小,而超過六成搜尋來自手機', textEn:'Mobile layout may be broken or text too small, while over 60% of searches come from mobile', weight:1},
     {test:function(h){return true;}, text:'未偵測到 Google 商家檔案串接,在地/地圖搜尋排名可能較弱', textEn:'No Google Business Profile integration detected — local/map search ranking may be weak', weight:1},
@@ -1190,8 +1208,40 @@ if(statsEl) statsIo.observe(statsEl);
       href:u.href,
       hostname:u.hostname,
       https:/^https:\/\//i.test(withProto) || u.protocol==='https:',
-      socialOnly:/(^|\.)(facebook|instagram|line)\.(com|me)$/i.test(u.hostname)
+      socialOnly:/(^|\.)(facebook|instagram|line)\.(com|me)$/i.test(u.hostname),
+      builderPlatform:/\.(wixsite|weebly|myshopify|squarespace|strikingly|godaddysites|jimdofree|business)\.(com|site)$|(^|\.)(blogspot|pixnet)\.(com|net)$/i.test(u.hostname),
+      isTw:/\.tw$/i.test(u.hostname)
     };
+  }
+
+  /* best-effort, real, client-side probes of the actual typed address — no server involved.
+     Both degrade to null ("unknown") on any failure/timeout so we never fabricate a result. */
+  function withTimeout(promise, ms){
+    return Promise.race([
+      promise,
+      new Promise(function(_,reject){ setTimeout(function(){ reject(new Error('timeout')); }, ms); })
+    ]);
+  }
+  async function probeDns(hostname){
+    try{
+      var r=await withTimeout(fetch('https://dns.google/resolve?name='+encodeURIComponent(hostname)+'&type=A',{cache:'no-store'}), 3500);
+      if(r && r.ok){
+        var j=await r.json();
+        if(j.Status===3) return false;
+        if(j.Status===0 && j.Answer && j.Answer.length) return true;
+      }
+    }catch(e){ /* our probe failed (offline/CORS/timeout) — unknown, don't penalize */ }
+    return null;
+  }
+  async function probeHttps(hostname){
+    try{
+      await withTimeout(fetch('https://'+hostname+'/', {mode:'no-cors', cache:'no-store'}), 3500);
+      return true;
+    }catch(e){ return false; }
+  }
+  async function probeTarget(hostname){
+    var r=await Promise.all([probeDns(hostname), probeHttps(hostname)]);
+    return {dnsOk:r[0], httpsOk:r[1]};
   }
 
   function ringVerdict(score){
@@ -1227,16 +1277,53 @@ if(statsEl) statsIo.observe(statsEl);
   }
 
   var lastTarget=null;
+  function renderImpression(h){
+    var en=window.CURRENT_LANG==='en';
+    function fact(label, val, cls, wide){ return {label:label, val:val, cls:cls||'', wide:!!wide}; }
+    var protoVal = h.httpsProblem
+      ? (en?'✕ Connection failed':'✕ 連線失敗')
+      : h.probe.httpsOk===true ? (en?'✓ Reachable over HTTPS':'✓ 可連線(HTTPS)')
+      : (en?'— Unknown':'— 無法判斷');
+    var protoCls = h.httpsProblem ? 'bad' : h.probe.httpsOk===true ? 'ok' : 'unknown';
+    var dnsVal = h.dnsDown ? (en?'✕ No record found':'✕ 找不到紀錄')
+      : h.probe.dnsOk===true ? (en?'✓ Resolves':'✓ 有效解析')
+      : (en?'— Unknown':'— 無法判斷');
+    var dnsCls = h.dnsDown ? 'bad' : h.probe.dnsOk===true ? 'ok' : 'unknown';
+    var platVal = h.socialOnly ? (en?'Social page':'社群平台頁面')
+      : h.builderPlatform ? (en?'Free site builder':'免費建站平台')
+      : (en?'Own domain':'自有網域');
+    var platCls = (h.socialOnly||h.builderPlatform) ? 'bad' : 'ok';
+    var facts=[
+      fact(en?'Domain':'網域', h.hostname, '', true),
+      fact(en?'HTTPS connection':'HTTPS 連線', protoVal, protoCls),
+      fact(en?'DNS status':'DNS 狀態', dnsVal, dnsCls),
+      fact(en?'Site type':'建站方式', platVal, platCls)
+    ];
+    var grid=document.getElementById('scanImpressionGrid');
+    if(grid){
+      grid.innerHTML=facts.map(function(f){
+        return '<div class="scan-fact'+(f.wide?' wide':'')+'"><span class="label">'+f.label+'</span><span class="val '+f.cls+'">'+f.val+'</span></div>';
+      }).join('');
+    }
+  }
+
   function runAnalysis(h){
     lastTarget=h;
     var en=window.CURRENT_LANG==='en';
+    h.probe = h.probe || {dnsOk:null, httpsOk:null};
+    h.dnsDown = h.probe.dnsOk===false;
+    h.httpsProblem = h.dnsDown || h.probe.httpsOk===false || (h.probe.httpsOk===null && h.probe.dnsOk===null && !h.https);
     var rnd=hashStr(h.hostname);
     var seo=Math.round(40+rnd()*40);
     var aeo=Math.round(10+rnd()*35);
     var leo=Math.round(30+rnd()*35);
-    if(!h.https) seo=Math.max(8,seo-18);
+    if(h.dnsDown){ seo=Math.min(seo,8); aeo=Math.min(aeo,5); leo=Math.min(leo,15); }
+    else if(h.httpsProblem){ seo=Math.max(8,seo-18); }
     if(h.socialOnly){ seo=Math.min(seo,15); aeo=Math.min(aeo,6); leo=Math.max(leo,45); }
+    else if(h.builderPlatform){ seo=Math.min(seo,35); aeo=Math.min(aeo,15); }
+    if(h.isTw) leo=Math.min(100,leo+6);
 
+    renderImpression(h);
     var picks=CONS_POOL.filter(function(c){return c.test(h);});
     var forced=picks.filter(function(c){return !c.weight;});
     var pool=picks.filter(function(c){return c.weight;});
@@ -1284,20 +1371,24 @@ if(statsEl) statsIo.observe(statsEl);
       var en=window.CURRENT_LANG==='en';
       btn.textContent= en ? 'Analyzing…' : '分析中…';
       var steps= en
-        ? ['Reading basic site info…','Checking SEO structure…','Checking AI-search (AEO) readability…','Checking local/map search (LEO) signals…','Compiling report…']
-        : ['正在讀取網站基本資訊…','正在檢查 SEO 結構…','正在檢查 AI 搜尋(AEO)可讀性…','正在檢查在地/地圖搜尋(LEO)訊號…','整理報告中…'];
+        ? ['Reading basic site info…','Attempting a live connection & DNS check…','Checking AI-search (AEO) readability…','Checking local/map search (LEO) signals…','Compiling report…']
+        : ['正在讀取網站基本資訊…','正在嘗試連線並檢查網域狀態…','正在檢查 AI 搜尋(AEO)可讀性…','正在檢查在地/地圖搜尋(LEO)訊號…','整理報告中…'];
       var i=0;
       slLine.textContent=steps[0];
+      var probePromise=probeTarget(target.hostname);
       var timer=setInterval(function(){
         i++;
         slBar.style.width=Math.min(100,(i/steps.length)*100)+'%';
         if(i<steps.length){ slLine.textContent=steps[i]; }
         else{
           clearInterval(timer);
-          loading.style.display='none';
-          btn.disabled=false;
-          btn.textContent= window.CURRENT_LANG==='en' ? 'Analyze →' : '開始分析 →';
-          runAnalysis(target);
+          probePromise.then(function(probe){
+            target.probe=probe;
+            loading.style.display='none';
+            btn.disabled=false;
+            btn.textContent= window.CURRENT_LANG==='en' ? 'Analyze →' : '開始分析 →';
+            runAnalysis(target);
+          });
         }
       }, 420);
     });
@@ -1331,10 +1422,11 @@ if(statsEl) statsIo.observe(statsEl);
     'scan-err':'Please enter a valid URL, e.g. example.com',
     'scan-hint':'This quick scan is an automated estimate to point you in the right direction; request the full, page-by-page health check below.',
     'scan-connecting':'Connecting…','scan-checking':'Checking: ',
+    'impression-title':'Raw impression of this address',
     'ring-seo-label':'Search Engine Optimization','ring-aeo-label':'AI Search Optimization','ring-leo-label':'Local/Map Search',
     'scan-cta-btn':'Get the full free health check →',
     'scan-cta-note':'Get a plain-language report within 3 business days',
-    'scan-note':'This quick scan is an automated estimate based on the URL and public signals only, not a page-by-page manual review; official scores come from the free health check report.',
+    'scan-note':'This quick scan attempts a live connection & DNS check on this address, plus an automated estimate based on URL features — not a page-by-page manual review; official scores come from the free health check report.',
     'leaks-eyebrow':'Four Common Leaks',
     'leaks-h2':'Your website may be sending customers to your competitors',
     'leak1-flag':'Expired cert · unreachable','leak1-h3':'The browser flashes an "unsafe" warning',
