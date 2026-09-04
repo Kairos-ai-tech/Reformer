@@ -304,7 +304,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 @media (max-width:640px){.compare-annots{grid-template-columns:1fr;gap:6px}.compare-arrow{display:none}}
 
 /* fake old site */
-.old-site{position:relative;font-family:"Times New Roman","PMingLiU",serif;background:#EFEFEF;color:#222;padding:18px;min-height:380px}
+.old-site{font-family:"Times New Roman","PMingLiU",serif;background:#EFEFEF;color:#222;padding:18px;min-height:380px}
 .old-site::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
 .old-site .os-head{background:#003399;color:#FFFF66;text-align:center;padding:14px;font-size:22px;font-weight:700;letter-spacing:.2em}
 .old-site .os-marquee{background:#fff;color:#CC0000;font-size:13px;padding:5px 10px;border:1px solid #999;margin-top:6px;overflow:hidden;white-space:nowrap}
@@ -316,7 +316,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .old-site .os-count{ text-align:center;font-size:11px;color:#666;margin-top:10px}
 
 /* fake new site */
-.new-site{position:relative;overflow:hidden;padding:0;min-height:380px;background:var(--surface)}
+.new-site{padding:0;min-height:380px;background:var(--surface)}
 .new-site::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%)}
 @media(prefers-reduced-motion:no-preference){.new-site.in-view::before{animation:sheenSweep 1.1s ease forwards .35s}}
 @keyframes sheenSweep{to{transform:translateX(120%)}}
@@ -1087,7 +1087,8 @@ function showSite(which){
   slider.value = target;
   var myGen = ++splitAnimGen;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var start = parseFloat(compare.style.getPropertyValue('--split')) || 50;
+  var startRaw = parseFloat(compare.style.getPropertyValue('--split'));
+  var start = isNaN(startRaw) ? 50 : startRaw;
   if(reduced){
     compare.style.setProperty('--split', target+'%');
     return;
@@ -1136,7 +1137,8 @@ function showSite(which){
       if(myGen!==splitAnimGen) return;
       if(i>=steps.length){ if(onDone) onDone(); return; }
       var target = steps[i++];
-      var start = parseFloat(compare.style.getPropertyValue('--split')) || 50;
+      var startRaw = parseFloat(compare.style.getPropertyValue('--split'));
+      var start = isNaN(startRaw) ? 50 : startRaw;
       var t0 = performance.now();
       (function tick(now){
         if(myGen!==splitAnimGen) return;
