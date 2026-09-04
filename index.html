@@ -282,7 +282,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .compare-new{clip-path:inset(0 0 0 var(--split))}
 .compare-old{clip-path:inset(0 calc(100% - var(--split)) 0 0)}
 .compare-badge{position:absolute;top:10px;right:12px;z-index:2;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px}
-.compare-badge.bad{left:12px;right:auto;background:#fff;color:var(--seal);border:1px solid var(--seal);box-shadow:0 0 0 0 color-mix(in srgb, var(--seal) 45%, transparent)}
+.compare-badge.bad{left:12px;right:auto;opacity:var(--bad-badge-fade,1);background:#fff;color:var(--seal);border:1px solid var(--seal);box-shadow:0 0 0 0 color-mix(in srgb, var(--seal) 45%, transparent)}
 .compare-badge.good{background:#0B2E2A;color:#7FE0D3;box-shadow:0 0 0 0 color-mix(in srgb, var(--teal) 55%, transparent)}
 @media(prefers-reduced-motion:no-preference){
   .compare-badge.bad{animation:badgePulseBad 2.4s ease-in-out infinite}
@@ -1089,6 +1089,21 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
 
 <script>
 var splitAnimGen = 0;
+var __badBadgeEls;
+function updateBadFade(compare, splitVal){
+  if(__badBadgeEls===undefined){
+    var old = document.getElementById('siteOld');
+    var bad = document.querySelector('.compare-badge.bad');
+    __badBadgeEls = (old && bad) ? {old:old, bad:bad} : null;
+  }
+  if(!__badBadgeEls) return;
+  var oldRect = __badBadgeEls.old.getBoundingClientRect();
+  var badRect = __badBadgeEls.bad.getBoundingClientRect();
+  if(!oldRect.width) return;
+  var revealed = oldRect.width * (splitVal/100);
+  var safe = badRect.right - oldRect.left;
+  compare.style.setProperty('--bad-badge-fade', revealed >= safe ? 1 : 0);
+}
 function showSite(which){
   var target = which==='old' ? 92 : 8;
   var compare = document.getElementById('compareWrap');
@@ -1103,6 +1118,7 @@ function showSite(which){
   var start = isNaN(startRaw) ? 50 : startRaw;
   if(reduced){
     compare.style.setProperty('--split', target+'%');
+    updateBadFade(compare, target);
     return;
   }
   var t0 = performance.now(), dur = 480;
@@ -1110,7 +1126,9 @@ function showSite(which){
     if(myGen!==splitAnimGen) return;
     var p = Math.min(1, (now-t0)/dur);
     var eased = 1-Math.pow(1-p, 3);
-    compare.style.setProperty('--split', (start+(target-start)*eased)+'%');
+    var val = start+(target-start)*eased;
+    compare.style.setProperty('--split', val+'%');
+    updateBadFade(compare, val);
     if(p<1) requestAnimationFrame(tick);
   })(t0);
 }
@@ -1124,6 +1142,7 @@ function showSite(which){
   slider.addEventListener('input', function(){
     splitAnimGen++;
     compare.style.setProperty('--split', slider.value+'%');
+    updateBadFade(compare, parseFloat(slider.value));
     hideHint();
   });
 })();
@@ -1156,7 +1175,9 @@ function showSite(which){
         if(myGen!==splitAnimGen) return;
         var p = Math.min(1, (now-t0)/stepDur);
         var eased = p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
-        compare.style.setProperty('--split', (start+(target-start)*eased)+'%');
+        var val = start+(target-start)*eased;
+        compare.style.setProperty('--split', val+'%');
+        updateBadFade(compare, val);
         if(p<1) requestAnimationFrame(tick); else nextLeg();
       })(t0);
     }
