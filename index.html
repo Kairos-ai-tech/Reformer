@@ -1197,6 +1197,7 @@ function preset(btn,q,c,v){
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced){
     qEl.value=q; cEl.value=c; vEl.value=v;
+    getCalcOutputEls().forEach(function(el){ el.removeAttribute('aria-live'); });
     calc();
     return;
   }
