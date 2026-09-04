@@ -320,7 +320,12 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .new-site::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%)}
 @media(prefers-reduced-motion:no-preference){.new-site.in-view::before{animation:sheenSweep 1.1s ease forwards .35s}}
 @keyframes sheenSweep{to{transform:translateX(120%)}}
-.ns-hero{background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff;padding:34px 30px}
+.ns-hero{position:relative;overflow:hidden;background:
+    radial-gradient(220px 150px at 88% -14%, rgba(255,255,255,.3), transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1.6px),
+    linear-gradient(135deg,var(--teal-deep),var(--teal));
+  background-size:auto,15px 15px,auto;
+  color:#fff;padding:34px 30px}
 .ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;opacity:.85;margin-bottom:8px}
 .ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px}
 .ns-hero p{font-size:13.5px;opacity:.92;max-width:30em}
