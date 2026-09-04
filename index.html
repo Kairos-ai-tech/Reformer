@@ -1390,6 +1390,8 @@ if(statsEl) statsIo.observe(statsEl);
       facts:facts,
       cons: finalCons.map(function(c){ return {zh:c.text, en:c.textEn}; })
     };
+    var dlBtnGuard2=document.getElementById('scanDownloadBtn');
+    if(dlBtnGuard2) dlBtnGuard2.disabled=false;
   }
 
   if(form){
@@ -1406,6 +1408,9 @@ if(statsEl) statsIo.observe(statsEl);
       loading.style.display='block';
       slBar.style.width='0%';
       btn.disabled=true;
+      lastResult=null;
+      var dlBtnGuard=document.getElementById('scanDownloadBtn');
+      if(dlBtnGuard) dlBtnGuard.disabled=true;
       var en=window.CURRENT_LANG==='en';
       btn.textContent= en ? 'Analyzing…' : '分析中…';
       var steps= en
@@ -1525,7 +1530,7 @@ if(statsEl) statsIo.observe(statsEl);
       }).join('');
 
       var factRows=result.facts.map(function(f){
-        return '<div class="rep-fact"><span>'+esc(f.label)+'</span><b class="'+f.cls+'">'+esc(f.val)+'</b></div>';
+        return '<div class="rep-fact'+(f.wide?' wide':'')+'"><span>'+esc(f.label)+'</span><b class="'+f.cls+'">'+esc(f.val)+'</b></div>';
       }).join('');
 
       var consRows=result.cons.map(function(c){ return '<li>'+t(c, en)+'</li>'; }).join('');
@@ -1554,10 +1559,11 @@ if(statsEl) statsIo.observe(statsEl);
         +'h2{font-size:19px;border-left:4px solid var(--accent);padding-left:12px;margin:0 0 18px}'
         +'.rep-score{margin-bottom:14px}.rep-score-top{display:flex;justify-content:space-between;align-items:center;font-size:14.5px;margin-bottom:6px}'
         +'.rep-badge{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}'
-        +'.rep-badge.bad{color:#FF7A6B}.rep-badge.mid{color:#E8C24C}.rep-badge.good{color:var(--teal)}'
+        +'.rep-badge.bad{color:#FF7A6B}.rep-badge.mid{color:var(--accent-deep)}.rep-badge.good{color:var(--teal)}'
         +'.rep-bar{height:8px;border-radius:99px;background:var(--surface);overflow:hidden}.rep-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--teal))}'
         +'.rep-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:20px}'
         +'.rep-fact{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:4px}'
+        +'.rep-fact.wide{grid-column:1/-1}'
         +'.rep-fact span{color:var(--ink-faint)}.rep-fact b{font-weight:700}.rep-fact b.ok{color:var(--teal)}.rep-fact b.bad{color:#FF7A6B}.rep-fact b.unknown{color:var(--ink-faint)}'
         +'.rep-cons{margin:20px 0 0;padding-left:20px}.rep-cons li{margin-bottom:8px;font-size:14.5px;color:var(--ink-soft)}'
         +'.rep-intro{color:var(--ink-soft);font-size:14.5px;margin-bottom:22px}'
@@ -1583,7 +1589,7 @@ if(statsEl) statsIo.observe(statsEl);
         +'<h3>'+t(REPORT_COPY.pricingHeading,en)+'</h3><div class="rep-prices">'+priceRows+'</div>'
         +'<div class="rep-addons">'+esc(readAddons())+'</div></section>'
         +'<section class="rep-cta"><h2>'+t(REPORT_COPY.ctaHeading,en)+'</h2><p>'+t(REPORT_COPY.ctaBody,en)+'</p>'
-        +'<a href="mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent('索取免費網站健檢報告')+'&body='+encodeURIComponent((en?'Website/Page: ':'網址/粉專:')+result.hostname)+'">'+(en?'Email us →':'寄信索取免費健檢 →')+'</a></section>'
+        +'<a href="mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent(en?'Requesting a free website health check':'索取免費網站健檢報告')+'&body='+encodeURIComponent((en?'Website/Page: ':'網址/粉專:')+result.hostname)+'">'+(en?'Email us →':'寄信索取免費健檢 →')+'</a></section>'
         +'<footer>'+t(REPORT_COPY.disclaimer,en)+'<br>'+t(REPORT_COPY.generatedBy,en)+'</footer>'
         +'</div></body></html>';
     }
