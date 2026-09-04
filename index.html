@@ -1129,7 +1129,10 @@ function updateBadgeFades(compare, splitVal){
   var newEl = document.getElementById('siteNew');
   var bad = document.querySelector('.compare-badge.bad');
   var good = document.querySelector('.compare-badge.good');
-  if(!compare || !old || !newEl || !bad || !good || typeof ResizeObserver==='undefined') return;
+  if(!compare || !old || !newEl || !bad || !good) return;
+  var initRaw = parseFloat(compare.style.getPropertyValue('--split'));
+  updateBadgeFades(compare, isNaN(initRaw) ? 50 : initRaw);
+  if(typeof ResizeObserver==='undefined') return;
   var ro = new ResizeObserver(function(){
     var raw = parseFloat(compare.style.getPropertyValue('--split'));
     updateBadgeFades(compare, isNaN(raw) ? 50 : raw);
