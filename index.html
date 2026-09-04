@@ -1210,9 +1210,13 @@ function preset(btn,q,c,v){
     qEl.value=Math.round(startQ+(q-startQ)*eased);
     cEl.value=Math.round(startC+(c-startC)*eased);
     vEl.value=Math.round(startV+(v-startV)*eased);
-    calc();
-    if(p<1) requestAnimationFrame(tick);
-    else getCalcOutputEls().forEach(function(el){ el.removeAttribute('aria-live'); });
+    if(p<1){
+      calc();
+      requestAnimationFrame(tick);
+    } else {
+      getCalcOutputEls().forEach(function(el){ el.removeAttribute('aria-live'); });
+      calc();
+    }
   })(t0);
 }
 function calc(){
