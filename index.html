@@ -937,11 +937,11 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
             <button onclick="preset(this,250,10,60000)" data-i18n="roi-preset3">製造・B2B</button>
           </div>
           <label><span data-i18n="roi-label1">每月相關搜尋量</span> <output id="oQ">1,200</output></label>
-          <input type="range" id="q" min="100" max="10000" step="50" value="1200" oninput="calcAnimGen++;calc()">
+          <input type="range" id="q" min="100" max="10000" step="50" value="1200" oninput="cancelCalcAnim();calc()">
           <label><span data-i18n="roi-label2">其中成為詢問/來店的比例</span> <output id="oC">8%</output></label>
-          <input type="range" id="c" min="1" max="25" step="1" value="8" oninput="calcAnimGen++;calc()">
+          <input type="range" id="c" min="1" max="25" step="1" value="8" oninput="cancelCalcAnim();calc()">
           <label><span data-i18n="roi-label3">平均客單價(NT$)</span> <output id="oV">1,500</output></label>
-          <input type="range" id="v" min="200" max="100000" step="100" value="1500" oninput="calcAnimGen++;calc()">
+          <input type="range" id="v" min="200" max="100000" step="100" value="1500" oninput="cancelCalcAnim();calc()">
         </div>
         <div class="calc-out">
           <div>
@@ -1180,6 +1180,14 @@ function showSite(which){
 })();
 function fmt(n){return 'NT$ '+Math.round(n).toLocaleString('zh-TW');}
 var calcAnimGen = 0;
+var calcOutputEls = null;
+function getCalcOutputEls(){
+  return calcOutputEls || (calcOutputEls=[document.getElementById('oQ'),document.getElementById('oC'),document.getElementById('oV')]);
+}
+function cancelCalcAnim(){
+  calcAnimGen++;
+  getCalcOutputEls().forEach(function(el){ el.removeAttribute('aria-live'); });
+}
 function preset(btn,q,c,v){
   document.querySelectorAll('.presets button').forEach(function(b){b.className='';});
   btn.className='on';
@@ -1192,6 +1200,7 @@ function preset(btn,q,c,v){
     calc();
     return;
   }
+  getCalcOutputEls().forEach(function(el){ el.setAttribute('aria-live','off'); });
   var t0=performance.now(), dur=500;
   (function tick(now){
     if(myGen!==calcAnimGen) return;
@@ -1202,6 +1211,7 @@ function preset(btn,q,c,v){
     vEl.value=Math.round(startV+(v-startV)*eased);
     calc();
     if(p<1) requestAnimationFrame(tick);
+    else getCalcOutputEls().forEach(function(el){ el.removeAttribute('aria-live'); });
   })(t0);
 }
 function calc(){
