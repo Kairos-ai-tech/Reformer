@@ -1429,11 +1429,12 @@ if(statsEl) statsIo.observe(statsEl);
         else{
           clearInterval(timer);
           probePromise.then(function(probe){
+            if(myGen!==scanGen) return;
             target.probe=probe;
             loading.style.display='none';
             btn.disabled=false;
             btn.textContent= window.CURRENT_LANG==='en' ? 'Analyze →' : '開始分析 →';
-            if(myGen===scanGen) runAnalysis(target);
+            runAnalysis(target);
           });
         }
       }, 420);
