@@ -1307,6 +1307,7 @@ if(statsEl) statsIo.observe(statsEl);
   }
 
   var lastTarget=null;
+  var scanGen=0;
   function renderImpression(h){
     var en=window.CURRENT_LANG==='en';
     function fact(label, val, cls, wide){ return {label:label, val:val, cls:cls||'', wide:!!wide}; }
@@ -1409,6 +1410,8 @@ if(statsEl) statsIo.observe(statsEl);
       slBar.style.width='0%';
       btn.disabled=true;
       lastResult=null;
+      lastTarget=null;
+      var myGen=++scanGen;
       var dlBtnGuard=document.getElementById('scanDownloadBtn');
       if(dlBtnGuard) dlBtnGuard.disabled=true;
       var en=window.CURRENT_LANG==='en';
@@ -1430,7 +1433,7 @@ if(statsEl) statsIo.observe(statsEl);
             loading.style.display='none';
             btn.disabled=false;
             btn.textContent= window.CURRENT_LANG==='en' ? 'Analyze →' : '開始分析 →';
-            runAnalysis(target);
+            if(myGen===scanGen) runAnalysis(target);
           });
         }
       }, 420);
@@ -1526,7 +1529,7 @@ if(statsEl) statsIo.observe(statsEl);
         {label:'LEO', v:result.scores.leo}
       ].map(function(s){
         var vd=ringVerdict(s.v);
-        return '<div class="rep-score"><div class="rep-score-top"><b>'+s.label+'</b><span class="rep-badge rep-'+vd.cls+'">'+s.v+' / 100 · '+esc(vd.text)+'</span></div><div class="rep-bar"><i style="width:'+s.v+'%"></i></div></div>';
+        return '<div class="rep-score"><div class="rep-score-top"><b>'+s.label+'</b><span class="rep-badge '+vd.cls+'">'+s.v+' / 100 · '+esc(vd.text)+'</span></div><div class="rep-bar"><i style="width:'+s.v+'%"></i></div></div>';
       }).join('');
 
       var factRows=result.facts.map(function(f){
