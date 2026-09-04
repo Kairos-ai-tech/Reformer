@@ -322,6 +322,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 @keyframes sheenSweep{to{transform:translateX(120%)}}
 /* photo: "A bunch of baskets filled with white rice" by Nathan Cima on Unsplash — free to use under the Unsplash License, https://unsplash.com/photos/n2sy8zlngYo */
 .ns-hero{position:relative;overflow:hidden;display:flex;justify-content:flex-end;
+  background-color:#0B2E2A;
   background-image:
     linear-gradient(90deg, rgba(9,38,35,.5) 0%, rgba(9,38,35,.9) 45%, rgba(9,38,35,.96) 100%),
     url('https://images.unsplash.com/photo-1704972269889-f0fdd7f0e7c3?fm=jpg&q=70&w=1600&auto=format&fit=crop');
@@ -329,10 +330,10 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
   background-position:left center,left center;
   background-repeat:no-repeat,no-repeat;
   color:#fff;padding:34px 30px}
-.ns-copy{max-width:min(30em, calc(50% - 30px))}
-.ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;color:#9FE8DD;font-weight:700;margin-bottom:8px}
-.ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px;text-shadow:0 1px 3px rgba(0,0,0,.4)}
-.ns-hero p{font-size:13.5px;color:#DCEFEB;max-width:30em;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.ns-copy{max-width:min(30em, calc(50% - 30px), calc(100% - var(--split) - 60px));overflow:hidden}
+.ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;color:#9FE8DD;font-weight:700;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px;text-shadow:0 1px 3px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ns-hero p{font-size:13.5px;color:#DCEFEB;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .ns-hero .ns-btns{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
 .ns-hero .ns-btn{background:#fff;color:#0B2E2A;font-size:13px;font-weight:700;border-radius:6px;padding:8px 16px}
 .ns-hero .ns-btn.o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
