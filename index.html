@@ -283,7 +283,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .compare-old{clip-path:inset(0 calc(100% - var(--split)) 0 0)}
 .compare-badge{position:absolute;top:10px;right:12px;z-index:2;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px}
 .compare-badge.bad{background:#fff;color:var(--seal);border:1px solid var(--seal);box-shadow:0 0 0 0 color-mix(in srgb, var(--seal) 45%, transparent)}
-.compare-badge.good{background:var(--teal-deep);color:#fff;box-shadow:0 0 0 0 color-mix(in srgb, var(--teal) 55%, transparent)}
+.compare-badge.good{background:#0B2E2A;color:#7FE0D3;box-shadow:0 0 0 0 color-mix(in srgb, var(--teal) 55%, transparent)}
 @media(prefers-reduced-motion:no-preference){
   .compare-badge.bad{animation:badgePulseBad 2.4s ease-in-out infinite}
   .compare-badge.good{animation:badgePulseGood 2.4s ease-in-out infinite}
@@ -321,20 +321,21 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 @media(prefers-reduced-motion:no-preference){.new-site.in-view::before{animation:sheenSweep 1.1s ease forwards .35s}}
 @keyframes sheenSweep{to{transform:translateX(120%)}}
 /* photo: "A bunch of baskets filled with white rice" by Nathan Cima on Unsplash — free to use under the Unsplash License, https://unsplash.com/photos/n2sy8zlngYo */
-.ns-hero{position:relative;overflow:hidden;
+.ns-hero{position:relative;overflow:hidden;display:flex;justify-content:flex-end;
   background-image:
-    linear-gradient(135deg, color-mix(in srgb, var(--teal-deep) 82%, transparent), color-mix(in srgb, var(--teal) 58%, transparent)),
+    linear-gradient(90deg, rgba(9,38,35,.5) 0%, rgba(9,38,35,.9) 45%, rgba(9,38,35,.96) 100%),
     url('https://images.unsplash.com/photo-1704972269889-f0fdd7f0e7c3?fm=jpg&q=70&w=1600&auto=format&fit=crop');
   background-size:auto,cover;
-  background-position:center,center;
+  background-position:left center,left center;
   background-repeat:no-repeat,no-repeat;
   color:#fff;padding:34px 30px}
-.ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;opacity:.85;margin-bottom:8px}
-.ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px}
-.ns-hero p{font-size:13.5px;opacity:.92;max-width:30em}
+.ns-copy{max-width:min(30em, calc(50% - 30px))}
+.ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;color:#9FE8DD;font-weight:700;margin-bottom:8px}
+.ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.ns-hero p{font-size:13.5px;color:#DCEFEB;max-width:30em;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .ns-hero .ns-btns{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
-.ns-hero .ns-btn{background:#fff;color:var(--teal-deep);font-size:13px;font-weight:700;border-radius:6px;padding:8px 16px}
-.ns-hero .ns-btn.o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+.ns-hero .ns-btn{background:#fff;color:#0B2E2A;font-size:13px;font-weight:700;border-radius:6px;padding:8px 16px}
+.ns-hero .ns-btn.o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
 .ns-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;padding:20px 30px 26px}
 .ns-cell{border:1px solid var(--line);border-radius:10px;padding:14px;font-size:12.5px;color:var(--ink-soft)}
 .ns-cell b{display:block;color:var(--ink);font-size:13.5px;margin-bottom:4px}
@@ -872,10 +873,12 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
         <div id="siteNew" class="new-site compare-panel compare-new">
           <span class="compare-badge good" data-i18n="demo-badge-good">🔒 https</span>
           <div class="ns-hero">
-            <div class="ns-tag" data-i18n="demo-ns-tag">EST. 1973 · 彰化</div>
-            <h4 class="serif">金益豐食品行</h4>
-            <p data-i18n="demo-ns-p">三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。</p>
-            <div class="ns-btns"><span class="ns-btn" data-i18n="demo-ns-btn1">線上訂購</span><span class="ns-btn o" data-i18n="demo-ns-btn2">門市資訊</span><span class="ns-btn o">EN / 日本語</span></div>
+            <div class="ns-copy">
+              <div class="ns-tag" data-i18n="demo-ns-tag">EST. 1973 · 彰化</div>
+              <h4 class="serif">金益豐食品行</h4>
+              <p data-i18n="demo-ns-p">三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。</p>
+              <div class="ns-btns"><span class="ns-btn" data-i18n="demo-ns-btn1">線上訂購</span><span class="ns-btn o" data-i18n="demo-ns-btn2">門市資訊</span><span class="ns-btn o">EN / 日本語</span></div>
+            </div>
           </div>
           <div class="ns-body">
             <div class="ns-cell" data-i18n="demo-ns-cell1"><b>營業時間</b>週二–週日 08:00–19:00<br>(文字格式,Google 讀得到)</div>
