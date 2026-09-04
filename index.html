@@ -1106,6 +1106,15 @@ function setSplit(compare, value){
   var fade = (copyRect.left - boundary)/16;
   compare.style.setProperty('--copy-fade', Math.max(0, Math.min(1, fade)));
 }
+(function(){
+  var compare = document.getElementById('compareWrap');
+  var siteNew = document.getElementById('siteNew');
+  if(!compare || !siteNew || typeof ResizeObserver==='undefined') return;
+  new ResizeObserver(function(){
+    var raw = parseFloat(compare.style.getPropertyValue('--split'));
+    setSplit(compare, isNaN(raw) ? 50 : raw);
+  }).observe(siteNew);
+})();
 function showSite(which){
   var target = which==='old' ? 92 : 8;
   var compare = document.getElementById('compareWrap');
