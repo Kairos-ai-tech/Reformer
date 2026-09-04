@@ -321,10 +321,10 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 @media(prefers-reduced-motion:no-preference){.new-site.in-view::before{animation:sheenSweep 1.1s ease forwards .35s}}
 @keyframes sheenSweep{to{transform:translateX(120%)}}
 .ns-hero{position:relative;overflow:hidden;background:
-    radial-gradient(220px 150px at 88% -14%, rgba(255,255,255,.3), transparent 70%),
-    radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1.6px),
+    radial-gradient(260px 180px at 88% -16%, rgba(255,255,255,.45), transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,.4) 1.8px, transparent 2.2px),
     linear-gradient(135deg,var(--teal-deep),var(--teal));
-  background-size:auto,15px 15px,auto;
+  background-size:auto,18px 18px,auto;
   color:#fff;padding:34px 30px}
 .ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;opacity:.85;margin-bottom:8px}
 .ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px}
@@ -937,11 +937,11 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
             <button onclick="preset(this,250,10,60000)" data-i18n="roi-preset3">製造・B2B</button>
           </div>
           <label><span data-i18n="roi-label1">每月相關搜尋量</span> <output id="oQ">1,200</output></label>
-          <input type="range" id="q" min="100" max="10000" step="50" value="1200" oninput="calc()">
+          <input type="range" id="q" min="100" max="10000" step="50" value="1200" oninput="calcAnimGen++;calc()">
           <label><span data-i18n="roi-label2">其中成為詢問/來店的比例</span> <output id="oC">8%</output></label>
-          <input type="range" id="c" min="1" max="25" step="1" value="8" oninput="calc()">
+          <input type="range" id="c" min="1" max="25" step="1" value="8" oninput="calcAnimGen++;calc()">
           <label><span data-i18n="roi-label3">平均客單價(NT$)</span> <output id="oV">1,500</output></label>
-          <input type="range" id="v" min="200" max="100000" step="100" value="1500" oninput="calc()">
+          <input type="range" id="v" min="200" max="100000" step="100" value="1500" oninput="calcAnimGen++;calc()">
         </div>
         <div class="calc-out">
           <div>
@@ -1179,13 +1179,30 @@ function showSite(which){
   io.observe(demo);
 })();
 function fmt(n){return 'NT$ '+Math.round(n).toLocaleString('zh-TW');}
+var calcAnimGen = 0;
 function preset(btn,q,c,v){
   document.querySelectorAll('.presets button').forEach(function(b){b.className='';});
   btn.className='on';
-  document.getElementById('q').value=q;
-  document.getElementById('c').value=c;
-  document.getElementById('v').value=v;
-  calc();
+  var qEl=document.getElementById('q'), cEl=document.getElementById('c'), vEl=document.getElementById('v');
+  var startQ=+qEl.value, startC=+cEl.value, startV=+vEl.value;
+  var myGen=++calcAnimGen;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){
+    qEl.value=q; cEl.value=c; vEl.value=v;
+    calc();
+    return;
+  }
+  var t0=performance.now(), dur=500;
+  (function tick(now){
+    if(myGen!==calcAnimGen) return;
+    var p=Math.min(1,(now-t0)/dur);
+    var eased=1-Math.pow(1-p,3);
+    qEl.value=Math.round(startQ+(q-startQ)*eased);
+    cEl.value=Math.round(startC+(c-startC)*eased);
+    vEl.value=Math.round(startV+(v-startV)*eased);
+    calc();
+    if(p<1) requestAnimationFrame(tick);
+  })(t0);
 }
 function calc(){
   var q=+document.getElementById('q').value,
