@@ -1104,6 +1104,18 @@ function updateBadFade(compare, splitVal){
   var safe = badRect.right - oldRect.left;
   compare.style.setProperty('--bad-badge-fade', revealed >= safe ? 1 : 0);
 }
+(function(){
+  var compare = document.getElementById('compareWrap');
+  var old = document.getElementById('siteOld');
+  var bad = document.querySelector('.compare-badge.bad');
+  if(!compare || !old || !bad || typeof ResizeObserver==='undefined') return;
+  var ro = new ResizeObserver(function(){
+    var raw = parseFloat(compare.style.getPropertyValue('--split'));
+    updateBadFade(compare, isNaN(raw) ? 50 : raw);
+  });
+  ro.observe(old);
+  ro.observe(bad);
+})();
 function showSite(which){
   var target = which==='old' ? 92 : 8;
   var compare = document.getElementById('compareWrap');
