@@ -320,15 +320,15 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .new-site::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);transform:translateX(-120%)}
 @media(prefers-reduced-motion:no-preference){.new-site.in-view::before{animation:sheenSweep 1.1s ease forwards .35s}}
 @keyframes sheenSweep{to{transform:translateX(120%)}}
-.ns-hero{position:relative;overflow:hidden;background:
-    radial-gradient(260px 180px at 88% -16%, rgba(255,255,255,.45), transparent 70%),
-    radial-gradient(circle, rgba(255,255,255,.4) 1.8px, transparent 2.2px),
-    linear-gradient(135deg,var(--teal-deep),var(--teal));
-  background-size:auto,18px 18px,auto;
+/* photo: "A bunch of baskets filled with white rice" by Nathan Cima on Unsplash — free to use under the Unsplash License, https://unsplash.com/photos/n2sy8zlngYo */
+.ns-hero{position:relative;overflow:hidden;
+  background-image:
+    linear-gradient(135deg, color-mix(in srgb, var(--teal-deep) 82%, transparent), color-mix(in srgb, var(--teal) 58%, transparent)),
+    url('https://images.unsplash.com/photo-1704972269889-f0fdd7f0e7c3?fm=jpg&q=70&w=1600&auto=format&fit=crop');
+  background-size:auto,cover;
+  background-position:center,center;
+  background-repeat:no-repeat,no-repeat;
   color:#fff;padding:34px 30px}
-.ns-photo{position:absolute;top:16px;right:20px;width:100px;height:100px;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.3);pointer-events:none}
-.ns-photo svg{display:block;width:100%;height:100%}
-@media(max-width:640px){.ns-photo{display:none}}
 .ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;opacity:.85;margin-bottom:8px}
 .ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px}
 .ns-hero p{font-size:13.5px;opacity:.92;max-width:30em}
@@ -872,20 +872,6 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
         <div id="siteNew" class="new-site compare-panel compare-new">
           <span class="compare-badge good" data-i18n="demo-badge-good">🔒 https</span>
           <div class="ns-hero">
-            <div class="ns-photo" aria-hidden="true">
-              <svg viewBox="0 0 120 120" focusable="false">
-                <rect width="120" height="120" fill="#F4E9D8"/>
-                <circle cx="40" cy="46" r="23" fill="#C4622D"/>
-                <circle cx="80" cy="52" r="20" fill="#8B3A2B"/>
-                <circle cx="58" cy="82" r="25" fill="#D9832E"/>
-                <g stroke="#F4E9D8" stroke-width="3" stroke-linecap="round">
-                  <path d="M40 24 V68 M17 46 H63"/>
-                  <path d="M80 33 V71 M61 52 H99"/>
-                  <path d="M58 58 V106 M34 82 H82"/>
-                </g>
-                <path d="M98 18 C106 12 113 18 106 27 C99 33 92 27 98 18Z" fill="#5B8A4A"/>
-              </svg>
-            </div>
             <div class="ns-tag" data-i18n="demo-ns-tag">EST. 1973 · 彰化</div>
             <h4 class="serif">金益豐食品行</h4>
             <p data-i18n="demo-ns-p">三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。</p>
