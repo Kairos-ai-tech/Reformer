@@ -331,8 +331,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
   background-repeat:no-repeat,no-repeat;
   color:#fff;padding:34px 30px}
 .ns-copy{max-width:min(30em, calc(50% - 30px));overflow:hidden;
-  opacity:clamp(0, calc((58% - var(--split)) / 1% * 999), 1);
-  transition:opacity .25s ease}
+  opacity:var(--copy-fade, 1)}
 .ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;color:#9FE8DD;font-weight:700;margin-bottom:8px}
 .ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px}
 .ns-hero p{font-size:13.5px;color:#DCEFEB}
@@ -1091,6 +1090,22 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
 
 <script>
 var splitAnimGen = 0;
+var __nsFadeEls;
+function setSplit(compare, value){
+  compare.style.setProperty('--split', value+'%');
+  if(__nsFadeEls===undefined){
+    var copy = document.querySelector('.ns-copy');
+    var siteNew = document.getElementById('siteNew');
+    __nsFadeEls = (copy && siteNew) ? {copy:copy, siteNew:siteNew} : null;
+  }
+  if(!__nsFadeEls) return;
+  var siteRect = __nsFadeEls.siteNew.getBoundingClientRect();
+  var copyRect = __nsFadeEls.copy.getBoundingClientRect();
+  if(!siteRect.width) return;
+  var boundary = siteRect.left + siteRect.width*(value/100);
+  var fade = (copyRect.left - boundary)/16;
+  compare.style.setProperty('--copy-fade', Math.max(0, Math.min(1, fade)));
+}
 function showSite(which){
   var target = which==='old' ? 92 : 8;
   var compare = document.getElementById('compareWrap');
@@ -1104,7 +1119,7 @@ function showSite(which){
   var startRaw = parseFloat(compare.style.getPropertyValue('--split'));
   var start = isNaN(startRaw) ? 50 : startRaw;
   if(reduced){
-    compare.style.setProperty('--split', target+'%');
+    setSplit(compare, target);
     return;
   }
   var t0 = performance.now(), dur = 480;
@@ -1112,7 +1127,7 @@ function showSite(which){
     if(myGen!==splitAnimGen) return;
     var p = Math.min(1, (now-t0)/dur);
     var eased = 1-Math.pow(1-p, 3);
-    compare.style.setProperty('--split', (start+(target-start)*eased)+'%');
+    setSplit(compare, start+(target-start)*eased);
     if(p<1) requestAnimationFrame(tick);
   })(t0);
 }
@@ -1125,7 +1140,7 @@ function showSite(which){
   window.__hideCompareHint = hideHint;
   slider.addEventListener('input', function(){
     splitAnimGen++;
-    compare.style.setProperty('--split', slider.value+'%');
+    setSplit(compare, parseFloat(slider.value));
     hideHint();
   });
 })();
@@ -1158,7 +1173,7 @@ function showSite(which){
         if(myGen!==splitAnimGen) return;
         var p = Math.min(1, (now-t0)/stepDur);
         var eased = p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
-        compare.style.setProperty('--split', (start+(target-start)*eased)+'%');
+        setSplit(compare, start+(target-start)*eased);
         if(p<1) requestAnimationFrame(tick); else nextLeg();
       })(t0);
     }
