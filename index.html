@@ -1109,11 +1109,14 @@ function setSplit(compare, value){
 (function(){
   var compare = document.getElementById('compareWrap');
   var siteNew = document.getElementById('siteNew');
+  var copy = document.querySelector('.ns-copy');
   if(!compare || !siteNew || typeof ResizeObserver==='undefined') return;
-  new ResizeObserver(function(){
+  var ro = new ResizeObserver(function(){
     var raw = parseFloat(compare.style.getPropertyValue('--split'));
     setSplit(compare, isNaN(raw) ? 50 : raw);
-  }).observe(siteNew);
+  });
+  ro.observe(siteNew);
+  if(copy) ro.observe(copy);
 })();
 function showSite(which){
   var target = which==='old' ? 92 : 8;
