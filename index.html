@@ -1155,6 +1155,7 @@ function showSite(which){
       io.disconnect();
       if(annots) annots.classList.add('in-view');
       if(newSite) newSite.classList.add('in-view');
+      if(splitAnimGen>0) return;
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function showHintThenFade(){
         if(!hint) return;
@@ -1167,7 +1168,7 @@ function showSite(which){
       }
       sweep([74, 26, 50], 620, showHintThenFade);
     });
-  }, {threshold:0.4});
+  }, {threshold:0.15});
   io.observe(demo);
 })();
 function fmt(n){return 'NT$ '+Math.round(n).toLocaleString('zh-TW');}
