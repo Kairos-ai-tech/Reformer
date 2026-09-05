@@ -1856,11 +1856,13 @@ if(statsEl) statsIo.observe(statsEl);
         var origLabel=dlBtn.textContent;
         var myDl=++dlGen;
         dlInFlight=true;
+        dlBtn.dataset.busy='1';
         dlBtn.disabled=true;
         dlBtn.textContent=en?'Preparing PDF…':'PDF 產生中…';
         function restore(){
           if(myDl!==dlGen) return;
           dlInFlight=false;
+          delete dlBtn.dataset.busy;
           dlBtn.disabled=!lastResult;
           dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
         }
@@ -2055,7 +2057,7 @@ if(statsEl) statsIo.observe(statsEl);
   function applyLang(lang){
     window.CURRENT_LANG=lang;
     i18nEls.forEach(function(el){
-      if(el.id==='scanDownloadBtn' && el.disabled) return;
+      if(el.id==='scanDownloadBtn' && el.dataset.busy) return;
       var key=el.getAttribute('data-i18n');
       el.innerHTML = lang==='en' && I18N[key]!==undefined ? I18N[key] : el.dataset.zh;
     });
