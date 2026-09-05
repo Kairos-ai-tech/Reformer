@@ -1886,8 +1886,9 @@ if(statsEl) statsIo.observe(statsEl);
           dlBtn.dataset.failing='1';
           dlBtn.textContent=en?'Failed — try again':'產生失敗,請再試一次';
           setTimeout(function(){
+            if(myDl!==dlGen) return;
             delete dlBtn.dataset.failing;
-            if(myDl!==dlGen || dlBtn.dataset.busy) return;
+            if(dlBtn.dataset.busy) return;
             dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
           }, 3500);
         }
