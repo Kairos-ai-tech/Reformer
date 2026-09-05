@@ -1883,8 +1883,10 @@ if(statsEl) statsIo.observe(statsEl);
         function fail(){
           restore();
           if(myDl!==dlGen) return;
+          dlBtn.dataset.failing='1';
           dlBtn.textContent=en?'Failed — try again':'產生失敗,請再試一次';
           setTimeout(function(){
+            delete dlBtn.dataset.failing;
             if(myDl!==dlGen || dlBtn.dataset.busy) return;
             dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
           }, 3500);
@@ -2106,7 +2108,7 @@ if(statsEl) statsIo.observe(statsEl);
   function applyLang(lang){
     window.CURRENT_LANG=lang;
     i18nEls.forEach(function(el){
-      if(el.id==='scanDownloadBtn' && el.dataset.busy) return;
+      if(el.id==='scanDownloadBtn' && (el.dataset.busy || el.dataset.failing)) return;
       var key=el.getAttribute('data-i18n');
       el.innerHTML = lang==='en' && I18N[key]!==undefined ? I18N[key] : el.dataset.zh;
     });
