@@ -1706,7 +1706,7 @@ if(statsEl) statsIo.observe(statsEl);
     });
   })();
 
-  /* ---- downloadable report (self-contained HTML, built client-side from the scan result) ---- */
+  /* ---- downloadable report (rendered client-side from the scan result, exported as PDF) ---- */
   (function(){
     var REPORT_COPY={
       title:{zh:'你的網站健檢分析報告',en:'Your Website Health Check Report'},
@@ -1870,7 +1870,16 @@ if(statsEl) statsIo.observe(statsEl);
           restore();
           alert(en?'Could not generate the PDF. Please check your connection and try again.':'PDF 產生失敗,請檢查網路連線後再試一次。');
         }
+        var cdnSettled=false;
+        var cdnTimeout=setTimeout(function(){
+          if(cdnSettled) return;
+          cdnSettled=true;
+          fail();
+        }, 10000);
         ensureHtml2pdf(function(){
+          if(cdnSettled) return;
+          cdnSettled=true;
+          clearTimeout(cdnTimeout);
           if(myDl!==dlGen) return;
           var iframe=document.createElement('iframe');
           iframe.style.cssText='position:fixed;left:-99999px;top:0;width:800px;height:1px;border:0';
@@ -1890,27 +1899,39 @@ if(statsEl) statsIo.observe(statsEl);
               settled=true;
               document.body.removeChild(iframe); fail(); return;
             }
-            window.html2pdf().set({
-              margin:0,
-              filename:filename,
-              html2canvas:{scale:2, backgroundColor:'#080D18'},
-              jsPDF:{unit:'pt', format:'a4', orientation:'portrait'},
-              pagebreak:{mode:'avoid-all'}
-            }).from(target).save().then(function(){
-              if(settled) return;
-              settled=true;
-              document.body.removeChild(iframe);
-              restore();
-            }).catch(function(){
+            try{
+              window.html2pdf().set({
+                margin:0,
+                filename:filename,
+                html2canvas:{scale:2, backgroundColor:'#080D18'},
+                jsPDF:{unit:'pt', format:'a4', orientation:'portrait'},
+                pagebreak:{mode:'avoid-all'}
+              }).from(target).save().then(function(){
+                if(settled) return;
+                settled=true;
+                document.body.removeChild(iframe);
+                restore();
+              }).catch(function(){
+                if(settled) return;
+                settled=true;
+                document.body.removeChild(iframe);
+                fail();
+              });
+            }catch(e){
               if(settled) return;
               settled=true;
               document.body.removeChild(iframe);
               fail();
-            });
+            }
           };
           document.body.appendChild(iframe);
           iframe.srcdoc=html;
-        }, fail);
+        }, function(){
+          if(cdnSettled) return;
+          cdnSettled=true;
+          clearTimeout(cdnTimeout);
+          fail();
+        });
       });
     }
   })();
