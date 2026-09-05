@@ -1871,6 +1871,7 @@ if(statsEl) statsIo.observe(statsEl);
         var myDl=++dlGen;
         dlInFlight=true;
         dlBtn.dataset.busy='1';
+        delete dlBtn.dataset.failing;
         dlBtn.disabled=true;
         dlBtn.textContent=en?'Preparing PDF…':'PDF 產生中…';
         function restore(){
