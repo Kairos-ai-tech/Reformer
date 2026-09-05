@@ -1779,7 +1779,7 @@ if(statsEl) statsIo.observe(statsEl);
       return '<!DOCTYPE html><html lang="'+lang+'"><head><meta charset="utf-8">'
         +'<meta name="viewport" content="width=device-width,initial-scale=1">'
         +'<title>'+t(REPORT_COPY.title,en)+' — '+esc(result.hostname)+'</title>'
-        +'<style>'
+        +'</head><body><style>'
         +':root{--ground:#080D18;--surface:#121A2C;--ink:#EDF1F7;--ink-soft:#AEB9CB;--ink-faint:#7C8AA0;--line:#243154;--accent:#4C93E8;--accent-deep:#7FB4F2;--teal:#3FC9BB;}'
         +'*{box-sizing:border-box}body{margin:0;background:var(--ground);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;padding:0}'
         +'.wrap{max-width:760px;margin:0 auto;padding:40px 24px 80px}'
@@ -1810,7 +1810,7 @@ if(statsEl) statsIo.observe(statsEl);
         +'.rep-cta a{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:11px 22px;border-radius:8px}'
         +'.rep-footer{color:var(--ink-faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:40px}'
         +'@media print{body{background:#fff;color:#111;--ink-soft:#333;--ink-faint:#555;--accent-deep:#1A56B0;--teal:#0A7D6D;--line:#ccc;--surface:#f4f6fa}.rep-badge.mid{color:#8A6D00}.rep-badge.bad,.rep-fact b.bad{color:#C0392B}}'
-        +'</style></head><body><div class="wrap">'
+        +'</style><div class="wrap">'
         +'<div class="rep-header"><div class="brand">優時科技 Kairos.ai</div><h1>'+t(REPORT_COPY.title,en)+'</h1>'
         +'<p class="sub">'+t(REPORT_COPY.subtitle,en)+'</p>'
         +'<div class="meta">'+(en?'Target: ':'檢測對象:')+'<b>'+esc(result.hostname)+'</b> · '+dateStr+'</div></div>'
@@ -1882,7 +1882,12 @@ if(statsEl) statsIo.observe(statsEl);
         }
         function fail(){
           restore();
-          alert(en?'Could not generate the PDF. Please check your connection and try again.':'PDF 產生失敗,請檢查網路連線後再試一次。');
+          if(myDl!==dlGen) return;
+          dlBtn.textContent=en?'Failed — try again':'產生失敗,請再試一次';
+          setTimeout(function(){
+            if(myDl!==dlGen || dlBtn.dataset.busy) return;
+            dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
+          }, 3500);
         }
         var cdnSettled=false;
         var cdnTimeout=setTimeout(function(){
