@@ -1861,8 +1861,8 @@ if(statsEl) statsIo.observe(statsEl);
         function restore(){
           if(myDl!==dlGen) return;
           dlInFlight=false;
-          dlBtn.disabled=false;
-          dlBtn.textContent=origLabel;
+          dlBtn.disabled=!lastResult;
+          dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
         }
         function fail(){
           restore();
@@ -1874,17 +1874,18 @@ if(statsEl) statsIo.observe(statsEl);
           iframe.style.cssText='position:fixed;left:-99999px;top:0;width:800px;height:1px;border:0';
           iframe.sandbox='allow-same-origin';
           var settled=false;
-          var timeout=setTimeout(function(){
+          var loadTimeout=setTimeout(function(){
             if(settled) return;
             settled=true;
             if(iframe.parentNode) document.body.removeChild(iframe);
             fail();
           }, 15000);
           iframe.onload=function(){
+            clearTimeout(loadTimeout);
             if(settled) return;
             var target=iframe.contentDocument && iframe.contentDocument.body;
             if(!target){
-              settled=true; clearTimeout(timeout);
+              settled=true;
               document.body.removeChild(iframe); fail(); return;
             }
             window.html2pdf().set({
@@ -1895,12 +1896,12 @@ if(statsEl) statsIo.observe(statsEl);
               pagebreak:{mode:'avoid-all'}
             }).from(target).save().then(function(){
               if(settled) return;
-              settled=true; clearTimeout(timeout);
+              settled=true;
               document.body.removeChild(iframe);
               restore();
             }).catch(function(){
               if(settled) return;
-              settled=true; clearTimeout(timeout);
+              settled=true;
               document.body.removeChild(iframe);
               fail();
             });
@@ -2039,7 +2040,11 @@ if(statsEl) statsIo.observe(statsEl);
   var I18N_ARIA={'footer-nap-maplabel':'Google Maps — opens in a new tab'};
 
   var i18nEls=document.querySelectorAll('[data-i18n]');
-  i18nEls.forEach(function(el){ el.dataset.zh=el.innerHTML; });
+  i18nEls.forEach(function(el){
+    el.dataset.zh=el.innerHTML;
+    var key=el.getAttribute('data-i18n');
+    if(I18N[key]!==undefined) el.dataset.en=I18N[key];
+  });
   var phEls=document.querySelectorAll('[data-i18n-ph]');
   phEls.forEach(function(el){ el.dataset.zhPh=el.getAttribute('placeholder'); });
   var ariaEls=document.querySelectorAll('[data-i18n-aria]');
@@ -2050,6 +2055,7 @@ if(statsEl) statsIo.observe(statsEl);
   function applyLang(lang){
     window.CURRENT_LANG=lang;
     i18nEls.forEach(function(el){
+      if(el.id==='scanDownloadBtn' && el.disabled) return;
       var key=el.getAttribute('data-i18n');
       el.innerHTML = lang==='en' && I18N[key]!==undefined ? I18N[key] : el.dataset.zh;
     });
