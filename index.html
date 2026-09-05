@@ -1536,6 +1536,7 @@ if(statsEl) statsIo.observe(statsEl);
 
   var lastTarget=null;
   var scanGen=0;
+  var dlInFlight=false;
   function renderImpression(h){
     var en=window.CURRENT_LANG==='en';
     function fact(label, val, cls, wide){ return {label:label, val:val, cls:cls||'', wide:!!wide}; }
@@ -1620,7 +1621,7 @@ if(statsEl) statsIo.observe(statsEl);
       cons: finalCons.map(function(c){ return {zh:c.text, en:c.textEn}; })
     };
     var dlBtnGuard2=document.getElementById('scanDownloadBtn');
-    if(dlBtnGuard2) dlBtnGuard2.disabled=false;
+    if(dlBtnGuard2 && !dlInFlight) dlBtnGuard2.disabled=false;
   }
 
   if(form){
@@ -1807,7 +1808,7 @@ if(statsEl) statsIo.observe(statsEl);
         +'.rep-cta{background:var(--surface);border:1px solid var(--accent);border-radius:12px;padding:22px;text-align:center}'
         +'.rep-cta h2{border:0;padding:0;justify-content:center}'
         +'.rep-cta a{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:11px 22px;border-radius:8px}'
-        +'footer{color:var(--ink-faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:40px}'
+        +'.rep-footer{color:var(--ink-faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:40px}'
         +'@media print{body{background:#fff;color:#111;--ink-soft:#333;--ink-faint:#555;--accent-deep:#1A56B0;--teal:#0A7D6D;--line:#ccc;--surface:#f4f6fa}.rep-badge.mid{color:#8A6D00}.rep-badge.bad,.rep-fact b.bad{color:#C0392B}}'
         +'</style></head><body><div class="wrap">'
         +'<div class="rep-header"><div class="brand">優時科技 Kairos.ai</div><h1>'+t(REPORT_COPY.title,en)+'</h1>'
@@ -1822,19 +1823,29 @@ if(statsEl) statsIo.observe(statsEl);
         +'<div class="rep-addons">'+esc(readAddons())+'</div></section>'
         +'<section class="rep-cta"><h2>'+t(REPORT_COPY.ctaHeading,en)+'</h2><p>'+t(REPORT_COPY.ctaBody,en)+'</p>'
         +'<a href="mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent(en?'Requesting a free website health check':'索取免費網站健檢報告')+'&body='+encodeURIComponent((en?'Website/Page: ':'網址/粉專:')+result.hostname)+'">'+(en?'Email us →':'寄信索取免費健檢 →')+'</a></section>'
-        +'<footer>'+t(REPORT_COPY.disclaimer,en)+'<br>'+t(REPORT_COPY.generatedBy,en)+'</footer>'
+        +'<div class="rep-footer">'+t(REPORT_COPY.disclaimer,en)+'<br>'+t(REPORT_COPY.generatedBy,en)+'</div>'
         +'</div></body></html>';
     }
 
+    var html2pdfLoading=null;
     function ensureHtml2pdf(cb, onerror){
       if(window.html2pdf){ cb(); return; }
+      if(html2pdfLoading){ html2pdfLoading.push({cb:cb, onerror:onerror}); return; }
+      html2pdfLoading=[{cb:cb, onerror:onerror}];
       var s=document.createElement('script');
       s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js';
-      s.onload=cb;
-      s.onerror=onerror;
+      s.onload=function(){
+        var waiters=html2pdfLoading; html2pdfLoading=null;
+        waiters.forEach(function(w){ w.cb(); });
+      };
+      s.onerror=function(){
+        var waiters=html2pdfLoading; html2pdfLoading=null;
+        waiters.forEach(function(w){ w.onerror(); });
+      };
       document.head.appendChild(s);
     }
 
+    var dlGen=0;
     var dlBtn=document.getElementById('scanDownloadBtn');
     if(dlBtn){
       dlBtn.addEventListener('click', function(){
@@ -1843,19 +1854,39 @@ if(statsEl) statsIo.observe(statsEl);
         var html=buildReportHtml(lastResult, en);
         var filename=(en?'website-scan-report-':'網站快篩報告-')+lastResult.hostname+'.pdf';
         var origLabel=dlBtn.textContent;
+        var myDl=++dlGen;
+        dlInFlight=true;
         dlBtn.disabled=true;
         dlBtn.textContent=en?'Preparing PDF…':'PDF 產生中…';
-        function restore(){ dlBtn.disabled=false; dlBtn.textContent=origLabel; }
+        function restore(){
+          if(myDl!==dlGen) return;
+          dlInFlight=false;
+          dlBtn.disabled=false;
+          dlBtn.textContent=origLabel;
+        }
         function fail(){
           restore();
           alert(en?'Could not generate the PDF. Please check your connection and try again.':'PDF 產生失敗,請檢查網路連線後再試一次。');
         }
         ensureHtml2pdf(function(){
+          if(myDl!==dlGen) return;
           var iframe=document.createElement('iframe');
           iframe.style.cssText='position:fixed;left:-99999px;top:0;width:800px;height:1px;border:0';
+          iframe.sandbox='allow-same-origin';
+          var settled=false;
+          var timeout=setTimeout(function(){
+            if(settled) return;
+            settled=true;
+            if(iframe.parentNode) document.body.removeChild(iframe);
+            fail();
+          }, 15000);
           iframe.onload=function(){
+            if(settled) return;
             var target=iframe.contentDocument && iframe.contentDocument.body;
-            if(!target){ document.body.removeChild(iframe); fail(); return; }
+            if(!target){
+              settled=true; clearTimeout(timeout);
+              document.body.removeChild(iframe); fail(); return;
+            }
             window.html2pdf().set({
               margin:0,
               filename:filename,
@@ -1863,9 +1894,13 @@ if(statsEl) statsIo.observe(statsEl);
               jsPDF:{unit:'pt', format:'a4', orientation:'portrait'},
               pagebreak:{mode:'avoid-all'}
             }).from(target).save().then(function(){
+              if(settled) return;
+              settled=true; clearTimeout(timeout);
               document.body.removeChild(iframe);
               restore();
             }).catch(function(){
+              if(settled) return;
+              settled=true; clearTimeout(timeout);
               document.body.removeChild(iframe);
               fail();
             });
