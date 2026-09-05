@@ -1888,17 +1888,23 @@ if(statsEl) statsIo.observe(statsEl);
           var loadTimeout=setTimeout(function(){
             if(settled) return;
             settled=true;
-            if(iframe.parentNode) document.body.removeChild(iframe);
+            cleanup();
             fail();
           }, 15000);
+          function cleanup(){ if(iframe.parentNode) document.body.removeChild(iframe); }
           iframe.onload=function(){
             clearTimeout(loadTimeout);
             if(settled) return;
             var target=iframe.contentDocument && iframe.contentDocument.body;
             if(!target){
               settled=true;
-              document.body.removeChild(iframe); fail(); return;
+              cleanup(); fail(); return;
             }
+            var renderTimeout=setTimeout(function(){
+              if(settled) return;
+              settled=true;
+              cleanup(); fail();
+            }, 30000);
             try{
               window.html2pdf().set({
                 margin:0,
@@ -1907,20 +1913,23 @@ if(statsEl) statsIo.observe(statsEl);
                 jsPDF:{unit:'pt', format:'a4', orientation:'portrait'},
                 pagebreak:{mode:'avoid-all'}
               }).from(target).save().then(function(){
+                clearTimeout(renderTimeout);
                 if(settled) return;
                 settled=true;
-                document.body.removeChild(iframe);
+                cleanup();
                 restore();
               }).catch(function(){
+                clearTimeout(renderTimeout);
                 if(settled) return;
                 settled=true;
-                document.body.removeChild(iframe);
+                cleanup();
                 fail();
               });
             }catch(e){
+              clearTimeout(renderTimeout);
               if(settled) return;
               settled=true;
-              document.body.removeChild(iframe);
+              cleanup();
               fail();
             }
           };
