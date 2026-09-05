@@ -1834,11 +1834,25 @@ if(statsEl) statsIo.observe(statsEl);
       html2pdfLoading=[{cb:cb, onerror:onerror}];
       var s=document.createElement('script');
       s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js';
+      var scriptSettled=false;
+      var giveUp=setTimeout(function(){
+        if(scriptSettled) return;
+        scriptSettled=true;
+        var waiters=html2pdfLoading; html2pdfLoading=null;
+        if(s.parentNode) s.parentNode.removeChild(s);
+        waiters.forEach(function(w){ w.onerror(); });
+      }, 12000);
       s.onload=function(){
+        if(scriptSettled) return;
+        scriptSettled=true;
+        clearTimeout(giveUp);
         var waiters=html2pdfLoading; html2pdfLoading=null;
         waiters.forEach(function(w){ w.cb(); });
       };
       s.onerror=function(){
+        if(scriptSettled) return;
+        scriptSettled=true;
+        clearTimeout(giveUp);
         var waiters=html2pdfLoading; html2pdfLoading=null;
         waiters.forEach(function(w){ w.onerror(); });
       };
