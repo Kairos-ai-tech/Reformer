@@ -1782,8 +1782,8 @@ if(statsEl) statsIo.observe(statsEl);
         +':root{--ground:#080D18;--surface:#121A2C;--ink:#EDF1F7;--ink-soft:#AEB9CB;--ink-faint:#7C8AA0;--line:#243154;--accent:#4C93E8;--accent-deep:#7FB4F2;--teal:#3FC9BB;}'
         +'*{box-sizing:border-box}body{margin:0;background:var(--ground);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;padding:0}'
         +'.wrap{max-width:760px;margin:0 auto;padding:40px 24px 80px}'
-        +'header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:32px}'
-        +'header .brand{font-size:13px;letter-spacing:.08em;color:var(--accent-deep);font-weight:700;text-transform:uppercase;margin-bottom:10px}'
+        +'.rep-header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:32px}'
+        +'.rep-header .brand{font-size:13px;letter-spacing:.08em;color:var(--accent-deep);font-weight:700;text-transform:uppercase;margin-bottom:10px}'
         +'h1{font-size:26px;margin:0 0 8px;line-height:1.4}'
         +'.sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 4px}'
         +'.meta{color:var(--ink-faint);font-size:12.5px;margin-top:10px}'
@@ -1810,9 +1810,9 @@ if(statsEl) statsIo.observe(statsEl);
         +'footer{color:var(--ink-faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:40px}'
         +'@media print{body{background:#fff;color:#111;--ink-soft:#333;--ink-faint:#555;--accent-deep:#1A56B0;--teal:#0A7D6D;--line:#ccc;--surface:#f4f6fa}.rep-badge.mid{color:#8A6D00}.rep-badge.bad,.rep-fact b.bad{color:#C0392B}}'
         +'</style></head><body><div class="wrap">'
-        +'<header><div class="brand">優時科技 Kairos.ai</div><h1>'+t(REPORT_COPY.title,en)+'</h1>'
+        +'<div class="rep-header"><div class="brand">優時科技 Kairos.ai</div><h1>'+t(REPORT_COPY.title,en)+'</h1>'
         +'<p class="sub">'+t(REPORT_COPY.subtitle,en)+'</p>'
-        +'<div class="meta">'+(en?'Target: ':'檢測對象:')+'<b>'+esc(result.hostname)+'</b> · '+dateStr+'</div></header>'
+        +'<div class="meta">'+(en?'Target: ':'檢測對象:')+'<b>'+esc(result.hostname)+'</b> · '+dateStr+'</div></div>'
         +'<section><h2>'+t(REPORT_COPY.sectionResults,en)+'</h2>'+scoreRows
         +'<div class="rep-facts">'+factRows+'</div>'
         +'<ul class="rep-cons">'+consRows+'</ul></section>'
@@ -1826,21 +1826,53 @@ if(statsEl) statsIo.observe(statsEl);
         +'</div></body></html>';
     }
 
+    function ensureHtml2pdf(cb, onerror){
+      if(window.html2pdf){ cb(); return; }
+      var s=document.createElement('script');
+      s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js';
+      s.onload=cb;
+      s.onerror=onerror;
+      document.head.appendChild(s);
+    }
+
     var dlBtn=document.getElementById('scanDownloadBtn');
     if(dlBtn){
       dlBtn.addEventListener('click', function(){
-        if(!lastResult) return;
+        if(!lastResult || dlBtn.disabled) return;
         var en=window.CURRENT_LANG==='en';
         var html=buildReportHtml(lastResult, en);
-        var blob=new Blob([html], {type:'text/html'});
-        var url=URL.createObjectURL(blob);
-        var a=document.createElement('a');
-        a.href=url;
-        a.download=(en?'website-scan-report-':'網站快篩報告-')+lastResult.hostname+'.html';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+        var filename=(en?'website-scan-report-':'網站快篩報告-')+lastResult.hostname+'.pdf';
+        var origLabel=dlBtn.textContent;
+        dlBtn.disabled=true;
+        dlBtn.textContent=en?'Preparing PDF…':'PDF 產生中…';
+        function restore(){ dlBtn.disabled=false; dlBtn.textContent=origLabel; }
+        function fail(){
+          restore();
+          alert(en?'Could not generate the PDF. Please check your connection and try again.':'PDF 產生失敗,請檢查網路連線後再試一次。');
+        }
+        ensureHtml2pdf(function(){
+          var iframe=document.createElement('iframe');
+          iframe.style.cssText='position:fixed;left:-99999px;top:0;width:800px;height:1px;border:0';
+          iframe.onload=function(){
+            var target=iframe.contentDocument && iframe.contentDocument.body;
+            if(!target){ document.body.removeChild(iframe); fail(); return; }
+            window.html2pdf().set({
+              margin:0,
+              filename:filename,
+              html2canvas:{scale:2, backgroundColor:'#080D18'},
+              jsPDF:{unit:'pt', format:'a4', orientation:'portrait'},
+              pagebreak:{mode:'avoid-all'}
+            }).from(target).save().then(function(){
+              document.body.removeChild(iframe);
+              restore();
+            }).catch(function(){
+              document.body.removeChild(iframe);
+              fail();
+            });
+          };
+          document.body.appendChild(iframe);
+          iframe.srcdoc=html;
+        }, fail);
       });
     }
   })();
