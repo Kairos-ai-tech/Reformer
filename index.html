@@ -432,6 +432,46 @@ footer{padding:28px 0;background:var(--night-ground);color:#EAF1FB}
 .footer-nap a{color:inherit;text-decoration:underline}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 .btn:focus-visible,button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+
+/* post-reform industry demos + projection */
+.ind-tabs,.ind-scn{display:flex;gap:8px;flex-wrap:wrap}
+.ind-tabs{margin:28px 0 18px}
+.ind-tabs button,.ind-scn button{border:1.5px solid var(--line);background:transparent;color:var(--ink-soft);font-family:inherit;font-size:13.5px;font-weight:700;border-radius:99px;padding:7px 18px;cursor:pointer}
+.ind-tabs button[aria-selected="true"],.ind-scn button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent-deep);background:var(--accent-soft)}
+.ind-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:20px;align-items:start}
+@media(max-width:860px){.ind-grid{grid-template-columns:1fr}}
+.ind-site{background:#FBF8F2;color:#2A2118;border-radius:0 0 10px 10px;overflow:hidden;font-size:13.5px;line-height:1.6}
+.ind-site .is-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #E7DFD0;font-size:12.5px}
+.ind-site .is-nav b{font-family:'Noto Serif TC',serif;font-size:15px}
+.ind-site .is-nav span{color:#7A6C58}
+.ind-site .is-hero{padding:26px 18px 22px;background:var(--is-accent,#B5532A);color:#fff}
+.ind-site .is-tag{font-size:11px;letter-spacing:.16em;opacity:.85;margin-bottom:6px}
+.ind-site .is-hero h4{font-family:'Noto Serif TC',serif;font-size:22px;margin-bottom:6px}
+.ind-site .is-hero p{font-size:13px;opacity:.92;margin-bottom:14px}
+.ind-site .is-btn{display:inline-block;background:#fff;color:var(--is-accent,#B5532A);font-weight:700;font-size:12.5px;padding:6px 14px;border-radius:6px;margin-right:6px}
+.ind-site .is-btn.o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.7)}
+.ind-site .is-cells{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E7DFD0}
+.ind-site .is-cells div{background:#FBF8F2;padding:11px 14px;font-size:12.5px}
+.ind-site .is-cells b{display:block;font-size:12.5px;margin-bottom:1px}
+.ind-ai{margin:14px;border:1px solid #E7DFD0;border-radius:10px;background:#fff;padding:12px 14px;font-size:12.5px}
+.ind-ai .q{color:#7A6C58;margin-bottom:4px}
+.ind-ai .q::before{content:"🤖 ";}
+.ind-ai .a{color:#2A2118}
+.ind-ai .a mark{background:#FFE9A8;padding:0 3px;border-radius:3px;color:inherit}
+.ind-proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px}
+.ind-proj h3{font-size:16px;margin-bottom:2px}
+.ind-assume{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.ind-assume span{font-size:12px;color:var(--ink-soft);border:1px solid var(--line);border-radius:6px;padding:2px 9px;background:var(--accent-soft)}
+.ind-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.ind-kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.ind-kpi .l{font-size:12px;color:var(--ink-faint)}
+.ind-kpi .n{font-family:'Noto Serif TC',serif;font-size:21px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.3}
+.ind-kpi .n small{font-size:12px;font-weight:700;color:var(--ink-soft)}
+.ind-chart{margin:6px 0 4px}
+.ind-chart svg{width:100%;height:auto;display:block}
+.ind-chart .cap{font-size:12px;color:var(--ink-faint);margin-bottom:2px}
+.ind-bottom{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--teal-soft);color:var(--teal-deep);font-size:14px;font-weight:700}
+.ind-note{font-size:12.5px;color:var(--ink-faint);margin-top:16px}
 </style>
 <style>body{margin:0}img{max-width:100%}</style>
 <style>
@@ -656,6 +696,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
     <nav class="nav" aria-label="主選單">
       <a href="#scan" data-i18n="nav-scan">免費快篩</a>
       <a href="#demo" data-i18n="nav-demo">改造前後</a>
+      <a href="#results" data-i18n="nav-results">預估成效</a>
       <a href="#pricing" data-i18n="nav-pricing">方案價格</a>
       <a href="#faq" data-i18n="nav-faq">常見問題</a>
       <a href="#contact" data-i18n="nav-contact">聯絡我們</a>
@@ -964,6 +1005,41 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
       </div>
       <div class="calc-note" data-i18n="roi-note">試算僅供參考,實際成效依產業競爭程度與經營投入而異。搜尋量可於免費健檢時用實際數據為您查證。</div>
     </div>
+  </div>
+</section>
+
+<section id="results" class="night">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="ind-eyebrow">改造後示範</div>
+    <h2 data-i18n="ind-h2">改造完長這樣——能帶來多少客人與獲利?</h2>
+    <p class="lead" data-i18n="ind-lead">三個虛構的示範店家,左邊是改造後的官網,右邊是依保守假設推算的新增客人與獲利。換一個行業、換一種情境,數字會跟著變。</p>
+    <div class="ind-tabs" role="tablist" id="indTabs" aria-label="選擇行業">
+      <button type="button" role="tab" id="indTab-food" data-ind="food" aria-selected="true" data-i18n="ind-tab-food">餐飲・零售</button>
+      <button type="button" role="tab" id="indTab-clinic" data-ind="clinic" aria-selected="false" data-i18n="ind-tab-clinic">診所・在地服務</button>
+      <button type="button" role="tab" id="indTab-b2b" data-ind="b2b" aria-selected="false" data-i18n="ind-tab-b2b">製造・B2B</button>
+    </div>
+    <div class="ind-grid" role="tabpanel" aria-labelledby="indTab-food" id="indPanel">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="urlbox" id="indUrl">https://</div>
+        </div>
+        <div class="ind-site" id="indSite"></div>
+      </div>
+      <div class="ind-proj">
+        <h3 data-i18n="ind-proj-h">預估成效(上線後 12 個月)</h3>
+        <div class="ind-scn" id="indScn" role="group" aria-label="情境">
+          <button type="button" data-scn="0.6" aria-pressed="false" data-i18n="ind-scn-low">保守</button>
+          <button type="button" data-scn="1" aria-pressed="true" data-i18n="ind-scn-mid">預期</button>
+          <button type="button" data-scn="1.4" aria-pressed="false" data-i18n="ind-scn-high">樂觀</button>
+        </div>
+        <div class="ind-assume" id="indAssume"></div>
+        <div class="ind-kpis" id="indKpis" aria-live="polite"></div>
+        <div class="ind-chart" id="indChart"></div>
+        <div class="ind-bottom" id="indBottom" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="ind-note" data-i18n="ind-note">示範店家與數字皆為虛構,僅說明試算邏輯。新客人 = 每月相關搜尋量 × 詢問/來店率 × 成交率,上線後 8 個月逐步爬升至滿載;獲利已扣除 SEO/AEO 月費 NT$14,800 與一次性建置費。實際成效依產業競爭程度與經營投入而異,免費健檢時我們會用您的真實搜尋數據重算。</div>
   </div>
 </section>
 
@@ -1303,6 +1379,126 @@ function calc(){
       : ('以「快速官網」方案 NT$59,800 計,約 '+(pb<0.1?'不到 0.1':pb.toFixed(1))+' 個月回本');
 }
 calc();
+
+/* ---- post-reform industry demos + projection ---- */
+(function(){
+  var FEE=14800;                                   // SEO/AEO monthly retainer (NT$)
+  var RAMP=[.15,.3,.45,.6,.75,.85,.95,1,1,1,1,1];  // share of steady-state results reached each month
+  var IND={
+    food:{
+      url:'jinyifeng.example.tw', accent:'#B5532A', build:59800,
+      q:1200, inq:.08, close:.7, ticket:1500, margin:.35,
+      zh:{nav:'首頁 · 商品 · 訂購 · 門市', tag:'EST. 1973 · 彰化', name:'金益豐食品行', p:'三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。', b1:'線上訂購', b2:'門市資訊',
+          cells:[['營業時間','週二–週日 08:00–19:00'],['Google 評論 4.8 ★','236 則評論,紅龜粿、鳳梨酥最受推薦'],['配送方式','全台宅配,滿 NT$1,000 免運'],['常見問題','可指定到貨日嗎?可以(除夕公休)']],
+          aiQ:'彰化有推薦的紅龜粿伴手禮嗎?', aiA:'<mark>金益豐食品行</mark>(彰化)提供當日現做的紅龜粿,可全台宅配,滿 NT$1,000 免運。'},
+      en:{nav:'Home · Products · Order · Store', tag:'EST. 1973 · CHANGHUA', name:'Jin Yi Feng Foods', p:'Three generations of handmade rice cakes and festive gifts. Made fresh daily, shipped island-wide.', b1:'Order online', b2:'Store info',
+          cells:[['Hours','Tue–Sun 08:00–19:00'],['Google rating 4.8 ★','236 reviews; red turtle cakes and pineapple cakes recommended'],['Delivery','Island-wide; free shipping over NT$1,000'],['FAQ','Can I choose the delivery date? Yes (closed on Lunar New Year\'s Eve)']],
+          aiQ:'Any recommended red turtle cake gifts in Changhua?', aiA:'<mark>Jin Yi Feng Foods</mark> (Changhua) makes red turtle cakes fresh daily, ships island-wide, and offers free shipping over NT$1,000.'},
+      lab:{zh:['每月相關搜尋','詢問/來店率','成交率','客單價','毛利率'],en:['Monthly searches','Inquiry/visit rate','Close rate','Avg ticket','Gross margin']},
+      clientUnit:{zh:'位客人',en:'customers'}, plan:{zh:'快速官網 NT$59,800',en:'Quick Site NT$59,800'}
+    },
+    clinic:{
+      url:'kangning-dental.example.tw', accent:'#0E7C86', build:59800,
+      q:400, inq:.12, close:.6, ticket:4000, margin:.5,
+      zh:{nav:'首頁 · 診療項目 · 醫師 · 預約', tag:'牙醫診所 · 台中西區', name:'康寧牙醫診所', p:'無痛治療、洗牙與矯正諮詢。週一至週六,線上預約免排隊。', b1:'線上預約', b2:'看診時間',
+          cells:[['看診時間','週一–週六 09:00–21:00'],['Google 評論 4.9 ★','181 則評論,「醫師很有耐心」'],['診療項目','洗牙、補牙、根管、隱形矯正'],['常見問題','健保給付嗎?洗牙每半年一次免費(健保)']],
+          aiQ:'台中西區有推薦的牙醫嗎?晚上也能看診的。', aiA:'<mark>康寧牙醫診所</mark>(台中西區)週一至週六看診到晚上 9 點,可線上預約,Google 評論 4.9 顆星。'},
+      en:{nav:'Home · Treatments · Dentists · Book', tag:'DENTAL CLINIC · WEST DIST., TAICHUNG', name:'Kangning Dental Clinic', p:'Gentle treatment, cleaning and orthodontic consults. Open Mon–Sat; book online, skip the wait.', b1:'Book online', b2:'Opening hours',
+          cells:[['Hours','Mon–Sat 09:00–21:00'],['Google rating 4.9 ★','181 reviews: "very patient doctor"'],['Treatments','Cleaning, fillings, root canal, clear aligners'],['FAQ','Covered by NHI? Cleaning every 6 months is covered']],
+          aiQ:'Any good dentists in West District, Taichung, open in the evening?', aiA:'<mark>Kangning Dental Clinic</mark> (West District, Taichung) is open Mon–Sat until 9 pm, takes online bookings, and has a 4.9-star Google rating.'},
+      lab:{zh:['每月相關搜尋','預約率','到診率','平均療程金額','毛利率'],en:['Monthly searches','Booking rate','Show-up rate','Avg treatment value','Gross margin']},
+      clientUnit:{zh:'位新患者',en:'new patients'}, plan:{zh:'快速官網 NT$59,800',en:'Quick Site NT$59,800'}
+    },
+    b2b:{
+      url:'hongda-precision.example.tw', accent:'#2F4B7C', build:99800,
+      q:250, inq:.10, close:.08, ticket:100000, margin:.3,
+      zh:{nav:'首頁 · 產品 · 認證 · EN · 詢價', tag:'精密加工 · 台中工業區', name:'宏達精密機械', p:'CNC 精密零件代工,ISO 9001 認證,小批量、急單皆可。中英文型錄下載。', b1:'線上詢價', b2:'下載型錄',
+          cells:[['認證','ISO 9001 · 出口 12 國'],['交期','樣品 7 天、量產 3–4 週'],['可加工材質','鋁、不鏽鋼、鈦合金、工程塑膠'],['常見問題','最小訂購量?一件起,可附材質證明']],
+          aiQ:'台灣有推薦的小批量鋁件 CNC 加工廠嗎?', aiA:'<mark>宏達精密機械</mark>(台中)通過 ISO 9001 認證,樣品 7 天交貨,一件起接單。'},
+      en:{nav:'Home · Products · Certifications · EN · RFQ', tag:'PRECISION MACHINING · TAICHUNG', name:'Hongda Precision', p:'CNC precision parts, ISO 9001 certified, small batches and rush orders welcome. Catalog in English and Chinese.', b1:'Request a quote', b2:'Download catalog',
+          cells:[['Certification','ISO 9001 · exports to 12 countries'],['Lead time','Samples 7 days, production 3–4 weeks'],['Materials','Aluminum, stainless, titanium, engineering plastics'],['FAQ','MOQ? One piece, with material certificates']],
+          aiQ:'Taiwan CNC machining supplier for small-batch aluminum parts?', aiA:'<mark>Hongda Precision</mark> (Taichung) offers ISO 9001 CNC machining with 7-day samples and no minimum order quantity.'},
+      lab:{zh:['每月相關搜尋','詢價率','成交率','平均訂單金額','毛利率'],en:['Monthly searches','RFQ rate','Close rate','Avg order value','Gross margin']},
+      clientUnit:{zh:'位新客戶',en:'new accounts'}, plan:{zh:'官網重建 Plus NT$99,800',en:'Rebuild Plus NT$99,800'}
+    }
+  };
+  var UI={
+    zh:{perMo:'每月', cli:'穩定後每月新增客人', rev:'每月新增營收', gp:'每月毛利(扣 SEO/AEO 月費後)', be:'回本時間', beUnit:'個月', beNone:'12 個月以上', chart:'累計淨獲利(已扣建置費與月費)', m:'月',
+        bottom:function(c,n,roi){return '第一年預估新增 '+c+' '+n+',累計淨獲利 '+fmt(roi.net)+'(一年總投入 '+fmt(roi.cost)+',毛利約為投入的 '+roi.x.toFixed(1)+' 倍)';}},
+    en:{perMo:'Monthly', cli:'New clients per month (steady state)', rev:'New revenue / month', gp:'Profit / month (after SEO/AEO fee)', be:'Payback', beUnit:'months', beNone:'beyond 12 months', chart:'Cumulative net profit (after build + monthly fees)', m:'M',
+        bottom:function(c,n,roi){return 'Year one: about '+c+' '+n+', cumulative net profit '+fmt(roi.net)+' (total outlay '+fmt(roi.cost)+'; gross profit ≈ '+roi.x.toFixed(1)+'x outlay)';}}
+  };
+  var cur='food', scn=1;
+
+  function model(d,s){
+    var steady=d.q*d.inq*d.close*s, cum=-d.build, series=[], total=0, be=null, m;
+    for(m=0;m<12;m++){
+      var cl=steady*RAMP[m];
+      total+=cl;
+      cum+=cl*d.ticket*d.margin-FEE;
+      series.push(cum);
+      if(be===null && cum>=0) be=m+1;
+    }
+    var gpSteady=steady*d.ticket*d.margin-FEE;
+    return {steady:steady, rev:steady*d.ticket, gp:gpSteady, be:be, series:series, total:total, net:cum+d.build, cost:d.build+FEE*12, finalCum:cum};
+  }
+  function chartSvg(series,build,en){
+    var W=420,H=130,padL=6,padR=6,top=10,bot=22,n=series.length;
+    var lo=Math.min(-build,Math.min.apply(null,series)), hi=Math.max(0,Math.max.apply(null,series));
+    if(hi===lo) hi=lo+1;
+    var plotH=H-top-bot, y=function(v){return top+(hi-v)/(hi-lo)*plotH;}, zero=y(0);
+    var bw=(W-padL-padR)/n, g='';
+    series.forEach(function(v,i){
+      var x=padL+i*bw+bw*.15, w=bw*.7, yy=y(v), h=Math.max(1,Math.abs(yy-zero));
+      var fill=v>=0?'var(--teal)':'var(--seal)';
+      g+='<rect x="'+x.toFixed(1)+'" y="'+(v>=0?yy:zero).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+fill+'"/>';
+      g+='<text x="'+(x+w/2).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="var(--ink-faint)">'+(i+1)+'</text>';
+    });
+    return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(en?'Cumulative net profit by month':'每月累計淨獲利')+'"><line x1="0" x2="'+W+'" y1="'+zero.toFixed(1)+'" y2="'+zero.toFixed(1)+'" stroke="var(--line)" stroke-width="1.5"/>'+g+'</svg>';
+  }
+  function numFmt(n){ return n>=10 ? Math.round(n).toLocaleString('zh-TW') : n.toFixed(1); }
+
+  window.renderDemos=function(){
+    var site=document.getElementById('indSite');
+    if(!site) return;
+    var en=window.CURRENT_LANG==='en', L=en?'en':'zh', d=IND[cur], c=d[L], u=UI[L], r=model(d,scn);
+    document.getElementById('indUrl').textContent='https://'+d.url;
+    site.style.setProperty('--is-accent',d.accent);
+    site.innerHTML=
+      '<div class="is-nav"><b>'+c.name+'</b><span>'+c.nav+'</span></div>'
+      +'<div class="is-hero"><div class="is-tag">'+c.tag+'</div><h4>'+c.name+'</h4><p>'+c.p+'</p><span class="is-btn">'+c.b1+'</span><span class="is-btn o">'+c.b2+'</span></div>'
+      +'<div class="is-cells">'+c.cells.map(function(x){return '<div><b>'+x[0]+'</b>'+x[1]+'</div>';}).join('')+'</div>'
+      +'<div class="ind-ai"><div class="q">'+c.aiQ+'</div><div class="a">'+c.aiA+'</div></div>';
+    var lab=d.lab[L], vals=[d.q.toLocaleString('zh-TW'),Math.round(d.inq*100)+'%',Math.round(d.close*100)+'%',fmt(d.ticket),Math.round(d.margin*100)+'%'];
+    document.getElementById('indAssume').innerHTML=lab.map(function(l,i){return '<span>'+l+' '+vals[i]+'</span>';}).join('');
+    var unit=d.clientUnit[L];
+    document.getElementById('indKpis').innerHTML=
+      '<div class="ind-kpi"><div class="l">'+u.cli+'</div><div class="n">'+numFmt(r.steady)+' <small>'+unit+'</small></div></div>'
+      +'<div class="ind-kpi"><div class="l">'+u.rev+'</div><div class="n">'+fmt(r.rev)+'</div></div>'
+      +'<div class="ind-kpi"><div class="l">'+u.gp+'</div><div class="n">'+fmt(r.gp)+'</div></div>'
+      +'<div class="ind-kpi"><div class="l">'+u.be+'('+d.plan[L]+')</div><div class="n">'+(r.be===null?u.beNone:r.be+' <small>'+u.beUnit+'</small>')+'</div></div>';
+    document.getElementById('indChart').innerHTML='<div class="cap">'+u.chart+'</div>'+chartSvg(r.series,d.build,en);
+    document.getElementById('indBottom').textContent=u.bottom(numFmt(r.total),unit,{net:r.finalCum,cost:r.cost,x:(r.finalCum+r.cost)/r.cost});
+  };
+
+  var tabs=document.querySelectorAll('#indTabs button'), scnBtns=document.querySelectorAll('#indScn button');
+  tabs.forEach(function(b){
+    b.addEventListener('click',function(){
+      cur=b.getAttribute('data-ind');
+      tabs.forEach(function(t){t.setAttribute('aria-selected',t===b?'true':'false');});
+      document.getElementById('indPanel').setAttribute('aria-labelledby',b.id);
+      window.renderDemos();
+    });
+  });
+  scnBtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      scn=parseFloat(b.getAttribute('data-scn'));
+      scnBtns.forEach(function(t){t.setAttribute('aria-pressed',t===b?'true':'false');});
+      window.renderDemos();
+    });
+  });
+  window.renderDemos();
+})();
 
 /* ---- header scroll shadow ---- */
 (function(){
@@ -1975,7 +2171,7 @@ if(statsEl) statsIo.observe(statsEl);
 (function(){
   var I18N={
     'brand-sub':'Website Rebuild × SEO × AI Search',
-    'nav-scan':'Free Scan','nav-demo':'Before/After','nav-pricing':'Pricing','nav-faq':'FAQ','nav-contact':'Contact',
+    'nav-results':'Results','nav-scan':'Free Scan','nav-demo':'Before/After','nav-pricing':'Pricing','nav-faq':'FAQ','nav-contact':'Contact',
     'header-cta':'Free Check →',
     'sticky-text':'<b>Free health check, spot the leaks in 3 min</b>no charge if not satisfied',
     'sticky-cta':'Get it now →',
@@ -2051,6 +2247,13 @@ if(statsEl) statsIo.observe(statsEl);
     'roi-preset1':'Food & Retail','roi-preset2':'Clinics & Local Services','roi-preset3':'Manufacturing & B2B',
     'roi-label1':'Monthly relevant searches','roi-label2':'Share that become inquiries/visits','roi-label3':'Average order value (NT$)',
     'roi-out-month':'Estimated new revenue / month','roi-out-year':'Estimated new revenue / year',
+    'ind-eyebrow':'After the rebuild',
+    'ind-h2':'What a rebuilt site looks like — and what it can earn you',
+    'ind-lead':'Three fictional demo businesses: the rebuilt website on the left, projected new clients and profit on the right, based on conservative assumptions. Switch industry or scenario and the numbers update.',
+    'ind-tab-food':'Food · Retail','ind-tab-clinic':'Clinic · Local service','ind-tab-b2b':'Manufacturing · B2B',
+    'ind-proj-h':'Projected results (first 12 months after launch)',
+    'ind-scn-low':'Conservative','ind-scn-mid':'Expected','ind-scn-high':'Optimistic',
+    'ind-note':'Demo businesses and numbers are fictional and only illustrate the calculation. New clients = monthly relevant searches × inquiry/visit rate × close rate, ramping up to full volume over 8 months; profit is net of the SEO/AEO fee of NT$14,800/month and the one-time build fee. Actual results vary by industry competitiveness and effort invested — during the free health check we recalculate with your real search data.',
     'roi-note':'This estimate is for reference only — actual results vary by industry competitiveness and effort invested. We can verify real search volume for you during the free health check.',
     'pricing-eyebrow':'Plans & Pricing','pricing-h2':'Half the market price, delivered in two weeks',
     'pricing-lead':'Our AI-accelerated build process compresses a project that used to take one or two months into two weeks — and we pass the savings straight to you.',
@@ -2129,6 +2332,7 @@ if(statsEl) statsIo.observe(statsEl);
     }
     if(window.__setTimeToggleLabel) window.__setTimeToggleLabel(window.__timeToggleOn && window.__timeToggleOn());
     if(typeof calc==='function') calc();
+    if(typeof renderDemos==='function') renderDemos();
     if(window.__rerenderScan) window.__rerenderScan();
     try{ localStorage.setItem('kairos-lang', lang); }catch(e){}
   }

@@ -22,6 +22,7 @@ Everything lives in `index.html`:
 
 - **Prices** — search for `NT$ 59,800`, `NT$ 99,800`, `NT$14,800`. If you change the 快速官網 price, also update `59800` in the `<script>` block (payback calculator, 2 places).
 - **Contact email** — search for `kairos.ai.tech@gmail.com` (3 places: two mailto links, one footer/schema).
+- **Post-reform demos & projection** — search for `id="results"` (HTML) and `post-reform industry demos` (script). Per-industry assumptions (searches, inquiry rate, close rate, ticket, margin, build price) live in the `IND` object; the SEO/AEO fee (`FEE`) and 12-month ramp (`RAMP`) sit just above it. EN strings are in the `ind-*` keys of `I18N`. All businesses and numbers are fictional.
 - **Demo shop** — the before/after mockup uses the fictional 「金益豐食品行」; swap in a real client case once you have one.
 - **SEO metadata** — `<meta name="description">`, OG/Twitter tags, canonical URL, and the JSON-LD `ProfessionalService` + `FAQPage` blocks are at the top of `<head>`.
 - **FAQ section** — search for `id="faq"`. Keep the visible `<details>` text and the `FAQPage` JSON-LD in sync if you edit either (AI/Google search engines expect structured data to match visible content).
