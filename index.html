@@ -106,9 +106,11 @@
 <title>優時數位改造|官網重建 × SEO × AI 搜尋優化(AEO)– 優時科技 Kairos.ai</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@600;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+KR:wght@600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
 :root{
+  --sans:'Noto Sans TC',"PingFang TC","Microsoft JhengHei",sans-serif;
+  --serif:'Noto Serif TC',"Songti TC",serif;
   --ground:#080D18;
   --surface:#121A2C;
   --ink:#EDF1F7;
@@ -140,6 +142,10 @@
   --night-shadow:0 4px 30px rgba(0,0,0,.5);
 }
 :root:not([data-theme="light"]){}
+html[lang="ja"]{--sans:'Noto Sans JP',"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,'Noto Sans TC',sans-serif;--serif:'Noto Serif JP',"Hiragino Mincho ProN","Yu Mincho",serif}
+html[lang="ko"]{--sans:'Noto Sans KR',"Apple SD Gothic Neo","Malgun Gothic",'Noto Sans TC',sans-serif;--serif:'Noto Serif KR',"AppleMyungjo",serif}
+html[lang="en"] .step::before,html[lang="ko"] .step::before{content:counter(step,decimal)}
+html[lang="ko"] body{word-break:keep-all}
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --ground:#0B1220;
@@ -180,15 +186,15 @@
 body{
   background:var(--ground) radial-gradient(circle, var(--line) 1px, transparent 1px) 0 0/28px 28px;
   color:var(--ink);
-  font-family:'Noto Sans TC',"PingFang TC","Microsoft JhengHei",sans-serif;
+  font-family:var(--sans);
   font-size:16px;line-height:1.75;
   -webkit-font-smoothing:antialiased;
 }
-.serif{font-family:'Noto Serif TC',"Songti TC",serif}
+.serif{font-family:var(--serif)}
 .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
 section{padding:clamp(56px,9vw,120px) 0}
 h1,h2,h3{text-wrap:balance;line-height:1.35}
-h2{font-family:'Noto Serif TC',serif;font-weight:700;font-size:clamp(24px,3.4vw,32px);margin-bottom:12px}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(24px,3.4vw,32px);margin-bottom:12px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
 .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--accent)}
 .lead{color:var(--ink-soft);max-width:38em}
@@ -208,7 +214,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
   box-shadow:inset 0 0 0 2px rgba(255,255,255,.2),0 3px 10px rgba(11,74,148,.35);
 }
 .seal-mark img{width:26px;height:26px;object-fit:contain;display:block;position:relative}
-.brand-name{font-family:'Noto Serif TC',serif;font-weight:700;font-size:19px}
+.brand-name{font-family:var(--serif);font-weight:700;font-size:19px}
 .brand-sub{font-size:12px;color:var(--ink-faint);letter-spacing:.08em}
 .nav{display:flex;align-items:center;gap:30px}
 .nav a{color:var(--ink-soft);font-size:14px;font-weight:600;text-decoration:none;position:relative;padding:4px 0}
@@ -219,10 +225,12 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 @media(max-width:820px){.nav{display:none}}
 .lang-toggle{flex:none;border:1.5px solid var(--line);color:var(--ink-soft);background:transparent;border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;letter-spacing:.03em;cursor:pointer;transition:border-color .15s ease,color .15s ease}
 .lang-toggle:hover{border-color:var(--accent);color:var(--ink)}
+select.lang-toggle{font-family:inherit;background:var(--surface);appearance:auto;padding:6px 8px}
+select.lang-toggle option{background:var(--surface);color:var(--ink)}
 
 /* hero */
 .hero{padding:84px 0 64px}
-.hero h1{font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(32px,5.6vw,52px);line-height:1.3;margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(32px,5.6vw,52px);line-height:1.3;margin-bottom:22px}
 .hero h1 em{font-style:normal;color:var(--ink);position:relative;white-space:nowrap}
 .hero p{font-size:18px;color:var(--ink-soft);max-width:34em;margin-bottom:32px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
@@ -244,7 +252,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 .stats{display:flex;flex-wrap:wrap;margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
 .stat{flex:1 1 190px;padding:0 28px;border-left:1px solid var(--line)}
 .stat:first-child{border-left:0;padding-left:0}
-.stat b{display:block;font-family:'Noto Serif TC',serif;font-size:30px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.15;margin-bottom:6px}
+.stat b{display:block;font-family:var(--serif);font-size:30px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.15;margin-bottom:6px}
 .stat:first-child b{font-size:46px;color:var(--ink)}
 .stat>span{font-size:13px;color:var(--ink-soft)}
 .stats-note{font-size:12.5px;color:var(--ink-faint);margin-top:18px}
@@ -257,7 +265,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
 
 .leaks{margin-top:36px;border-top:1px solid var(--line)}
 .leak{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:30px 0;border-bottom:1px solid var(--line)}
-.leak-num{font-family:'Noto Serif TC',serif;font-weight:900;font-size:32px;color:var(--ink-faint);line-height:1}
+.leak-num{font-family:var(--serif);font-weight:900;font-size:32px;color:var(--ink-faint);line-height:1}
 .leak h3{font-size:17px;font-weight:700;margin-bottom:8px}
 .leak p{font-size:14.5px;color:var(--ink-soft);max-width:48em}
 @media(max-width:640px){.leak{grid-template-columns:34px 1fr;gap:14px}.leak-num{font-size:22px}}
@@ -332,7 +340,7 @@ header.scrolled{box-shadow:0 6px 24px rgba(10,78,128,.12);padding:12px 0}
   color:#fff;padding:34px 30px}
 .ns-copy{max-width:min(30em, calc(50% - 30px), calc(100% - var(--split) - 60px));overflow:hidden}
 .ns-hero .ns-tag{font-size:11.5px;letter-spacing:.22em;color:#9FE8DD;font-weight:700;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ns-hero h4{font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;margin-bottom:6px;text-shadow:0 1px 3px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ns-hero h4{font-family:var(--serif);font-size:24px;font-weight:900;margin-bottom:6px;text-shadow:0 1px 3px rgba(0,0,0,.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ns-hero p{font-size:13.5px;color:#DCEFEB;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .ns-hero .ns-btns{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
 .ns-hero .ns-btn{background:#fff;color:#0B2E2A;font-size:13px;font-weight:700;border-radius:6px;padding:8px 16px}
@@ -353,7 +361,7 @@ html.js .annot span{opacity:0;transform:translateY(10px)}
 
 /* seo/aeo */
 .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:32px}
-.duo .card b.head{font-family:'Noto Serif TC',serif;font-size:19px;display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.duo .card b.head{font-family:var(--serif);font-size:19px;display:flex;align-items:center;gap:9px;margin-bottom:8px}
 .duo .card b.head svg{width:21px;height:21px;flex:none;color:var(--accent-deep)}
 .qa{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin-top:16px;font-size:14px}
 .qa i{display:block;font-style:normal;color:var(--ink-faint);font-size:12.5px;margin-bottom:4px;letter-spacing:.03em}
@@ -374,7 +382,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 :root[data-theme="dark"] .calc-out{color:#08203D;background:var(--accent-deep)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .calc-out{color:#08203D}}
 .calc-out .co-label{font-size:13px;opacity:.8}
-.calc-out .co-num{font-family:'Noto Serif TC',serif;font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2}
+.calc-out .co-num{font-family:var(--serif);font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2}
 .calc-out .co-sub{font-size:13px;opacity:.85}
 .calc-note{font-size:12.5px;color:var(--ink-faint);padding:14px 30px;border-top:1px solid var(--line)}
 
@@ -383,9 +391,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .price{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
 .price.hot{border-color:var(--accent);border-width:2px;position:relative;padding-top:54px}
 .price.hot::after{content:"最多人選";position:absolute;top:0;left:0;right:0;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-align:center;padding:6px 0;border-radius:12px 12px 0 0}
-.price h3{font-family:'Noto Serif TC',serif;font-size:19px;margin-bottom:4px}
+.price h3{font-family:var(--serif);font-size:19px;margin-bottom:4px}
 .price .p-for{font-size:13px;color:var(--ink-faint);margin-bottom:14px}
-.price .p-num{font-family:'Noto Serif TC',serif;font-size:32px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent-deep)}
+.price .p-num{font-family:var(--serif);font-size:32px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent-deep)}
 .price .p-num small{font-size:14px;font-weight:500;color:var(--ink-faint)}
 .price .p-mkt{font-size:12.5px;color:var(--ink-faint);margin-bottom:16px}
 .price .p-mkt s{color:var(--seal)}
@@ -398,7 +406,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0 24px;margin-top:44px;counter-reset:step;position:relative}
 .steps::before{content:"";position:absolute;top:17px;left:0;right:0;height:1px;background:var(--line)}
 .step{position:relative}
-.step::before{counter-increment:step;content:counter(step,cjk-ideographic);position:relative;z-index:1;display:flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:var(--surface);border:1.5px solid var(--accent);color:var(--accent-deep);font-family:'Noto Serif TC',serif;font-weight:900;margin-bottom:16px}
+.step::before{counter-increment:step;content:counter(step,cjk-ideographic);position:relative;z-index:1;display:flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:var(--surface);border:1.5px solid var(--accent);color:var(--accent-deep);font-family:var(--serif);font-weight:900;margin-bottom:16px}
 .step b{display:block;margin-bottom:4px;font-size:15.5px}
 .step p{font-size:13.5px;color:var(--ink-soft)}
 .step .t{display:block;font-size:12px;color:var(--accent-deep);font-weight:700;letter-spacing:.06em;margin-top:10px}
@@ -425,7 +433,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .contact h2{margin-bottom:8px}
 footer{padding:28px 0;background:var(--night-ground);color:#EAF1FB}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-family:'Noto Serif TC',serif;font-size:14.5px}
+.footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-family:var(--serif);font-size:14.5px}
 .footer-brand img{width:22px;height:22px;object-fit:contain}
 .footer-copy{font-size:12.5px;opacity:.85}
 .footer-nap{flex-basis:100%;font-size:12.5px;color:var(--ink-faint);display:flex;gap:6px 18px;flex-wrap:wrap;order:2;font-style:normal}
@@ -442,11 +450,11 @@ footer{padding:28px 0;background:var(--night-ground);color:#EAF1FB}
 @media(max-width:860px){.ind-grid{grid-template-columns:1fr}}
 .ind-site{background:#FBF8F2;color:#2A2118;border-radius:0 0 10px 10px;overflow:hidden;font-size:13.5px;line-height:1.6}
 .ind-site .is-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #E7DFD0;font-size:12.5px}
-.ind-site .is-nav b{font-family:'Noto Serif TC',serif;font-size:15px}
+.ind-site .is-nav b{font-family:var(--serif);font-size:15px}
 .ind-site .is-nav span{color:#7A6C58}
 .ind-site .is-hero{padding:26px 18px 22px;background:var(--is-accent,#B5532A);color:#fff}
 .ind-site .is-tag{font-size:11px;letter-spacing:.16em;opacity:.85;margin-bottom:6px}
-.ind-site .is-hero h4{font-family:'Noto Serif TC',serif;font-size:22px;margin-bottom:6px}
+.ind-site .is-hero h4{font-family:var(--serif);font-size:22px;margin-bottom:6px}
 .ind-site .is-hero p{font-size:13px;opacity:.92;margin-bottom:14px}
 .ind-site .is-btn{display:inline-block;background:#fff;color:var(--is-accent,#B5532A);font-weight:700;font-size:12.5px;padding:6px 14px;border-radius:6px;margin-right:6px}
 .ind-site .is-btn.o{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.7)}
@@ -462,10 +470,24 @@ footer{padding:28px 0;background:var(--night-ground);color:#EAF1FB}
 .ind-proj h3{font-size:16px;margin-bottom:2px}
 .ind-assume{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
 .ind-assume span{font-size:12px;color:var(--ink-soft);border:1px solid var(--line);border-radius:6px;padding:2px 9px;background:var(--accent-soft)}
+.ind-funnel{margin:12px 0 4px}
+.fn-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;margin-bottom:8px}
+.fn-key{font-size:12px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:6px}
+.fn-key i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.fn-key i.k0,.fn-bar.b0 i{background:var(--ink-faint)}
+.fn-key i.k1,.fn-bar.b1 i{background:var(--teal)}
+.fn-key i.k1{margin-left:6px}
+.fn-row{margin-bottom:9px}
+.fn-l{font-size:12.5px;color:var(--ink-soft);line-height:1.4;margin-bottom:2px}
+.fn-bar{display:flex;align-items:center;gap:8px;font-size:12px;font-variant-numeric:tabular-nums}
+.fn-bar .trk{flex:1;height:7px;border-radius:4px;background:var(--accent-soft);overflow:hidden}
+.fn-bar i{display:block;height:100%;border-radius:4px}
+.fn-bar span{min-width:54px;text-align:right;color:var(--ink)}
+.ind-kpis{margin-top:14px}
 .ind-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
 .ind-kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .ind-kpi .l{font-size:12px;color:var(--ink-faint)}
-.ind-kpi .n{font-family:'Noto Serif TC',serif;font-size:21px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.3}
+.ind-kpi .n{font-family:var(--serif);font-size:21px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.3}
 .ind-kpi .n small{font-size:12px;font-weight:700;color:var(--ink-soft)}
 .ind-chart{margin:6px 0 4px}
 .ind-chart svg{width:100%;height:auto;display:block}
@@ -639,7 +661,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
 .ring{width:118px;height:118px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;position:relative;
   background:conic-gradient(var(--ring-color,var(--accent)) calc(var(--pct,0) * 1%),var(--line) 0);transition:background 1.1s cubic-bezier(.16,1,.3,1)}
 .ring::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--surface)}
-.ring b{position:relative;font-family:'Noto Serif TC',serif;font-size:24px;font-weight:900;color:var(--ink)}
+.ring b{position:relative;font-family:var(--serif);font-size:24px;font-weight:900;color:var(--ink)}
 .ring-card span{display:block;font-size:13.5px;font-weight:700;margin-top:2px}
 .ring-card small{display:block;font-size:11.5px;color:var(--ink-faint)}
 .ring-verdict{display:block;font-style:normal;font-size:11.5px;font-weight:700;margin-top:6px;padding:2px 10px;border-radius:99px;background:var(--line);color:var(--ink-faint);min-height:1.6em}
@@ -702,7 +724,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
       <a href="#contact" data-i18n="nav-contact">聯絡我們</a>
     </nav>
     <a class="btn btn-primary btn-sm header-cta" data-i18n="header-cta" href="mailto:kairos.ai.tech@gmail.com?subject=索取免費網站健檢報告">免費健檢 →</a>
-    <button type="button" id="langToggle" class="lang-toggle" aria-pressed="false">EN</button>
+    <select id="langSelect" class="lang-toggle" aria-label="Language / 言語 / 언어"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option></select>
   </div>
 </header>
 
@@ -917,9 +939,9 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
           <div class="ns-hero">
             <div class="ns-copy">
               <div class="ns-tag" data-i18n="demo-ns-tag">EST. 1973 · 彰化</div>
-              <h4 class="serif">金益豐食品行</h4>
+              <h4 class="serif" data-i18n="demo-ns-name">金益豐食品行</h4>
               <p data-i18n="demo-ns-p">三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。</p>
-              <div class="ns-btns"><span class="ns-btn" data-i18n="demo-ns-btn1">線上訂購</span><span class="ns-btn o" data-i18n="demo-ns-btn2">門市資訊</span><span class="ns-btn o">EN / 日本語</span></div>
+              <div class="ns-btns"><span class="ns-btn" data-i18n="demo-ns-btn1">線上訂購</span><span class="ns-btn o" data-i18n="demo-ns-btn2">門市資訊</span><span class="ns-btn o">EN / 日本語 / 한국어</span></div>
             </div>
           </div>
           <div class="ns-body">
@@ -1012,7 +1034,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
   <div class="wrap">
     <div class="eyebrow" data-i18n="ind-eyebrow">改造後示範</div>
     <h2 data-i18n="ind-h2">改造完長這樣——能帶來多少客人與獲利?</h2>
-    <p class="lead" data-i18n="ind-lead">三個虛構的示範店家,左邊是改造後的官網,右邊是依保守假設推算的新增客人與獲利。換一個行業、換一種情境,數字會跟著變。</p>
+    <p class="lead" data-i18n="ind-lead">三個虛構的示範店家,左邊是改造後的官網,右邊是依保守假設推算的改造前後轉換率、新增客人與獲利。換一個行業、換一種情境,數字會跟著變。</p>
     <div class="ind-tabs" role="tablist" id="indTabs" aria-label="選擇行業">
       <button type="button" role="tab" id="indTab-food" data-ind="food" aria-selected="true" data-i18n="ind-tab-food">餐飲・零售</button>
       <button type="button" role="tab" id="indTab-clinic" data-ind="clinic" aria-selected="false" data-i18n="ind-tab-clinic">診所・在地服務</button>
@@ -1034,12 +1056,13 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
           <button type="button" data-scn="1.4" aria-pressed="false" data-i18n="ind-scn-high">樂觀</button>
         </div>
         <div class="ind-assume" id="indAssume"></div>
+        <div class="ind-funnel" id="indFunnel"></div>
         <div class="ind-kpis" id="indKpis" aria-live="polite"></div>
         <div class="ind-chart" id="indChart"></div>
         <div class="ind-bottom" id="indBottom" aria-live="polite"></div>
       </div>
     </div>
-    <div class="ind-note" data-i18n="ind-note">示範店家與數字皆為虛構,僅說明試算邏輯。新客人 = 每月相關搜尋量 × 詢問/來店率 × 成交率,上線後 8 個月逐步爬升至滿載;獲利已扣除 SEO/AEO 月費 NT$14,800 與一次性建置費。實際成效依產業競爭程度與經營投入而異,免費健檢時我們會用您的真實搜尋數據重算。</div>
+    <div class="ind-note" data-i18n="ind-note">示範店家與數字皆為虛構,僅說明試算邏輯。成交客人 = 每月相關搜尋量 × 觸及率(搜尋後點進你的網站的比例)× 訪客轉換率(訪客詢問/預約/來店的比例)× 成交率;「新增」= 改造後減去改造前。轉換率於新站上線即提升,觸及率隨 SEO/AEO 約 8 個月逐步爬升;獲利已扣除 SEO/AEO 月費 NT$14,800 與一次性建置費。實際成效依產業競爭程度與經營投入而異,免費健檢時我們會用您的真實搜尋數據重算。</div>
   </div>
 </section>
 
@@ -1065,7 +1088,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
         <h3 data-i18n="price2-h3">快速官網</h3>
         <div class="p-for" data-i18n="price2-for">適合:老店、診所、在地服務</div>
         <div class="p-num">NT$ 59,800 <small data-i18n="price-from">起</small></div>
-        <div class="p-mkt"><span data-i18n="price-mkt-label">同級市場行情</span> <s>NT$ 8–15 萬</s></div>
+        <div class="p-mkt"><span data-i18n="price-mkt-label">同級市場行情</span> <s data-i18n="price2-mkt">NT$ 8–15 萬</s></div>
         <ul>
           <li data-i18n="price2-li1">5–7 頁形象官網,14 天上線</li>
           <li data-i18n="price2-li2">HTTPS + 手機/平板/電腦響應式</li>
@@ -1078,7 +1101,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
         <h3 data-i18n="price3-h3">官網重建 Plus</h3>
         <div class="p-for" data-i18n="price3-for">適合:外銷製造、需要訂購/預約的店家</div>
         <div class="p-num">NT$ 99,800 <small data-i18n="price-from">起</small></div>
-        <div class="p-mkt"><span data-i18n="price-mkt-label">同級市場行情</span> <s>NT$ 18–35 萬</s></div>
+        <div class="p-mkt"><span data-i18n="price-mkt-label">同級市場行情</span> <s data-i18n="price3-mkt">NT$ 18–35 萬</s></div>
         <ul>
           <li data-i18n="price3-li1">快速官網全部內容</li>
           <li data-i18n="price3-li2">客製視覺設計 + 品牌文案</li>
@@ -1164,6 +1187,32 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
 </footer>
 
 <script>
+/*I18N-BEGIN*/
+/* Translations. zh text lives in the HTML itself (data-i18n); I18N_ALL holds en/ja/ko for those keys. */
+var I18N_ALL={
+en:{"marquee":"★ WELCOME TO THE KAIROS.AI HOMEPAGE ★ BEST VIEWED AT 800×600, IE6.0+ RECOMMENDED ★ OPEN 24/7, 365 DAYS A YEAR ★ VISITOR COUNT UNKNOWN BECAUSE THE COUNTER IS BROKEN ★","brand-sub":"Website Rebuild × SEO × AI Search","nav-scan":"Free Scan","nav-demo":"Before/After","nav-results":"Results","nav-pricing":"Pricing","nav-faq":"FAQ","nav-contact":"Contact","header-cta":"Free Check →","sticky-text":"<b>Free health check, spot the leaks in 3 min</b>no charge if not satisfied","sticky-cta":"Get it now →","hero-pill":"AI-accelerated builds · honest audits, no hype","hero-h1":"Your customers are searching for you,<br>but finding <em>someone else</em>.","hero-p":"Repeat customers come from word of mouth; new customers come from search. When your site is outdated, broken, or just a Facebook page, Google and ChatGPT can only send customers to competitors with a working site. We use an AI-accelerated build process to get your website and search visibility right — at a fair price.","hero-cta1":"Get a free website check →","hero-cta2":"See the before/after","unit-biz":"SMBs","stat1-desc":"Taiwan SMBs we audited on-site in August 2026","stat2-desc":"have no website of their own — only a Facebook page or directory listing","stat3-desc":"have an expired certificate or dead server — the site won't even load","stat4-desc":"had structured content that AI search engines could cite","stats-note":"Data from our hands-on website audits of 33 Taiwanese manufacturers, long-running restaurants, and local service businesses (Aug 2026).","scan-eyebrow":"Free Scan · Results in 15 seconds","scan-h2":"Test it first — how many customers is your site losing?","scan-lead":"Enter your current URL to instantly get a preliminary SEO (Google search), AEO (AI search), and LEO (local/map search) score, plus the most common issues.","scan-btn":"Analyze →","scan-err":"Please enter a valid URL, e.g. example.com","scan-hint":"This quick scan is an automated estimate to point you in the right direction; request the full, page-by-page health check below.","scan-connecting":"Connecting…","scan-checking":"Checking: ","impression-title":"Raw impression of this address","ring-seo-label":"Search Engine Optimization","ring-aeo-label":"AI Search Optimization","ring-leo-label":"Local/Map Search","scan-cta-btn":"Get the full free health check →","scan-download-btn":"Download this scan report ⬇","scan-cta-note":"Get a plain-language report within 3 business days","lead-name":"Business name / contact","lead-phone":"Phone number","lead-email":"Email (optional)","lead-url":"Website or page","lead-msg":"Notes (optional)","lead-submit":"Submit, request my free check →","lead-cancel":"Cancel","lead-note":"Submitting opens your email app with everything filled in — just hit send. No email app? Write to us directly at kairos.ai.tech@gmail.com.","scan-note":"This quick scan attempts a live connection & DNS check on this address, plus an automated estimate based on URL features — not a page-by-page manual review; official scores come from the free health check report.","leaks-eyebrow":"Four Common Leaks","leaks-h2":"Your website may be sending customers to your competitors","leak1-flag":"Expired cert · unreachable","leak1-h3":"The browser flashes an \"unsafe\" warning","leak1-p":"Of the 33 businesses we audited, 5 had a site that wouldn't load or had an expired certificate — even a Michelin-recommended shop. Nine out of ten visitors close the tab the moment they see the warning.","leak2-flag":"Untouched for a decade","leak2-h3":"A 2005-era design that's unusable on mobile","leak2-p":"Old desktop-only layout, menus and hours baked into images, \"latest news\" frozen since 2018. Over 60% of searches come from mobile — an old site is effectively invisible.","leak3-flag":"Facebook page only","leak3-h3":"Facebook isn't your website","leak3-p":"A page's reach is decided by an algorithm, and Google can barely index its content. Your pricing, story, and ordering info all belong on a domain you actually own.","leak4-flag":"Others are taking your traffic","leak4-h3":"Bloggers own your search results","leak4-p":"Customers search your name and first see someone else's food blog or a directory listing — often outdated. When they ask ChatGPT for a recommendation, it cites those pages too, not you.","demo-eyebrow":"Before / After","demo-h2":"Same shop, two different fates","demo-lead":"Shown with a fictional demo shop, \"Jin Yi Feng Foods.\" Drag the slider in the middle to compare before and after yourself.","demo-btn-old":"Before","demo-btn-new":"After","demo-urlbox":"Demo comparison: Jin Yi Feng Foods","demo-badge-bad":"⚠ Not secure","demo-os-head":"☆ WELCOME ☆ 金益豐食品行 ☆","demo-os-marquee":"News: Open as usual during Lunar New Year! (2018/02/10)","demo-os-nav":"<div>Home</div><div>About</div><div>Products</div><div>Contact</div>","demo-os-body":"<div class=\"broken\">🖼 Image unavailable</div>\n                Established 1973. Specializing in traditional rice cakes, pastries, and festival gift boxes. Quality guaranteed — call to order.<br><br>\n                Order line: 04-1234-5678 (business hours only)<br>\n                Fax: 04-1234-5679<br><br>\n                <font color=\"#CC0000\">※ This site is best viewed in IE6.0+ at 800×600 resolution ※</font>","demo-os-count":"You are visitor #000048721 | Last updated: 2018/02/10","demo-badge-good":"🔒 https","demo-ns-tag":"EST. 1973 · Changhua","demo-ns-p":"Three generations of handmade rice cakes and festival gift boxes. Made fresh daily, shipped island-wide.","demo-ns-btn1":"Order Online","demo-ns-btn2":"Store Info","demo-ns-cell1":"<b>Hours</b>Tue–Sun 08:00–19:00","demo-ns-cell2":"<b>FAQ</b>How is delivery calculated? Can I choose a delivery date? — Priced by weight; delivery date can be chosen (closed Lunar New Year's Eve).","demo-ns-cell3":"<b>Google Reviews 4.8 ★</b>236 reviews — regulars recommend the red-turtle cake and pineapple cakes.","demo-ns-cell4":"<b>Delivery</b>Island-wide shipping, free over NT$1,000; convenience-store pickup available in Taichung/Changhua.","demo-hint":"← Drag to compare →","demo-bad1":"✕ No HTTPS, browser warns visitors","demo-bad2":"✕ Unreadable on mobile","demo-bad3":"✕ Orders by phone only","demo-bad4":"✕ Search engines can't read the key info","demo-good1":"✓ HTTPS + responsive design","demo-good2":"✓ Online ordering, open 24/7","demo-good3":"✓ FAQ + structured data, AI cites it","demo-good4":"✓ Chinese/English/Japanese — reaches tourists too","duo-eyebrow":"The two things we do","duo-h2":"Google can find you. AI will recommend you.","duo1-head":"SEO | Search Engine Optimization","duo1-p":"When customers Google \"your trade + your area + recommended,\" your own site shows up — not a directory listing or someone's blog. How: a modern site structure, correct titles and descriptions, local business data, and ongoing content upkeep.","duo1-qa":"<i>Customer searches</i> \"Changhua gift recommendations\" → your site shows up on page one","duo2-head":"AEO | AI Engine Optimization","duo2-p":"More customers now ask ChatGPT or Gemini directly. AI only cites pages it can understand and trust. How: FAQ content, structured data (Schema), and plain-text business info and pricing — so AI cites you in its answers.","duo2-qa":"<i>Customer asks AI</i> \"Any recommended office partition contractors in Taichung?\" → AI cites your service page in its answer","roi-eyebrow":"ROI Calculator","roi-h2":"How much revenue is a good website worth?","roi-lead":"Drag the sliders to match your industry. This is a conservative estimate — counting only new customers who couldn't find you before, but can now.","roi-preset1":"Food & Retail","roi-preset2":"Clinics & Local Services","roi-preset3":"Manufacturing & B2B","roi-label1":"Monthly relevant searches","roi-label2":"Share that become inquiries/visits","roi-label3":"Average order value (NT$)","roi-out-month":"Estimated new revenue / month","roi-out-year":"Estimated new revenue / year","roi-note":"This estimate is for reference only — actual results vary by industry competitiveness and effort invested. We can verify real search volume for you during the free health check.","ind-eyebrow":"After the rebuild","ind-h2":"What a rebuilt site looks like — and what it can earn you","ind-lead":"Three fictional demo businesses: the rebuilt website on the left, projected before/after conversion rates, new clients and profit on the right, based on conservative assumptions. Switch industry or scenario and the numbers update.","ind-tab-food":"Food · Retail","ind-tab-clinic":"Clinic · Local service","ind-tab-b2b":"Manufacturing · B2B","ind-proj-h":"Projected results (first 12 months after launch)","ind-scn-low":"Conservative","ind-scn-mid":"Expected","ind-scn-high":"Optimistic","ind-note":"Demo businesses and numbers are fictional and only illustrate the calculation. Customers won = monthly relevant searches × reach (share of searchers who click through to your site) × visitor conversion rate (share of visitors who inquire/book/visit) × close rate; \"new\" means after-reform minus before-reform. Conversion improves as soon as the new site launches, while reach ramps up with SEO/AEO over about 8 months; profit is net of the SEO/AEO fee of NT$14,800/month and the one-time build fee. Actual results vary by industry competitiveness and effort invested — during the free health check we recalculate with your real search data.","pricing-eyebrow":"Plans & Pricing","pricing-h2":"Half the market price, delivered in two weeks","pricing-lead":"Our AI-accelerated build process compresses a project that used to take one or two months into two weeks — and we pass the savings straight to you.","price1-h3":"Free Website Health Check","price1-for":"Still deciding? See where you stand first","price1-mkt":"No strings attached","price1-li1":"Full audit report of your current site/page","price1-li2":"Google & AI search visibility analysis","price1-li3":"Competitor comparison and a concrete improvement checklist","price2-h3":"Quick Site","price2-for":"For: established shops, clinics, local services","price-from":"and up","price-mkt-label":"Comparable market rate","price2-li1":"5–7 page brand site, live in 14 days","price2-li2":"HTTPS + responsive on mobile/tablet/desktop","price2-li3":"Basic SEO + structured data (AEO ready)","price2-li4":"Business info, FAQ, Google Business integration","price2-li5":"First year hosting & maintenance included","price3-h3":"Website Rebuild Plus","price3-for":"For: exporters/manufacturers, businesses needing ordering/booking","price3-li1":"Everything in Quick Site","price3-li2":"Custom visual design + brand copywriting","price3-li3":"Online ordering or booking system","price3-li4":"English version (professionally translated, not machine-translated)","price3-li5":"Up to 20 product/service pages","pricing-addons":"<b>Add-ons & ongoing care:</b>SEO/AEO monthly retainer NT$14,800/mo (market rate NT$20–30k/mo; includes monthly content updates, ranking reports, and technical maintenance) · additional language +NT$18,000 · hosting & maintenance from year 2 NT$8,800/yr. All quotes are finalized after the free health check — no pressure to buy.","steps-eyebrow":"How We Work","steps-h2":"From health check to launch in just three weeks","step1-b":"Free health check","step1-p":"Send us your current site or page link — get a full report within 3 business days.","step1-t":"Day 1–3","step2-b":"Proposal & confirmation","step2-p":"A 15-minute call or LINE chat to confirm pages, content, and pricing.","step2-t":"Day 4–7","step3-b":"Build & review","step3-p":"Design first, then development — you can see progress anytime, and it only goes live once you're happy.","step3-t":"Day 8–18","step4-b":"Launch & handover","step4-p":"Domain, hosting, and admin access all handed over to you — the assets are yours, no lock-in.","step4-t":"Day 19–21","faq-eyebrow":"FAQ","faq-h2":"Questions owners ask us most","faq1-q":"Is the free website health check really free?","faq1-a":"Yes, no strings attached. After the check, we give you a plain-language report on where you stand and concrete recommendations — no pressure to buy or sign anything.","faq2-q":"Why is the price so much lower than the market rate?","faq2-a":"We use an AI-accelerated build process that compresses a project that used to take one or two months into two weeks — the labor savings go straight into the price.","faq3-q":"What's the difference between SEO and AEO?","faq3-a":"SEO helps Google find your site; AEO gets AI search engines like ChatGPT and Gemini to cite your services in their answers. The techniques differ, and you need both.","faq4-q":"We don't have a website, only a Facebook page — is that OK?","faq4-a":"That's fine. A Facebook page's content can't be fully indexed by Google, so we recommend building a site on your own domain first — your page can keep running alongside it and cross-promote.","faq5-q":"Once the site is built, who owns the domain and hosting?","faq5-a":"Everything is handed over to you, including the domain, hosting account, and admin panel — the assets are entirely yours, and you're never locked in if you switch maintainers later.","contact-h2":"Start with a free health check","contact-lead":"Reply with your business name or website, and within 3 business days you'll get a plain-language report written for owners, not engineers — just what's leaking, how to fix it, and whether it's worth fixing.","contact-btn":"Email us for a free health check →","footer-copy":"© 2026 · Taiwan · Website Rebuild × SEO × AI Search","footer-nap-addr":"10F.-1, No. 48, Fuxing N Rd, Lixing Village, Zhongshan District, Taipei City 104502, Taiwan","footer-nap-maplabel":"Google Maps →","demo-ns-name":"Jin Yi Feng Foods","price2-mkt":"NT$ 80–150K","price3-mkt":"NT$ 180–350K"},
+ja:{"marquee":"★ 優時科技ホームページへようこそ ★ 推奨環境:解像度 800×600、IE6.0 以上 ★ 24 時間 365 日、ご依頼受付中 ★ 訪問者数は不明です(カウンターが壊れました) ★","brand-sub":"サイト再構築 × SEO × AI 検索対策","nav-scan":"無料クイック診断","nav-demo":"改善前後","nav-results":"期待できる成果","nav-pricing":"料金プラン","nav-faq":"よくある質問","nav-contact":"お問い合わせ","header-cta":"無料診断 →","sticky-text":"<b>無料診断で、3 分で「取りこぼし」を発見</b>ご満足いただけなければ料金は不要です","sticky-cta":"今すぐ申し込む →","hero-pill":"AI で制作を効率化・誠実な診断、成果を誇張しません","hero-h1":"お客様は今、あなたを探しています。<br>でも見つかるのは<em>他社のサイト</em>です。","hero-p":"既存のお客様は口コミで、新しいお客様は検索でやって来ます。サイトが古い、開けない、あるいは Facebook ページしかないと、Google や ChatGPT は、きちんとしたサイトを持つ同業他社にお客様を案内してしまいます。私たちは AI で効率化した制作プロセスにより、手の届く価格で、サイトと検索での見つかりやすさをまとめて整えます。","hero-cta1":"無料のサイト診断を申し込む →","hero-cta2":"改善前後を見る","unit-biz":"社","stat1-desc":"2026 年 8 月に実地診断した台湾の中小企業","stat2-desc":"自社サイトがなく、Facebook ページや電話帳サイトのみ","stat3-desc":"証明書の期限切れやサーバー停止で、そもそも開けない","stat4-desc":"AI 検索エンジンが引用できる構造化コンテンツを備えている","stats-note":"台湾の製造業、老舗飲食店、地域サービス業 計 33 社のサイトを実際に診断したデータです(2026/08)。","scan-eyebrow":"無料クイック診断・15 秒で結果","scan-h2":"まずは、あなたのサイトがどれだけお客様を逃しているか調べてみましょう","scan-lead":"現在の URL を入力すると、SEO(Google 検索)、AEO(AI 検索)、LEO(地域・マップ検索)の簡易スコアと、減点になりやすい主な原因がすぐにわかります。","scan-btn":"分析する →","scan-err":"有効な URL を入力してください(例:example.com)","scan-hint":"クイック診断は自動の簡易推定で、大まかな方向性をつかむためのものです。ページごとの詳しい診断レポートは、下の無料診断からお申し込みください。","scan-connecting":"接続して分析しています…","scan-checking":"確認中: ","impression-title":"この URL の第一印象","ring-seo-label":"検索エンジン最適化","ring-aeo-label":"AI 検索最適化","ring-leo-label":"地域・マップ検索","scan-cta-btn":"詳細な無料診断を申し込む →","scan-download-btn":"このクイック診断レポートをダウンロード ⬇","scan-cta-note":"3 営業日以内に、わかりやすいレポートをお届けします","lead-name":"店名・ご担当者名","lead-phone":"電話番号","lead-email":"メールアドレス(任意)","lead-url":"URL または Facebook ページ","lead-msg":"補足事項(任意)","lead-submit":"送信して無料診断を申し込む →","lead-cancel":"キャンセル","lead-note":"送信するとメールソフトが開きます。そのまま送信すれば申し込み完了です。開かない場合は、kairos.ai.tech@gmail.com まで直接ご連絡ください。","scan-note":"クイック診断では、この URL へのリアルタイム接続と DNS の確認を行い、URL の特徴から自動で推定しています。ページごとの人による診断ではありません。正式なスコアは無料診断レポートをご覧ください。","leaks-eyebrow":"よくある 4 つの「取りこぼし」","leaks-h2":"あなたのサイトが、お客様を同業他社へ送り出しているかもしれません","leak1-flag":"証明書失効・接続不可","leak1-h3":"ブラウザに「安全でない」警告が表示される","leak1-p":"診断した 33 社のうち 5 社は、サイトが開けないか証明書が失効していました。ミシュラン掲載の老舗も例外ではありません。警告を見たお客様の 9 割は、そのまま閉じてしまいます。","leak2-flag":"10 年間放置","leak2-h3":"2005 年のデザインで、スマホでは見られない","leak2-p":"パソコン専用の古い作り、メニューや営業時間は画像のまま、「お知らせ」は 2018 年で止まったまま。検索の 6 割以上はスマホからで、古いサイトは存在しないも同然です。","leak3-flag":"Facebook ページだけ","leak3-h3":"Facebook はあなたの公式サイトではありません","leak3-p":"ページの表示範囲はアルゴリズム次第で、Google にはほとんど内容が拾われません。料金、お店のストーリー、注文方法は、自分で所有するドメインに載せるべきです。","leak4-flag":"集客を他人に奪われる","leak4-h3":"ブロガーに検索結果を押さえられている","leak4-p":"お客様が店名で検索すると、最初に出てくるのは他人が書いたグルメ記事や電話帳サイトで、情報が古いことも少なくありません。ChatGPT に「おすすめ」を尋ねても、AI が引用するのはそれらのページで、あなたのサイトではありません。","demo-eyebrow":"改善前後","demo-h2":"同じお店でも、行く末は二通り","demo-lead":"架空のデモ店舗「金益豐食品行」で紹介します。中央のスライダーをドラッグして、改善前後をご自身の目で比べてください。","demo-btn-old":"改善前","demo-btn-new":"改善後","demo-urlbox":"比較デモ:金益豐食品行","demo-badge-bad":"⚠ 保護されていない通信","demo-os-head":"☆ようこそ☆金益豐食品行☆","demo-os-marquee":"お知らせ:当店は旧正月も通常営業いたします!(2018/02/10)","demo-os-count":"あなたは 000048721 人目の訪問者です|最終更新:2018/02/10","demo-badge-good":"🔒 https","demo-ns-tag":"EST. 1973 · 彰化","demo-ns-p":"三世代にわたって受け継ぐ、手作りの米菓子と祝い事のギフト。当日製造、台湾全土へお届けします。","demo-ns-btn1":"オンライン注文","demo-ns-btn2":"店舗情報","demo-ns-cell1":"<b>営業時間</b>火〜日曜 08:00–19:00","demo-ns-cell2":"<b>よくある質問</b>配送料はどう決まりますか?到着日は指定できますか?——重量に応じた送料で、到着日の指定も可能です(大晦日は休業)。","demo-ns-cell3":"<b>Google 口コミ 4.8 ★</b>236 件の口コミ。常連のお客様には紅亀粿とパイナップルケーキが人気です。","demo-ns-cell4":"<b>配送方法</b>台湾全土へ配送、NT$1,000 以上で送料無料。台中・彰化はコンビニ受け取りも可能です。","demo-hint":"← ドラッグして比較 →","demo-bad1":"✕ HTTPS 非対応で、ブラウザが警告を表示","demo-bad2":"✕ スマホでは読めない","demo-bad3":"✕ 注文は電話のみ","demo-bad4":"✕ 検索エンジンが重要な情報を読み取れない","demo-good1":"✓ HTTPS + レスポンシブデザイン","demo-good2":"✓ オンライン注文、24 時間受付","demo-good3":"✓ FAQ + 構造化データで、AI が引用","demo-good4":"✓ 中国語・英語・日本語対応で、観光客も取り込める","duo-eyebrow":"私たちが取り組む 2 つのこと","duo-h2":"Google で見つかり、AI がおすすめしてくれる","duo1-head":"SEO|検索エンジン最適化","duo1-p":"お客様が Google で「業種 + 地域 + おすすめ」と検索したとき、電話帳サイトやブログではなく、あなたのサイトが表示されるようにします。方法は、最新のサイト構成、適切なタイトルと説明文、地域のビジネス情報、継続的なコンテンツ運用です。","duo1-qa":"<i>お客様の検索</i>「彰化 お土産 おすすめ」→ あなたのサイトが 1 ページ目に表示","duo2-head":"AEO|AI 検索エンジン最適化","duo2-p":"ChatGPT や Gemini に直接尋ねるお客様が増えています。AI が引用するのは、内容を理解でき、信頼できると判断したページだけです。方法は、FAQ コンテンツ、構造化データ(Schema)、テキスト化した営業情報と料金で、AI の回答にあなたが引用されるようにします。","duo2-qa":"<i>お客様が AI に質問</i>「台中でおすすめのオフィス間仕切り業者は?」→ AI があなたのサービスページを引用して回答","roi-eyebrow":"投資対効果の試算","roi-h2":"良いサイトは、どれだけの売上になる?","roi-lead":"ご自身の業種に近い数字になるよう、スライダーを動かしてみてください。控えめな試算で、「これまで見つけられなかったのに、見つけてもらえるようになった」新規のお客様だけを数えています。","roi-preset1":"飲食・小売","roi-preset2":"クリニック・地域サービス","roi-preset3":"製造・B2B","roi-label1":"月間の関連検索数","roi-label2":"問い合わせ・来店につながる割合","roi-label3":"平均客単価(NT$)","roi-out-month":"月間の新規売上(推定)","roi-out-year":"年間の新規売上(推定)","roi-note":"試算はあくまで目安です。実際の成果は、業界の競争状況や取り組みの度合いによって異なります。検索数は、無料診断の際に実データでご確認いただけます。","ind-eyebrow":"改善後のデモ","ind-h2":"改善後はこんな姿——どれだけ集客と利益につながる?","ind-lead":"架空のデモ店舗を 3 つ用意しました。左が改善後のサイト、右は控えめな前提で試算した、改善前後の転換率・新規顧客数・利益です。業種やシナリオを切り替えると、数字も変わります。","ind-tab-food":"飲食・小売","ind-tab-clinic":"クリニック・地域サービス","ind-tab-b2b":"製造・B2B","ind-proj-h":"期待できる成果(公開後 12 か月)","ind-scn-low":"控えめ","ind-scn-mid":"標準","ind-scn-high":"好調","ind-note":"デモ店舗と数字はすべて架空で、試算の考え方を説明するためのものです。成約顧客数 = 月間の関連検索数 × 到達率(検索後にあなたのサイトを開く割合)× 訪問者の転換率(訪問者が問い合わせ・予約・来店する割合)× 成約率。「新規」は改善後から改善前を引いた数です。転換率は新サイト公開と同時に上がり、到達率は SEO/AEO により約 8 か月かけて徐々に伸びます。利益は SEO/AEO 月額費用 NT$14,800 と一括の制作費を差し引いた金額です。実際の成果は、業界の競争状況や取り組みの度合いによって異なります。無料診断では、お客様の実際の検索データで再計算いたします。","pricing-eyebrow":"プランと料金","pricing-h2":"相場の半額、2 週間でお届け","pricing-lead":"AI で効率化した制作プロセスにより、これまで 1〜2 か月かかっていた案件を 2 週間に短縮。省いたコストは、そのままお見積りに反映します。","price1-h3":"無料サイト診断","price1-for":"迷っている方へ。まずは現状を確認しましょう","price1-mkt":"条件は一切ありません","price1-li1":"現在のサイト・Facebook ページの総合診断レポート","price1-li2":"Google と AI 検索での見つかりやすさの分析","price1-li3":"同業他社との比較と、具体的な改善リスト","price2-h3":"クイックサイト","price2-for":"おすすめ:老舗店、クリニック、地域サービス","price-from":"から","price-mkt-label":"同等サービスの相場","price2-li1":"5〜7 ページのコーポレートサイト、14 日で公開","price2-li2":"HTTPS + スマホ・タブレット・パソコン対応(レスポンシブ)","price2-li3":"基本的な SEO + 構造化データ(AEO 対応)","price2-li4":"営業情報、FAQ、Google ビジネスプロフィール連携","price2-li5":"初年度のサーバー・保守を含む","price3-h3":"サイト再構築 Plus","price3-for":"おすすめ:輸出製造業、注文・予約機能が必要なお店","price3-li1":"クイックサイトの全内容","price3-li2":"オリジナルのビジュアルデザイン + ブランド文章","price3-li3":"オンライン注文または予約システム","price3-li4":"英語版(機械翻訳ではなく、自然な翻訳)","price3-li5":"商品・サービスページは最大 20 ページ","steps-eyebrow":"ご利用の流れ","steps-h2":"診断から公開まで、わずか 3 週間","step1-b":"無料診断","step1-p":"現在のサイトまたは Facebook ページのリンクをお送りください。3 営業日以内に詳しいレポートをお届けします。","step1-t":"1〜3 日目","step2-b":"ご提案と確認","step2-p":"15 分ほどの電話または LINE で、ページ構成、内容、お見積りを確認します。","step2-t":"4〜7 日目","step3-b":"制作と確認","step3-p":"まずデザイン案を作ってから開発に進みます。進み具合はいつでもご覧いただけ、ご納得いただいてから公開します。","step3-t":"8〜18 日目","step4-b":"公開とお引き渡し","step4-p":"ドメイン、サーバー、管理画面をすべてお渡しします。資産はお客様のもので、縛りはありません。","step4-t":"19〜21 日目","faq-eyebrow":"よくある質問","faq-h2":"オーナー様からよくいただくご質問","faq1-q":"無料のサイト診断は、本当に完全無料ですか?","faq1-a":"はい、条件は一切ありません。診断後は、現状と具体的なご提案をわかりやすいレポートでお伝えします。追加購入や契約を無理におすすめすることはありません。","faq2-q":"なぜ相場よりこんなに安いのですか?","faq2-a":"AI で効率化した制作プロセスにより、これまで 1〜2 か月かかっていた案件を 2 週間で仕上げています。省けた人件費は、そのままお見積りに反映しています。","faq3-q":"SEO と AEO は何が違いますか?","faq3-a":"SEO は、Google 検索であなたのサイトを見つけてもらうための対策です。AEO は、ChatGPT や Gemini などの AI 検索エンジンが、回答の中であなたのサービス内容を引用するようにするための対策です。やり方が異なり、どちらも欠かせません。","faq4-q":"サイトはなく、Facebook ページだけですが、大丈夫ですか?","faq4-a":"大丈夫です。Facebook ページの内容は Google に十分登録されないため、まずは自分で所有するドメインのサイトを作ることをおすすめします。Facebook ページは並行して運用でき、お互いに集客し合えます。","faq5-q":"サイト完成後、ドメインやサーバーの所有権は誰のものですか?","faq5-a":"すべてお客様にお渡しします。ドメイン、サーバーのアカウント、管理画面を含め、資産は完全にお客様のものです。将来、保守を別の会社に切り替えるときも、縛られることはありません。","contact-h2":"まずは無料診断から","contact-lead":"店名またはサイトの URL をご返信ください。3 営業日以内に、オーナー様向けのわかりやすい診断レポートをお届けします。専門用語は使わず、「どこから漏れているのか、どう直すか、直す価値があるか」だけをお伝えします。","contact-btn":"メールで無料診断を申し込む →","footer-copy":"© 2026 · 台湾 · サイト再構築 × SEO × AI 検索対策","footer-nap-addr":"104502 台北市中山區立行里復興北路48號10樓之1","footer-nap-maplabel":"Google マップ →","demo-os-nav":"\n                <div>ホーム</div><div>会社案内</div><div>商品紹介</div><div>お問い合わせ</div>\n              ","demo-os-body":"\n                <div class=\"broken\">🖼 画像を表示できません</div>\n                当店は昭和48年創業。伝統的な米菓子、焼き菓子、祝い事のギフトを専門に、品質には自信があります。ご注文はお電話にて承ります。<br><br>\n                ご注文専用電話:04-1234-5678(営業時間内にお願いします)<br>\n                FAX:04-1234-5679<br><br>\n                <font color=\"#CC0000\">※ このサイトは IE6.0 以上、解像度 800×600 でのご利用を推奨します ※</font>\n              ","pricing-addons":"\n      <b>オプションと継続運用:</b>SEO/AEO 月額 NT$14,800/月(相場は月 NT$2〜3 万。毎月のコンテンツ更新、順位レポート、技術保守を含みます)・言語追加 +NT$18,000・2 年目以降のサーバー保守 NT$8,800/年。お見積りは無料診断のあとに正式に確定し、無理な営業はいたしません。\n    ","demo-ns-name":"金益豐食品行","price2-mkt":"NT$ 8–15 万","price3-mkt":"NT$ 18–35 万"},
+ko:{"marquee":"★ 優時科技 홈페이지에 오신 것을 환영합니다 ★ 800×600 해상도, IE 6.0 이상에 최적화되어 있습니다 ★ 24시간 연중무휴 접수 ★ 방문자 수 집계 불가 (카운터가 고장났어요) ★","brand-sub":"홈페이지 재구축 × SEO × AI 검색 최적화","nav-scan":"무료 간편 진단","nav-demo":"개선 전후","nav-results":"예상 성과","nav-pricing":"요금 안내","nav-faq":"자주 묻는 질문","nav-contact":"문의하기","header-cta":"무료 진단 →","sticky-text":"<b>무료 진단, 3분이면 새는 곳이 보입니다</b>만족하지 않으시면 비용은 받지 않습니다","sticky-cta":"지금 신청 →","hero-pill":"AI로 빠르게 제작・과장 없는 솔직한 진단","hero-h1":"손님은 지금 당신을 검색하고 있는데,<br>찾아가는 곳은 <em>다른 가게</em>입니다.","hero-p":"단골은 입소문으로, 새 손님은 검색으로 찾아옵니다. 홈페이지가 오래됐거나 열리지 않거나, 페이스북 페이지뿐이라면 Google과 ChatGPT는 제대로 된 홈페이지를 가진 경쟁 업체로 손님을 안내할 수밖에 없습니다. 저희는 AI로 속도를 높인 제작 방식으로, 합리적인 가격에 홈페이지와 검색 노출을 한 번에 제대로 만들어 드립니다.","hero-cta1":"무료 홈페이지 진단 받기 →","hero-cta2":"개선 전후 비교 보기","unit-biz":"곳","stat1-desc":"2026년 8월에 직접 진단한 대만 중소기업","stat2-desc":"자체 홈페이지 없이 페이스북 페이지나 업종별 안내 사이트만 있음","stat3-desc":"인증서 만료 또는 서버 다운으로 아예 열리지 않음","stat4-desc":"AI 검색엔진이 인용할 수 있는 구조화된 콘텐츠를 갖춤","stats-note":"대만 제조업, 오래된 음식점, 지역 서비스업 등 33개 기업의 홈페이지를 직접 진단한 결과입니다 (2026/08).","scan-eyebrow":"무료 간편 진단・15초면 결과 확인","scan-h2":"먼저 확인해 보세요, 내 홈페이지가 놓치는 손님은 얼마나 될까요?","scan-lead":"현재 주소를 입력하시면 SEO(Google 검색), AEO(AI 검색), LEO(지역/지도 검색) 예비 점수와 가장 흔한 감점 원인을 바로 확인할 수 있습니다.","scan-btn":"분석 시작 →","scan-err":"올바른 주소를 입력해 주세요. 예: example.com","scan-hint":"간편 진단은 방향을 빠르게 잡기 위한 자동 추정치입니다. 페이지별 상세 진단 보고서는 아래 무료 진단을 신청해 주세요.","scan-connecting":"연결해 분석하는 중…","scan-checking":"확인 중: ","impression-title":"주소 첫인상 진단","ring-seo-label":"검색엔진 최적화","ring-aeo-label":"AI 검색 최적화","ring-leo-label":"지역/지도 검색","scan-cta-btn":"전체 무료 진단 신청하기 →","scan-download-btn":"이 진단 리포트 다운로드 ⬇","scan-cta-note":"영업일 기준 3일 안에 쉬운 말로 쓴 보고서를 보내 드립니다","lead-name":"상호/담당자","lead-phone":"연락처","lead-email":"이메일 (선택)","lead-url":"주소 또는 페이지","lead-msg":"추가 설명 (선택)","lead-submit":"보내기, 무료 진단 신청 →","lead-cancel":"취소","lead-note":"보내기를 누르면 메일 앱이 열립니다. 발송을 확인하시면 신청이 완료됩니다. 반응이 없으면 kairos.ai.tech@gmail.com 으로 직접 메일을 보내 주셔도 됩니다.","scan-note":"간편 진단은 입력하신 주소에 실시간 연결과 DNS 확인을 시도하고 주소 특성에 따라 자동으로 추정한 결과입니다. 페이지별 수작업 점검이 아니며, 정식 점수는 무료 진단 보고서를 기준으로 합니다.","leaks-eyebrow":"흔히 있는 네 가지 누수","leaks-h2":"내 홈페이지가 손님을 경쟁 업체로 보내고 있을지도 모릅니다","leak1-flag":"인증서 만료・접속 불가","leak1-h3":"브라우저에 '안전하지 않음' 경고가 바로 뜹니다","leak1-p":"진단한 33곳 중 5곳은 홈페이지가 열리지 않거나 인증서가 만료되어 있었습니다. 미쉐린 추천을 받은 노포도 마찬가지였습니다. 경고를 본 손님의 열에 아홉은 바로 창을 닫습니다.","leak2-flag":"10년째 그대로","leak2-h3":"2005년식 디자인, 휴대폰에서는 볼 수 없습니다","leak2-p":"PC 전용의 낡은 구조, 이미지로 만든 메뉴와 영업시간, 2018년에 멈춘 최신 소식. 검색의 60% 이상이 휴대폰에서 이루어지는 지금, 오래된 홈페이지는 없는 것과 같습니다.","leak3-flag":"페이지만 있음","leak3-h3":"페이스북은 내 홈페이지가 아닙니다","leak3-p":"페이지의 노출은 알고리즘이 정하고, Google은 본문을 거의 찾지 못합니다. 가격, 이야기, 주문 방법은 내가 소유한 도메인에 두어야 합니다.","leak4-flag":"트래픽을 빼앗김","leak4-h3":"블로거가 내 검색 결과를 차지하고 있습니다","leak4-p":"손님이 가게 이름을 검색하면 가장 먼저 보이는 건 남이 쓴 맛집 후기와 업종별 안내 사이트이고, 정보도 오래된 경우가 많습니다. ChatGPT에 '추천'을 물어봐도 AI가 인용하는 곳은 내 가게가 아니라 그런 페이지들입니다.","demo-eyebrow":"개선 전후","demo-h2":"같은 가게, 두 가지 운명","demo-lead":"가상의 시연 가게 '진이펑 식품점'으로 보여 드립니다. 가운데 슬라이더를 끌어 개선 전후를 직접 비교해 보세요.","demo-btn-old":"개선 전","demo-btn-new":"개선 후","demo-urlbox":"비교 시연: 진이펑 식품점","demo-badge-bad":"⚠ 안전하지 않음","demo-os-head":"☆환영합니다☆진이펑 식품점☆","demo-os-marquee":"최신 소식: 설 연휴에도 정상 영업합니다! (2018/02/10)","demo-os-nav":"\n                <div>홈</div><div>회사 소개</div><div>제품 소개</div><div>연락처</div>\n               ","demo-os-body":"\n                <div class=\"broken\">🖼 이미지를 표시할 수 없습니다</div>\n                저희 가게는 1973년에 문을 열어 전통 떡, 과자, 명절 선물 세트를 전문으로 만듭니다. 품질을 보증하오니 전화로 주문해 주세요.<br><br>\n                주문 전화: 04-1234-5678 (영업시간에만 받습니다)<br>\n                팩스: 04-1234-5679<br><br>\n                <font color=\"#CC0000\">※ 이 사이트는 IE 6.0 이상, 800×600 해상도에 최적화되어 있습니다 ※</font>\n               ","demo-os-count":"귀하는 000048721 번째 방문자입니다|마지막 업데이트: 2018/02/10","demo-badge-good":"🔒 https","demo-ns-tag":"EST. 1973 · 장화","demo-ns-p":"3대째 이어 온 수제 떡과 명절 선물 세트. 당일 제조, 전국 택배 배송.","demo-ns-btn1":"온라인 주문","demo-ns-btn2":"매장 안내","demo-ns-cell1":"<b>영업시간</b>화–일 08:00–19:00","demo-ns-cell2":"<b>자주 묻는 질문</b>택배비는 어떻게 계산하나요? 도착일을 지정할 수 있나요? — 무게에 따라 계산하며 도착일 지정이 가능합니다 (섣달그믐 휴무).","demo-ns-cell3":"<b>Google 리뷰 4.8 ★</b>리뷰 236건, 단골손님들은 홍구이쿠이(붉은 거북 떡)와 펑리수(파인애플 케이크)를 추천합니다.","demo-ns-cell4":"<b>배송 방법</b>전국 택배, NT$1,000 이상 무료 배송. 타이중, 장화는 편의점 픽업 지정 가능.","demo-hint":"← 끌어서 비교 →","demo-bad1":"✕ HTTPS 없음, 브라우저가 경고","demo-bad2":"✕ 휴대폰에서 읽을 수 없음","demo-bad3":"✕ 전화 주문만 가능","demo-bad4":"✕ 검색엔진이 핵심 정보를 읽지 못함","demo-good1":"✓ HTTPS + 반응형 디자인","demo-good2":"✓ 온라인 주문, 24시간 접수","demo-good3":"✓ FAQ + 구조화 데이터, AI가 인용","demo-good4":"✓ 중국어/영어/일본어 지원, 관광객도 놓치지 않음","duo-eyebrow":"저희가 하는 두 가지 일","duo-h2":"Google은 당신을 찾아내고, AI는 당신을 추천합니다","duo1-head":"SEO|검색엔진 최적화","duo1-p":"손님이 Google에서 '업종 + 지역 + 추천'을 검색할 때 업종별 안내 사이트나 블로그가 아니라 내 홈페이지가 나오도록 합니다. 방법은 현대적인 사이트 구조, 올바른 제목과 설명, 지역 업체 정보, 꾸준한 콘텐츠 관리입니다.","duo1-qa":"<i>손님이 검색</i> '장화 선물 추천' → 내 홈페이지가 첫 페이지에 노출","duo2-head":"AEO|AI 검색엔진 최적화","duo2-p":"ChatGPT, Gemini에 바로 물어보는 손님이 점점 늘고 있습니다. AI는 이해할 수 있고 믿을 수 있는 페이지만 인용합니다. 방법은 FAQ 질의응답 콘텐츠, 구조화 데이터(Schema), 텍스트로 정리한 영업 정보와 가격표로, AI가 답할 때 내 가게를 인용하게 합니다.","duo2-qa":"<i>손님이 AI에게 질문</i> '타이중에서 사무실 칸막이 시공 잘하는 곳 추천해 줘' → AI가 내 서비스 페이지를 인용해 답변","roi-eyebrow":"투자 수익 계산","roi-h2":"좋은 홈페이지는 매출로 얼마의 가치가 있을까요?","roi-lead":"슬라이더를 움직여 내 업종에 맞는 숫자를 넣어 보세요. 보수적인 추정으로, 이전에는 나를 찾지 못했지만 이제는 찾게 된 새 손님만 계산합니다.","roi-preset1":"음식점・소매","roi-preset2":"병의원・지역 서비스","roi-preset3":"제조・B2B","roi-label1":"월간 관련 검색량","roi-label2":"그중 문의/방문으로 이어지는 비율","roi-label3":"평균 객단가 (NT$)","roi-out-month":"월 추가 매출 추정","roi-out-year":"연 추가 매출 추정","roi-note":"계산 결과는 참고용이며 실제 성과는 업종의 경쟁 정도와 운영 노력에 따라 달라집니다. 검색량은 무료 진단 때 실제 데이터로 확인해 드립니다.","ind-eyebrow":"개선 후 시연","ind-h2":"개선하면 이런 모습입니다. 손님과 수익은 얼마나 늘까요?","ind-lead":"가상의 시연 가게 세 곳입니다. 왼쪽은 개선한 홈페이지, 오른쪽은 보수적인 가정으로 계산한 개선 전후의 전환율, 추가 손님, 수익입니다. 업종이나 시나리오를 바꾸면 숫자도 함께 바뀝니다.","ind-tab-food":"음식점・소매","ind-tab-clinic":"병의원・지역 서비스","ind-tab-b2b":"제조・B2B","ind-proj-h":"예상 성과 (오픈 후 12개월)","ind-scn-low":"보수적","ind-scn-mid":"기대치","ind-scn-high":"낙관적","ind-note":"시연 가게와 숫자는 모두 가상이며 계산 방식을 설명하기 위한 것입니다. 성사 손님 = 월간 관련 검색량 × 도달률(검색 후 내 사이트로 들어오는 비율) × 방문자 전환율(방문자가 문의/예약/방문하는 비율) × 성사율이며, '추가'는 개선 후에서 개선 전을 뺀 값입니다. 전환율은 새 사이트가 열리면 바로 오르고, 도달률은 SEO/AEO와 함께 약 8개월에 걸쳐 서서히 올라갑니다. 수익은 SEO/AEO 월 요금 NT$14,800과 1회성 구축비를 뺀 금액입니다. 실제 성과는 업종의 경쟁 정도와 운영 노력에 따라 달라지며, 무료 진단 때 실제 검색 데이터로 다시 계산해 드립니다.","pricing-eyebrow":"플랜 및 요금","pricing-h2":"시세의 절반 가격, 2주 만에 납품","pricing-lead":"AI로 속도를 높인 제작 방식으로, 예전에는 한두 달 걸리던 프로젝트를 2주 안에 마칩니다. 절감한 비용은 그대로 견적에 반영합니다.","price1-h3":"무료 홈페이지 진단","price1-for":"아직 고민 중이신가요? 먼저 현재 상태를 확인해 보세요","price1-mkt":"아무 조건 없음","price1-li1":"현재 홈페이지/페이지 종합 진단 보고서","price1-li2":"Google 및 AI 검색 노출 분석","price1-li3":"경쟁 업체 비교와 구체적인 개선 체크리스트","price2-h3":"빠른 홈페이지","price2-for":"추천 대상: 노포, 병의원, 지역 서비스업","price-from":"부터","price-mkt-label":"동급 시장 시세","price2-li1":"5–7페이지 기업 홈페이지, 14일 만에 오픈","price2-li2":"HTTPS + 휴대폰/태블릿/PC 반응형","price2-li3":"기본 SEO + 구조화 데이터 (AEO ready)","price2-li4":"영업 정보, FAQ, Google 비즈니스 연동","price2-li5":"첫해 호스팅 및 유지보수 포함","price3-h3":"홈페이지 재구축 Plus","price3-for":"추천 대상: 수출 제조업체, 주문/예약이 필요한 가게","price3-li1":"빠른 홈페이지의 모든 구성 포함","price3-li2":"맞춤 비주얼 디자인 + 브랜드 카피라이팅","price3-li3":"온라인 주문 또는 예약 시스템","price3-li4":"영문판 (기계 번역이 아닌 자연스러운 번역)","price3-li5":"제품/서비스 페이지 최대 20페이지","pricing-addons":"\n      <b>추가 옵션과 지속 관리:</b>SEO/AEO 월 요금 NT$14,800/월 (시장 시세 월 2–3만, 매월 콘텐츠 업데이트, 순위 리포트, 기술 유지보수 포함)・언어 1개 추가 +NT$18,000・2년차부터 호스팅 유지보수 NT$8,800/년. 모든 견적은 무료 진단 후 정식으로 확정하며, 억지로 권유하지 않습니다.\n     ","steps-eyebrow":"진행 순서","steps-h2":"진단부터 오픈까지, 단 3주","step1-b":"무료 진단","step1-p":"현재 홈페이지나 페이지 링크를 보내 주세요. 영업일 기준 3일 안에 전체 보고서를 받으실 수 있습니다.","step1-t":"1–3일차","step2-b":"제안 및 확정","step2-p":"15분 전화 또는 LINE 상담으로 페이지, 콘텐츠, 견적을 확정합니다.","step2-t":"4–7일차","step3-b":"제작 및 검수","step3-p":"디자인 시안을 먼저 확인한 뒤 개발합니다. 진행 상황은 언제든 보실 수 있고, 마음에 드셔야 오픈합니다.","step3-t":"8–18일차","step4-b":"오픈 및 인도","step4-p":"도메인, 호스팅, 관리자 페이지를 모두 넘겨 드립니다. 자산은 사장님 것이며 묶이지 않습니다.","step4-t":"19–21일차","faq-eyebrow":"자주 묻는 질문","faq-h2":"사장님들이 가장 많이 물어보시는 것들","faq1-q":"무료 홈페이지 진단, 정말 완전 무료인가요?","faq1-a":"네, 아무 조건이 없습니다. 진단 후 쉬운 말로 쓴 보고서로 현재 상태와 구체적인 제안을 드리며, 추가 구매나 계약을 강요하지 않습니다.","faq2-q":"왜 시세보다 가격이 훨씬 저렴한가요?","faq2-a":"AI로 속도를 높인 제작 방식으로, 예전에는 한두 달 걸리던 프로젝트를 2주 안에 끝냅니다. 절감한 인건비가 그대로 견적에 반영됩니다.","faq3-q":"SEO와 AEO는 무엇이 다른가요?","faq3-a":"SEO는 Google 검색에서 내 홈페이지가 발견되게 하는 것이고, AEO는 ChatGPT, Gemini 같은 AI 검색엔진이 답변할 때 내 서비스 내용을 인용하게 하는 것입니다. 방법이 서로 달라 둘 다 필요합니다.","faq4-q":"홈페이지 없이 페이스북 페이지만 있는데 괜찮을까요?","faq4-a":"괜찮습니다. 페이지의 내용은 Google이 온전히 색인하지 못하므로, 먼저 내 도메인으로 홈페이지를 만드시길 권해 드립니다. 페이지는 함께 운영하며 서로 방문자를 이어 줄 수 있습니다.","faq5-q":"홈페이지가 완성되면 도메인과 호스팅의 소유권은 누구에게 있나요?","faq5-a":"도메인, 호스팅 계정, 관리자 페이지까지 모두 고객님께 넘겨 드립니다. 자산은 온전히 고객님 것이며, 나중에 관리 업체를 바꾸셔도 묶이지 않습니다.","contact-h2":"무료 진단으로 시작해 보세요","contact-lead":"가게 이름이나 주소를 메일로 알려 주세요. 영업일 기준 3일 안에 사장님을 위해 쓴 쉬운 진단 보고서를 받으실 수 있습니다. 어려운 용어 없이 '어디가 새고 있는지, 어떻게 막을지, 막을 만한 가치가 있는지'만 담았습니다.","contact-btn":"메일로 무료 진단 신청 →","footer-copy":"© 2026 · 대만 · 홈페이지 재구축 × SEO × AI 검색 최적화","footer-nap-addr":"104502 타이베이시 중산구 리싱리 푸싱베이로 48호 10층-1","footer-nap-maplabel":"Google 지도 →","demo-ns-name":"진이펑 식품점","price2-mkt":"NT$ 8–15만","price3-mkt":"NT$ 18–35만"}
+};
+var DYN={
+zh:{"scan.analyzing":"分析中…","scan.analyze":"開始分析 →","scan.step1":"正在讀取網站基本資訊…","scan.step2":"正在嘗試連線並檢查網域狀態…","scan.step3":"正在檢查 AI 搜尋(AEO)可讀性…","scan.step4":"正在檢查在地/地圖搜尋(LEO)訊號…","scan.step5":"整理報告中…","verdict.bad":"落後同業","verdict.mid":"普通,有進步空間","verdict.good":"表現不錯","fact.domain":"網域","fact.https":"HTTPS 連線","fact.dns":"DNS 狀態","fact.site":"建站方式","fact.httpsFail":"✕ 連線失敗","fact.httpsOk":"✓ 可連線(HTTPS)","fact.unknown":"— 無法判斷","fact.dnsNone":"✕ 找不到紀錄","fact.dnsOk":"✓ 有效解析","fact.social":"社群平台頁面","fact.builder":"免費建站平台","fact.own":"自有網域","cons.dns":"這個網址目前偵測不到有效的網域紀錄,可能已經過期或設定錯誤","cons.https":"嘗試連線這個網址的 HTTPS 版本失敗,瀏覽器可能顯示「不安全」警告或根本打不開","cons.social":"只找到社群/粉專頁面,沒有自己擁有的網域,Google 幾乎搜不到完整內容","cons.builder":"使用免費建站平台的子網域,而不是自己擁有的網域,不利於品牌與長期 SEO 經營","cons.schema":"頁面缺少可被 AI 引用的結構化資料(FAQ / Schema),ChatGPT 等 AI 搜尋不易推薦你","cons.mobile":"手機版排版可能跑版或字體過小,而超過六成搜尋來自手機","cons.gbp":"未偵測到 Google 商家檔案串接,在地/地圖搜尋排名可能較弱","cons.speed":"頁面載入速度可能偏慢,影響 Google 排名與跳出率","cons.nap":"找不到純文字化的營業時間、地址、電話,AI 與地圖工具難以正確引用","cons.fresh":"內容更新頻率偏低,搜尋引擎可能判定為低活躍度網站","lead.name":"店名/聯絡人:","lead.phone":"聯絡電話:","lead.email":"Email:","lead.url":"網址/粉專:","lead.notes":"補充說明:","mail.subject":"索取免費網站健檢報告","dl.preparing":"PDF 產生中…","dl.failed":"產生失敗,請再試一次","dl.file":"網站快篩報告-","rep.target":"檢測對象:","rep.emailUs":"寄信索取免費健檢 →","rep.title":"你的網站健檢分析報告","rep.subtitle":"SEO・AEO・LEO 初步快篩結果,以及我們建議的改造方向。不誇大,只講看得到的問題。","rep.sectionResults":"你的快篩結果","rep.sectionPlan":"我們的改造方案","rep.planIntro":"上面是快篩抓到的問題,下面是我們平常處理這類狀況的做法:先免費幫你完整健檢,確認要做什麼,再談價格。","rep.processHeading":"四步驟,21 天上線","rep.pricingHeading":"方案與價格","rep.ctaHeading":"想知道完整的問題清單?","rep.ctaBody":"把你的網站或粉專連結寄到 kairos.ai.tech@gmail.com,三個工作天內收到逐頁健檢報告。免費、不綁約、不推銷,看完再決定要不要做。","rep.disclaimer":"本報告的快篩分數為根據網址與公開訊號的自動化估算,並非逐頁人工健檢;實際狀況以免費健檢報告為準。","rep.generatedBy":"本報告由 優時科技 Kairos.ai 免費快篩工具產生","time.back":"✨ 恢復現代版官網","time.old":"🕰 看看以前的網站長怎樣","calc.payback":"以「快速官網」方案 NT$59,800 計,約 {n} 個月回本","calc.lt":"不到 0.1","ind.fun.head":"改造前 vs 改造後(每月,上線穩定後)","ind.fun.before":"改造前","ind.fun.after":"改造後","ind.fun.reach":"觸及率(搜尋後點進你網站的比例)","ind.fun.visits":"每月網站訪客","ind.kpi.cust":"每月新增成交客人(改造後 − 改造前)","ind.kpi.rev":"每月新增營收","ind.kpi.gp":"每月淨利(毛利扣 SEO/AEO 月費)","ind.kpi.be":"回本時間","ind.beUnit":"個月","ind.beNone":"12 個月以上","ind.chart":"累計淨獲利(已扣建置費與月費)","ind.chartAria":"每月累計淨獲利","ind.bottom":"第一年預估新增 {c} {unit},累計淨獲利 {net}(一年總投入 {cost},毛利約為投入的 {x} 倍)"},
+en:{"scan.analyzing":"Analyzing…","scan.analyze":"Analyze →","scan.step1":"Reading basic site info…","scan.step2":"Attempting a live connection & DNS check…","scan.step3":"Checking AI-search (AEO) readability…","scan.step4":"Checking local/map search (LEO) signals…","scan.step5":"Compiling report…","verdict.bad":"Behind competitors","verdict.mid":"Average, room to grow","verdict.good":"Doing well","fact.domain":"Domain","fact.https":"HTTPS connection","fact.dns":"DNS status","fact.site":"Site type","fact.httpsFail":"✕ Connection failed","fact.httpsOk":"✓ Reachable over HTTPS","fact.unknown":"— Unknown","fact.dnsNone":"✕ No record found","fact.dnsOk":"✓ Resolves","fact.social":"Social page","fact.builder":"Free site builder","fact.own":"Own domain","cons.dns":"No valid DNS record detected for this domain — it may be expired or misconfigured","cons.https":"A live connection attempt to the HTTPS version of this address failed — visitors may see an \"unsafe\" warning or the site may not load at all","cons.social":"Only a social/fan page found, no owned domain — Google can barely index the content","cons.builder":"Running on a free website-builder subdomain instead of a domain you own — hurts branding and long-term SEO","cons.schema":"Missing structured data (FAQ / Schema) that AI can cite — ChatGPT and similar AI search rarely recommend you","cons.mobile":"Mobile layout may be broken or text too small, while over 60% of searches come from mobile","cons.gbp":"No Google Business Profile integration detected — local/map search ranking may be weak","cons.speed":"Page load speed may be slow, hurting Google ranking and bounce rate","cons.nap":"No plain-text hours, address, or phone number found — hard for AI and map tools to cite correctly","cons.fresh":"Content update frequency looks low — search engines may flag this as a low-activity site","lead.name":"Name/Business: ","lead.phone":"Phone: ","lead.email":"Email: ","lead.url":"Website/Page: ","lead.notes":"Notes: ","mail.subject":"Requesting a free website health check","dl.preparing":"Preparing PDF…","dl.failed":"Failed — try again","dl.file":"website-scan-report-","rep.target":"Target: ","rep.emailUs":"Email us →","rep.title":"Your Website Health Check Report","rep.subtitle":"Your SEO, AEO and LEO quick-scan results, plus how we'd suggest fixing them. No hype, just the issues we can actually see.","rep.sectionResults":"Your Scan Results","rep.sectionPlan":"Our Reform Plan","rep.planIntro":"Above is what the quick scan found. Below is how we usually handle issues like these: a free full health check first, then we agree on what's worth doing before we talk price.","rep.processHeading":"Four steps, live in 21 days","rep.pricingHeading":"Plans & Pricing","rep.ctaHeading":"Want the full list of issues?","rep.ctaBody":"Email your website or fan page link to kairos.ai.tech@gmail.com and you'll get a page-by-page health check report within three working days. Free, no contract, no sales pressure. Read it, then decide.","rep.disclaimer":"The quick-scan scores in this report are automated estimates based on your URL and publicly visible signals, not a page-by-page manual audit. The free health check report is the one to rely on.","rep.generatedBy":"Report generated by Kairos.ai Free Scan","time.back":"✨ Back to modern site","time.old":"🕰 See the old-school version","calc.payback":"Based on the \"Quick Site\" plan at NT$59,800, payback in about {n} months","calc.lt":"under 0.1","ind.fun.head":"Before vs after the rebuild (per month, once stabilised)","ind.fun.before":"Before","ind.fun.after":"After","ind.fun.reach":"Reach (share of searchers who click through to your site)","ind.fun.visits":"Site visitors per month","ind.kpi.cust":"Extra customers per month (after − before)","ind.kpi.rev":"Extra revenue per month","ind.kpi.gp":"Net profit per month (gross profit minus SEO/AEO fee)","ind.kpi.be":"Payback time","ind.beUnit":"months","ind.beNone":"beyond 12 months","ind.chart":"Cumulative net profit (after build + monthly fees)","ind.chartAria":"Cumulative net profit by month","ind.bottom":"Year one: about {c} extra {unit}, cumulative net profit {net} (total outlay {cost}; gross profit ≈ {x}x outlay)"},
+ja:{"scan.analyzing":"分析中…","scan.analyze":"分析する →","scan.step1":"サイトの基本情報を読み取っています…","scan.step2":"接続を試み、ドメインの状態を確認しています…","scan.step3":"AI 検索(AEO)での読み取りやすさを確認しています…","scan.step4":"地域・マップ検索(LEO)のシグナルを確認しています…","scan.step5":"レポートをまとめています…","verdict.bad":"同業他社に後れをとっています","verdict.mid":"平均的で、伸びしろがあります","verdict.good":"好調です","fact.domain":"ドメイン","fact.https":"HTTPS 接続","fact.dns":"DNS の状態","fact.site":"サイトの種類","fact.httpsFail":"✕ 接続に失敗","fact.httpsOk":"✓ 接続できます(HTTPS)","fact.unknown":"— 判定できません","fact.dnsNone":"✕ レコードが見つかりません","fact.dnsOk":"✓ 正常に名前解決できます","fact.social":"SNS のページ","fact.builder":"無料ホームページ作成サービス","fact.own":"独自ドメイン","cons.dns":"この URL では、有効なドメインのレコードが現在確認できません。期限切れか、設定に誤りがある可能性があります","cons.https":"この URL の HTTPS 版への接続に失敗しました。ブラウザに「安全でない」警告が出るか、まったく開けない可能性があります","cons.social":"見つかったのは SNS・Facebook ページのみで、自分で所有するドメインがありません。Google ではほとんど内容が検索されません","cons.builder":"自分のドメインではなく、無料ホームページ作成サービスのサブドメインを使っています。ブランドづくりや長期的な SEO には不利です","cons.schema":"AI が引用できる構造化データ(FAQ / Schema)が不足しており、ChatGPT などの AI 検索で推薦されにくい状態です","cons.mobile":"スマホ表示でレイアウトが崩れたり、文字が小さすぎたりする可能性があります。検索の 6 割以上はスマホからです","cons.gbp":"Google ビジネスプロフィールとの連携が確認できません。地域・マップ検索の順位が弱い可能性があります","cons.speed":"ページの読み込みが遅い可能性があり、Google の順位や離脱率に影響します","cons.nap":"営業時間・住所・電話番号がテキストで見つかりません。AI やマップツールが正しく引用しにくい状態です","cons.fresh":"コンテンツの更新頻度が低く、検索エンジンに活動の少ないサイトと判断される可能性があります","lead.name":"店名・ご担当者名: ","lead.phone":"電話番号: ","lead.email":"Email: ","lead.url":"URL / Facebook ページ: ","lead.notes":"補足事項: ","mail.subject":"無料サイト診断レポートの申し込み","dl.preparing":"PDF を作成中…","dl.failed":"作成に失敗しました。もう一度お試しください","dl.file":"サイトクイック診断レポート-","rep.target":"診断対象: ","rep.emailUs":"メールで無料診断を申し込む →","rep.title":"サイト診断レポート","rep.subtitle":"SEO・AEO・LEO のクイック診断結果と、私たちがおすすめする改善の方向性です。誇張はせず、目に見える課題だけをお伝えします。","rep.sectionResults":"クイック診断の結果","rep.sectionPlan":"私たちの改善プラン","rep.planIntro":"上はクイック診断で見つかった課題、下はこうしたケースで私たちが通常行っている進め方です。まず無料で詳しく診断し、何をするかを確認してから、料金のお話をします。","rep.processHeading":"4 ステップ、21 日で公開","rep.pricingHeading":"プランと料金","rep.ctaHeading":"課題の全リストを知りたい方へ","rep.ctaBody":"サイトまたは Facebook ページのリンクを kairos.ai.tech@gmail.com までお送りください。3 営業日以内に、ページごとの診断レポートをお届けします。無料・契約の縛りなし・しつこい営業なし。ご覧になってから、進めるかどうかお決めください。","rep.disclaimer":"本レポートのクイック診断スコアは、URL と公開されている情報をもとにした自動の推定値であり、ページごとの人による診断ではありません。実際の状況は無料診断レポートをご確認ください。","rep.generatedBy":"本レポートは 優時科技 Kairos.ai の無料クイック診断ツールで作成されました","time.back":"✨ 現代版のサイトに戻る","time.old":"🕰 昔のサイトを見てみる","calc.payback":"「クイックサイト」プラン NT$59,800 の場合、約 {n} か月で元が取れます","calc.lt":"0.1 未満","ind.fun.head":"改善前と改善後(月間、公開後に安定してから)","ind.fun.before":"改善前","ind.fun.after":"改善後","ind.fun.reach":"到達率(検索後にあなたのサイトを開く割合)","ind.fun.visits":"月間のサイト訪問者数","ind.kpi.cust":"月間の新規成約顧客数(改善後 − 改善前)","ind.kpi.rev":"月間の新規売上","ind.kpi.gp":"月間の純利益(粗利から SEO/AEO 月額費用を引いた額)","ind.kpi.be":"投資回収までの期間","ind.beUnit":"か月","ind.beNone":"12 か月以上","ind.chart":"累計純利益(制作費と月額費用を差し引き後)","ind.chartAria":"月ごとの累計純利益","ind.bottom":"1 年目の新規は約 {c} {unit}、累計純利益は {net}(1 年間の総投入額 {cost}、粗利は投入額の約 {x} 倍)"},
+ko:{"scan.analyzing":"분석 중…","scan.analyze":"분석 시작 →","scan.step1":"사이트 기본 정보를 읽는 중…","scan.step2":"연결을 시도하고 도메인 상태를 확인하는 중…","scan.step3":"AI 검색(AEO) 가독성을 확인하는 중…","scan.step4":"지역/지도 검색(LEO) 신호를 확인하는 중…","scan.step5":"보고서를 정리하는 중…","verdict.bad":"경쟁 업체보다 뒤처짐","verdict.mid":"보통, 개선 여지 있음","verdict.good":"양호","fact.domain":"도메인","fact.https":"HTTPS 연결","fact.dns":"DNS 상태","fact.site":"사이트 유형","fact.httpsFail":"✕ 연결 실패","fact.httpsOk":"✓ 연결 가능 (HTTPS)","fact.unknown":"— 판단 불가","fact.dnsNone":"✕ 기록을 찾을 수 없음","fact.dnsOk":"✓ 정상 확인","fact.social":"SNS 플랫폼 페이지","fact.builder":"무료 홈페이지 제작 서비스","fact.own":"자체 도메인","cons.dns":"이 주소에서는 현재 유효한 도메인 기록이 확인되지 않습니다. 만료되었거나 설정이 잘못되었을 수 있습니다","cons.https":"이 주소의 HTTPS 버전에 연결을 시도했지만 실패했습니다. 브라우저에 '안전하지 않음' 경고가 뜨거나 아예 열리지 않을 수 있습니다","cons.social":"SNS/페이지만 확인되고 직접 소유한 도메인이 없습니다. Google이 전체 내용을 거의 찾지 못합니다","cons.builder":"직접 소유한 도메인이 아니라 무료 제작 서비스의 하위 도메인을 사용 중이라 브랜드와 장기적인 SEO 운영에 불리합니다","cons.schema":"AI가 인용할 수 있는 구조화 데이터(FAQ / Schema)가 없어 ChatGPT 같은 AI 검색이 추천하기 어렵습니다","cons.mobile":"휴대폰 화면에서 레이아웃이 깨지거나 글씨가 너무 작을 수 있습니다. 검색의 60% 이상이 휴대폰에서 이루어집니다","cons.gbp":"Google 비즈니스 프로필 연동이 확인되지 않아 지역/지도 검색 순위가 낮을 수 있습니다","cons.speed":"페이지 로딩 속도가 느릴 수 있어 Google 순위와 이탈률에 영향을 줍니다","cons.nap":"텍스트로 된 영업시간, 주소, 전화번호를 찾을 수 없어 AI와 지도 서비스가 정확히 인용하기 어렵습니다","cons.fresh":"콘텐츠 업데이트 빈도가 낮아 검색엔진이 활동이 적은 사이트로 판단할 수 있습니다","lead.name":"상호/담당자: ","lead.phone":"연락처: ","lead.email":"이메일: ","lead.url":"홈페이지/페이지 주소: ","lead.notes":"추가 설명: ","mail.subject":"무료 홈페이지 진단 보고서 신청","dl.preparing":"PDF 생성 중…","dl.failed":"생성에 실패했습니다. 다시 시도해 주세요","dl.file":"웹사이트-간편진단-리포트-","rep.target":"진단 대상: ","rep.emailUs":"메일로 문의하기 →","rep.title":"내 웹사이트 진단 분석 보고서","rep.subtitle":"SEO・AEO・LEO 간편 진단 결과와 저희가 권하는 개선 방향입니다. 과장 없이, 눈에 보이는 문제만 말씀드립니다.","rep.sectionResults":"간편 진단 결과","rep.sectionPlan":"저희의 개선 방안","rep.planIntro":"위는 간편 진단에서 확인된 문제이고, 아래는 이런 경우 저희가 평소 진행하는 방식입니다. 먼저 무료로 전체 진단을 해서 무엇을 할지 정한 뒤에 가격을 이야기합니다.","rep.processHeading":"4단계, 21일이면 오픈","rep.pricingHeading":"플랜 및 요금","rep.ctaHeading":"전체 문제 목록이 궁금하신가요?","rep.ctaBody":"홈페이지나 페이지 링크를 kairos.ai.tech@gmail.com 으로 보내 주시면 영업일 기준 3일 안에 페이지별 진단 보고서를 받으실 수 있습니다. 무료이고 약정이 없으며 영업도 하지 않습니다. 보시고 나서 결정하세요.","rep.disclaimer":"이 보고서의 간편 진단 점수는 주소와 공개된 신호를 바탕으로 한 자동 추정치이며 페이지별 수작업 진단이 아닙니다. 실제 상태는 무료 진단 보고서를 기준으로 합니다.","rep.generatedBy":"이 보고서는 優時科技 Kairos.ai 무료 간편 진단 도구로 생성되었습니다","time.back":"✨ 최신 홈페이지로 돌아가기","time.old":"🕰 예전 홈페이지는 어땠을까?","calc.payback":"'빠른 홈페이지' 플랜 NT$59,800 기준, 약 {n}개월이면 비용을 회수합니다","calc.lt":"0.1 미만","ind.fun.head":"개선 전 vs 개선 후 (월 기준, 안정화 이후)","ind.fun.before":"개선 전","ind.fun.after":"개선 후","ind.fun.reach":"도달률 (검색 후 내 사이트로 들어오는 비율)","ind.fun.visits":"월간 사이트 방문자","ind.kpi.cust":"월 추가 성사 손님 (개선 후 − 개선 전)","ind.kpi.rev":"월 추가 매출","ind.kpi.gp":"월 순이익 (매출총이익에서 SEO/AEO 월 요금 차감)","ind.kpi.be":"비용 회수 기간","ind.beUnit":"개월","ind.beNone":"12개월 이상","ind.chart":"누적 순이익 (구축비와 월 요금 차감 후)","ind.chartAria":"월별 누적 순이익","ind.bottom":"첫해 {c}{unit} 증가 예상, 누적 순이익 {net} (1년 총 투입 {cost}, 매출총이익은 투입의 약 {x}배)"}
+};
+var IND_TXT={
+zh:{"food":{"nav":"首頁 · 商品 · 訂購 · 門市","tag":"EST. 1973 · 彰化","name":"金益豐食品行","p":"三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。","b1":"線上訂購","b2":"門市資訊","cells":[["營業時間","週二–週日 08:00–19:00"],["Google 評論 4.8 ★","236 則評論,紅龜粿、鳳梨酥最受推薦"],["配送方式","全台宅配,滿 NT$1,000 免運"],["常見問題","可指定到貨日嗎?可以(除夕公休)"]],"aiQ":"彰化有推薦的紅龜粿伴手禮嗎?","aiA":"<mark>金益豐食品行</mark>(彰化)提供當日現做的紅龜粿,可全台宅配,滿 NT$1,000 免運。","lab":["每月相關搜尋","成交率","客單價","毛利率"],"conv":"訪客轉換率(詢問/下單/來店)","leads":"每月詢問/下單/來店","cust":"每月成交客人","unit":"位客人","plan":"快速官網 NT$59,800"},"clinic":{"nav":"首頁 · 診療項目 · 醫師 · 預約","tag":"牙醫診所 · 台中西區","name":"康寧牙醫診所","p":"無痛治療、洗牙與矯正諮詢。週一至週六,線上預約免排隊。","b1":"線上預約","b2":"看診時間","cells":[["看診時間","週一–週六 09:00–21:00"],["Google 評論 4.9 ★","181 則評論,「醫師很有耐心」"],["診療項目","洗牙、補牙、根管、隱形矯正"],["常見問題","健保給付嗎?洗牙每半年一次免費(健保)"]],"aiQ":"台中西區有推薦的牙醫嗎?晚上也能看診的。","aiA":"<mark>康寧牙醫診所</mark>(台中西區)週一至週六看診到晚上 9 點,可線上預約,Google 評論 4.9 顆星。","lab":["每月相關搜尋","到診率","平均療程金額","毛利率"],"conv":"訪客預約率","leads":"每月預約","cust":"每月到診新患者","unit":"位新患者","plan":"快速官網 NT$59,800"},"b2b":{"nav":"首頁 · 產品 · 認證 · EN · 詢價","tag":"精密加工 · 台中工業區","name":"宏達精密機械","p":"CNC 精密零件代工,ISO 9001 認證,小批量、急單皆可。中英文型錄下載。","b1":"線上詢價","b2":"下載型錄","cells":[["認證","ISO 9001 · 出口 12 國"],["交期","樣品 7 天、量產 3–4 週"],["可加工材質","鋁、不鏽鋼、鈦合金、工程塑膠"],["常見問題","最小訂購量?一件起,可附材質證明"]],"aiQ":"台灣有推薦的小批量鋁件 CNC 加工廠嗎?","aiA":"<mark>宏達精密機械</mark>(台中)通過 ISO 9001 認證,樣品 7 天交貨,一件起接單。","lab":["每月相關搜尋","成交率","平均訂單金額","毛利率"],"conv":"訪客詢價率","leads":"每月詢價","cust":"每月成交新客戶","unit":"位新客戶","plan":"官網重建 Plus NT$99,800"}},
+en:{"food":{"nav":"Home · Products · Order · Store","tag":"EST. 1973 · CHANGHUA","name":"Jin Yi Feng Foods","p":"Three generations of handmade rice cakes and festive gifts. Made fresh daily, shipped island-wide.","b1":"Order online","b2":"Store info","cells":[["Hours","Tue–Sun 08:00–19:00"],["Google rating 4.8 ★","236 reviews; red turtle cakes and pineapple cakes recommended"],["Delivery","Island-wide; free shipping over NT$1,000"],["FAQ","Can I choose the delivery date? Yes (closed on Lunar New Year's Eve)"]],"aiQ":"Any recommended red turtle cake gifts in Changhua?","aiA":"<mark>Jin Yi Feng Foods</mark> (Changhua) makes red turtle cakes fresh daily, ships island-wide, and offers free shipping over NT$1,000.","lab":["Monthly searches","Close rate","Avg ticket","Gross margin"],"conv":"Visitor conversion (inquiry/order/visit)","leads":"Inquiries/orders/visits per month","cust":"Customers won per month","unit":"customers","plan":"Quick Site NT$59,800"},"clinic":{"nav":"Home · Treatments · Dentists · Book","tag":"DENTAL CLINIC · WEST DIST., TAICHUNG","name":"Kangning Dental Clinic","p":"Gentle treatment, cleaning and orthodontic consults. Open Mon–Sat; book online, skip the wait.","b1":"Book online","b2":"Opening hours","cells":[["Hours","Mon–Sat 09:00–21:00"],["Google rating 4.9 ★","181 reviews: \"very patient doctor\""],["Treatments","Cleaning, fillings, root canal, clear aligners"],["FAQ","Covered by NHI? Cleaning every 6 months is covered"]],"aiQ":"Any good dentists in West District, Taichung, open in the evening?","aiA":"<mark>Kangning Dental Clinic</mark> (West District, Taichung) is open Mon–Sat until 9 pm, takes online bookings, and has a 4.9-star Google rating.","lab":["Monthly searches","Show-up rate","Avg treatment value","Gross margin"],"conv":"Visitor booking rate","leads":"Bookings per month","cust":"New patients seen per month","unit":"new patients","plan":"Quick Site NT$59,800"},"b2b":{"nav":"Home · Products · Certifications · EN · RFQ","tag":"PRECISION MACHINING · TAICHUNG","name":"Hongda Precision","p":"CNC precision parts, ISO 9001 certified, small batches and rush orders welcome. Catalog in English and Chinese.","b1":"Request a quote","b2":"Download catalog","cells":[["Certification","ISO 9001 · exports to 12 countries"],["Lead time","Samples 7 days, production 3–4 weeks"],["Materials","Aluminum, stainless, titanium, engineering plastics"],["FAQ","MOQ? One piece, with material certificates"]],"aiQ":"Taiwan CNC machining supplier for small-batch aluminum parts?","aiA":"<mark>Hongda Precision</mark> (Taichung) offers ISO 9001 CNC machining with 7-day samples and no minimum order quantity.","lab":["Monthly searches","Close rate","Avg order value","Gross margin"],"conv":"Visitor RFQ rate","leads":"RFQs per month","cust":"New accounts won per month","unit":"new accounts","plan":"Rebuild Plus NT$99,800"}},
+ja:{"food":{"nav":"ホーム · 商品 · ご注文 · 店舗","tag":"EST. 1973 · 彰化","name":"金益豐食品行","p":"三世代にわたって受け継ぐ、手作りの米菓子と祝い事のギフト。当日製造、台湾全土へお届けします。","b1":"オンライン注文","b2":"店舗情報","cells":[["営業時間","火〜日曜 08:00–19:00"],["Google 口コミ 4.8 ★","236 件の口コミ。紅亀粿(紅い亀の形の餅菓子)とパイナップルケーキが人気"],["配送方法","台湾全土へ配送、NT$1,000 以上で送料無料"],["よくある質問","到着日は指定できますか?はい、可能です(大晦日は休業)"]],"aiQ":"彰化でおすすめの紅亀粿のお土産はありますか?","aiA":"<mark>金益豐食品行</mark>(彰化)は、当日製造の紅亀粿を台湾全土へ配送しており、NT$1,000 以上で送料無料です。","lab":["月間の関連検索数","成約率","客単価","粗利率"],"conv":"訪問者の転換率(問い合わせ・注文・来店)","leads":"月間の問い合わせ・注文・来店数","cust":"月間の成約顧客数","unit":"人","plan":"クイックサイト NT$59,800"},"clinic":{"nav":"ホーム · 診療内容 · 医師紹介 · ご予約","tag":"歯科医院 · 台中西區","name":"康寧牙醫診所","p":"痛みに配慮した治療、クリーニング、矯正相談。月〜土曜、オンライン予約で待ち時間なし。","b1":"オンライン予約","b2":"診療時間","cells":[["診療時間","月〜土曜 09:00–21:00"],["Google 口コミ 4.9 ★","181 件の口コミ。「先生がとても丁寧」"],["診療内容","クリーニング、虫歯治療、根管治療、マウスピース矯正"],["よくある質問","健康保険は使えますか?半年に 1 回のクリーニングは保険適用です"]],"aiQ":"台中西區でおすすめの歯医者はありますか?夜も診てもらえるところがいいです。","aiA":"<mark>康寧牙醫診所</mark>(台中西區)は月〜土曜の夜 9 時まで診療しており、オンライン予約も可能です。Google 口コミは 4.9 点です。","lab":["月間の関連検索数","来院率","平均治療単価","粗利率"],"conv":"訪問者の予約率","leads":"月間の予約数","cust":"月間の新規来院患者数","unit":"人","plan":"クイックサイト NT$59,800"},"b2b":{"nav":"ホーム · 製品 · 認証 · EN · お見積り","tag":"精密加工 · 台中工業區","name":"宏達精密機械","p":"CNC 精密部品の受託加工。ISO 9001 認証取得、小ロット・急ぎの案件も対応します。中国語・英語のカタログをダウンロードできます。","b1":"お見積り依頼","b2":"カタログダウンロード","cells":[["認証","ISO 9001 · 輸出先 12 か国"],["納期","試作品 7 日、量産 3〜4 週間"],["対応素材","アルミ、ステンレス、チタン合金、エンジニアリングプラスチック"],["よくある質問","最小注文数は?1 個から対応、材料証明書も添付できます"]],"aiQ":"台湾で、アルミ部品の小ロット CNC 加工を頼めるおすすめの工場はありますか?","aiA":"<mark>宏達精密機械</mark>(台中)は ISO 9001 認証を取得しており、試作品は 7 日で納品、1 個から受注しています。","lab":["月間の関連検索数","成約率","平均受注額","粗利率"],"conv":"訪問者のお見積り依頼率","leads":"月間のお見積り依頼数","cust":"月間の新規成約取引先数","unit":"社","plan":"サイト再構築 Plus NT$99,800"}},
+ko:{"food":{"nav":"홈 · 상품 · 주문 · 매장","tag":"EST. 1973 · 장화","name":"진이펑 식품점","p":"3대째 이어 온 수제 떡과 명절 선물 세트. 당일 제조, 전국 택배 배송.","b1":"온라인 주문","b2":"매장 안내","cells":[["영업시간","화–일 08:00–19:00"],["Google 평점 4.8 ★","리뷰 236건, 홍구이쿠이(붉은 거북 떡)·펑리수(파인애플 케이크) 인기"],["배송 방법","전국 택배, NT$1,000 이상 무료 배송"],["자주 묻는 질문","도착일 지정이 가능한가요? 가능합니다 (섣달그믐 휴무)"]],"aiQ":"장화에서 선물하기 좋은 홍구이쿠이 추천해 줄래?","aiA":"<mark>진이펑 식품점</mark>(장화)은 당일 만든 홍구이쿠이를 전국으로 택배 배송하며, NT$1,000 이상이면 무료 배송입니다.","lab":["월간 관련 검색","성사율","객단가","매출총이익률"],"conv":"방문자 전환율 (문의/주문/방문)","leads":"월간 문의/주문/방문","cust":"월간 성사 손님","unit":"명의 손님","plan":"빠른 홈페이지 NT$59,800"},"clinic":{"nav":"홈 · 진료 항목 · 의료진 · 예약","tag":"치과의원 · 타이중 시구","name":"캉닝 치과의원","p":"무통 치료, 스케일링, 교정 상담. 월–토 진료, 온라인 예약으로 기다림 없이.","b1":"온라인 예약","b2":"진료시간","cells":[["진료시간","월–토 09:00–21:00"],["Google 평점 4.9 ★","리뷰 181건, \"선생님이 참 인내심이 있으세요\""],["진료 항목","스케일링, 충치 치료, 신경치료, 투명 교정"],["자주 묻는 질문","건강보험이 되나요? 스케일링은 6개월에 한 번 보험 적용"]],"aiQ":"타이중 시구에 추천할 만한 치과 있어? 저녁에도 진료하는 곳으로.","aiA":"<mark>캉닝 치과의원</mark>(타이중 시구)은 월–토 밤 9시까지 진료하고 온라인 예약이 가능하며, Google 평점은 4.9점입니다.","lab":["월간 관련 검색","내원율","평균 진료 금액","매출총이익률"],"conv":"방문자 예약률","leads":"월간 예약","cust":"월간 내원 신규 환자","unit":"명의 신규 환자","plan":"빠른 홈페이지 NT$59,800"},"b2b":{"nav":"홈 · 제품 · 인증 · EN · 견적 문의","tag":"정밀 가공 · 타이중 공업단지","name":"홍다 정밀기계","p":"CNC 정밀 부품 위탁 가공, ISO 9001 인증, 소량·긴급 주문 가능. 중문/영문 카탈로그 다운로드.","b1":"온라인 견적 문의","b2":"카탈로그 다운로드","cells":[["인증","ISO 9001 · 12개국 수출"],["납기","샘플 7일, 양산 3–4주"],["가공 가능 재질","알루미늄, 스테인리스, 티타늄 합금, 엔지니어링 플라스틱"],["자주 묻는 질문","최소 주문 수량은? 1개부터, 재질 증명서 첨부 가능"]],"aiQ":"대만에서 소량 알루미늄 부품 CNC 가공을 맡길 만한 공장 추천해 줘.","aiA":"<mark>홍다 정밀기계</mark>(타이중)는 ISO 9001 인증을 받았으며, 샘플은 7일 만에 납품하고 1개부터 주문을 받습니다.","lab":["월간 관련 검색","성사율","평균 주문 금액","매출총이익률"],"conv":"방문자 견적 문의율","leads":"월간 견적 문의","cust":"월간 성사 신규 거래처","unit":"곳의 신규 거래처","plan":"홈페이지 재구축 Plus NT$99,800"}}
+};
+/*I18N-END*/
+function tr(k,v){
+  var L=window.CURRENT_LANG||'zh';
+  var x=(DYN[L]&&DYN[L][k]!==undefined)?DYN[L][k]:(DYN.en[k]!==undefined?DYN.en[k]:DYN.zh[k]);
+  if(x===undefined) return k;
+  return v?x.replace(/\{(\w+)\}/g,function(m,n){return v[n]!==undefined?v[n]:m;}):x;
+}
 var splitAnimGen = 0;
 var __badBadgeEls;
 function updateBadFade(compare, splitVal){
@@ -1372,77 +1421,40 @@ function calc(){
   document.getElementById('rMonth').textContent=fmt(m);
   document.getElementById('rYear').textContent=fmt(m*12);
   var pb=m>0?(59800/m):0;
-  var en=window.CURRENT_LANG==='en';
-  document.getElementById('rPayback').textContent = m<=0 ? '—' :
-    en
-      ? ('Based on the "Quick Site" plan at NT$59,800, payback in about '+(pb<0.1?'under 0.1':pb.toFixed(1))+' months')
-      : ('以「快速官網」方案 NT$59,800 計,約 '+(pb<0.1?'不到 0.1':pb.toFixed(1))+' 個月回本');
+  document.getElementById('rPayback').textContent = m<=0 ? '—' : tr('calc.payback',{n:(pb<0.1?tr('calc.lt'):pb.toFixed(1))});
 }
 calc();
 
 /* ---- post-reform industry demos + projection ---- */
 (function(){
   var FEE=14800;                                   // SEO/AEO monthly retainer (NT$)
-  var RAMP=[.15,.3,.45,.6,.75,.85,.95,1,1,1,1,1];  // share of steady-state results reached each month
+  var RAMP=[.15,.3,.45,.6,.75,.85,.95,1,1,1,1,1];  // share of the reach improvement achieved each month
+  /* r = reach (share of relevant searches that land on the site), c = visitor conversion (inquiry/order/booking),
+     0 = before the rebuild, 1 = after; close = share of leads that become paying customers. */
   var IND={
-    food:{
-      url:'jinyifeng.example.tw', accent:'#B5532A', build:59800,
-      q:1200, inq:.08, close:.7, ticket:1500, margin:.35,
-      zh:{nav:'首頁 · 商品 · 訂購 · 門市', tag:'EST. 1973 · 彰化', name:'金益豐食品行', p:'三代傳承的手工米食與節慶伴手禮。當日現做,全台宅配。', b1:'線上訂購', b2:'門市資訊',
-          cells:[['營業時間','週二–週日 08:00–19:00'],['Google 評論 4.8 ★','236 則評論,紅龜粿、鳳梨酥最受推薦'],['配送方式','全台宅配,滿 NT$1,000 免運'],['常見問題','可指定到貨日嗎?可以(除夕公休)']],
-          aiQ:'彰化有推薦的紅龜粿伴手禮嗎?', aiA:'<mark>金益豐食品行</mark>(彰化)提供當日現做的紅龜粿,可全台宅配,滿 NT$1,000 免運。'},
-      en:{nav:'Home · Products · Order · Store', tag:'EST. 1973 · CHANGHUA', name:'Jin Yi Feng Foods', p:'Three generations of handmade rice cakes and festive gifts. Made fresh daily, shipped island-wide.', b1:'Order online', b2:'Store info',
-          cells:[['Hours','Tue–Sun 08:00–19:00'],['Google rating 4.8 ★','236 reviews; red turtle cakes and pineapple cakes recommended'],['Delivery','Island-wide; free shipping over NT$1,000'],['FAQ','Can I choose the delivery date? Yes (closed on Lunar New Year\'s Eve)']],
-          aiQ:'Any recommended red turtle cake gifts in Changhua?', aiA:'<mark>Jin Yi Feng Foods</mark> (Changhua) makes red turtle cakes fresh daily, ships island-wide, and offers free shipping over NT$1,000.'},
-      lab:{zh:['每月相關搜尋','詢問/來店率','成交率','客單價','毛利率'],en:['Monthly searches','Inquiry/visit rate','Close rate','Avg ticket','Gross margin']},
-      clientUnit:{zh:'位客人',en:'customers'}, plan:{zh:'快速官網 NT$59,800',en:'Quick Site NT$59,800'}
-    },
-    clinic:{
-      url:'kangning-dental.example.tw', accent:'#0E7C86', build:59800,
-      q:400, inq:.12, close:.6, ticket:4000, margin:.5,
-      zh:{nav:'首頁 · 診療項目 · 醫師 · 預約', tag:'牙醫診所 · 台中西區', name:'康寧牙醫診所', p:'無痛治療、洗牙與矯正諮詢。週一至週六,線上預約免排隊。', b1:'線上預約', b2:'看診時間',
-          cells:[['看診時間','週一–週六 09:00–21:00'],['Google 評論 4.9 ★','181 則評論,「醫師很有耐心」'],['診療項目','洗牙、補牙、根管、隱形矯正'],['常見問題','健保給付嗎?洗牙每半年一次免費(健保)']],
-          aiQ:'台中西區有推薦的牙醫嗎?晚上也能看診的。', aiA:'<mark>康寧牙醫診所</mark>(台中西區)週一至週六看診到晚上 9 點,可線上預約,Google 評論 4.9 顆星。'},
-      en:{nav:'Home · Treatments · Dentists · Book', tag:'DENTAL CLINIC · WEST DIST., TAICHUNG', name:'Kangning Dental Clinic', p:'Gentle treatment, cleaning and orthodontic consults. Open Mon–Sat; book online, skip the wait.', b1:'Book online', b2:'Opening hours',
-          cells:[['Hours','Mon–Sat 09:00–21:00'],['Google rating 4.9 ★','181 reviews: "very patient doctor"'],['Treatments','Cleaning, fillings, root canal, clear aligners'],['FAQ','Covered by NHI? Cleaning every 6 months is covered']],
-          aiQ:'Any good dentists in West District, Taichung, open in the evening?', aiA:'<mark>Kangning Dental Clinic</mark> (West District, Taichung) is open Mon–Sat until 9 pm, takes online bookings, and has a 4.9-star Google rating.'},
-      lab:{zh:['每月相關搜尋','預約率','到診率','平均療程金額','毛利率'],en:['Monthly searches','Booking rate','Show-up rate','Avg treatment value','Gross margin']},
-      clientUnit:{zh:'位新患者',en:'new patients'}, plan:{zh:'快速官網 NT$59,800',en:'Quick Site NT$59,800'}
-    },
-    b2b:{
-      url:'hongda-precision.example.tw', accent:'#2F4B7C', build:99800,
-      q:250, inq:.10, close:.08, ticket:100000, margin:.3,
-      zh:{nav:'首頁 · 產品 · 認證 · EN · 詢價', tag:'精密加工 · 台中工業區', name:'宏達精密機械', p:'CNC 精密零件代工,ISO 9001 認證,小批量、急單皆可。中英文型錄下載。', b1:'線上詢價', b2:'下載型錄',
-          cells:[['認證','ISO 9001 · 出口 12 國'],['交期','樣品 7 天、量產 3–4 週'],['可加工材質','鋁、不鏽鋼、鈦合金、工程塑膠'],['常見問題','最小訂購量?一件起,可附材質證明']],
-          aiQ:'台灣有推薦的小批量鋁件 CNC 加工廠嗎?', aiA:'<mark>宏達精密機械</mark>(台中)通過 ISO 9001 認證,樣品 7 天交貨,一件起接單。'},
-      en:{nav:'Home · Products · Certifications · EN · RFQ', tag:'PRECISION MACHINING · TAICHUNG', name:'Hongda Precision', p:'CNC precision parts, ISO 9001 certified, small batches and rush orders welcome. Catalog in English and Chinese.', b1:'Request a quote', b2:'Download catalog',
-          cells:[['Certification','ISO 9001 · exports to 12 countries'],['Lead time','Samples 7 days, production 3–4 weeks'],['Materials','Aluminum, stainless, titanium, engineering plastics'],['FAQ','MOQ? One piece, with material certificates']],
-          aiQ:'Taiwan CNC machining supplier for small-batch aluminum parts?', aiA:'<mark>Hongda Precision</mark> (Taichung) offers ISO 9001 CNC machining with 7-day samples and no minimum order quantity.'},
-      lab:{zh:['每月相關搜尋','詢價率','成交率','平均訂單金額','毛利率'],en:['Monthly searches','RFQ rate','Close rate','Avg order value','Gross margin']},
-      clientUnit:{zh:'位新客戶',en:'new accounts'}, plan:{zh:'官網重建 Plus NT$99,800',en:'Rebuild Plus NT$99,800'}
-    }
-  };
-  var UI={
-    zh:{perMo:'每月', cli:'穩定後每月新增客人', rev:'每月新增營收', gp:'每月毛利(扣 SEO/AEO 月費後)', be:'回本時間', beUnit:'個月', beNone:'12 個月以上', chart:'累計淨獲利(已扣建置費與月費)', m:'月',
-        bottom:function(c,n,roi){return '第一年預估新增 '+c+' '+n+',累計淨獲利 '+fmt(roi.net)+'(一年總投入 '+fmt(roi.cost)+',毛利約為投入的 '+roi.x.toFixed(1)+' 倍)';}},
-    en:{perMo:'Monthly', cli:'New clients per month (steady state)', rev:'New revenue / month', gp:'Profit / month (after SEO/AEO fee)', be:'Payback', beUnit:'months', beNone:'beyond 12 months', chart:'Cumulative net profit (after build + monthly fees)', m:'M',
-        bottom:function(c,n,roi){return 'Year one: about '+c+' '+n+', cumulative net profit '+fmt(roi.net)+' (total outlay '+fmt(roi.cost)+'; gross profit ≈ '+roi.x.toFixed(1)+'x outlay)';}}
+    food:  {url:'jinyifeng.example.tw',       accent:'#B5532A', build:59800, q:1200, r0:.04, r1:.32, c0:.08, c1:.25, close:.7,  ticket:1500,   margin:.35},
+    clinic:{url:'kangning-dental.example.tw', accent:'#0E7C86', build:59800, q:400,  r0:.06, r1:.40, c0:.08, c1:.30, close:.6,  ticket:4000,   margin:.5},
+    b2b:   {url:'hongda-precision.example.tw',accent:'#2F4B7C', build:99800, q:250,  r0:.08, r1:.50, c0:.04, c1:.20, close:.08, ticket:100000, margin:.3}
   };
   var cur='food', scn=1;
 
   function model(d,s){
-    var steady=d.q*d.inq*d.close*s, cum=-d.build, series=[], total=0, be=null, m;
+    var r1=Math.max(d.r0, d.r1*s);
+    var cust0=d.q*d.r0*d.c0*d.close, cum=-d.build, series=[], total=0, be=null, m;
     for(m=0;m<12;m++){
-      var cl=steady*RAMP[m];
-      total+=cl;
-      cum+=cl*d.ticket*d.margin-FEE;
+      var reach=d.r0+(r1-d.r0)*RAMP[m];                 // conversion improves at launch; reach ramps with SEO/AEO
+      var extra=d.q*reach*d.c1*d.close-cust0;
+      total+=extra;
+      cum+=extra*d.ticket*d.margin-FEE;
       series.push(cum);
       if(be===null && cum>=0) be=m+1;
     }
-    var gpSteady=steady*d.ticket*d.margin-FEE;
-    return {steady:steady, rev:steady*d.ticket, gp:gpSteady, be:be, series:series, total:total, net:cum+d.build, cost:d.build+FEE*12, finalCum:cum};
+    var v0=d.q*d.r0, v1=d.q*r1, l0=v0*d.c0, l1=v1*d.c1, cust1=l1*d.close, extraSteady=cust1-cust0;
+    return {r1:r1, v0:v0, v1:v1, l0:l0, l1:l1, cust0:cust0, cust1:cust1, extra:extraSteady,
+            rev:extraSteady*d.ticket, gp:extraSteady*d.ticket*d.margin-FEE,
+            be:be, series:series, total:total, cost:d.build+FEE*12, finalCum:cum};
   }
-  function chartSvg(series,build,en){
+  function chartSvg(series,build){
     var W=420,H=130,padL=6,padR=6,top=10,bot=22,n=series.length;
     var lo=Math.min(-build,Math.min.apply(null,series)), hi=Math.max(0,Math.max.apply(null,series));
     if(hi===lo) hi=lo+1;
@@ -1454,14 +1466,21 @@ calc();
       g+='<rect x="'+x.toFixed(1)+'" y="'+(v>=0?yy:zero).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+'" rx="2" fill="'+fill+'"/>';
       g+='<text x="'+(x+w/2).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="var(--ink-faint)">'+(i+1)+'</text>';
     });
-    return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(en?'Cumulative net profit by month':'每月累計淨獲利')+'"><line x1="0" x2="'+W+'" y1="'+zero.toFixed(1)+'" y2="'+zero.toFixed(1)+'" stroke="var(--line)" stroke-width="1.5"/>'+g+'</svg>';
+    return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+tr('ind.chartAria')+'"><line x1="0" x2="'+W+'" y1="'+zero.toFixed(1)+'" y2="'+zero.toFixed(1)+'" stroke="var(--line)" stroke-width="1.5"/>'+g+'</svg>';
   }
   function numFmt(n){ return n>=10 ? Math.round(n).toLocaleString('zh-TW') : n.toFixed(1); }
+  function pct(x){ var v=x*100; return (v>=10?Math.round(v):v.toFixed(1))+'%'; }
+  function funnelRow(label,v0,v1,f){
+    var mx=Math.max(v0,v1)||1, w0=Math.max(3,v0/mx*100), w1=Math.max(3,v1/mx*100);
+    return '<div class="fn-row"><div class="fn-l">'+label+'</div>'
+      +'<div class="fn-bar b0"><div class="trk"><i style="width:'+w0.toFixed(1)+'%"></i></div><span>'+f(v0)+'</span></div>'
+      +'<div class="fn-bar b1"><div class="trk"><i style="width:'+w1.toFixed(1)+'%"></i></div><span>'+f(v1)+'</span></div></div>';
+  }
 
   window.renderDemos=function(){
     var site=document.getElementById('indSite');
     if(!site) return;
-    var en=window.CURRENT_LANG==='en', L=en?'en':'zh', d=IND[cur], c=d[L], u=UI[L], r=model(d,scn);
+    var L=window.CURRENT_LANG||'zh', d=IND[cur], c=(IND_TXT[L]||IND_TXT.en)[cur], r=model(d,scn);
     document.getElementById('indUrl').textContent='https://'+d.url;
     site.style.setProperty('--is-accent',d.accent);
     site.innerHTML=
@@ -1469,16 +1488,22 @@ calc();
       +'<div class="is-hero"><div class="is-tag">'+c.tag+'</div><h4>'+c.name+'</h4><p>'+c.p+'</p><span class="is-btn">'+c.b1+'</span><span class="is-btn o">'+c.b2+'</span></div>'
       +'<div class="is-cells">'+c.cells.map(function(x){return '<div><b>'+x[0]+'</b>'+x[1]+'</div>';}).join('')+'</div>'
       +'<div class="ind-ai"><div class="q">'+c.aiQ+'</div><div class="a">'+c.aiA+'</div></div>';
-    var lab=d.lab[L], vals=[d.q.toLocaleString('zh-TW'),Math.round(d.inq*100)+'%',Math.round(d.close*100)+'%',fmt(d.ticket),Math.round(d.margin*100)+'%'];
-    document.getElementById('indAssume').innerHTML=lab.map(function(l,i){return '<span>'+l+' '+vals[i]+'</span>';}).join('');
-    var unit=d.clientUnit[L];
+    var vals=[d.q.toLocaleString('zh-TW'),pct(d.close),fmt(d.ticket),pct(d.margin)];
+    document.getElementById('indAssume').innerHTML=c.lab.map(function(l,i){return '<span>'+l+' '+vals[i]+'</span>';}).join('');
+    document.getElementById('indFunnel').innerHTML=
+      '<div class="fn-head"><b>'+tr('ind.fun.head')+'</b><span class="fn-key"><i class="k0"></i>'+tr('ind.fun.before')+'<i class="k1"></i>'+tr('ind.fun.after')+'</span></div>'
+      +funnelRow(tr('ind.fun.reach'),d.r0,r.r1,pct)
+      +funnelRow(tr('ind.fun.visits'),r.v0,r.v1,numFmt)
+      +funnelRow(c.conv,d.c0,d.c1,pct)
+      +funnelRow(c.leads,r.l0,r.l1,numFmt)
+      +funnelRow(c.cust,r.cust0,r.cust1,numFmt);
     document.getElementById('indKpis').innerHTML=
-      '<div class="ind-kpi"><div class="l">'+u.cli+'</div><div class="n">'+numFmt(r.steady)+' <small>'+unit+'</small></div></div>'
-      +'<div class="ind-kpi"><div class="l">'+u.rev+'</div><div class="n">'+fmt(r.rev)+'</div></div>'
-      +'<div class="ind-kpi"><div class="l">'+u.gp+'</div><div class="n">'+fmt(r.gp)+'</div></div>'
-      +'<div class="ind-kpi"><div class="l">'+u.be+'('+d.plan[L]+')</div><div class="n">'+(r.be===null?u.beNone:r.be+' <small>'+u.beUnit+'</small>')+'</div></div>';
-    document.getElementById('indChart').innerHTML='<div class="cap">'+u.chart+'</div>'+chartSvg(r.series,d.build,en);
-    document.getElementById('indBottom').textContent=u.bottom(numFmt(r.total),unit,{net:r.finalCum,cost:r.cost,x:(r.finalCum+r.cost)/r.cost});
+      '<div class="ind-kpi"><div class="l">'+tr('ind.kpi.cust')+'</div><div class="n">+'+numFmt(r.extra)+'</div></div>'
+      +'<div class="ind-kpi"><div class="l">'+tr('ind.kpi.rev')+'</div><div class="n">'+fmt(r.rev)+'</div></div>'
+      +'<div class="ind-kpi"><div class="l">'+tr('ind.kpi.gp')+'</div><div class="n">'+fmt(r.gp)+'</div></div>'
+      +'<div class="ind-kpi"><div class="l">'+tr('ind.kpi.be')+' ('+c.plan+')</div><div class="n">'+(r.be===null?tr('ind.beNone'):r.be+' <small>'+tr('ind.beUnit')+'</small>')+'</div></div>';
+    document.getElementById('indChart').innerHTML='<div class="cap">'+tr('ind.chart')+'</div>'+chartSvg(r.series,d.build);
+    document.getElementById('indBottom').textContent=tr('ind.bottom',{c:numFmt(r.total),unit:c.unit,net:fmt(r.finalCum),cost:fmt(r.cost),x:((r.finalCum+r.cost)/r.cost).toFixed(1)});
   };
 
   var tabs=document.querySelectorAll('#indTabs button'), scnBtns=document.querySelectorAll('#indScn button');
@@ -1521,10 +1546,7 @@ calc();
   }
   window.__timeToggleOn=function(){ return document.documentElement.classList.contains('retro-mode'); };
   window.__setTimeToggleLabel=function(on){
-    var en=window.CURRENT_LANG==='en';
-    btn.textContent = on
-      ? (en ? '✨ Back to modern site' : '✨ 恢復現代版官網')
-      : (en ? '🕰 See the old-school version' : '🕰 看看以前的網站長怎樣');
+    btn.textContent = on ? tr('time.back') : tr('time.old');
   };
   btn.addEventListener('click', function(){
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1621,16 +1643,16 @@ if(statsEl) statsIo.observe(statsEl);
       result=document.getElementById('scanResult');
 
   var CONS_POOL=[
-    {test:function(h){return h.dnsDown;}, text:'這個網址目前偵測不到有效的網域紀錄,可能已經過期或設定錯誤', textEn:'No valid DNS record detected for this domain — it may be expired or misconfigured'},
-    {test:function(h){return !h.dnsDown && h.httpsProblem;}, text:'嘗試連線這個網址的 HTTPS 版本失敗,瀏覽器可能顯示「不安全」警告或根本打不開', textEn:'A live connection attempt to the HTTPS version of this address failed — visitors may see an "unsafe" warning or the site may not load at all'},
-    {test:function(h){return h.socialOnly;}, text:'只找到社群/粉專頁面,沒有自己擁有的網域,Google 幾乎搜不到完整內容', textEn:'Only a social/fan page found, no owned domain — Google can barely index the content'},
-    {test:function(h){return !h.socialOnly && h.builderPlatform;}, text:'使用免費建站平台的子網域,而不是自己擁有的網域,不利於品牌與長期 SEO 經營', textEn:"Running on a free website-builder subdomain instead of a domain you own — hurts branding and long-term SEO"},
-    {test:function(h){return true;}, text:'頁面缺少可被 AI 引用的結構化資料(FAQ / Schema),ChatGPT 等 AI 搜尋不易推薦你', textEn:'Missing structured data (FAQ / Schema) that AI can cite — ChatGPT and similar AI search rarely recommend you', weight:1},
-    {test:function(h){return true;}, text:'手機版排版可能跑版或字體過小,而超過六成搜尋來自手機', textEn:'Mobile layout may be broken or text too small, while over 60% of searches come from mobile', weight:1},
-    {test:function(h){return true;}, text:'未偵測到 Google 商家檔案串接,在地/地圖搜尋排名可能較弱', textEn:'No Google Business Profile integration detected — local/map search ranking may be weak', weight:1},
-    {test:function(h){return true;}, text:'頁面載入速度可能偏慢,影響 Google 排名與跳出率', textEn:'Page load speed may be slow, hurting Google ranking and bounce rate', weight:1},
-    {test:function(h){return true;}, text:'找不到純文字化的營業時間、地址、電話,AI 與地圖工具難以正確引用', textEn:'No plain-text hours, address, or phone number found — hard for AI and map tools to cite correctly', weight:1},
-    {test:function(h){return true;}, text:'內容更新頻率偏低,搜尋引擎可能判定為低活躍度網站', textEn:'Content update frequency looks low — search engines may flag this as a low-activity site', weight:1}
+    {test:function(h){return h.dnsDown;}, key:'cons.dns'},
+    {test:function(h){return !h.dnsDown && h.httpsProblem;}, key:'cons.https'},
+    {test:function(h){return h.socialOnly;}, key:'cons.social'},
+    {test:function(h){return !h.socialOnly && h.builderPlatform;}, key:'cons.builder'},
+    {test:function(h){return true;}, key:'cons.schema', weight:1},
+    {test:function(h){return true;}, key:'cons.mobile', weight:1},
+    {test:function(h){return true;}, key:'cons.gbp', weight:1},
+    {test:function(h){return true;}, key:'cons.speed', weight:1},
+    {test:function(h){return true;}, key:'cons.nap', weight:1},
+    {test:function(h){return true;}, key:'cons.fresh', weight:1}
   ];
 
   function hashStr(s){
@@ -1699,10 +1721,9 @@ if(statsEl) statsIo.observe(statsEl);
   }
 
   function ringVerdict(score){
-    var en=window.CURRENT_LANG==='en';
-    if(score<40) return {cls:'bad', text: en?'Behind competitors':'落後同業'};
-    if(score<70) return {cls:'mid', text: en?'Average, room to grow':'普通,有進步空間'};
-    return {cls:'good', text: en?'Doing well':'表現不錯'};
+    if(score<40) return {cls:'bad', text: tr('verdict.bad')};
+    if(score<70) return {cls:'mid', text: tr('verdict.mid')};
+    return {cls:'good', text: tr('verdict.good')};
   }
 
   function setRing(prefix, score, color){
@@ -1734,26 +1755,21 @@ if(statsEl) statsIo.observe(statsEl);
   var scanGen=0;
   var dlInFlight=false;
   function renderImpression(h){
-    var en=window.CURRENT_LANG==='en';
     function fact(label, val, cls, wide){ return {label:label, val:val, cls:cls||'', wide:!!wide}; }
-    var protoVal = h.httpsProblem
-      ? (en?'✕ Connection failed':'✕ 連線失敗')
-      : h.probe.httpsOk===true ? (en?'✓ Reachable over HTTPS':'✓ 可連線(HTTPS)')
-      : (en?'— Unknown':'— 無法判斷');
+    var protoVal = h.httpsProblem ? tr('fact.httpsFail')
+      : h.probe.httpsOk===true ? tr('fact.httpsOk') : tr('fact.unknown');
     var protoCls = h.httpsProblem ? 'bad' : h.probe.httpsOk===true ? 'ok' : 'unknown';
-    var dnsVal = h.dnsDown ? (en?'✕ No record found':'✕ 找不到紀錄')
-      : h.probe.dnsOk===true ? (en?'✓ Resolves':'✓ 有效解析')
-      : (en?'— Unknown':'— 無法判斷');
+    var dnsVal = h.dnsDown ? tr('fact.dnsNone')
+      : h.probe.dnsOk===true ? tr('fact.dnsOk') : tr('fact.unknown');
     var dnsCls = h.dnsDown ? 'bad' : h.probe.dnsOk===true ? 'ok' : 'unknown';
-    var platVal = h.socialOnly ? (en?'Social page':'社群平台頁面')
-      : h.builderPlatform ? (en?'Free site builder':'免費建站平台')
-      : (en?'Own domain':'自有網域');
+    var platVal = h.socialOnly ? tr('fact.social')
+      : h.builderPlatform ? tr('fact.builder') : tr('fact.own');
     var platCls = (h.socialOnly||h.builderPlatform) ? 'bad' : 'ok';
     var facts=[
-      fact(en?'Domain':'網域', h.hostname, '', true),
-      fact(en?'HTTPS connection':'HTTPS 連線', protoVal, protoCls),
-      fact(en?'DNS status':'DNS 狀態', dnsVal, dnsCls),
-      fact(en?'Site type':'建站方式', platVal, platCls)
+      fact(tr('fact.domain'), h.hostname, '', true),
+      fact(tr('fact.https'), protoVal, protoCls),
+      fact(tr('fact.dns'), dnsVal, dnsCls),
+      fact(tr('fact.site'), platVal, platCls)
     ];
     var grid=document.getElementById('scanImpressionGrid');
     if(grid){
@@ -1768,7 +1784,6 @@ if(statsEl) statsIo.observe(statsEl);
 
   function runAnalysis(h){
     lastTarget=h;
-    var en=window.CURRENT_LANG==='en';
     h.probe = h.probe || {dnsOk:null, httpsOk:null};
     h.dnsDown = h.probe.dnsOk===false;
     h.httpsProblem = h.dnsDown || h.probe.httpsOk===false;
@@ -1799,7 +1814,7 @@ if(statsEl) statsIo.observe(statsEl);
     list.innerHTML='';
     finalCons.forEach(function(c,i){
       var li=document.createElement('li');
-      li.textContent= en ? c.textEn : c.text;
+      li.textContent= tr(c.key);
       li.style.animationDelay=(i*0.08)+'s';
       list.appendChild(li);
     });
@@ -1814,7 +1829,7 @@ if(statsEl) statsIo.observe(statsEl);
       hostname:h.hostname,
       scores:{seo:seo, aeo:aeo, leo:leo},
       facts:facts,
-      cons: finalCons.map(function(c){ return {zh:c.text, en:c.textEn}; })
+      cons: finalCons.map(function(c){ return c.key; })
     };
     var dlBtnGuard2=document.getElementById('scanDownloadBtn');
     if(dlBtnGuard2 && !dlInFlight) dlBtnGuard2.disabled=false;
@@ -1839,11 +1854,8 @@ if(statsEl) statsIo.observe(statsEl);
       var myGen=++scanGen;
       var dlBtnGuard=document.getElementById('scanDownloadBtn');
       if(dlBtnGuard) dlBtnGuard.disabled=true;
-      var en=window.CURRENT_LANG==='en';
-      btn.textContent= en ? 'Analyzing…' : '分析中…';
-      var steps= en
-        ? ['Reading basic site info…','Attempting a live connection & DNS check…','Checking AI-search (AEO) readability…','Checking local/map search (LEO) signals…','Compiling report…']
-        : ['正在讀取網站基本資訊…','正在嘗試連線並檢查網域狀態…','正在檢查 AI 搜尋(AEO)可讀性…','正在檢查在地/地圖搜尋(LEO)訊號…','整理報告中…'];
+      btn.textContent= tr('scan.analyzing');
+      var steps=['scan.step1','scan.step2','scan.step3','scan.step4','scan.step5'].map(function(k){ return tr(k); });
       var i=0;
       slLine.textContent=steps[0];
       var probePromise=probeTarget(target.hostname);
@@ -1858,7 +1870,7 @@ if(statsEl) statsIo.observe(statsEl);
             target.probe=probe;
             loading.style.display='none';
             btn.disabled=false;
-            btn.textContent= window.CURRENT_LANG==='en' ? 'Analyze →' : '開始分析 →';
+            btn.textContent= tr('scan.analyze');
             runAnalysis(target);
           });
         }
@@ -1884,42 +1896,29 @@ if(statsEl) statsIo.observe(statsEl);
     if(cancelBtn) cancelBtn.addEventListener('click', function(){ leadForm.hidden=true; });
     leadForm.addEventListener('submit', function(ev){
       ev.preventDefault();
-      var en=window.CURRENT_LANG==='en';
       var name=document.getElementById('leadName').value.trim();
       var phone=document.getElementById('leadPhone').value.trim();
       var email=document.getElementById('leadEmail').value.trim();
       var url=urlInput.value.trim();
       var msg=document.getElementById('leadMsg').value.trim();
       var lines=[
-        (en?'Name/Business: ':'店名/聯絡人:')+name,
-        (en?'Phone: ':'聯絡電話:')+phone
+        tr('lead.name')+name,
+        tr('lead.phone')+phone
       ];
-      if(email) lines.push((en?'Email: ':'Email:')+email);
-      lines.push((en?'Website/Page: ':'網址/粉專:')+(url||'-'));
-      if(msg) lines.push((en?'Notes: ':'補充說明:')+msg);
-      var mailto='mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent('索取免費網站健檢報告')+'&body='+encodeURIComponent(lines.join('\n'));
+      if(email) lines.push(tr('lead.email')+email);
+      lines.push(tr('lead.url')+(url||'-'));
+      if(msg) lines.push(tr('lead.notes')+msg);
+      var mailto='mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent(tr('mail.subject'))+'&body='+encodeURIComponent(lines.join('\n'));
       window.location.href=mailto;
     });
   })();
 
   /* ---- downloadable report (rendered client-side from the scan result, exported as PDF) ---- */
   (function(){
-    var REPORT_COPY={
-      title:{zh:'你的網站健檢分析報告',en:'Your Website Health Check Report'},
-      subtitle:{zh:'SEO・AEO・LEO 初步快篩結果,以及我們建議的改造方向。不誇大,只講看得到的問題。',en:"Your SEO, AEO and LEO quick-scan results, plus how we'd suggest fixing them. No hype, just the issues we can actually see."},
-      sectionResults:{zh:'你的快篩結果',en:'Your Scan Results'},
-      sectionPlan:{zh:'我們的改造方案',en:'Our Reform Plan'},
-      planIntro:{zh:'上面是快篩抓到的問題,下面是我們平常處理這類狀況的做法:先免費幫你完整健檢,確認要做什麼,再談價格。',en:"Above is what the quick scan found. Below is how we usually handle issues like these: a free full health check first, then we agree on what's worth doing before we talk price."},
-      processHeading:{zh:'四步驟,21 天上線',en:'Four steps, live in 21 days'},
-      pricingHeading:{zh:'方案與價格',en:'Plans & Pricing'},
-      ctaHeading:{zh:'想知道完整的問題清單?',en:'Want the full list of issues?'},
-      ctaBody:{zh:'把你的網站或粉專連結寄到 kairos.ai.tech@gmail.com,三個工作天內收到逐頁健檢報告。免費、不綁約、不推銷,看完再決定要不要做。',en:"Email your website or fan page link to kairos.ai.tech@gmail.com and you'll get a page-by-page health check report within three working days. Free, no contract, no sales pressure. Read it, then decide."},
-      disclaimer:{zh:'本報告的快篩分數為根據網址與公開訊號的自動化估算,並非逐頁人工健檢;實際狀況以免費健檢報告為準。',en:'The quick-scan scores in this report are automated estimates based on your URL and publicly visible signals, not a page-by-page manual audit. The free health check report is the one to rely on.'},
-      generatedBy:{zh:'本報告由 優時科技 Kairos.ai 免費快篩工具產生',en:'Report generated by Kairos.ai Free Scan'}
-    };
-
     function esc(s){ return String(s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
-    function t(pair, en){ return esc(en ? pair.en : pair.zh); }
+    function t(k){ return esc(tr(k)); }
+    var REPORT_FONTS={zh:'"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif',en:'"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif',ja:'"Noto Sans JP","Hiragino Sans","Yu Gothic",Meiryo,sans-serif',ko:'"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif'};
+    function reportFont(){ return REPORT_FONTS[window.CURRENT_LANG]||REPORT_FONTS.zh; }
 
     function readSteps(){
       return Array.prototype.map.call(document.querySelectorAll('.steps .step'), function(el){
@@ -1945,10 +1944,10 @@ if(statsEl) statsIo.observe(statsEl);
       return el ? el.textContent.replace(/\s+/g,' ').trim() : '';
     }
 
-    function buildReportHtml(result, en){
-      var lang=en?'en':'zh-Hant-TW';
+    function buildReportHtml(result){
+      var lang=({zh:'zh-Hant-TW',en:'en',ja:'ja',ko:'ko'})[window.CURRENT_LANG]||'zh-Hant-TW';
       var now=new Date();
-      var dateStr=now.toLocaleDateString(en?'en-US':'zh-TW', {year:'numeric',month:'long',day:'numeric'});
+      var dateStr=now.toLocaleDateString(({zh:'zh-TW',en:'en-US',ja:'ja-JP',ko:'ko-KR'})[window.CURRENT_LANG]||'zh-TW', {year:'numeric',month:'long',day:'numeric'});
       var scoreRows=[
         {label:'SEO', v:result.scores.seo},
         {label:'AEO', v:result.scores.aeo},
@@ -1962,7 +1961,7 @@ if(statsEl) statsIo.observe(statsEl);
         return '<div class="rep-fact'+(f.wide?' wide':'')+'"><span>'+esc(f.label)+'</span><b class="'+f.cls+'">'+esc(f.val)+'</b></div>';
       }).join('');
 
-      var consRows=result.cons.map(function(c){ return '<li>'+t(c, en)+'</li>'; }).join('');
+      var consRows=result.cons.map(function(c){ return '<li>'+t(c)+'</li>'; }).join('');
 
       var stepRows=readSteps().map(function(s,i){
         return '<div class="rep-step"><span class="rep-step-n">'+(i+1)+'</span><div><b>'+esc(s.b)+'</b><small>'+esc(s.t)+'</small><p>'+esc(s.p)+'</p></div></div>';
@@ -1974,10 +1973,10 @@ if(statsEl) statsIo.observe(statsEl);
 
       return '<!DOCTYPE html><html lang="'+lang+'"><head><meta charset="utf-8">'
         +'<meta name="viewport" content="width=device-width,initial-scale=1">'
-        +'<title>'+t(REPORT_COPY.title,en)+' — '+esc(result.hostname)+'</title>'
+        +'<title>'+t('rep.title')+' — '+esc(result.hostname)+'</title>'
         +'</head><body><style>'
         +':root{--ground:#080D18;--surface:#121A2C;--ink:#EDF1F7;--ink-soft:#AEB9CB;--ink-faint:#7C8AA0;--line:#243154;--accent:#4C93E8;--accent-deep:#7FB4F2;--teal:#3FC9BB;}'
-        +'*{box-sizing:border-box}body{margin:0;background:var(--ground);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7;padding:0}'
+        +'*{box-sizing:border-box}body{margin:0;background:var(--ground);color:var(--ink);font-family:'+reportFont()+';line-height:1.7;padding:0}'
         +'.wrap{max-width:760px;margin:0 auto;padding:40px 24px 80px}'
         +'.rep-header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:32px}'
         +'.rep-header .brand{font-size:13px;letter-spacing:.08em;color:var(--accent-deep);font-weight:700;text-transform:uppercase;margin-bottom:10px}'
@@ -2007,19 +2006,19 @@ if(statsEl) statsIo.observe(statsEl);
         +'.rep-footer{color:var(--ink-faint);font-size:11.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:40px}'
         +'@media print{body{background:#fff;color:#111;--ink-soft:#333;--ink-faint:#555;--accent-deep:#1A56B0;--teal:#0A7D6D;--line:#ccc;--surface:#f4f6fa}.rep-badge.mid{color:#8A6D00}.rep-badge.bad,.rep-fact b.bad{color:#C0392B}}'
         +'</style><div class="wrap">'
-        +'<div class="rep-header"><div class="brand">優時科技 Kairos.ai</div><h1>'+t(REPORT_COPY.title,en)+'</h1>'
-        +'<p class="sub">'+t(REPORT_COPY.subtitle,en)+'</p>'
-        +'<div class="meta">'+(en?'Target: ':'檢測對象:')+'<b>'+esc(result.hostname)+'</b> · '+dateStr+'</div></div>'
-        +'<section><h2>'+t(REPORT_COPY.sectionResults,en)+'</h2>'+scoreRows
+        +'<div class="rep-header"><div class="brand">優時科技 Kairos.ai</div><h1>'+t('rep.title')+'</h1>'
+        +'<p class="sub">'+t('rep.subtitle')+'</p>'
+        +'<div class="meta">'+tr('rep.target')+'<b>'+esc(result.hostname)+'</b> · '+dateStr+'</div></div>'
+        +'<section><h2>'+t('rep.sectionResults')+'</h2>'+scoreRows
         +'<div class="rep-facts">'+factRows+'</div>'
         +'<ul class="rep-cons">'+consRows+'</ul></section>'
-        +'<section><h2>'+t(REPORT_COPY.sectionPlan,en)+'</h2><p class="rep-intro">'+t(REPORT_COPY.planIntro,en)+'</p>'
-        +'<h3>'+t(REPORT_COPY.processHeading,en)+'</h3>'+stepRows
-        +'<h3>'+t(REPORT_COPY.pricingHeading,en)+'</h3><div class="rep-prices">'+priceRows+'</div>'
+        +'<section><h2>'+t('rep.sectionPlan')+'</h2><p class="rep-intro">'+t('rep.planIntro')+'</p>'
+        +'<h3>'+t('rep.processHeading')+'</h3>'+stepRows
+        +'<h3>'+t('rep.pricingHeading')+'</h3><div class="rep-prices">'+priceRows+'</div>'
         +'<div class="rep-addons">'+esc(readAddons())+'</div></section>'
-        +'<section class="rep-cta"><h2>'+t(REPORT_COPY.ctaHeading,en)+'</h2><p>'+t(REPORT_COPY.ctaBody,en)+'</p>'
-        +'<a href="mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent(en?'Requesting a free website health check':'索取免費網站健檢報告')+'&body='+encodeURIComponent((en?'Website/Page: ':'網址/粉專:')+result.hostname)+'">'+(en?'Email us →':'寄信索取免費健檢 →')+'</a></section>'
-        +'<div class="rep-footer">'+t(REPORT_COPY.disclaimer,en)+'<br>'+t(REPORT_COPY.generatedBy,en)+'</div>'
+        +'<section class="rep-cta"><h2>'+t('rep.ctaHeading')+'</h2><p>'+t('rep.ctaBody')+'</p>'
+        +'<a href="mailto:kairos.ai.tech@gmail.com?subject='+encodeURIComponent(tr('mail.subject'))+'&body='+encodeURIComponent(tr('lead.url')+result.hostname)+'">'+tr('rep.emailUs')+'</a></section>'
+        +'<div class="rep-footer">'+t('rep.disclaimer')+'<br>'+t('rep.generatedBy')+'</div>'
         +'</div></body></html>';
     }
 
@@ -2060,33 +2059,32 @@ if(statsEl) statsIo.observe(statsEl);
     if(dlBtn){
       dlBtn.addEventListener('click', function(){
         if(!lastResult || dlBtn.disabled) return;
-        var en=window.CURRENT_LANG==='en';
-        var html=buildReportHtml(lastResult, en);
-        var filename=(en?'website-scan-report-':'網站快篩報告-')+lastResult.hostname+'.pdf';
+        var html=buildReportHtml(lastResult);
+        var filename=tr('dl.file')+lastResult.hostname+'.pdf';
         var origLabel=dlBtn.textContent;
         var myDl=++dlGen;
         dlInFlight=true;
         dlBtn.dataset.busy='1';
         delete dlBtn.dataset.failing;
         dlBtn.disabled=true;
-        dlBtn.textContent=en?'Preparing PDF…':'PDF 產生中…';
+        dlBtn.textContent=tr('dl.preparing');
         function restore(){
           if(myDl!==dlGen) return;
           dlInFlight=false;
           delete dlBtn.dataset.busy;
           dlBtn.disabled=!lastResult;
-          dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
+          dlBtn.textContent=(window.__i18nStatic('scan-download-btn'))||origLabel;
         }
         function fail(){
           restore();
           if(myDl!==dlGen) return;
           dlBtn.dataset.failing='1';
-          dlBtn.textContent=en?'Failed — try again':'產生失敗,請再試一次';
+          dlBtn.textContent=tr('dl.failed');
           setTimeout(function(){
             if(myDl!==dlGen) return;
             delete dlBtn.dataset.failing;
             if(dlBtn.dataset.busy) return;
-            dlBtn.textContent=(window.CURRENT_LANG==='en' ? dlBtn.dataset.en : dlBtn.dataset.zh)||origLabel;
+            dlBtn.textContent=(window.__i18nStatic('scan-download-btn'))||origLabel;
           }, 3500);
         }
         var cdnSettled=false;
@@ -2167,169 +2165,58 @@ if(statsEl) statsIo.observe(statsEl);
   window.__rerenderScan=function(){ if(lastTarget) runAnalysis(lastTarget); };
 })();
 
-/* ---- EN language toggle ---- */
+/* ---- language switch (zh / en / ja / ko) ---- */
 (function(){
-  var I18N={
-    'brand-sub':'Website Rebuild × SEO × AI Search',
-    'nav-results':'Results','nav-scan':'Free Scan','nav-demo':'Before/After','nav-pricing':'Pricing','nav-faq':'FAQ','nav-contact':'Contact',
-    'header-cta':'Free Check →',
-    'sticky-text':'<b>Free health check, spot the leaks in 3 min</b>no charge if not satisfied',
-    'sticky-cta':'Get it now →',
-    'marquee':'★ WELCOME TO THE KAIROS.AI HOMEPAGE ★ BEST VIEWED AT 800×600, IE6.0+ RECOMMENDED ★ OPEN 24/7, 365 DAYS A YEAR ★ VISITOR COUNT UNKNOWN BECAUSE THE COUNTER IS BROKEN ★',
-    'hero-pill':'AI-accelerated builds · honest audits, no hype',
-    'hero-h1':'Your customers are searching for you,<br>but finding <em>someone else</em>.',
-    'hero-p':'Repeat customers come from word of mouth; new customers come from search. When your site is outdated, broken, or just a Facebook page, Google and ChatGPT can only send customers to competitors with a working site. We use an AI-accelerated build process to get your website and search visibility right — at a fair price.',
-    'hero-cta1':'Get a free website check →','hero-cta2':'See the before/after',
-    'unit-biz':'SMBs',
-    'stat1-desc':'Taiwan SMBs we audited on-site in August 2026',
-    'stat2-desc':'have no website of their own — only a Facebook page or directory listing',
-    'stat3-desc':"have an expired certificate or dead server — the site won't even load",
-    'stat4-desc':'had structured content that AI search engines could cite',
-    'stats-note':'Data from our hands-on website audits of 33 Taiwanese manufacturers, long-running restaurants, and local service businesses (Aug 2026).',
-    'scan-eyebrow':'Free Scan · Results in 15 seconds',
-    'scan-h2':'Test it first — how many customers is your site losing?',
-    'scan-lead':'Enter your current URL to instantly get a preliminary SEO (Google search), AEO (AI search), and LEO (local/map search) score, plus the most common issues.',
-    'scan-btn':'Analyze →',
-    'scan-err':'Please enter a valid URL, e.g. example.com',
-    'scan-hint':'This quick scan is an automated estimate to point you in the right direction; request the full, page-by-page health check below.',
-    'scan-connecting':'Connecting…','scan-checking':'Checking: ',
-    'impression-title':'Raw impression of this address',
-    'ring-seo-label':'Search Engine Optimization','ring-aeo-label':'AI Search Optimization','ring-leo-label':'Local/Map Search',
-    'scan-cta-btn':'Get the full free health check →',
-    'scan-download-btn':'Download this scan report ⬇',
-    'scan-cta-note':'Get a plain-language report within 3 business days',
-    'scan-note':'This quick scan attempts a live connection & DNS check on this address, plus an automated estimate based on URL features — not a page-by-page manual review; official scores come from the free health check report.',
-    'lead-name':'Business name / contact','lead-phone':'Phone number','lead-email':'Email (optional)',
-    'lead-url':'Website or page','lead-msg':'Notes (optional)',
-    'lead-submit':'Submit, request my free check →','lead-cancel':'Cancel',
-    'lead-note':"Submitting opens your email app with everything filled in — just hit send. No email app? Write to us directly at kairos.ai.tech@gmail.com.",
-    'leaks-eyebrow':'Four Common Leaks',
-    'leaks-h2':'Your website may be sending customers to your competitors',
-    'leak1-flag':'Expired cert · unreachable','leak1-h3':'The browser flashes an "unsafe" warning',
-    'leak1-p':'Of the 33 businesses we audited, 5 had a site that wouldn\'t load or had an expired certificate — even a Michelin-recommended shop. Nine out of ten visitors close the tab the moment they see the warning.',
-    'leak2-flag':'Untouched for a decade','leak2-h3':"A 2005-era design that's unusable on mobile",
-    'leak2-p':'Old desktop-only layout, menus and hours baked into images, "latest news" frozen since 2018. Over 60% of searches come from mobile — an old site is effectively invisible.',
-    'leak3-flag':'Facebook page only','leak3-h3':"Facebook isn't your website",
-    'leak3-p':"A page's reach is decided by an algorithm, and Google can barely index its content. Your pricing, story, and ordering info all belong on a domain you actually own.",
-    'leak4-flag':'Others are taking your traffic','leak4-h3':'Bloggers own your search results',
-    'leak4-p':"Customers search your name and first see someone else's food blog or a directory listing — often outdated. When they ask ChatGPT for a recommendation, it cites those pages too, not you.",
-    'demo-eyebrow':'Before / After','demo-h2':'Same shop, two different fates',
-    'demo-hint':'← Drag to compare →',
-    'demo-lead':'Shown with a fictional demo shop, "Jin Yi Feng Foods." Drag the slider in the middle to compare before and after yourself.',
-    'demo-btn-old':'Before','demo-btn-new':'After',
-    'demo-urlbox':'Demo comparison: Jin Yi Feng Foods',
-    'demo-badge-bad':'⚠ Not secure','demo-badge-good':'🔒 https',
-    'demo-os-head':'☆ WELCOME ☆ 金益豐食品行 ☆',
-    'demo-os-marquee':'News: Open as usual during Lunar New Year! (2018/02/10)',
-    'demo-os-nav':'<div>Home</div><div>About</div><div>Products</div><div>Contact</div>',
-    'demo-os-body':'<div class="broken">🖼 Image unavailable</div>\n                Established 1973. Specializing in traditional rice cakes, pastries, and festival gift boxes. Quality guaranteed — call to order.<br><br>\n                Order line: 04-1234-5678 (business hours only)<br>\n                Fax: 04-1234-5679<br><br>\n                <font color="#CC0000">※ This site is best viewed in IE6.0+ at 800×600 resolution ※</font>',
-    'demo-os-count':'You are visitor #000048721 | Last updated: 2018/02/10',
-    'demo-ns-tag':'EST. 1973 · Changhua',
-    'demo-ns-p':'Three generations of handmade rice cakes and festival gift boxes. Made fresh daily, shipped island-wide.',
-    'demo-ns-btn1':'Order Online','demo-ns-btn2':'Store Info',
-    'demo-ns-cell1':'<b>Hours</b>Tue–Sun 08:00–19:00',
-    'demo-ns-cell2':'<b>FAQ</b>How is delivery calculated? Can I choose a delivery date? — Priced by weight; delivery date can be chosen (closed Lunar New Year\'s Eve).',
-    'demo-ns-cell3':'<b>Google Reviews 4.8 ★</b>236 reviews — regulars recommend the red-turtle cake and pineapple cakes.',
-    'demo-ns-cell4':'<b>Delivery</b>Island-wide shipping, free over NT$1,000; convenience-store pickup available in Taichung/Changhua.',
-    'demo-bad1':'✕ No HTTPS, browser warns visitors','demo-bad2':'✕ Unreadable on mobile',
-    'demo-bad3':'✕ Orders by phone only','demo-bad4':"✕ Search engines can't read the key info",
-    'demo-good1':'✓ HTTPS + responsive design','demo-good2':'✓ Online ordering, open 24/7',
-    'demo-good3':'✓ FAQ + structured data, AI cites it','demo-good4':'✓ Chinese/English/Japanese — reaches tourists too',
-    'duo-eyebrow':'The two things we do','duo-h2':'Google can find you. AI will recommend you.',
-    'duo1-head':'SEO | Search Engine Optimization',
-    'duo1-p':'When customers Google "your trade + your area + recommended," your own site shows up — not a directory listing or someone\'s blog. How: a modern site structure, correct titles and descriptions, local business data, and ongoing content upkeep.',
-    'duo1-qa':'<i>Customer searches</i> "Changhua gift recommendations" → your site shows up on page one',
-    'duo2-head':'AEO | AI Engine Optimization',
-    'duo2-p':'More customers now ask ChatGPT or Gemini directly. AI only cites pages it can understand and trust. How: FAQ content, structured data (Schema), and plain-text business info and pricing — so AI cites you in its answers.',
-    'duo2-qa':'<i>Customer asks AI</i> "Any recommended office partition contractors in Taichung?" → AI cites your service page in its answer',
-    'roi-eyebrow':'ROI Calculator','roi-h2':'How much revenue is a good website worth?',
-    'roi-lead':"Drag the sliders to match your industry. This is a conservative estimate — counting only new customers who couldn't find you before, but can now.",
-    'roi-preset1':'Food & Retail','roi-preset2':'Clinics & Local Services','roi-preset3':'Manufacturing & B2B',
-    'roi-label1':'Monthly relevant searches','roi-label2':'Share that become inquiries/visits','roi-label3':'Average order value (NT$)',
-    'roi-out-month':'Estimated new revenue / month','roi-out-year':'Estimated new revenue / year',
-    'ind-eyebrow':'After the rebuild',
-    'ind-h2':'What a rebuilt site looks like — and what it can earn you',
-    'ind-lead':'Three fictional demo businesses: the rebuilt website on the left, projected new clients and profit on the right, based on conservative assumptions. Switch industry or scenario and the numbers update.',
-    'ind-tab-food':'Food · Retail','ind-tab-clinic':'Clinic · Local service','ind-tab-b2b':'Manufacturing · B2B',
-    'ind-proj-h':'Projected results (first 12 months after launch)',
-    'ind-scn-low':'Conservative','ind-scn-mid':'Expected','ind-scn-high':'Optimistic',
-    'ind-note':'Demo businesses and numbers are fictional and only illustrate the calculation. New clients = monthly relevant searches × inquiry/visit rate × close rate, ramping up to full volume over 8 months; profit is net of the SEO/AEO fee of NT$14,800/month and the one-time build fee. Actual results vary by industry competitiveness and effort invested — during the free health check we recalculate with your real search data.',
-    'roi-note':'This estimate is for reference only — actual results vary by industry competitiveness and effort invested. We can verify real search volume for you during the free health check.',
-    'pricing-eyebrow':'Plans & Pricing','pricing-h2':'Half the market price, delivered in two weeks',
-    'pricing-lead':'Our AI-accelerated build process compresses a project that used to take one or two months into two weeks — and we pass the savings straight to you.',
-    'price1-h3':'Free Website Health Check','price1-for':'Still deciding? See where you stand first',
-    'price1-mkt':'No strings attached',
-    'price1-li1':'Full audit report of your current site/page','price1-li2':'Google & AI search visibility analysis',
-    'price1-li3':'Competitor comparison and a concrete improvement checklist',
-    'price2-h3':'Quick Site','price2-for':'For: established shops, clinics, local services',
-    'price-from':'and up','price-mkt-label':'Comparable market rate',
-    'price2-li1':'5–7 page brand site, live in 14 days','price2-li2':'HTTPS + responsive on mobile/tablet/desktop',
-    'price2-li3':'Basic SEO + structured data (AEO ready)','price2-li4':'Business info, FAQ, Google Business integration',
-    'price2-li5':'First year hosting & maintenance included',
-    'price3-h3':'Website Rebuild Plus','price3-for':'For: exporters/manufacturers, businesses needing ordering/booking',
-    'price3-li1':'Everything in Quick Site','price3-li2':'Custom visual design + brand copywriting',
-    'price3-li3':'Online ordering or booking system','price3-li4':'English version (professionally translated, not machine-translated)',
-    'price3-li5':'Up to 20 product/service pages',
-    'pricing-addons':'<b>Add-ons & ongoing care:</b>SEO/AEO monthly retainer NT$14,800/mo (market rate NT$20–30k/mo; includes monthly content updates, ranking reports, and technical maintenance) · additional language +NT$18,000 · hosting & maintenance from year 2 NT$8,800/yr. All quotes are finalized after the free health check — no pressure to buy.',
-    'steps-eyebrow':'How We Work','steps-h2':'From health check to launch in just three weeks',
-    'step1-b':'Free health check','step1-p':'Send us your current site or page link — get a full report within 3 business days.','step1-t':'Day 1–3',
-    'step2-b':'Proposal & confirmation','step2-p':'A 15-minute call or LINE chat to confirm pages, content, and pricing.','step2-t':'Day 4–7',
-    'step3-b':'Build & review','step3-p':"Design first, then development — you can see progress anytime, and it only goes live once you're happy.",'step3-t':'Day 8–18',
-    'step4-b':'Launch & handover','step4-p':'Domain, hosting, and admin access all handed over to you — the assets are yours, no lock-in.','step4-t':'Day 19–21',
-    'faq-eyebrow':'FAQ','faq-h2':'Questions owners ask us most',
-    'faq1-q':'Is the free website health check really free?',
-    'faq1-a':'Yes, no strings attached. After the check, we give you a plain-language report on where you stand and concrete recommendations — no pressure to buy or sign anything.',
-    'faq2-q':'Why is the price so much lower than the market rate?',
-    'faq2-a':'We use an AI-accelerated build process that compresses a project that used to take one or two months into two weeks — the labor savings go straight into the price.',
-    'faq3-q':"What's the difference between SEO and AEO?",
-    'faq3-a':'SEO helps Google find your site; AEO gets AI search engines like ChatGPT and Gemini to cite your services in their answers. The techniques differ, and you need both.',
-    'faq4-q':"We don't have a website, only a Facebook page — is that OK?",
-    'faq4-a':"That's fine. A Facebook page's content can't be fully indexed by Google, so we recommend building a site on your own domain first — your page can keep running alongside it and cross-promote.",
-    'faq5-q':'Once the site is built, who owns the domain and hosting?',
-    'faq5-a':"Everything is handed over to you, including the domain, hosting account, and admin panel — the assets are entirely yours, and you're never locked in if you switch maintainers later.",
-    'contact-h2':'Start with a free health check',
-    'contact-lead':"Reply with your business name or website, and within 3 business days you'll get a plain-language report written for owners, not engineers — just what's leaking, how to fix it, and whether it's worth fixing.",
-    'contact-btn':'Email us for a free health check →',
-    'footer-copy':'© 2026 · Taiwan · Website Rebuild × SEO × AI Search',
-    'footer-nap-addr':'10F.-1, No. 48, Fuxing N Rd, Lixing Village, Zhongshan District, Taipei City 104502, Taiwan',
-    'footer-nap-maplabel':'Google Maps →'
+  var LANGS=['zh','en','ja','ko'];
+  var HTML_LANG={zh:'zh-Hant-TW',en:'en',ja:'ja',ko:'ko'};
+  var I18N_PH={
+    en:{'scan-placeholder':'Enter a URL, e.g. www.yourbusiness.com or yourbusiness.tw'},
+    ja:{'scan-placeholder':'URLを入力(例:www.yourshop.com または yourshop.tw)'},
+    ko:{'scan-placeholder':'주소를 입력하세요 (예: www.yourshop.com 또는 yourshop.tw)'}
   };
-  var I18N_PH={'scan-placeholder':'Enter a URL, e.g. www.yourbusiness.com or yourbusiness.tw'};
-  var I18N_ARIA={'footer-nap-maplabel':'Google Maps — opens in a new tab'};
+  var I18N_ARIA={
+    en:{'footer-nap-maplabel':'Google Maps — opens in a new tab'},
+    ja:{'footer-nap-maplabel':'Google マップ — 新しいタブで開きます'},
+    ko:{'footer-nap-maplabel':'Google 지도 — 새 탭에서 열림'}
+  };
 
   var i18nEls=document.querySelectorAll('[data-i18n]');
-  i18nEls.forEach(function(el){
-    el.dataset.zh=el.innerHTML;
-    var key=el.getAttribute('data-i18n');
-    if(I18N[key]!==undefined) el.dataset.en=I18N[key];
-  });
+  i18nEls.forEach(function(el){ el.dataset.zh=el.innerHTML; });
   var phEls=document.querySelectorAll('[data-i18n-ph]');
   phEls.forEach(function(el){ el.dataset.zhPh=el.getAttribute('placeholder'); });
   var ariaEls=document.querySelectorAll('[data-i18n-aria]');
   ariaEls.forEach(function(el){ el.dataset.zhAria=el.getAttribute('aria-label'); });
 
-  var toggleBtn=document.getElementById('langToggle');
+  function staticText(key, lang){
+    lang=lang||window.CURRENT_LANG||'zh';
+    var d=I18N_ALL[lang];
+    if(d && d[key]!==undefined) return d[key];
+    if(lang!=='zh' && I18N_ALL.en[key]!==undefined) return I18N_ALL.en[key];
+    var el=document.querySelector('[data-i18n="'+key+'"]');
+    return el ? el.dataset.zh : '';
+  }
+  window.__i18nStatic=staticText;
+
+  var selectEl=document.getElementById('langSelect');
 
   function applyLang(lang){
+    if(LANGS.indexOf(lang)<0) lang='zh';
     window.CURRENT_LANG=lang;
     i18nEls.forEach(function(el){
       if(el.id==='scanDownloadBtn' && (el.dataset.busy || el.dataset.failing)) return;
       var key=el.getAttribute('data-i18n');
-      el.innerHTML = lang==='en' && I18N[key]!==undefined ? I18N[key] : el.dataset.zh;
+      el.innerHTML = lang==='zh' ? el.dataset.zh : staticText(key, lang);
     });
     phEls.forEach(function(el){
-      var key=el.getAttribute('data-i18n-ph');
-      el.setAttribute('placeholder', lang==='en' && I18N_PH[key]!==undefined ? I18N_PH[key] : el.dataset.zhPh);
+      var key=el.getAttribute('data-i18n-ph'), d=I18N_PH[lang];
+      el.setAttribute('placeholder', d && d[key]!==undefined ? d[key] : el.dataset.zhPh);
     });
     ariaEls.forEach(function(el){
-      var key=el.getAttribute('data-i18n-aria');
-      el.setAttribute('aria-label', lang==='en' && I18N_ARIA[key]!==undefined ? I18N_ARIA[key] : el.dataset.zhAria);
+      var key=el.getAttribute('data-i18n-aria'), d=I18N_ARIA[lang];
+      el.setAttribute('aria-label', d && d[key]!==undefined ? d[key] : el.dataset.zhAria);
     });
-    document.documentElement.setAttribute('lang', lang==='en' ? 'en' : 'zh-Hant-TW');
-    if(toggleBtn){
-      toggleBtn.textContent = lang==='en' ? '中文' : 'EN';
-      toggleBtn.setAttribute('aria-pressed', lang==='en' ? 'true' : 'false');
-    }
+    document.documentElement.setAttribute('lang', HTML_LANG[lang]);
+    if(selectEl) selectEl.value=lang;
     if(window.__setTimeToggleLabel) window.__setTimeToggleLabel(window.__timeToggleOn && window.__timeToggleOn());
     if(typeof calc==='function') calc();
     if(typeof renderDemos==='function') renderDemos();
@@ -2337,10 +2224,8 @@ if(statsEl) statsIo.observe(statsEl);
     try{ localStorage.setItem('kairos-lang', lang); }catch(e){}
   }
 
-  if(toggleBtn){
-    toggleBtn.addEventListener('click', function(){
-      applyLang(window.CURRENT_LANG==='en' ? 'zh' : 'en');
-    });
+  if(selectEl){
+    selectEl.addEventListener('change', function(){ applyLang(selectEl.value); });
   }
 
   var startLang='zh';
