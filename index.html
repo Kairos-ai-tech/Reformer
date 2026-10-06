@@ -374,7 +374,7 @@ html.js .annot span{opacity:0;transform:translateY(10px)}
 /* calculator */
 .calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-top:32px;overflow:hidden}
 .calc-grid{display:grid;grid-template-columns:1.2fr 1fr}
-@media(max-width:760px){.calc-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.calc-grid{grid-template-columns:minmax(0,1fr)}}
 .calc-in{padding:30px}
 .calc-in label{display:block;font-size:14px;font-weight:700;margin:18px 0 4px}
 .calc-in label:first-child{margin-top:0}
@@ -388,6 +388,8 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .calc-out{color:#08203D}}
 .calc-out .co-label{font-size:13px;opacity:.8}
 .calc-out .co-num{font-family:var(--serif);font-size:34px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2}
+@media(max-width:480px){.calc-out .co-num{font-size:26px}}
+@media(max-width:360px){.calc-out .co-num{font-size:20px}}
 .calc-out .co-sub{font-size:13px;opacity:.85}
 .calc-note{font-size:12.5px;color:var(--ink-faint);padding:14px 30px;border-top:1px solid var(--line)}
 
@@ -396,6 +398,9 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .price{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
 .price.hot{border-color:var(--accent);border-width:2px;position:relative;padding-top:54px}
 .price.hot::after{content:"最多人選";position:absolute;top:0;left:0;right:0;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-align:center;padding:6px 0;border-radius:12px 12px 0 0}
+:lang(en) .price.hot::after{content:"Most popular"}
+:lang(ja) .price.hot::after{content:"一番人気"}
+:lang(ko) .price.hot::after{content:"가장 인기"}
 .price h3{font-family:var(--serif);font-size:19px;margin-bottom:4px}
 .price .p-for{font-size:13px;color:var(--ink-faint);margin-bottom:14px}
 .price .p-num{font-family:var(--serif);font-size:32px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--accent-deep)}
@@ -492,9 +497,9 @@ footer{padding:28px 0;background:var(--night-ground);color:#EAF1FB}
 .ind-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
 .ind-kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .ind-kpi .l{font-size:12px;color:var(--ink-faint);overflow-wrap:anywhere}
-.ind-kpi .n{font-family:var(--serif);font-size:21px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.3;white-space:nowrap}
-@media(max-width:480px){.ind-kpi .n{font-size:16px}}
-@media(max-width:340px){.ind-kpi{padding:10px 8px}.ind-kpi .n{font-size:14px}}
+.ind-kpi .n{font-family:var(--serif);font-size:21px;font-weight:900;color:var(--accent-deep);font-variant-numeric:tabular-nums;line-height:1.3}
+@media(max-width:480px){.ind-kpi .n{font-size:14px}}
+@media(max-width:340px){.ind-kpi{padding:10px 8px}.ind-kpi .n{font-size:12.5px}}
 .ind-kpi .n small{font-size:12px;font-weight:700;color:var(--ink-soft)}
 .ind-chart{margin:6px 0 4px}
 .ind-chart svg{width:100%;height:auto;display:block}
@@ -2203,8 +2208,8 @@ if(statsEl) statsIo.observe(statsEl);
               fail();
             }
           };
-          document.body.appendChild(iframe);
           iframe.srcdoc=html;
+          document.body.appendChild(iframe);
         }, function(){
           if(cdnSettled) return;
           cdnSettled=true;
