@@ -12,6 +12,7 @@
   var gsap = window.gsap, ST = window.ScrollTrigger;
 
   // Unhide the hero intro targets no matter what happens below.
+  var lateLoad = root.classList.contains('motion-ready'); // safety timeout already fired
   function ready(){ root.classList.add('motion-ready'); }
   if(reduced || !gsap || !ST){ ready(); return; }
 
@@ -36,7 +37,8 @@
       var a = e.target.closest && e.target.closest('a[href^="#"]');
       if(!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
       var id = a.getAttribute('href');
-      var target = id === '#' ? null : document.querySelector(id);
+      var target = null;
+      if(id !== '#'){ try{ target = document.querySelector(id); }catch(_){ return; } }
       if(id !== '#' && !target) return;
       e.preventDefault();
       lenis.scrollTo(target || 0, {offset: target ? -((header ? header.offsetHeight : 0) + 8) : 0, duration:1.3});
@@ -53,7 +55,7 @@
 
   /* ---------- Hero entrance (BlurText-style) ---------- */
   var hero = document.querySelector('.hero');
-  if(hero){
+  if(hero && !lateLoad){
     var h = function(s){ return hero.querySelector(s); };
     var clear = 'opacity,visibility,transform,filter';
     var tl = gsap.timeline({defaults:{ease:'expo.out'}});
@@ -61,13 +63,14 @@
       .from(h('h1'), {autoAlpha:0, y:34, filter:'blur(14px)', duration:1.1, clearProps:clear}, '-=.45')
       .from(h('.wrap > p'), {autoAlpha:0, y:22, duration:.9, clearProps:clear}, '-=.7')
       .from(h('.cta-row'), {autoAlpha:0, y:18, duration:.8, clearProps:clear}, '-=.65');
-    ready();
-
+  }
+  ready();
+  if(hero){
     // Hero parallax: background layers drift slower than content.
     var heroST = {trigger:hero, start:'top top', end:'bottom top', scrub:true};
     gsap.to(hero.querySelector('.hero-network'), {yPercent:-14, ease:'none', scrollTrigger:heroST});
     gsap.to(hero.querySelector('.wrap'), {y:-36, autoAlpha:.25, ease:'none', scrollTrigger:heroST});
-  } else { ready(); }
+  }
 
   /* ---------- Scroll reveals (replaces the CSS-only reveal) ---------- */
   function done(el){
@@ -121,6 +124,7 @@
           ? ((e.clientX - (r.left + r.width/2)) * pull) + 'px ' + ((e.clientY - (r.top + r.height/2)) * pull) + 'px'
           : '';
       }, {passive:true});
+      document.documentElement.addEventListener('pointerleave', function(){ btn.style.translate = ''; });
     });
   }
 
@@ -136,9 +140,10 @@
     box.setAttribute('aria-hidden', 'true');
     hero.insertBefore(box, hero.firstChild);
 
-    var effect = null, inView = true, loaded = false, loading = false;
+    var effect = null, inView = true, loaded = false, loading = false, stopTimer = 0, wasRetro = root.classList.contains('retro-mode');
     var wanted = function(){ return inView && !document.hidden && !root.classList.contains('retro-mode'); };
     var sync = function(){
+      clearTimeout(stopTimer);
       if(wanted() && loaded && !effect){
         effect = window.VANTA.NET({
           el:box, mouseControls:true, touchControls:false, gyroControls:false,
@@ -147,8 +152,12 @@
         });
         box.classList.add('on'); root.classList.add('vanta-on');
       } else if(!wanted() && effect){
-        effect.destroy(); effect = null;
-        box.classList.remove('on'); root.classList.remove('vanta-on');
+        // Debounce so quick scrolls past the hero don't churn WebGL contexts.
+        stopTimer = setTimeout(function(){
+          if(wanted() || !effect) return;
+          effect.destroy(); effect = null;
+          box.classList.remove('on'); root.classList.remove('vanta-on');
+        }, 1500);
       }
     };
     var load = function(src, cb){
@@ -163,7 +172,10 @@
         load('vendor/vanta.net.min.js', function(){ loaded = true; loading = false; sync(); });
       });
     };
-    new MutationObserver(sync).observe(root, {attributes:true, attributeFilter:['class']});
+    new MutationObserver(function(){
+      var r = root.classList.contains('retro-mode');
+      if(r !== wasRetro){ wasRetro = r; sync(); }
+    }).observe(root, {attributes:true, attributeFilter:['class']});
     document.addEventListener('visibilitychange', sync);
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){ inView = es[0].isIntersecting; sync(); }).observe(hero);
