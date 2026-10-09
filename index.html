@@ -712,10 +712,44 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
   .scan-radar-sweep{animation:none}
   .lead-form{animation:none!important}
 }
+
+/* ---- motion layer (Lenis / GSAP / Vanta / React Bits ports) — see motion.js ---- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:clip}
+[data-lenis-prevent]{overscroll-behavior:contain}
+/* hero children stay hidden until motion.js takes over (safety timeout in <body> reveals them if it never does) */
+html.js:not(.motion-ready) .hero .trust-pill,
+html.js:not(.motion-ready) .hero h1,
+html.js:not(.motion-ready) .hero .wrap>p,
+html.js:not(.motion-ready) .hero .cta-row{opacity:0}
+/* GSAP drives reveals once loaded; drop the CSS transitions so the two never fight */
+.gsap-on .reveal:not(.gdone),.gsap-on .r-item:not(.gdone){transition:none}
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;background:linear-gradient(90deg,var(--accent),var(--teal));transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+html.retro-mode .scroll-progress{display:none}
+/* Vanta NET hero background */
+.hero-vanta{position:absolute;top:0;right:0;width:min(720px,66%);height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 1.4s ease;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48%);mask-image:linear-gradient(90deg,transparent 0,#000 48%)}
+.hero-vanta.on{opacity:.55}
+.hero-vanta canvas{display:block}
+html.vanta-on .hero-network{display:none}
+html.retro-mode .hero-vanta{display:none}
+/* React Bits port: ShinyText */
+@property --shine{syntax:'<percentage>';inherits:false;initial-value:120%}
+html:not(.retro-mode) .shiny{background:linear-gradient(110deg,var(--accent-deep) 35%,#fff 50%,var(--accent-deep) 65%) var(--shine) 0/250% 100% no-repeat,var(--accent-deep);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shiny 4.5s linear 1.4s infinite}
+@keyframes shiny{from{--shine:120%}to{--shine:-120%}}
+/* React Bits port: SpotlightCard */
+@property --spot{syntax:'<number>';inherits:false;initial-value:0}
+html:not(.retro-mode) .spot{background-image:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(76,147,232,var(--spot)),transparent 65%);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease,--spot .35s ease}
+html:not(.retro-mode) .spot:hover{--spot:.2}
+/* React Bits port: Magnet */
+.magnet{transition:transform .15s ease,box-shadow .15s ease,translate .3s cubic-bezier(.22,1,.36,1)}
+@media (prefers-reduced-motion:reduce){.scroll-progress{display:none}}
 </style>
 </head>
 <body>
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('motion-ready')},2500);</script>
 
 <div class="retro-marquee" aria-hidden="true"><span data-i18n="marquee">★ 歡迎光臨優時科技首頁 ★ 本頁最佳瀏覽解析度 800×600,建議使用 IE6.0 以上瀏覽器 ★ 24 小時全年無休接單 ★ 拜訪人數不明,因為算不出來 ★</span></div>
 
@@ -929,7 +963,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
         <div class="urlbox" data-i18n="demo-urlbox">示範比較:金益豐食品行</div>
       </div>
       <div class="compare" id="compareWrap" style="--split:50%">
-        <div id="siteOld" class="old-site compare-panel compare-old">
+        <div id="siteOld" class="old-site compare-panel compare-old" data-lenis-prevent>
           <span class="compare-badge bad" data-i18n="demo-badge-bad">⚠ 不安全</span>
           <div class="os-head" data-i18n="demo-os-head">☆歡迎光臨☆金益豐食品行☆</div>
           <div class="os-marquee" data-i18n="demo-os-marquee">最新消息:本店春節照常營業!(2018/02/10)</div>
@@ -949,7 +983,7 @@ html.retro-mode .scan-impression h3{color:var(--ink-faint) !important}
           </table>
           <div class="os-count" data-i18n="demo-os-count">您是第 000048721 位訪客|最後更新:2018/02/10</div>
         </div>
-        <div id="siteNew" class="new-site compare-panel compare-new">
+        <div id="siteNew" class="new-site compare-panel compare-new" data-lenis-prevent>
           <span class="compare-badge good" data-i18n="demo-badge-good">🔒 https</span>
           <div class="ns-hero">
             <div class="ns-copy">
@@ -2298,5 +2332,9 @@ if(statsEl) statsIo.observe(statsEl);
 })();
 </script>
 
+<script defer src="vendor/gsap.min.js"></script>
+<script defer src="vendor/ScrollTrigger.min.js"></script>
+<script defer src="vendor/lenis.min.js"></script>
+<script defer src="motion.js"></script>
 </body>
 </html>
