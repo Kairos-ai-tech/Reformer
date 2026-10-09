@@ -1,6 +1,6 @@
 # 優時數位改造 — Product Page
 
-Static product page for 優時科技 (Kairos.ai) web rebuild + SEO/AEO services. Single self-contained `index.html` — no build step, no dependencies.
+Static product page for 優時科技 (Kairos.ai) web rebuild + SEO/AEO services. `index.html` plus a small motion layer (`motion.js` and vendored libraries in `vendor/`) — no build step, no CDN.
 
 ## Deploy to GitHub Pages (about 2 minutes)
 
@@ -39,3 +39,14 @@ The site is currently configured for `https://reform.kairosaitech.com/`. If you 
 - `index.html` — `<link rel="canonical">`, `og:url`, `og:image` / `twitter:image` (and re-upload `og-image.png` if the domain changes), and the `"url"`/`"image"` fields in the `ProfessionalService` JSON-LD block
 
 `og-image.png` (1200×630, generated from the real logo on brand blue) ships alongside `index.html` — used for Facebook/LINE/Twitter link previews. Regenerate it if the logo changes.
+
+## Motion layer
+
+`motion.js` adds scroll/animation polish on top of the static page. The libraries are vendored in `vendor/` (served same-origin, so no CDN dependency):
+
+- **Lenis** — smooth scrolling and eased anchor navigation (offset for the sticky header). Scrollable inner panels carry `data-lenis-prevent`.
+- **GSAP + ScrollTrigger** — hero entrance, scroll-reveal for sections/cards/steps/prices (replaces the CSS-only reveal), hero parallax, top scroll-progress bar.
+- **Vanta (NET) + three.js r134** — animated network background in the hero. Lazy-loaded after `load`, desktop only, paused when the hero is off-screen or retro mode is on. Vanta 0.5.x requires three ≤ r134, so don't bump `three.min.js`.
+- **React Bits** — it's a React library and this site has no build step, so three of its effects are ported to vanilla JS/CSS: SpotlightCard (cursor glow on cards/prices), ShinyText (trust pill), Magnet (hero buttons).
+
+Everything is skipped under `prefers-reduced-motion`, and the page falls back to the original CSS behaviour if any script fails to load. To disable a piece, remove its block in `motion.js`; to remove the layer entirely, delete the four `<script defer>` tags before `</body>`.
