@@ -336,7 +336,6 @@ select.lang-toggle option{background:var(--surface);color:var(--ink)}
 .story.moved .sh-scroll{opacity:0}
 @media(prefers-reduced-motion:no-preference){.sh-scroll{animation:nudge 1.6s ease-in-out infinite}}
 @keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-@media(prefers-reduced-motion:reduce){.story{height:auto}.story-stage{position:static}.sh-scroll{display:none}}
 @media(max-width:860px){
   .story{height:var(--story-h,260vh)}
   .story-stage{grid-template-columns:1fr;gap:12px;top:72px}
@@ -350,6 +349,7 @@ select.lang-toggle option{background:var(--surface);color:var(--ink)}
   .sh-scroll{display:none}
   .story .compare,.story .compare-panel{min-height:300px}
 }
+@media (prefers-reduced-motion:reduce),(max-width:860px) and (max-height:700px),(max-height:520px){.story{height:auto}.story-stage{position:static;grid-template-columns:1fr}.story-hud{display:none}}
 
 /* fake old site */
 .old-site{font-family:"Times New Roman","PMingLiU",serif;background:#EFEFEF;color:#222;padding:18px;min-height:380px}
@@ -1452,15 +1452,20 @@ function showSite(which){
   var btnNew=document.getElementById('btnNew');
   var slider=document.getElementById('compareSlider');
   if(!story || !compare || !ring) return;
-  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce), (max-width:860px) and (max-height:700px), (max-height:520px)');
   var ticking=false;
+  var lastQ=-1;
   function draw(){
     ticking=false;
+    if(mq.matches) return;
     var stage=story.firstElementChild;
     var span=story.offsetHeight-stage.offsetHeight;
     var raw=span>0 ? -story.getBoundingClientRect().top/span : 0;
     var p=Math.max(0,Math.min(1,raw));
     var q=Math.max(0,Math.min(1,(p-0.1)/0.75));
+    story.classList.toggle('moved', p>0.02);
+    if(q===lastQ) return;
+    lastQ=q;
     var split=92-84*q;
     splitAnimGen++;
     slider.value=split;
@@ -1470,24 +1475,28 @@ function showSite(which){
     ring.style.setProperty('--pct',score);
     num.textContent=score;
     steps.forEach(function(li,i){ li.classList.toggle('on', q>=(i+0.6)/steps.length); });
-    story.classList.toggle('moved', p>0.02);
     btnOld.classList.toggle('on-old', q<0.5);
     btnNew.classList.toggle('on-new', q>=0.5);
     if(q>0 && window.__hideCompareHint) window.__hideCompareHint();
   }
   function onScroll(){ if(!ticking && !mq.matches){ ticking=true; requestAnimationFrame(draw); } }
-  function setStatic(){
-    steps.forEach(function(li){ li.classList.add('on'); });
-    ring.style.setProperty('--pct',92); num.textContent=92;
+  function sync(){
+    if(!mq.matches){ lastQ=-1; draw(); return; }
+    lastQ=-1;
+    splitAnimGen++;
+    slider.value=50;
+    compare.style.setProperty('--split','50%');
+    updateBadgeFades(compare,50);
+    btnOld.classList.remove('on-old');
+    btnNew.classList.remove('on-new');
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
-  function sync(){ if(mq.matches) setStatic(); else draw(); }
-  if(mq.addEventListener) mq.addEventListener('change',sync);
+  if(mq.addEventListener) mq.addEventListener('change',sync); else if(mq.addListener) mq.addListener(sync);
   sync();
 })();
 
-/* ---- comparison demo: intro sweep + entrance animation on first scroll into view ---- */
+/* ---- comparison demo: entrance animation on first scroll into view ---- */
 (function(){
   var demo = document.getElementById('demo');
   var compare = document.getElementById('compareWrap');
