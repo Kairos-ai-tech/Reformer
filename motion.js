@@ -168,8 +168,8 @@
     var boot = function(){
       if(loading || loaded) return;
       loading = true;
-      load('vendor/three.min.js', function(){
-        load('vendor/vanta.net.min.js', function(){ loaded = true; loading = false; sync(); });
+      load((window.ASSET_BASE||'')+'vendor/three.min.js', function(){
+        load((window.ASSET_BASE||'')+'vendor/vanta.net.min.js', function(){ loaded = true; loading = false; sync(); });
       });
     };
     new MutationObserver(function(){
