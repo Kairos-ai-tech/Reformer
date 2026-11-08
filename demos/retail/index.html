@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="zh-Hant" data-site-zh="金益豐食品行" data-site-en="Jin Yi Feng Foods">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>金益豐食品行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700;900&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap">
+<link rel="stylesheet" href="../demo.css">
+<style>
+:root{--ink:#3A2418;--ink2:#7A5A48;--cream:#FFF8EC;--cream2:#F7E9D0;--red:#B5332A;--red2:#D8493D;--gold:#D9A441;--brown:#5A2E1B;--line:#EAD7B8;--ok:#2E7D4F;--serif:'Fraunces','Noto Serif TC',serif;--sans:'Noto Sans TC',-apple-system,"PingFang TC",sans-serif}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.7}
+.w{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);margin:0;line-height:1.2}
+html[lang="zh-Hant"] h1,html[lang="zh-Hant"] h2,html[lang="zh-Hant"] h3{font-family:'Noto Serif TC',serif;font-weight:900}
+h1{font-size:clamp(36px,6vw,68px);font-weight:800}
+h2{font-size:clamp(28px,4vw,42px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--red);text-transform:uppercase;margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;border:2px solid transparent;font:700 15.5px var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-r{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(181,51,42,.3)}
+.btn-r:hover{background:var(--red2)}
+.btn-o{border-color:var(--brown);color:var(--brown)}
+.btn-o:hover{background:var(--brown);color:#fff}
+header.site{position:sticky;top:38px;z-index:50;background:rgba(255,248,236,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+html.embed header.site{top:0}
+.hd{display:flex;align-items:center;gap:24px;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--brown)}
+.logo .mark{width:42px;height:42px;border-radius:50%;background:var(--red);color:#FFE9B8;display:grid;place-items:center;font:900 20px/1 'Noto Serif TC',serif;box-shadow:inset 0 0 0 3px var(--cream),inset 0 0 0 4px var(--gold)}
+.logo b{display:block;font:900 19px/1.1 'Noto Serif TC',serif}
+.logo small{display:block;font-size:10.5px;letter-spacing:.14em;color:var(--ink2);margin-top:3px}
+nav.main{display:flex;gap:4px;margin-left:auto}
+nav.main a{padding:9px 15px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px;color:var(--ink2);transition:background .2s,color .2s}
+nav.main a:hover{background:var(--cream2);color:var(--brown)}
+nav.main a.active{background:var(--brown);color:#fff}
+.cartbtn{text-decoration:none;position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:0;border-radius:999px;padding:10px 18px;font:700 14px var(--sans);cursor:pointer}
+.cartbtn span{background:#fff;color:var(--red);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:42px;height:38px;font-size:18px;cursor:pointer;color:var(--brown)}
+.hero{position:relative;overflow:hidden;padding:clamp(44px,6vw,84px) 0}
+.hero::before{content:"";position:absolute;right:-12%;top:-30%;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--cream2),transparent 68%)}
+.hero .w{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{font-size:18px;color:var(--ink2);margin:20px 0 30px;max-width:30em}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.since{display:inline-flex;gap:10px;align-items:center;font-weight:700;color:var(--brown);margin-bottom:18px}
+.since i{width:36px;height:2px;background:var(--gold)}
+.plate{position:relative;aspect-ratio:1;max-width:460px;justify-self:center;width:100%}
+.plate .disc{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--cream2));box-shadow:0 30px 60px rgba(90,46,27,.2),inset 0 0 0 10px #fff,inset 0 0 0 12px var(--line)}
+.plate .it{position:absolute;display:grid;place-items:center;border-radius:50%;font-size:clamp(54px,9vw,96px);filter:drop-shadow(0 12px 14px rgba(90,46,27,.25));animation:bob 5s ease-in-out infinite}
+.it.a{inset:22% 38% 38% 18%;animation-delay:0s}
+.it.b{inset:34% 12% 22% 42%;animation-delay:-1.6s}
+.it.c{inset:52% 46% 8% 14%;animation-delay:-3.2s}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
+.plate .rate{position:absolute;right:2%;top:4%;width:104px;height:104px;border-radius:50%;background:var(--red);color:#FFE9B8;display:grid;place-items:center;text-align:center;font:800 13px/1.3 var(--sans);transform:rotate(12deg);box-shadow:0 10px 24px rgba(181,51,42,.4)}
+.plate .rate b{display:block;font:900 26px/1 var(--serif)}
+.marquee{background:var(--brown);color:#FFE9B8;overflow:hidden;white-space:nowrap;padding:14px 0;font:700 15px var(--sans);letter-spacing:.1em}
+.marquee div{display:inline-block;padding-left:100%;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+section.s{padding:clamp(52px,8vw,96px) 0}
+.head{max-width:640px;margin-bottom:38px}
+.head p{color:var(--ink2);margin-top:12px;font-size:17px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(90,46,27,.12)}
+.card p{color:var(--ink2);font-size:15px;margin-top:8px}
+.big{font-size:38px;margin-bottom:10px;display:block}
+.prod{overflow:hidden;padding:0;display:flex;flex-direction:column}
+.prod[hidden]{display:none}
+.prod .pic{aspect-ratio:4/3;display:grid;place-items:center;font-size:76px;background:linear-gradient(135deg,var(--cream2),#fff);position:relative}
+.prod .pic em{position:absolute;left:12px;top:12px;font-style:normal;font-size:12px;font-weight:700;background:var(--red);color:#fff;border-radius:999px;padding:3px 10px}
+.prod .info{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.prod .price{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:10px}
+.prod .price b{font:800 22px var(--serif);color:var(--red)}
+.add{background:var(--brown);color:#fff;border:0;border-radius:999px;padding:9px 16px;font:700 13.5px var(--sans);cursor:pointer;transition:background .2s,transform .15s}
+.add:hover{background:var(--red)}
+.add.pop{animation:pop .4s ease}
+@keyframes pop{50%{transform:scale(1.15)}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tab{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 20px;font:700 14px var(--sans);cursor:pointer;color:var(--ink2)}
+.tab[aria-pressed="true"]{background:var(--brown);border-color:var(--brown);color:#fff}
+.band{background:var(--brown);color:#FFE9B8;border-radius:24px;padding:clamp(30px,5vw,56px);display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.band h2{color:#fff}
+.band p{color:#E9CDA3;margin-top:12px}
+.band .big{font-size:72px;text-align:center}
+.stars{color:var(--gold);letter-spacing:2px;font-size:18px}
+.rev small{display:block;color:var(--ink2);margin-top:12px;font-size:13px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.story .photo{aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,var(--gold),var(--red));display:grid;place-items:center;font-size:120px;box-shadow:0 24px 50px rgba(90,46,27,.25)}
+.timeline{list-style:none;margin:24px 0 0;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 18px 22px;color:var(--ink2)}
+.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--red)}
+.timeline b{color:var(--brown);margin-right:8px}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer;color:var(--brown)}
+details p{margin-top:10px;color:var(--ink2);font-size:15px}
+.pagehead{padding:clamp(40px,6vw,72px) 0 10px;text-align:center}
+.pagehead p{color:var(--ink2);max-width:36em;margin:14px auto 0;font-size:17px}
+.layout2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4vw,36px)}
+label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;padding:12px 14px;border:1px solid #DCC7A4;border-radius:10px;background:#FFFDF8;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:1px}
+.fld{margin-bottom:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sum{background:var(--cream2);border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:14.5px}
+.sum b{color:var(--red)}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:9px 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right;font-weight:700}
+.hours tr.today td{color:var(--red)}
+.map{aspect-ratio:16/10;border-radius:16px;background:repeating-linear-gradient(0deg,#E9DDC2 0 1px,transparent 1px 28px),repeating-linear-gradient(90deg,#E9DDC2 0 1px,transparent 1px 28px),#F4EAD2;position:relative;overflow:hidden;margin-bottom:18px}
+.map::before{content:"";position:absolute;left:-10%;right:-10%;top:48%;height:22px;background:#fff;transform:rotate(-8deg);box-shadow:0 0 0 2px #E6D6B4}
+.map i{position:absolute;left:50%;top:40%;width:34px;height:34px;margin:-34px 0 0 -17px;background:var(--red);border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 8px 14px rgba(181,51,42,.4)}
+.map i::after{content:"";position:absolute;inset:10px;background:#fff;border-radius:50%}
+.form-status{color:var(--ok)}
+footer.ft{background:var(--brown);color:#E9CDA3;padding:44px 0 28px;font-size:14px}
+footer.ft .w{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer.ft b{color:#fff;display:block;margin-bottom:8px}
+footer.ft a{display:block;color:#E9CDA3;text-decoration:none;padding:3px 0}
+footer.ft .copy{grid-column:1/-1;border-top:1px solid rgba(233,205,163,.2);padding-top:18px;margin-top:8px;font-size:12.5px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);background:var(--brown);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s;z-index:900}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (max-width:960px){.grid4{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.hero .w,.story,.layout2,.band{grid-template-columns:1fr}.plate{max-width:340px}footer.ft .w{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){
+ nav.main{display:none;position:absolute;top:72px;left:0;right:0;background:var(--cream);flex-direction:column;padding:10px 20px 16px;border-bottom:1px solid var(--line)}
+ body.menu-open nav.main{display:flex}
+ .burger{display:block}.hd{gap:12px}.hd .cartbtn{margin-left:auto}
+ .grid4,.grid3,.grid2,.row{grid-template-columns:1fr}footer.ft .w{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.plate .it,.marquee div{animation:none}.marquee div{padding-left:0}.btn,.card{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="w hd">
+    <a class="logo" href="#/home" data-go="home">
+      <span class="mark">益</span>
+      <span><b data-en="Jin Yi Feng">金益豐食品行</b><small>EST. 1973 · CHANGHUA</small></span>
+    </a>
+    <nav class="main" aria-label="Main" data-en-label="Main">
+      <a href="#/home" data-go="home" data-en="Home">首頁</a>
+      <a href="#/shop" data-go="shop" data-en="Shop">商品訂購</a>
+      <a href="#/story" data-go="story" data-en="Our Story">品牌故事</a>
+      <a href="#/visit" data-go="visit" data-en="Visit &amp; Order">門市與訂購</a>
+    </nav>
+    <a class="cartbtn" href="#/visit" data-go="visit"><span id="cartN">0</span><b data-en="Order" style="font-weight:700">訂購單</b></a>
+    <button class="burger" type="button" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+  </div>
+</header>
+
+<main>
+<div data-page="home" data-title="首頁" data-title-en="Home">
+  <section class="hero">
+    <div class="w">
+      <div>
+        <div class="since"><i></i><span data-en="Three generations · Since 1973">三代傳承・1973 年創立</span></div>
+        <h1 data-en="Fresh rice cakes, <em>made today</em>, sent to your door.">當天現做的米食,<em>直送到府</em>。</h1>
+        <p class="lead" data-en="We make red turtle cakes and pineapple cakes by hand every morning. Order online and we ship across Taiwan. Free shipping over NT$1,000.">我們每天早上手工製作紅龜粿與鳳梨酥。線上下單,全台宅配。滿 NT$1,000 免運。</p>
+        <div class="cta">
+          <a class="btn btn-r" href="#/shop" data-go="shop" data-en="Order online →">立即訂購 →</a>
+          <a class="btn btn-o" href="#/visit" data-go="visit" data-en="Visit our store">門市資訊</a>
+        </div>
+      </div>
+      <div class="plate" aria-hidden="true">
+        <div class="disc"></div>
+        <span class="it a">🍡</span><span class="it b">🍍</span><span class="it c">🥮</span>
+        <div class="rate"><span><b>4.8</b><span data-en="236 reviews">236 則評論</span></span></div>
+      </div>
+    </div>
+  </section>
+  <div class="marquee" aria-hidden="true"><div>★ <span data-en="Made fresh every morning">每日現做</span> ★ <span data-en="Ships across Taiwan">全台宅配</span> ★ <span data-en="Choose your delivery date">可指定到貨日</span> ★ <span data-en="Gift boxes for every festival">節慶禮盒</span> ★ <span data-en="Made fresh every morning">每日現做</span> ★ <span data-en="Ships across Taiwan">全台宅配</span> ★ <span data-en="Choose your delivery date">可指定到貨日</span> ★ <span data-en="Gift boxes for every festival">節慶禮盒</span></div></div>
+
+  <section class="s">
+    <div class="w">
+      <div class="head rv"><div class="eyebrow" data-en="Why customers choose us">為什麼選我們</div><h2 data-en="Simple promises we keep">我們做到的幾件小事</h2></div>
+      <div class="grid4">
+        <div class="card rv"><span class="big">🌅</span><h3 data-en="Fresh daily">當日現做</h3><p data-en="Baked in the morning, packed by noon.">早上製作,中午前包裝出貨。</p></div>
+        <div class="card rv"><span class="big">🚚</span><h3 data-en="Island-wide delivery">全台宅配</h3><p data-en="Cold-chain boxes. Free shipping over NT$1,000.">全程保鮮箱。滿 NT$1,000 免運。</p></div>
+        <div class="card rv"><span class="big">📅</span><h3 data-en="Pick your date">指定到貨日</h3><p data-en="Choose the day your gift should arrive.">想送禮的那天,就在那天送到。</p></div>
+        <div class="card rv"><span class="big">🎁</span><h3 data-en="Gift ready">送禮更方便</h3><p data-en="Gift boxes and a hand-written card, free.">附禮盒與手寫卡片,不另收費。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:0">
+    <div class="w">
+      <div class="head rv"><div class="eyebrow" data-en="Best sellers">熱銷商品</div><h2 data-en="Loved by regulars">老顧客回購最多</h2></div>
+      <div class="grid3" id="best"></div>
+      <div style="text-align:center;margin-top:30px"><a class="btn btn-o" href="#/shop" data-go="shop" data-en="See all products →">看全部商品 →</a></div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:0">
+    <div class="w"><div class="band rv"><div><div class="eyebrow" style="color:var(--gold)" data-en="Festival gift boxes">節慶禮盒</div><h2 data-en="Order early for the holidays">節慶快到了,早點預訂</h2><p data-en="Boxes for Mid-Autumn, Lunar New Year and weddings. Orders of 20 or more get a company logo on the box.">中秋、過年、喜餅都有禮盒。訂 20 盒以上,可在盒上印公司標誌。</p><a class="btn btn-r" style="margin-top:22px" href="#/visit" data-go="visit" data-en="Ask for a quote →">詢問報價 →</a></div><span class="big">🎁</span></div></div>
+  </section>
+</div>
+
+<div data-page="shop" data-title="商品訂購" data-title-en="Shop">
+  <section class="pagehead"><div class="w"><div class="eyebrow" data-en="Shop">商品訂購</div><h1 data-en="Pick what you like">挑選您喜歡的</h1><p data-en="Tap “Add” to build your order. You can pay when you pick up or on delivery.">按「加入」就能組合訂單。取貨或收貨時再付款。</p></div></section>
+  <section class="s">
+    <div class="w">
+      <div class="tabs" role="group" aria-label="Filter" data-en-label="Filter">
+        <button type="button" class="tab" data-f="all" aria-pressed="true" data-en="All">全部</button>
+        <button type="button" class="tab" data-f="cake" aria-pressed="false" data-en="Rice cakes">米食粿點</button>
+        <button type="button" class="tab" data-f="pastry" aria-pressed="false" data-en="Pastries">糕餅</button>
+        <button type="button" class="tab" data-f="gift" aria-pressed="false" data-en="Gift boxes">禮盒</button>
+      </div>
+      <div class="grid3" id="all"></div>
+    </div>
+  </section>
+</div>
+
+<div data-page="story" data-title="品牌故事" data-title-en="Our Story">
+  <section class="pagehead"><div class="w"><div class="eyebrow" data-en="Our story">品牌故事</div><h1 data-en="Same recipe, three generations">一份食譜,傳了三代</h1></div></section>
+  <section class="s">
+    <div class="w story">
+      <div class="photo rv" aria-hidden="true">🍡</div>
+      <div class="rv"><h2 data-en="Started with one steamer">從一個蒸籠開始</h2><p style="color:var(--ink2);margin-top:14px;font-size:17px" data-en="In 1973 our grandfather made red turtle cakes for neighbors in Changhua. Today we still use his recipe, only with a bigger kitchen and a website.">1973 年,阿公在彰化為鄰居做紅龜粿。今天我們還是用他的配方,只是廚房變大了,也有了官網。</p>
+        <ul class="timeline"><li><b>1973</b><span data-en="First stall in Changhua market">彰化市場的第一個攤位</span></li><li><b>1998</b><span data-en="Opened our first store">開設第一間門市</span></li><li><b>2015</b><span data-en="Pineapple cakes join the menu">鳳梨酥加入菜單</span></li><li><b>2026</b><span data-en="Online orders, shipped island-wide">開放線上訂購,全台宅配</span></li></ul>
+      </div>
+    </div>
+  </section>
+  <section class="s" style="padding-top:0">
+    <div class="w">
+      <div class="head rv"><div class="eyebrow" data-en="Reviews">顧客評價</div><h2 data-en="4.8 stars from 236 reviews">236 則評論,平均 4.8 星</h2></div>
+      <div class="grid3">
+        <div class="card rev rv"><div class="stars">★★★★★</div><p style="color:var(--ink);font-size:16px" data-en="“Soft, not too sweet. My mother says it tastes like the old days.”">「軟 Q 不死甜,我媽說吃起來就是小時候的味道。」</p><small data-en="— Ms. Lin, Taichung (fictional)">— 林小姐,台中(虛構)</small></div>
+        <div class="card rev rv"><div class="stars">★★★★★</div><p style="color:var(--ink);font-size:16px" data-en="“Ordered for my wedding. It arrived on the exact day I chose.”">「喜餅訂這家,真的在我指定的那天準時到。」</p><small data-en="— Mr. Chen, Taipei (fictional)">— 陳先生,台北(虛構)</small></div>
+        <div class="card rev rv"><div class="stars">★★★★★</div><p style="color:var(--ink);font-size:16px" data-en="“Easy to order online. The pineapple cakes are our office favorite.”">「線上訂購很方便,鳳梨酥是我們公司同事最愛。」</p><small data-en="— Ms. Wu, Hsinchu (fictional)">— 吳小姐,新竹(虛構)</small></div>
+      </div>
+    </div>
+  </section>
+  <section class="s" style="padding-top:0">
+    <div class="w" style="max-width:780px">
+      <div class="head rv"><h2 data-en="Questions we often hear">常見問題</h2></div>
+      <details class="rv"><summary data-en="Can I choose the delivery date?">可以指定到貨日嗎?</summary><p data-en="Yes. Pick a date when you order. We are closed on Lunar New Year’s Eve.">可以。下單時選擇日期即可。除夕公休。</p></details>
+      <details class="rv"><summary data-en="How long do the cakes keep?">保存多久?</summary><p data-en="Red turtle cakes keep 2 days at room temperature, 7 days in the fridge. Pineapple cakes keep 14 days.">紅龜粿常溫 2 天、冷藏 7 天。鳳梨酥可放 14 天。</p></details>
+      <details class="rv"><summary data-en="Do you offer company orders?">可以團購或公司訂購嗎?</summary><p data-en="Yes. Orders of 20 boxes or more get a quote and a custom logo on the box.">可以。訂 20 盒以上提供報價,並可印製公司標誌。</p></details>
+    </div>
+  </section>
+</div>
+
+<div data-page="visit" data-title="門市與訂購" data-title-en="Visit &amp; Order">
+  <section class="pagehead"><div class="w"><div class="eyebrow" data-en="Visit &amp; order">門市與訂購</div><h1 data-en="Come by, or order from home">來店,或在家訂購</h1></div></section>
+  <section class="s">
+    <div class="w layout2">
+      <form class="form-card" data-demo novalidate>
+        <h3 style="margin-bottom:14px" data-en="Your order">您的訂單</h3>
+        <div class="sum" id="sum"></div>
+        <div class="row"><div class="fld"><label for="o1" data-en="Name">姓名</label><input id="o1" type="text"></div><div class="fld"><label for="o2" data-en="Phone">電話</label><input id="o2" type="tel"></div></div>
+        <div class="row"><div class="fld"><label for="o3" data-en="Delivery date">到貨日期</label><input id="o3" type="date"></div><div class="fld"><label for="o4" data-en="Method">取貨方式</label><select id="o4"><option data-en="Home delivery">宅配到府</option><option data-en="Store pickup">門市自取</option></select></div></div>
+        <div class="fld"><label for="o5" data-en="Note">備註</label><textarea id="o5" rows="3" placeholder="禮盒卡片文字…" data-en-ph="Card message for the gift box…"></textarea></div>
+        <button class="btn btn-r" type="submit" data-en="Send order →">送出訂單 →</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+      <div>
+        <div class="map" aria-hidden="true"><i></i></div>
+        <div class="card"><h3 data-en="Store hours">營業時間</h3>
+          <table class="hours" style="margin-top:10px"><tbody>
+            <tr><td data-en="Mon">週一</td><td data-en="Closed">公休</td></tr>
+            <tr><td data-en="Tue – Fri">週二–週五</td><td>08:00 – 19:00</td></tr>
+            <tr><td data-en="Sat – Sun">週六–週日</td><td>08:00 – 20:00</td></tr>
+          </tbody></table>
+          <p style="margin-top:14px" data-en="No. 12, Zhongshan Rd., Changhua City<br>04-0000-0000">彰化市中山路 12 號<br>04-0000-0000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="ft">
+  <div class="w">
+    <div><b data-en="Jin Yi Feng Foods">金益豐食品行</b><span data-en="Handmade rice cakes and pastries in Changhua since 1973.">1973 年起,在彰化手工製作米食與糕餅。</span></div>
+    <div><b data-en="Pages">頁面</b><a href="#/home" data-go="home" data-en="Home">首頁</a><a href="#/shop" data-go="shop" data-en="Shop">商品訂購</a><a href="#/story" data-go="story" data-en="Our Story">品牌故事</a><a href="#/visit" data-go="visit" data-en="Visit &amp; Order">門市與訂購</a></div>
+    <div><b data-en="Contact">聯絡</b><span>04-0000-0000</span><span>hello@jinyifeng.example.tw</span></div>
+    <div class="copy" data-en="Demo website built by Kairos.ai. Jin Yi Feng Foods is a fictional business.">示範網站由優時科技 Kairos.ai 製作。金益豐食品行為虛構店家。</div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../demo.js"></script>
+<script>
+(function(){
+  var P=[
+    {id:1,k:'cake',e:'🍡',p:120,tag:['熱銷','Best seller'],n:['紅龜粿(6 入)','Red turtle cakes (6)'],d:['花生、綠豆、紅豆三種內餡。','Peanut, mung bean and red bean fillings.']},
+    {id:2,k:'pastry',e:'🍍',p:480,tag:['人氣','Popular'],n:['鳳梨酥(12 入)','Pineapple cakes (12)'],d:['外酥內軟,鳳梨餡不死甜。','Crisp outside, soft inside, not too sweet.']},
+    {id:3,k:'cake',e:'🍙',p:180,tag:['',''],n:['油飯(大)','Oil rice (large)'],d:['古早味,香菇與蝦米。','Traditional, with shiitake and dried shrimp.']},
+    {id:4,k:'pastry',e:'🥮',p:380,tag:['',''],n:['綠豆椪(8 入)','Mung bean mooncakes (8)'],d:['中秋熱門,手工壓製。','A Mid-Autumn favorite, pressed by hand.']},
+    {id:5,k:'gift',e:'🎁',p:1280,tag:['送禮','Gift'],n:['節慶雙拼禮盒','Festival duo gift box'],d:['紅龜粿加鳳梨酥,附手寫卡片。','Turtle cakes and pineapple cakes with a card.']},
+    {id:6,k:'gift',e:'💍',p:2180,tag:['喜餅','Wedding'],n:['喜餅 12 入禮盒','Wedding box (12)'],d:['可印新人姓名,可指定到貨日。','Names printed on the box, on your date.']}
+  ];
+  var cart={},L=function(){return window.DemoLang()==='zh'?0:1};
+  var fmt=function(v){return 'NT$'+v.toLocaleString('en-US')};
+  function card(p){
+    var i=L();
+    return '<article class="card prod rv" data-k="'+p.k+'"><div class="pic" aria-hidden="true">'+(p.tag[i]?'<em>'+p.tag[i]+'</em>':'')+p.e+'</div><div class="info"><h3>'+p.n[i]+'</h3><p>'+p.d[i]+'</p><div class="price"><b>'+fmt(p.p)+'</b><button type="button" class="add" data-id="'+p.id+'">'+(i?'Add':'加入')+'</button></div></div></article>';
+  }
+  function render(){
+    var all=document.getElementById('all'),best=document.getElementById('best');
+    var act=document.querySelector('.tab[aria-pressed="true"]');var f=act?act.dataset.f:'all';
+    all.innerHTML=P.map(card).join('');
+    best.innerHTML=P.slice(0,3).map(card).join('');
+    all.querySelectorAll('.prod').forEach(function(el){el.hidden=!(f==='all'||el.dataset.k===f);el.classList.add('in')});
+    best.querySelectorAll('.prod').forEach(function(el){el.classList.add('in')});
+    sum();
+  }
+  function sum(){
+    var n=0,t=0,lines=[];
+    P.forEach(function(p){var q=cart[p.id]||0;if(q){n+=q;t+=q*p.p;lines.push(p.n[L()]+' × '+q)}});
+    document.getElementById('cartN').textContent=n;
+    var ship=t>=1000||t===0?(L()?'free':'免運'):fmt(100);
+    var tot=t+(t>=1000||t===0?0:100);
+    document.getElementById('sum').innerHTML=n?lines.join('<br>')+'<br><br>'+(L()?'Shipping: ':'運費:')+ship+'<br><b>'+(L()?'Total: ':'合計:')+fmt(tot)+'</b>':(L()?'Your order is empty. Add items from the Shop page.':'訂單是空的。請到「商品訂購」頁加入商品。');
+  }
+  var toast=document.getElementById('toast'),tt;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('.add');
+    if(a){
+      var id=+a.dataset.id;cart[id]=(cart[id]||0)+1;sum();
+      a.classList.remove('pop');void a.offsetWidth;a.classList.add('pop');
+      var p=P.filter(function(x){return x.id===id})[0];
+      toast.textContent=(L()?'Added: ':'已加入:')+p.n[L()];toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},1500);
+      return;
+    }
+    var t=e.target.closest('.tab');
+    if(t){
+      document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-pressed',String(x===t))});
+      document.querySelectorAll('#all .prod').forEach(function(el){el.hidden=!(t.dataset.f==='all'||el.dataset.k===t.dataset.f)});
+    }
+  });
+  document.addEventListener('demolang',render);
+  render();
+})();
+</script>
+</body>
+</html>

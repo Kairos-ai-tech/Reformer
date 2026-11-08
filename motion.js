@@ -11,6 +11,11 @@
   var finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var gsap = window.gsap, ST = window.ScrollTrigger;
 
+  var reform = document.querySelector('.hero-reform');
+  if(reform && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ reform.classList.toggle('paused', !es[0].isIntersecting); }).observe(reform);
+  }
+
   // Unhide the hero intro targets no matter what happens below.
   var lateLoad = root.classList.contains('motion-ready'); // safety timeout already fired
   function ready(){ root.classList.add('motion-ready'); }
