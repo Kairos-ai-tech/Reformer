@@ -511,6 +511,12 @@
         gap: 56px;
         align-items: center;
       }
+      .hero h1 {
+        text-wrap: balance;
+      }
+      html[lang='zh-Hant'] h1 {
+        font-feature-settings: 'halt';
+      }
       .hero h1 em {
         white-space: nowrap;
         font-style: normal;
@@ -1749,8 +1755,8 @@
           <div class="scan" aria-hidden="true"></div>
           <div class="hud" aria-hidden="true">
             <span><i></i><span data-en="Cell 03 · live">3 號機 · 運轉中</span></span>
-            <span>SPINDLE <b>24,000</b> RPM</span>
-            <span>Ra <b>0.4</b> µm</span>
+            <span data-en="SPINDLE <b>24,000</b> RPM">主軸轉速 <b>24,000</b> RPM</span>
+            <span data-en="Ra <b>0.4</b> µm">粗糙度 Ra <b>0.4</b> µm</span>
           </div>
           <div class="w">
             <div>
@@ -1758,7 +1764,7 @@
                 <span data-en="CNC · Stamping · Assembly">CNC・沖壓・組裝</span>
               </div>
               <h1 data-en="Precision parts, <em>on time</em>, every batch.">
-                精密零件,<em>準時交貨</em>,批批如一。
+                精密零件，<em>準時交貨</em>,批批如一。
               </h1>
               <p
                 class="lead"
@@ -1797,7 +1803,8 @@
 
             <div class="est" id="est">
               <div class="est-top">
-                <span class="tag">PART HD-2041 · REV C</span><span class="live">LIVE</span>
+                <span class="tag">PART HD-2041 · REV C</span
+                ><span class="live" data-en="LIVE">即時</span>
                 <svg viewBox="0 0 400 190" aria-hidden="true">
                   <path class="dr main" d="M70 50h260v90H70z" />
                   <circle class="dr main" cx="120" cy="95" r="20" />
@@ -1854,7 +1861,7 @@
                   ><svg class="ic"><use href="#i-arrow" /></svg
                 ></a>
                 <p class="fine" data-en="Sample estimate for this demo. Not a real quote.">
-                  示範用估算,非實際報價。
+                  示範用估算，非實際報價。
                 </p>
               </div>
             </div>
@@ -1888,7 +1895,7 @@
           <div class="w">
             <div class="head rv">
               <div class="kicker"><b>01 /</b> <span data-en="What we make">我們做什麼</span></div>
-              <h2 data-en="Three processes. One quality system.">三種製程,一套品質系統。</h2>
+              <h2 data-en="Three processes. One quality system.">三種製程，一套品質系統。</h2>
               <p
                 data-en="You get one supplier, one contact and one set of documents. It works for a single bracket or a full assembly."
               >
@@ -1921,7 +1928,7 @@
                   <ul>
                     <li>±0.005</li>
                     <li>Ra 0.4</li>
-                    <li>5-axis</li>
+                    <li data-en="5-axis">五軸</li>
                   </ul>
                   <a class="link" href="#/capabilities" data-go="capabilities"
                     ><span data-en="Quote CNC parts">CNC 零件詢價</span
@@ -1980,11 +1987,11 @@
                   <p
                     data-en="Sub-assembly, torque and leak tests, laser marking. Packed ready for your line."
                   >
-                    次總成組裝、扭力與洩漏測試、雷射刻印。包裝好,直接上您的產線。
+                    次總成組裝、扭力與洩漏測試、雷射刻印。包裝好，直接上您的產線。
                   </p>
                   <ul>
-                    <li>100% test</li>
-                    <li>Traceable</li>
+                    <li data-en="100% test">全數測試</li>
+                    <li data-en="Traceable">可追溯</li>
                     <li>ESD</li>
                   </ul>
                   <a class="link" href="#/capabilities" data-go="capabilities"
@@ -2035,7 +2042,7 @@
           <div class="w">
             <div class="kicker rv"><span data-en="On the shop floor">生產現場</span></div>
             <h2 class="rv" data-en="42 machines. Running 24 hours a day.">
-              42 台設備,一天 24 小時運轉。
+              42 台設備，一天 24 小時運轉。
             </h2>
             <div class="fs rv">
               <div>
@@ -2055,18 +2062,18 @@
           <div class="w split">
             <div class="rv">
               <div class="kicker"><b>03 /</b> <span data-en="Why Hongda">為什麼選宏達</span></div>
-              <h2 data-en="Tighter tolerances. Fewer surprises.">公差更緊,意外更少。</h2>
+              <h2 data-en="Tighter tolerances. Fewer surprises.">公差更緊，意外更少。</h2>
               <ul class="checks">
                 <li>
                   <svg class="ic"><use href="#i-check" /></svg
                   ><span data-en="An engineer reviews every drawing before we quote."
-                    >每張圖面報價前,都由工程師檢視。</span
+                    >每張圖面報價前，都由工程師檢視。</span
                   >
                 </li>
                 <li>
                   <svg class="ic"><use href="#i-check" /></svg
                   ><span data-en="We measure parts during production, not only at the end."
-                    >我們在生產中量測,不是只在最後檢驗。</span
+                    >我們在生產中量測，不是只在最後檢驗。</span
                   >
                 </li>
                 <li>
@@ -2084,7 +2091,7 @@
               </div>
             </div>
             <div class="bars rv" id="bars">
-              <h3 data-en="Typical tolerance (mm, smaller is better)">一般公差(mm,越小越好)</h3>
+              <h3 data-en="Typical tolerance (mm, smaller is better)">一般公差（mm,越小越好）</h3>
               <div class="bar us" style="--w: 6%">
                 <div class="t"><span>Hongda</span><em>±0.005</em></div>
                 <div class="tr"><i></i></div>
@@ -2105,7 +2112,7 @@
           <div class="w">
             <div class="head rv">
               <div class="kicker"><b>04 /</b> <span data-en="How it works">合作流程</span></div>
-              <h2 data-en="From drawing to dock in five steps">從圖面到出貨,五步完成</h2>
+              <h2 data-en="From drawing to dock in five steps">從圖面到出貨，五步完成</h2>
             </div>
             <div class="steps">
               <div class="step rv">
@@ -2169,7 +2176,7 @@
                 <p
                   data-en="We redesigned the fixturing and added probing on a 5-axis cell. The customer skipped a full re-qualification."
                 >
-                  我們重新設計治具,並在五軸加工中加入量測。客戶省下一次完整的重新驗證。
+                  我們重新設計治具，並在五軸加工中加入量測。客戶省下一次完整的重新驗證。
                 </p>
                 <a class="link" href="#/quality" data-go="quality"
                   ><span data-en="Read more cases">看更多案例</span
@@ -2178,9 +2185,9 @@
                 <div class="q">
                   <span
                     data-en="“They answer drawings in hours, not days. Their report always matches our incoming check.”"
-                    >「他們回覆圖面用小時算,不是用天。報告和我們進料檢驗總是一致。」</span
+                    >「他們回覆圖面用小時算，不是用天。報告和我們進料檢驗總是一致。」</span
                   ><small data-en="Purchasing manager, NovaTech (fictional)"
-                    >NovaTech 採購經理(虛構)</small
+                    >NovaTech 採購經理（虛構）</small
                   >
                 </div>
               </div>
@@ -2188,7 +2195,7 @@
             <div style="margin-top: 28px">
               <div class="cta-band rv">
                 <h2 data-en="Have a drawing? Get a quote in 24 hours.">
-                  手上有圖面?24 小時內給您報價。
+                  手上有圖面？24 小時內給您報價。
                 </h2>
                 <a class="btn btn-w" href="#/quote" data-go="quote"
                   ><span data-en="Request a quote">立即詢價</span
@@ -2283,7 +2290,7 @@
                 <div>
                   <h3 data-en="Turned shafts &amp; fittings">車削軸類與接頭</h3>
                   <p data-en="Swiss-type turning for small parts in large volumes.">
-                    瑞士型車床,適合小型大量零件。
+                    瑞士型車床，適合小型大量零件。
                   </p>
                   <div class="spec"><i>SUS303/316</i><i>±0.005</i><i>Ø1–32</i></div>
                   <a class="link" href="#/quote" data-go="quote" data-q="cnc"
@@ -2308,7 +2315,7 @@
                 <div>
                   <h3 data-en="Progressive-die brackets">連續模支架</h3>
                   <p data-en="High-speed stamping with in-die tapping and sensors. Runs 24/7.">
-                    高速沖壓,模內攻牙與感測。可 24 小時連續生產。
+                    高速沖壓，模內攻牙與感測。可 24 小時連續生產。
                   </p>
                   <div class="spec"><i>SPCC/SUS301</i><i>t0.3–3.0</i><i>1M+/mo</i></div>
                   <a class="link" href="#/quote" data-go="quote" data-q="stamp"
@@ -2336,7 +2343,10 @@
                   <p data-en="Seamless cups and covers for batteries and sensors.">
                     電池與感測器用的無縫杯形與外蓋。
                   </p>
-                  <div class="spec"><i>SUS304</i><i>Draw 3:1</i><i>Leak test</i></div>
+                  <div class="spec">
+                    <i>SUS304</i><i data-en="Draw 3:1">拉伸比 3:1</i
+                    ><i data-en="Leak test">氣密測試</i>
+                  </div>
                   <a class="link" href="#/quote" data-go="quote" data-q="stamp"
                     ><span data-en="Quote this">詢價</span
                     ><svg class="ic"><use href="#i-arrow" /></svg
@@ -2363,9 +2373,12 @@
                   <p
                     data-en="Press-fit and torque-controlled assembly with a 100% functional test."
                   >
-                    壓入與扭力控制組裝,100% 功能測試。
+                    壓入與扭力控制組裝，100% 功能測試。
                   </p>
-                  <div class="spec"><i>Torque log</i><i>Serial trace</i><i>ESD</i></div>
+                  <div class="spec">
+                    <i data-en="Torque log">扭力紀錄</i><i data-en="Serial trace">序號追溯</i
+                    ><i>ESD</i>
+                  </div>
                   <a class="link" href="#/quote" data-go="quote" data-q="asm"
                     ><span data-en="Quote this">詢價</span
                     ><svg class="ic"><use href="#i-arrow" /></svg
@@ -2390,7 +2403,10 @@
                   <p data-en="QR and DataMatrix marking. Kitting to your line-side spec.">
                     QR 與 DataMatrix 刻印。依您的線邊規格集貨。
                   </p>
-                  <div class="spec"><i>DataMatrix</i><i>Kitting</i><i>Trays</i></div>
+                  <div class="spec">
+                    <i>DataMatrix</i><i data-en="Kitting">套件配套</i
+                    ><i data-en="Trays">料盤包裝</i>
+                  </div>
                   <a class="link" href="#/quote" data-go="quote" data-q="asm"
                     ><span data-en="Quote this">詢價</span
                     ><svg class="ic"><use href="#i-arrow" /></svg
@@ -2471,7 +2487,7 @@
             <p
               data-en="Certified systems, results you can measure, and customers who stay for years."
             >
-              有認證的品質系統、量得出的成果,以及長期合作的客戶。
+              有認證的品質系統、量得出的成果，以及長期合作的客戶。
             </p>
           </div>
         </section>
@@ -2483,7 +2499,7 @@
                 <div>
                   <h3 data-en="Quality management">品質管理系統</h3>
                   <p data-en="Audited every year, from design review to final inspection.">
-                    每年稽核,從設計審查到最終檢驗。
+                    每年稽核，從設計審查到最終檢驗。
                   </p>
                 </div>
               </div>
@@ -2509,12 +2525,12 @@
             <div class="split" style="margin-bottom: 72px">
               <div class="rv">
                 <div class="kicker"><span data-en="Inspection report">檢驗報告</span></div>
-                <h2 data-en="Every shipment, fully documented">每批出貨,文件齊全</h2>
+                <h2 data-en="Every shipment, fully documented">每批出貨，文件齊全</h2>
                 <ul class="checks">
                   <li>
                     <svg class="ic"><use href="#i-check" /></svg
                     ><span data-en="Dimensions measured on a CMM, with your tolerances."
-                      >以三次元量測,對照您的公差。</span
+                      >以三次元量測，對照您的公差。</span
                     >
                   </li>
                   <li>
@@ -2530,7 +2546,10 @@
                 </ul>
               </div>
               <div class="rep rv">
-                <header><span>INSPECTION REPORT · LOT 24-0817</span><i>PASS</i></header>
+                <header>
+                  <span data-en="INSPECTION REPORT · LOT 24-0817">檢驗報告 · 批號 24-0817</span
+                  ><i data-en="PASS">合格</i>
+                </header>
                 <table>
                   <thead>
                     <tr>
@@ -2629,7 +2648,7 @@
                 <p
                   data-en="We swapped a machined part for a progressive-die design. Same strength, one tenth of the cycle time."
                 >
-                  我們把加工件改成連續模設計。強度相同,週期縮短為十分之一。
+                  我們把加工件改成連續模設計。強度相同，週期縮短為十分之一。
                 </p>
                 <div class="kpis">
                   <div>
@@ -2651,7 +2670,7 @@
         <section class="pagehead">
           <div class="w">
             <div class="kicker"><span data-en="Request a quote">詢價與聯絡</span></div>
-            <h1 data-en="Send a drawing. Get a plan.">傳圖面,拿方案。</h1>
+            <h1 data-en="Send a drawing. Get a plan.">傳圖面，拿方案。</h1>
             <p data-en="We reply with a DFM review and a price within 24 hours on business days.">
               工作日 24 小時內回覆可製造性評估與報價。
             </p>
@@ -2666,7 +2685,7 @@
                   ><input
                     id="c1"
                     type="text"
-                    placeholder="Axiom Auto Co."
+                    placeholder="例：軒達汽車零件股份有限公司"
                     data-en-ph="Axiom Auto Co."
                   />
                 </div>
@@ -2677,7 +2696,7 @@
               </div>
               <div class="row">
                 <div class="fld">
-                  <label for="c3">Email</label
+                  <label for="c3" data-en="Email">電子郵件</label
                   ><input id="c3" type="email" placeholder="name@company.com" />
                 </div>
                 <div class="fld">
@@ -2711,11 +2730,11 @@
                 </div>
               </div>
               <div class="fld">
-                <label data-en="Drawing (demo: nothing is uploaded)">圖面(示範:不會上傳)</label>
+                <label data-en="Drawing (demo: nothing is uploaded)">圖面（示範：不會上傳）</label>
                 <div class="drop" id="drop">
                   <svg class="ic"><use href="#i-up" /></svg
                   ><span id="dropT" data-en="Drag STEP / PDF / DWG here, or click"
-                    >將 STEP / PDF / DWG 拖曳至此,或點擊選擇</span
+                    >將 STEP / PDF / DWG 拖曳至此，或點擊選擇</span
                   ><input type="file" id="file" aria-label="Drawing" data-en-label="Drawing" />
                 </div>
               </div>

@@ -348,6 +348,12 @@
         text-wrap: balance;
         font-size: clamp(38px, 5.6vw, 76px);
       }
+      html[lang='zh-Hant'] h1 {
+        font-feature-settings: 'halt';
+      }
+      .nb {
+        white-space: nowrap;
+      }
       .hero h1 em {
         font-style: normal;
         color: var(--gold);
@@ -1699,13 +1705,13 @@
               ><i></i>
             </div>
             <h1 data-en="Fresh rice cakes, <em>made today.</em>">
-              當天現做的米食,<em>直送到府。</em>
+              <span class="nb">當天現做的米食，</span><em>直送到府。</em>
             </h1>
             <p
               class="lead"
               data-en="We make red turtle cakes and pineapple cakes by hand every morning. Order online and we ship across Taiwan."
             >
-              我們每天早上手工製作紅龜粿與鳳梨酥。線上下單,全台宅配。
+              我們每天早上手工製作紅龜粿與鳳梨酥。線上下單，全台宅配。
             </p>
             <div class="cta">
               <a class="btn btn-y" href="#/shop" data-go="shop"
@@ -1771,7 +1777,7 @@
                   <svg class="ic"><use href="#i-sun" /></svg>
                 </div>
                 <h3 data-en="Fresh daily">當日現做</h3>
-                <p data-en="Made in the morning. Packed by noon.">早上製作,中午前包裝出貨。</p>
+                <p data-en="Made in the morning. Packed by noon.">早上製作，中午前包裝出貨。</p>
               </div>
               <div class="card rv">
                 <div class="pi r">
@@ -1788,7 +1794,7 @@
                 </div>
                 <h3 data-en="Pick your date">指定到貨日</h3>
                 <p data-en="Your gift arrives on the day you choose.">
-                  想送禮的那天,就在那天送到。
+                  想送禮的那天，就在那天送到。
                 </p>
               </div>
               <div class="card rv">
@@ -1796,7 +1802,7 @@
                   <svg class="ic"><use href="#i-gift" /></svg>
                 </div>
                 <h3 data-en="Gift ready">送禮更方便</h3>
-                <p data-en="Gift box and hand-written card are free.">禮盒與手寫卡片,不另收費。</p>
+                <p data-en="Gift box and hand-written card are free.">禮盒與手寫卡片，不另收費。</p>
               </div>
             </div>
           </div>
@@ -1828,7 +1834,7 @@
             <div class="how">
               <div class="rv">
                 <h3 data-en="Pick your cakes">挑選商品</h3>
-                <p data-en="Browse the shop and tap “Add”.">到商品頁,按「加入」。</p>
+                <p data-en="Browse the shop and tap “Add”.">到商品頁，按「加入」。</p>
               </div>
               <div class="rv">
                 <h3 data-en="Choose a date">選擇日期</h3>
@@ -1851,11 +1857,11 @@
                 <div class="eyebrow" style="color: var(--gold)" data-en="Festival gift boxes">
                   節慶禮盒
                 </div>
-                <h2 data-en="Order early for the holidays">節慶快到了,早點預訂</h2>
+                <h2 data-en="Order early for the holidays">節慶快到了，早點預訂</h2>
                 <p
                   data-en="Boxes for Mid-Autumn, Lunar New Year and weddings. Orders of 20 or more can have your company logo on the box."
                 >
-                  中秋、過年、喜餅都有禮盒。訂 20 盒以上,可在盒上印公司標誌。
+                  中秋、過年、喜餅都有禮盒。訂 20 盒以上，可在盒上印公司標誌。
                 </p>
                 <a class="btn btn-y" href="#/visit" data-go="visit" data-en="Ask for a quote"
                   >詢問報價</a
@@ -1879,29 +1885,29 @@
           <div class="w">
             <div class="head rv">
               <div class="eyebrow" style="color: var(--gold)" data-en="Reviews">顧客評價</div>
-              <h2 data-en="4.8 stars from 236 reviews">236 則評論,平均 4.8 星</h2>
+              <h2 data-en="4.8 stars from 236 reviews">236 則評論，平均 4.8 星</h2>
             </div>
             <div class="grid3">
               <div class="card rev rv">
                 <div class="stars">★★★★★</div>
                 <p data-en="“Soft, not too sweet. My mother says it tastes like the old days.”">
-                  「軟 Q 不死甜,我媽說吃起來就是小時候的味道。」
+                  「軟 Q 不死甜，我媽說吃起來就是小時候的味道。」
                 </p>
-                <small data-en="Ms. Lin, Taichung (fictional)">林小姐,台中(虛構)</small>
+                <small data-en="Ms. Lin, Taichung (fictional)">林小姐，台中（虛構）</small>
               </div>
               <div class="card rev rv">
                 <div class="stars">★★★★★</div>
                 <p data-en="“Ordered for my wedding. It arrived on the exact day I chose.”">
-                  「喜餅訂這家,真的在我指定的那天準時到。」
+                  「喜餅訂這家，真的在我指定的那天準時到。」
                 </p>
-                <small data-en="Mr. Chen, Taipei (fictional)">陳先生,台北(虛構)</small>
+                <small data-en="Mr. Chen, Taipei (fictional)">陳先生，台北（虛構）</small>
               </div>
               <div class="card rev rv">
                 <div class="stars">★★★★★</div>
                 <p data-en="“Easy to order online. The pineapple cakes are our office favorite.”">
-                  「線上訂購很方便,鳳梨酥是我們公司同事最愛。」
+                  「線上訂購很方便，鳳梨酥是我們公司同事最愛。」
                 </p>
-                <small data-en="Ms. Wu, Hsinchu (fictional)">吳小姐,新竹(虛構)</small>
+                <small data-en="Ms. Wu, Hsinchu (fictional)">吳小姐，新竹（虛構）</small>
               </div>
             </div>
           </div>
@@ -1965,7 +1971,7 @@
         <section class="pagehead">
           <div class="w">
             <div class="eyebrow" data-en="Our story">品牌故事</div>
-            <h1 data-en="One recipe, three generations">一份食譜,傳了三代</h1>
+            <h1 data-en="One recipe, three generations">一份食譜，傳了三代</h1>
           </div>
         </section>
         <section class="s">
@@ -1979,7 +1985,7 @@
                 style="color: var(--ink2); margin-top: 16px; font-size: 18px"
                 data-en="In 1973 our grandfather made red turtle cakes for neighbors in Changhua. We still use his recipe. The kitchen is bigger now, and we have a website."
               >
-                1973 年,阿公在彰化為鄰居做紅龜粿。我們還是用他的配方。廚房變大了,也有了官網。
+                1973 年，阿公在彰化為鄰居做紅龜粿。我們還是用他的配方。廚房變大了，也有了官網。
               </p>
               <ul class="timeline">
                 <li>
@@ -1992,7 +1998,7 @@
                 </li>
                 <li>
                   <b>2026</b
-                  ><span data-en="Online orders, shipped island-wide">開放線上訂購,全台宅配</span>
+                  ><span data-en="Online orders, shipped island-wide">開放線上訂購，全台宅配</span>
                 </li>
               </ul>
             </div>
@@ -2002,13 +2008,13 @@
           <div class="w" style="max-width: 800px">
             <div class="head rv"><h2 data-en="Questions we often hear">常見問題</h2></div>
             <details class="rv">
-              <summary data-en="Can I choose the delivery date?">可以指定到貨日嗎?</summary>
+              <summary data-en="Can I choose the delivery date?">可以指定到貨日嗎？</summary>
               <p data-en="Yes. Pick a date when you order. We are closed on Lunar New Year’s Eve.">
                 可以。下單時選擇日期即可。除夕公休。
               </p>
             </details>
             <details class="rv">
-              <summary data-en="How long do the cakes keep?">保存多久?</summary>
+              <summary data-en="How long do the cakes keep?">保存多久？</summary>
               <p
                 data-en="Red turtle cakes keep 2 days at room temperature or 7 days in the fridge. Pineapple cakes keep 14 days."
               >
@@ -2016,11 +2022,11 @@
               </p>
             </details>
             <details class="rv">
-              <summary data-en="Do you take company orders?">可以團購或公司訂購嗎?</summary>
+              <summary data-en="Do you take company orders?">可以團購或公司訂購嗎？</summary>
               <p
                 data-en="Yes. Orders of 20 boxes or more get a quote and a custom logo on the box."
               >
-                可以。訂 20 盒以上提供報價,並可印製公司標誌。
+                可以。訂 20 盒以上提供報價，並可印製公司標誌。
               </p>
             </details>
           </div>
@@ -2031,7 +2037,7 @@
         <section class="pagehead">
           <div class="w">
             <div class="eyebrow" data-en="Visit &amp; order">門市與訂購</div>
-            <h1 data-en="Come by, or order from home">來店,或在家訂購</h1>
+            <h1 data-en="Come by, or order from home">來店，或在家訂購</h1>
           </div>
         </section>
         <section class="s" style="padding-top: 44px">
@@ -2127,7 +2133,7 @@
         <div>
           <b data-en="Jin Yi Feng Foods">金益豐食品行</b
           ><span data-en="Handmade rice cakes and pastries in Changhua since 1973."
-            >1973 年起,在彰化手工製作米食與糕餅。</span
+            >1973 年起，在彰化手工製作米食與糕餅。</span
           >
         </div>
         <div>
@@ -2194,7 +2200,7 @@
             bg: '#FFD3C9',
             p: 120,
             tag: ['熱銷', 'Best seller'],
-            n: ['紅龜粿(6 入)', 'Red turtle cakes (6)'],
+            n: ['紅龜粿（6 入）', 'Red turtle cakes (6)'],
             d: ['花生、綠豆、紅豆三種內餡。', 'Peanut, mung bean and red bean fillings.'],
           },
           {
@@ -2204,8 +2210,8 @@
             bg: '#FFE7A8',
             p: 480,
             tag: ['人氣', 'Popular'],
-            n: ['鳳梨酥(12 入)', 'Pineapple cakes (12)'],
-            d: ['外酥內軟,鳳梨餡不死甜。', 'Crisp outside, soft inside, not too sweet.'],
+            n: ['鳳梨酥（12 入）', 'Pineapple cakes (12)'],
+            d: ['外酥內軟，鳳梨餡不死甜。', 'Crisp outside, soft inside, not too sweet.'],
           },
           {
             id: 3,
@@ -2214,8 +2220,8 @@
             bg: '#FBE0B8',
             p: 180,
             tag: ['', ''],
-            n: ['油飯(大)', 'Oil rice (large)'],
-            d: ['古早味,香菇與蝦米。', 'Traditional, with shiitake and dried shrimp.'],
+            n: ['油飯（大）', 'Oil rice (large)'],
+            d: ['古早味，香菇與蝦米。', 'Traditional, with shiitake and dried shrimp.'],
           },
           {
             id: 4,
@@ -2224,8 +2230,8 @@
             bg: '#F7D9B0',
             p: 380,
             tag: ['中秋', 'Mid-Autumn'],
-            n: ['綠豆椪(8 入)', 'Mung bean mooncakes (8)'],
-            d: ['中秋熱門,手工壓製。', 'A Mid-Autumn favorite, pressed by hand.'],
+            n: ['綠豆椪（8 入）', 'Mung bean mooncakes (8)'],
+            d: ['中秋熱門，手工壓製。', 'A Mid-Autumn favorite, pressed by hand.'],
           },
           {
             id: 5,
@@ -2235,7 +2241,7 @@
             p: 1280,
             tag: ['送禮', 'Gift'],
             n: ['節慶雙拼禮盒', 'Festival duo gift box'],
-            d: ['紅龜粿加鳳梨酥,附手寫卡片。', 'Turtle cakes and pineapple cakes with a card.'],
+            d: ['紅龜粿加鳳梨酥，附手寫卡片。', 'Turtle cakes and pineapple cakes with a card.'],
           },
           {
             id: 6,
@@ -2245,7 +2251,7 @@
             p: 2180,
             tag: ['喜餅', 'Wedding'],
             n: ['喜餅 12 入禮盒', 'Wedding box (12)'],
-            d: ['可印新人姓名,可指定到貨日。', 'Names printed on the box, on your date.'],
+            d: ['可印新人姓名，可指定到貨日。', 'Names printed on the box, on your date.'],
           },
         ];
         var cart = {},
@@ -2299,7 +2305,7 @@
         function shipMsg(t) {
           var en = L() === 1;
           if (t === 0) return en ? 'Free shipping over NT$1,000' : '滿 NT$1,000 免運';
-          if (t >= FREE) return en ? 'You got free shipping!' : '已享免運!';
+          if (t >= FREE) return en ? 'You got free shipping!' : '已享免運！';
           return en
             ? 'Add ' + fmt(FREE - t) + ' more for free shipping'
             : '再買 ' + fmt(FREE - t) + ' 即可免運';
@@ -2365,10 +2371,10 @@
           document.getElementById('sum').innerHTML = T.n
             ? lines.join('<br>') +
               '<br><br>' +
-              (en ? 'Shipping: ' : '運費:') +
+              (en ? 'Shipping: ' : '運費：') +
               (T.ship ? fmt(T.ship) : en ? 'free' : '免運') +
               '<br><b>' +
-              (en ? 'Total: ' : '合計:') +
+              (en ? 'Total: ' : '合計：') +
               fmt(T.t + T.ship) +
               '</b>'
             : en
@@ -2432,7 +2438,7 @@
             c.classList.remove('pop');
             void c.offsetWidth;
             c.classList.add('pop');
-            say((L() ? 'Added: ' : '已加入:') + byId(id).n[L()]);
+            say((L() ? 'Added: ' : '已加入：') + byId(id).n[L()]);
             return;
           }
           var q = e.target.closest('[data-q]');
