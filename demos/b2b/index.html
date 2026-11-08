@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f26b1d'/%3E%3C/svg%3E"
+    />
     <title>宏達精密</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +29,7 @@
         --navy3: #12294a;
         --orange: #f26b1d;
         --orange2: #ff8a3d;
+        --accent: #f26b1d;
         --ok: #12a36b;
         --mono: 'JetBrains Mono', ui-monospace, monospace;
         --sans: 'Inter', 'Noto Sans TC', -apple-system, 'PingFang TC', sans-serif;
@@ -259,7 +264,247 @@
         -webkit-mask-image: linear-gradient(#000 60%, transparent);
         mask-image: linear-gradient(#000 60%, transparent);
       }
+      .hero::before {
+        z-index: 1;
+      }
+      .hero-ph {
+        position: absolute;
+        inset: -8% 0;
+        transform: translate3d(0, var(--py, 0), 0);
+        will-change: transform;
+      }
+      .hero-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 52%;
+        display: block;
+        transform-origin: 60% 50%;
+        animation: kb 26s ease-in-out infinite alternate;
+      }
+      .hero-ph::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(7, 19, 38, 0.94) 0%,
+            rgba(7, 19, 38, 0.7) 40%,
+            rgba(7, 19, 38, 0.2) 100%
+          ),
+          linear-gradient(0deg, var(--navy2) 0%, transparent 35%);
+      }
+      @keyframes kb {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1.18) translate3d(-1.5%, -1%, 0);
+        }
+      }
+      .scan {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 120px;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(242, 107, 29, 0.16) 70%,
+          rgba(255, 138, 61, 0.55)
+        );
+        border-bottom: 1px solid rgba(255, 138, 61, 0.8);
+        animation: scan 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      }
+      @keyframes scan {
+        0% {
+          transform: translateY(-120px);
+          opacity: 0;
+        }
+        15%,
+        85% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+      .hud {
+        position: absolute;
+        z-index: 2;
+        left: max(28px, calc((100% - 1200px) / 2 + 28px));
+        bottom: 22px;
+        display: flex;
+        gap: 22px;
+        font: 600 11.5px var(--mono);
+        letter-spacing: 0.1em;
+        color: #9fb0cc;
+        text-transform: uppercase;
+      }
+      .hud b {
+        color: var(--orange2);
+        font-weight: 700;
+      }
+      .hud i {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ff4d3d;
+        margin-right: 8px;
+        animation: blink 1.4s steps(2, jump-none) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0.2;
+        }
+      }
+      .hero .w > div:first-child > * {
+        animation: up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .hero .w > div:first-child > :nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .hero .w > div:first-child > :nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .hero .w > div:first-child > :nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .hero .w > div:first-child > :nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .hero .est {
+        animation: up 1s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .tick {
+        background: var(--orange);
+        color: #1a0c02;
+        overflow: hidden;
+        white-space: nowrap;
+        font: 700 13px var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .tick div {
+        display: inline-flex;
+        padding: 13px 0;
+        animation: tk 38s linear infinite;
+      }
+      .tick span {
+        padding: 0 26px;
+      }
+      .tick span::after {
+        content: '/';
+        margin-left: 52px;
+        opacity: 0.45;
+      }
+      @keyframes tk {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .floor {
+        position: relative;
+        overflow: hidden;
+        background: var(--navy2);
+        color: #fff;
+        padding: clamp(80px, 11vw, 150px) 0;
+      }
+      .floor-ph {
+        position: absolute;
+        inset: -14% 0;
+        transform: translate3d(0, var(--py, 0), 0);
+        will-change: transform;
+      }
+      .floor-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .floor-ph::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(7, 19, 38, 0.92),
+          rgba(7, 19, 38, 0.55) 60%,
+          rgba(7, 19, 38, 0.3)
+        );
+      }
+      .floor .w {
+        position: relative;
+        z-index: 1;
+      }
+      .floor h2 {
+        font-size: clamp(30px, 4.2vw, 54px);
+        max-width: 13em;
+        margin-bottom: 44px;
+      }
+      .fs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        max-width: 760px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 14px;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+      .fs div {
+        padding: 22px 24px;
+        background: rgba(7, 19, 38, 0.55);
+      }
+      .fs b {
+        display: block;
+        font: 800 clamp(30px, 3.6vw, 46px) / 1 var(--sans);
+        font-variant-numeric: tabular-nums;
+        color: var(--orange2);
+      }
+      .fs span {
+        display: block;
+        margin-top: 8px;
+        font-size: 13.5px;
+        color: #b9c6dc;
+      }
+      @media (max-width: 760px) {
+        .hero-ph::after {
+          background: linear-gradient(
+            180deg,
+            rgba(7, 19, 38, 0.86),
+            rgba(7, 19, 38, 0.74) 55%,
+            var(--navy2)
+          );
+        }
+      }
+      @media (max-width: 640px) {
+        .fs {
+          grid-template-columns: 1fr;
+        }
+        .hud {
+          display: none;
+        }
+      }
       .hero .w {
+        z-index: 2;
         position: relative;
         display: grid;
         grid-template-columns: 1.05fr 0.95fr;
@@ -1394,6 +1639,17 @@
         }
       }
       @media (prefers-reduced-motion: reduce) {
+        .hero-ph img,
+        .scan,
+        .hud i,
+        .tick div,
+        .hero .w > div:first-child > *,
+        .hero .est {
+          animation: none;
+        }
+        .scan {
+          display: none;
+        }
         .dr.main,
         .dr.dim {
           animation: none;
@@ -1487,6 +1743,15 @@
     <main>
       <div data-page="home" data-title="首頁" data-title-en="Home">
         <section class="hero">
+          <div class="hero-ph" data-par="0.12" aria-hidden="true">
+            <img src="img/hero.jpg" alt="" width="1800" height="2520" fetchpriority="high" />
+          </div>
+          <div class="scan" aria-hidden="true"></div>
+          <div class="hud" aria-hidden="true">
+            <span><i></i><span data-en="Cell 03 · live">3 號機 · 運轉中</span></span>
+            <span>SPINDLE <b>24,000</b> RPM</span>
+            <span>Ra <b>0.4</b> µm</span>
+          </div>
           <div class="w">
             <div>
               <div class="kicker">
@@ -1603,6 +1868,19 @@
               <span>Axiom Auto</span><span>NovaTech</span><span>Pacific Drive</span
               ><span>Helix Medical</span><span>Orion Robotics</span>
             </div>
+          </div>
+        </div>
+
+        <div class="tick" aria-hidden="true">
+          <div>
+            <span data-en="CNC machining">CNC 加工</span><span data-en="Stamping">沖壓</span
+            ><span data-en="Assembly">組裝</span><span>ISO 9001</span><span>IATF 16949</span
+            ><span data-en="CMM report every lot">每批 CMM 報告</span
+            ><span data-en="Quote in 24 h">24 小時報價</span
+            ><span data-en="CNC machining">CNC 加工</span><span data-en="Stamping">沖壓</span
+            ><span data-en="Assembly">組裝</span><span>ISO 9001</span><span>IATF 16949</span
+            ><span data-en="CMM report every lot">每批 CMM 報告</span
+            ><span data-en="Quote in 24 h">24 小時報價</span>
           </div>
         </div>
 
@@ -1746,6 +2024,29 @@
                 ><span data-en="Semiconductor">半導體</span
                 ><small data-en="Clean-room packaging on request">可提供無塵室包裝</small>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="floor">
+          <div class="floor-ph" data-par="0.1" aria-hidden="true">
+            <img src="img/cut.jpg" alt="" width="1800" height="1202" loading="lazy" />
+          </div>
+          <div class="w">
+            <div class="kicker rv"><span data-en="On the shop floor">生產現場</span></div>
+            <h2 class="rv" data-en="42 machines. Running 24 hours a day.">
+              42 台設備,一天 24 小時運轉。
+            </h2>
+            <div class="fs rv">
+              <div>
+                <b data-count="42">42</b
+                ><span data-en="CNC and press machines">CNC 與沖床設備</span>
+              </div>
+              <div>
+                <b data-count="99.2" data-dec="1" data-sfx="%">99.2%</b
+                ><span data-en="On-time delivery">準時交貨率</span>
+              </div>
+              <div><b>24h</b><span data-en="Drawing review reply">圖面回覆時間</span></div>
             </div>
           </div>
         </section>

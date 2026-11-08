@@ -178,7 +178,66 @@
   });
   window.addEventListener('hashchange', route);
 
+  var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var sp = null,
+    ticking = false;
+  function frame() {
+    ticking = false;
+    var vh = window.innerHeight,
+      max = document.documentElement.scrollHeight - vh;
+    if (sp) sp.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    document.querySelectorAll('[data-par]').forEach(function (el) {
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      var off = (r.top + r.height / 2 - vh / 2) * -(+el.dataset.par || 0.1);
+      el.style.setProperty('--py', off.toFixed(1) + 'px');
+    });
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(frame);
+    }
+  }
+  function initMotion() {
+    sp = document.createElement('div');
+    sp.className = 'sp';
+    sp.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(sp);
+    if (reduce) return;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    document.addEventListener('pointermove', function (e) {
+      var t = e.target.closest && e.target.closest('[data-tilt]');
+      document.querySelectorAll('[data-tilt].hot').forEach(function (el) {
+        if (el !== t) {
+          el.classList.remove('hot');
+          el.style.removeProperty('--rx');
+          el.style.removeProperty('--ry');
+        }
+      });
+      if (!t || e.pointerType === 'touch') return;
+      var r = t.getBoundingClientRect(),
+        amt = +t.dataset.tilt || 6;
+      t.classList.add('hot');
+      t.style.setProperty(
+        '--ry',
+        (((e.clientX - r.left) / r.width - 0.5) * amt).toFixed(2) + 'deg',
+      );
+      t.style.setProperty(
+        '--rx',
+        (((e.clientY - r.top) / r.height - 0.5) * -amt).toFixed(2) + 'deg',
+      );
+    });
+    document.addEventListener('demolang', onScroll);
+    window.addEventListener('hashchange', function () {
+      setTimeout(frame, 60);
+    });
+    frame();
+  }
+
   function boot() {
+    initMotion();
     buildBar();
     applyText();
     route();
