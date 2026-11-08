@@ -516,7 +516,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange);
     if(sel.p==='stamp'&&sel.q<2)base*=9;
     if(sel.p==='asm')base=BASE.asm*DISC[sel.q]*(sel.m==='ti'?1.8:sel.m==='sus'?1.3:1);
     var lo=base*.9,hi=base*1.15,en=L()===1;
-    var f=function(v){v=en?v*.031:v;var d=v<10?1:0;var s=en?'US$':'NT$';return s+(v<10?v.toFixed(2):Math.round(v).toLocaleString('en-US'))};
+    var f=function(v){v=en?v*.031:v;var s=en?'US$':'NT$';return s+((en&&hi*.031<100)?v.toFixed(2):Math.round(v).toLocaleString('en-US'))};
     document.getElementById('eP').innerHTML='<span>'+f(lo)+'</span> – '+f(hi);
     document.getElementById('eL').textContent=LEAD[sel.p][sel.q]+(en?' days':' 天');
   }

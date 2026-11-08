@@ -52,7 +52,7 @@
     document.body.classList.add('has-bar');
     bar.querySelectorAll('.lang button').forEach(function(b){
       b.addEventListener('click',function(){
-        lang=b.dataset.l;raw=lang;
+        lang=b.dataset.l;
         var u=new URL(location.href);u.searchParams.set('lang',lang);history.replaceState(null,'',u);
         applyText();
       });
