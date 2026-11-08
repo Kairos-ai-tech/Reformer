@@ -1,0 +1,12 @@
+node_modules/
+/vendor/
+/en/
+/ja/
+/ko/
+/index.html
+*.md
+*.xml
+*.txt
+package-lock.json
+CNAME
+/scripts/build-locales.mjs

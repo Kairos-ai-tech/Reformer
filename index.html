@@ -1567,7 +1567,7 @@ function moneyRange(a,b){
 }
 function expandMoney(str){
   if(typeof str!=='string' || str.indexOf('{{')<0) return str;
-  return str.replace(/\{\{(m|mb|r):([\d\-]+)\}\}/g,function(_,t,a){
+  return str.replace(/\{\{(m|mb|r):([\d-]+)\}\}/g,function(_,t,a){
     if(t==='r'){ var q=a.split('-'); return moneyRange(+q[0],+q[1]); }
     return t==='mb' ? moneyBoth(+a) : money(+a);
   });
@@ -1805,7 +1805,6 @@ function showSite(which){
       io.disconnect();
       if(annots) annots.classList.add('in-view');
       if(newSite) newSite.classList.add('in-view');
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function showHintThenFade(){
         if(!hint) return;
         hint.classList.add('show');
@@ -1934,7 +1933,7 @@ calc();
   window.renderDemos=function(){
     var site=document.getElementById('indSite');
     if(!site) return;
-    var L=window.CURRENT_LANG||'zh', f=(MKT[L]||MKT.zh)[cur], d=localize(IND[cur],f), c=(IND_TXT[L]||IND_TXT.en)[cur], x=expandMoney, r=model(d,scn);
+    var L=window.CURRENT_LANG||'zh', f=(MKT[L]||MKT.zh)[cur], d=localize(IND[cur],f), c=(IND_TXT[L]||IND_TXT.en)[cur], r=model(d,scn);
     document.getElementById('indUrl').textContent='https://'+d.url;
     site.style.setProperty('--is-accent',d.accent);
     site.innerHTML=

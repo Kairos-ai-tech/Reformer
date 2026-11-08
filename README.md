@@ -38,6 +38,15 @@ Everything lives in `index.html`:
 - **FAQ section** — search for `id="faq"`. Keep the visible `<details>` text and the `FAQPage` JSON-LD in sync if you edit either (AI/Google search engines expect structured data to match visible content).
 - **Business address/phone** (LEO) — in the `ProfessionalService` JSON-LD block, under `address` and `telephone`.
 
+## Development checks
+
+`npm install` once (it also installs the git hooks through husky). Then:
+
+- `npm run lint` — ESLint on `motion.js`, `demos/` and the inline scripts of every HTML page, zero warnings allowed.
+- `npm run format:check` / `npm run format` — Prettier. `index.html`, the generated `en/ja/ko` pages, `vendor/`, Markdown and `scripts/build-locales.mjs` are in `.prettierignore` (the generator reads `index.html` by pattern, so it is formatted by hand).
+- `npm run check:locales` — fails if the generated language pages are stale.
+- `npm run verify` — all three. The `pre-push` hook and the GitHub Actions workflow (`.github/workflows/ci.yml`) run exactly this. The `pre-commit` hook runs ESLint `--fix` and Prettier on staged files only.
+
 ## Domain / deployment checklist
 
 The site is currently configured for `https://reform.kairosaitech.com/`. If you deploy to a different domain, update it in all of these places:
