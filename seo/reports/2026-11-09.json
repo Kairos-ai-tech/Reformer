@@ -1,0 +1,327 @@
+{
+  "date": "2026-11-09",
+  "mode": "local",
+  "siteIssues": [],
+  "locales": [
+    {
+      "code": "zh",
+      "status": 200,
+      "title": "網站改版・企業官網設計|SEO × GEO 優化・免費網站健檢 – 優時科技",
+      "description": "優時科技 Kairos.ai 為台灣中小企業提供網站改版與企業官網設計,同步優化 Google 搜尋(SEO)與 AI 搜尋(GEO,生成式引擎優化)。免費網站健檢,快速官網 14 天上線,成品 100% 屬於客戶。",
+      "titleWidth": 62,
+      "descriptionWidth": 167,
+      "h1": "客人正在搜尋你, 但找到的 是別人 。",
+      "faqCount": 7,
+      "keywords": {
+        "網站改版": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 3
+        },
+        "企業官網設計": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "免費網站健檢": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 4
+        },
+        "GEO 優化": {
+          "title": 1,
+          "description": 0,
+          "h1": 0,
+          "body": 1
+        },
+        "SEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 13
+        },
+        "生成式引擎優化": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "AI 搜尋優化": {
+          "title": 0,
+          "description": 0,
+          "h1": 0,
+          "body": 3
+        },
+        "中小企業": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "官網": {
+          "title": 1,
+          "description": 2,
+          "h1": 0,
+          "body": 28
+        },
+        "301 轉址": {
+          "title": 0,
+          "description": 0,
+          "h1": 0,
+          "body": 1
+        }
+      },
+      "questions": [
+        {
+          "q": "網站改版會影響 SEO 排名嗎",
+          "covered": true
+        },
+        {
+          "q": "網站改版價格多少",
+          "covered": true
+        },
+        {
+          "q": "SEO 跟 GEO 有什麼不同",
+          "covered": true
+        },
+        {
+          "q": "沒有官網只有粉專可以嗎",
+          "covered": true
+        },
+        {
+          "q": "官網做好後網域和原始碼歸誰",
+          "covered": true
+        },
+        {
+          "q": "怎麼讓 ChatGPT 推薦我的公司",
+          "covered": false
+        }
+      ],
+      "issues": [],
+      "suggestions": [
+        "GEO question not answered in the FAQ: \"怎麼讓 ChatGPT 推薦我的公司\""
+      ]
+    },
+    {
+      "code": "en",
+      "status": 200,
+      "title": "Website Redesign for Taiwan SMBs | SEO + GEO – Kairos.ai",
+      "description": "Kairos.ai handles website redesign and new website design for Taiwanese small businesses, and improves their visibility in Google search (SEO) and AI search (GEO, generative engine optimization). Free website health check; Quick Site live in 14 days; you own the finished site 100%.",
+      "titleWidth": 56,
+      "descriptionWidth": 282,
+      "h1": "Your customers are searching for you, but finding someone else .",
+      "faqCount": 7,
+      "keywords": {
+        "website redesign": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 2
+        },
+        "free website health check": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 3
+        },
+        "SEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 12
+        },
+        "GEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 9
+        },
+        "Taiwan": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 4
+        },
+        "generative engine optimization": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "AI search": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 6
+        },
+        "small business": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 0
+        },
+        "301 redirects": {
+          "title": 0,
+          "description": 0,
+          "h1": 0,
+          "body": 1
+        }
+      },
+      "questions": [
+        {
+          "q": "Will a website redesign hurt my SEO rankings",
+          "covered": true
+        },
+        {
+          "q": "How much does a website redesign cost",
+          "covered": true
+        },
+        {
+          "q": "What is the difference between SEO and GEO",
+          "covered": true
+        },
+        {
+          "q": "How do I get ChatGPT to recommend my business",
+          "covered": false
+        }
+      ],
+      "issues": [],
+      "suggestions": [
+        "secondary keyword \"small business\" never appears in the page body",
+        "GEO question not answered in the FAQ: \"How do I get ChatGPT to recommend my business\""
+      ]
+    },
+    {
+      "code": "ja",
+      "status": 200,
+      "title": "台湾中小企業のサイトリニューアル|SEO × GEO(AI 検索)対策 – 優時科技",
+      "description": "優時科技 Kairos.ai は、台湾の中小企業のサイトリニューアルと新規サイト制作を行い、Google 検索(SEO)と AI 検索(GEO、生成エンジン最適化)での見つかりやすさを高めます。無料サイト診断、クイックサイトは 14 日で公開。完成したサイトは 100% お客様のもの。",
+      "titleWidth": 66,
+      "descriptionWidth": 237,
+      "h1": "お客様は今、あなたを探しています。 でも見つかるのは 他社のサイト です。",
+      "faqCount": 7,
+      "keywords": {
+        "サイトリニューアル": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "無料サイト診断": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 5
+        },
+        "SEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 12
+        },
+        "GEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 9
+        },
+        "台湾": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 5
+        },
+        "生成エンジン最適化": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "AI 検索": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 7
+        },
+        "中小企業": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        }
+      },
+      "questions": [],
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "code": "ko",
+      "status": 200,
+      "title": "대만 중소기업 홈페이지 리뉴얼 | SEO × GEO(AI 검색) 최적화 – 優時科技",
+      "description": "優時科技 Kairos.ai는 대만 중소기업의 홈페이지 리뉴얼과 신규 제작을 맡고 Google 검색(SEO)과 AI 검색(GEO, 생성형 엔진 최적화) 노출을 높입니다. 무료 홈페이지 진단, 빠른 홈페이지 14일 만에 오픈. 완성된 홈페이지는 100% 고객님의 것.",
+      "titleWidth": 68,
+      "descriptionWidth": 226,
+      "h1": "손님은 지금 당신을 검색하고 있는데, 찾아가는 곳은 다른 가게 입니다.",
+      "faqCount": 7,
+      "keywords": {
+        "홈페이지 리뉴얼": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "무료 홈페이지 진단": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 6
+        },
+        "SEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 12
+        },
+        "GEO": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 9
+        },
+        "대만": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 3
+        },
+        "생성형 엔진 최적화": {
+          "title": 0,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        },
+        "AI 검색": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 7
+        },
+        "중소기업": {
+          "title": 1,
+          "description": 1,
+          "h1": 0,
+          "body": 1
+        }
+      },
+      "questions": [],
+      "issues": [],
+      "suggestions": []
+    }
+  ],
+  "newSince": [],
+  "resolvedSince": [],
+  "comparedTo": null
+}
