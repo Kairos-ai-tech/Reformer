@@ -70,3 +70,9 @@ The site is currently configured for `https://reform.kairosaitech.com/`. If you 
 - **React Bits** — it's a React library and this site has no build step, so three of its effects are ported to vanilla JS/CSS: SpotlightCard (cursor glow on cards/prices), ShinyText (trust pill), Magnet (hero buttons).
 
 Everything is skipped under `prefers-reduced-motion`, and the page falls back to the original CSS behaviour if any script fails to load. To disable a piece, remove its block in `motion.js`; to remove the layer entirely, delete the four `<script defer>` tags before `</body>`.
+
+## SEO and GEO tracking
+
+- Target keywords and the questions people ask AI search live in `seo/keywords.json`. The zh title, description and FAQ are in `index.html`; the en/ja/ko head metadata is in `scripts/build-locales.mjs`.
+- `npm run seo:audit` checks the local pages (add `-- --live --write` for the live site and a dated snapshot in `seo/reports/`). It reports missing primary keywords, title and description length, FAQ coverage of the target questions, JSON-LD validity, sitemap and robots, and what is new or resolved since the last snapshot.
+- `seo/ROUTINE.md` is the weekly routine: audit, search check, report and a pull request with suggested edits under `seo/` only.
