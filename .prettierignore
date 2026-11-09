@@ -10,3 +10,4 @@ node_modules/
 package-lock.json
 CNAME
 /scripts/build-locales.mjs
+/seo/reports/

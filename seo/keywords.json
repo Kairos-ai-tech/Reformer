@@ -1,0 +1,47 @@
+{
+  "site": "https://reform.kairosaitech.com",
+  "competitors": ["pro360.com.tw"],
+  "locales": {
+    "zh": {
+      "path": "/",
+      "primary": ["網站改版", "企業官網設計", "免費網站健檢", "GEO 優化", "SEO"],
+      "secondary": ["生成式引擎優化", "AI 搜尋優化", "中小企業", "官網", "301 轉址"],
+      "questions": [
+        { "q": "網站改版會影響 SEO 排名嗎", "match": "影響 SEO" },
+        { "q": "網站改版價格多少", "match": "多少錢" },
+        { "q": "SEO 跟 GEO 有什麼不同", "match": "GEO 有什麼不同" },
+        { "q": "沒有官網只有粉專可以嗎", "match": "粉專" },
+        { "q": "官網做好後網域和原始碼歸誰", "match": "所有權" },
+        { "q": "怎麼讓 ChatGPT 推薦我的公司", "match": "ChatGPT 推薦" }
+      ]
+    },
+    "en": {
+      "path": "/en/",
+      "primary": ["website redesign", "free website health check", "SEO", "GEO", "Taiwan"],
+      "secondary": [
+        "generative engine optimization",
+        "AI search",
+        "small business",
+        "301 redirects"
+      ],
+      "questions": [
+        { "q": "Will a website redesign hurt my SEO rankings", "match": "hurt my SEO" },
+        { "q": "How much does a website redesign cost", "match": "How much" },
+        { "q": "What is the difference between SEO and GEO", "match": "SEO and GEO" },
+        { "q": "How do I get ChatGPT to recommend my business", "match": "ChatGPT to recommend" }
+      ]
+    },
+    "ja": {
+      "path": "/ja/",
+      "primary": ["サイトリニューアル", "無料サイト診断", "SEO", "GEO", "台湾"],
+      "secondary": ["生成エンジン最適化", "AI 検索", "中小企業"],
+      "questions": []
+    },
+    "ko": {
+      "path": "/ko/",
+      "primary": ["홈페이지 리뉴얼", "무료 홈페이지 진단", "SEO", "GEO", "대만"],
+      "secondary": ["생성형 엔진 최적화", "AI 검색", "중소기업"],
+      "questions": []
+    }
+  }
+}
