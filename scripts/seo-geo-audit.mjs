@@ -31,8 +31,12 @@ const count = (hay, needle) => hay.toLowerCase().split(needle.toLowerCase()).len
 
 async function load(rel) {
   if (live) {
-    const res = await fetch(kw.site + rel);
-    return { status: res.status, text: res.ok ? await res.text() : '' };
+    try {
+      const res = await fetch(kw.site + rel, { signal: AbortSignal.timeout(20000) });
+      return { status: res.status, text: res.ok ? await res.text() : '' };
+    } catch {
+      return { status: 0, text: '' };
+    }
   }
   const file = rel.endsWith('/') ? rel + 'index.html' : rel;
   const p = path.join(ROOT, file);
@@ -157,9 +161,11 @@ const siteIssues = await auditSite();
 const report = { date: today, mode: live ? 'live' : 'local', siteIssues, locales };
 
 const dir = path.join(ROOT, 'seo/reports');
+fs.mkdirSync(dir, { recursive: true });
 const prevFile = fs
   .readdirSync(dir)
   .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f) && f !== `${today}.json`)
+  .filter((f) => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')).mode === report.mode)
   .sort()
   .pop();
 const prev = prevFile ? JSON.parse(fs.readFileSync(path.join(dir, prevFile), 'utf8')) : null;
@@ -191,7 +197,10 @@ if (prev) {
   );
   for (const x of report.newSince) console.log(`  + ${x}`);
 }
-if (write) {
+const down = locales.every((l) => l.status !== 200);
+if (down) console.log('every page failed to load, nothing to report');
+if (write && down) process.exitCode = 1;
+if (write && !down) {
   fs.writeFileSync(path.join(dir, `${today}.json`), JSON.stringify(report, null, 2) + '\n');
   console.log(`wrote seo/reports/${today}.json`);
 }
