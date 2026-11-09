@@ -1,0 +1,29 @@
+{
+  "name": "kairos-reform-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:locales": "node scripts/build-locales.mjs --check",
+    "verify": "npm run lint && npm run format:check && npm run check:locales",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "eslint-plugin-html": "^8.2.1",
+    "globals": "^17.14.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10"
+  },
+  "lint-staged": {
+    "*.{js,mjs,html}": [
+      "eslint --fix --max-warnings 0 --no-warn-ignored",
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{css,json,yml}": "prettier --write --ignore-unknown"
+  }
+}

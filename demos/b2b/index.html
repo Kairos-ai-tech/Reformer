@@ -1,0 +1,2911 @@
+<!doctype html>
+<html lang="zh-Hant" data-site-zh="宏達精密" data-site-en="Hongda Precision">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f26b1d'/%3E%3C/svg%3E"
+    />
+    <title>宏達精密</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="../demo.css" />
+    <style>
+      :root {
+        --ink: #0b1220;
+        --ink2: #4a586e;
+        --ink3: #7b8aa3;
+        --line: #e3e8f0;
+        --bg: #fff;
+        --soft: #f5f7fb;
+        --navy: #0b1b33;
+        --navy2: #071326;
+        --navy3: #12294a;
+        --orange: #f26b1d;
+        --orange2: #ff8a3d;
+        --accent: #f26b1d;
+        --ok: #12a36b;
+        --mono: 'JetBrains Mono', ui-monospace, monospace;
+        --sans: 'Inter', 'Noto Sans TC', -apple-system, 'PingFang TC', sans-serif;
+      }
+      body {
+        font-family: var(--sans);
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.65;
+      }
+      .w {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.12;
+      }
+      html[lang='zh-Hant'] h1,
+      html[lang='zh-Hant'] h2,
+      html[lang='zh-Hant'] h3 {
+        letter-spacing: 0;
+        line-height: 1.28;
+        font-weight: 900;
+      }
+      h1 {
+        font-size: clamp(38px, 5.4vw, 68px);
+      }
+      h2 {
+        font-size: clamp(28px, 3.6vw, 44px);
+      }
+      h3 {
+        font-size: 20px;
+        letter-spacing: -0.01em;
+      }
+      p {
+        margin: 0;
+      }
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font: 700 12px/1 var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 18px;
+      }
+      .kicker b {
+        color: var(--ink3);
+        font-weight: 700;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 24px;
+        border-radius: 8px;
+        font: 700 15px var(--sans);
+        text-decoration: none;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.15s,
+          background 0.2s,
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+      .btn-o {
+        background: var(--orange);
+        color: #fff;
+        box-shadow: 0 8px 24px -6px rgba(242, 107, 29, 0.55);
+      }
+      .btn-o:hover {
+        background: var(--orange2);
+      }
+      .btn-l {
+        border-color: rgba(255, 255, 255, 0.28);
+        color: #fff;
+      }
+      .btn-l:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+      .btn-d {
+        border-color: var(--line);
+        color: var(--ink);
+        background: #fff;
+      }
+      .btn-d:hover {
+        border-color: var(--ink);
+      }
+      .btn-w {
+        background: #fff;
+        color: var(--ink);
+      }
+      .ic {
+        width: 1em;
+        height: 1em;
+        flex: none;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .ann {
+        background: linear-gradient(90deg, #0b1b33, #16335e, #0b1b33);
+        color: #c9d6ec;
+        font-size: 13px;
+        text-align: center;
+        padding: 9px 16px;
+      }
+      .ann b {
+        color: #fff;
+      }
+      .ann i {
+        font-style: normal;
+        color: var(--orange2);
+        font-weight: 700;
+      }
+      header.site {
+        position: sticky;
+        top: 38px;
+        z-index: 60;
+        background: rgba(7, 19, 38, 0.92);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      html.embed header.site {
+        top: 0;
+      }
+      .hd {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        height: 70px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        text-decoration: none;
+        color: #fff;
+        font: 800 20px/1 var(--sans);
+        letter-spacing: -0.01em;
+      }
+      .logo svg {
+        width: 34px;
+        height: 34px;
+      }
+      .logo small {
+        display: block;
+        font: 500 10.5px/1 var(--mono);
+        letter-spacing: 0.16em;
+        color: #7f93b3;
+        margin-top: 5px;
+      }
+      nav.main {
+        display: flex;
+        gap: 2px;
+        margin-left: auto;
+      }
+      nav.main a {
+        position: relative;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14.5px;
+        color: #b9c7de;
+        transition: color 0.2s;
+      }
+      nav.main a:hover {
+        color: #fff;
+      }
+      nav.main a.active {
+        color: #fff;
+      }
+      nav.main a.active::after {
+        content: '';
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        bottom: 2px;
+        height: 2px;
+        background: var(--orange);
+        border-radius: 2px;
+      }
+      .hd .btn {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+      .burger {
+        display: none;
+        margin-left: auto;
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        border-radius: 8px;
+        width: 42px;
+        height: 38px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .hero {
+        position: relative;
+        background: var(--navy2);
+        color: #fff;
+        overflow: hidden;
+        padding: clamp(52px, 7vw, 96px) 0 clamp(54px, 7vw, 90px);
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(60% 70% at 85% 20%, rgba(242, 107, 29, 0.18), transparent 60%),
+          radial-gradient(50% 60% at 10% 90%, rgba(37, 99, 235, 0.22), transparent 60%),
+          linear-gradient(rgba(143, 163, 191, 0.07) 1px, transparent 1px) 0 0/56px 56px,
+          linear-gradient(90deg, rgba(143, 163, 191, 0.07) 1px, transparent 1px) 0 0/56px 56px;
+        -webkit-mask-image: linear-gradient(#000 60%, transparent);
+        mask-image: linear-gradient(#000 60%, transparent);
+      }
+      .hero::before {
+        z-index: 1;
+      }
+      .hero-ph {
+        position: absolute;
+        inset: -8% 0;
+        transform: translate3d(0, var(--py, 0), 0);
+        will-change: transform;
+      }
+      .hero-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 52%;
+        display: block;
+        transform-origin: 60% 50%;
+        animation: kb 26s ease-in-out infinite alternate;
+      }
+      .hero-ph::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(7, 19, 38, 0.94) 0%,
+            rgba(7, 19, 38, 0.7) 40%,
+            rgba(7, 19, 38, 0.2) 100%
+          ),
+          linear-gradient(0deg, var(--navy2) 0%, transparent 35%);
+      }
+      @keyframes kb {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1.18) translate3d(-1.5%, -1%, 0);
+        }
+      }
+      .scan {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 120px;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          rgba(242, 107, 29, 0.16) 70%,
+          rgba(255, 138, 61, 0.55)
+        );
+        border-bottom: 1px solid rgba(255, 138, 61, 0.8);
+        animation: scan 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      }
+      @keyframes scan {
+        0% {
+          transform: translateY(-120px);
+          opacity: 0;
+        }
+        15%,
+        85% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+      .hud {
+        position: absolute;
+        z-index: 2;
+        left: max(28px, calc((100% - 1200px) / 2 + 28px));
+        bottom: 22px;
+        display: flex;
+        gap: 22px;
+        font: 600 11.5px var(--mono);
+        letter-spacing: 0.1em;
+        color: #9fb0cc;
+        text-transform: uppercase;
+      }
+      .hud b {
+        color: var(--orange2);
+        font-weight: 700;
+      }
+      .hud i {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ff4d3d;
+        margin-right: 8px;
+        animation: blink 1.4s steps(2, jump-none) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0.2;
+        }
+      }
+      .hero .w > div:first-child > * {
+        animation: up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      .hero .w > div:first-child > :nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .hero .w > div:first-child > :nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .hero .w > div:first-child > :nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .hero .w > div:first-child > :nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .hero .est {
+        animation: up 1s 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .tick {
+        background: var(--orange);
+        color: #1a0c02;
+        overflow: hidden;
+        white-space: nowrap;
+        font: 700 13px var(--mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .tick div {
+        display: inline-flex;
+        padding: 13px 0;
+        animation: tk 38s linear infinite;
+      }
+      .tick span {
+        padding: 0 26px;
+      }
+      .tick span::after {
+        content: '/';
+        margin-left: 52px;
+        opacity: 0.45;
+      }
+      @keyframes tk {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .floor {
+        position: relative;
+        overflow: hidden;
+        background: var(--navy2);
+        color: #fff;
+        padding: clamp(80px, 11vw, 150px) 0;
+      }
+      .floor-ph {
+        position: absolute;
+        inset: -14% 0;
+        transform: translate3d(0, var(--py, 0), 0);
+        will-change: transform;
+      }
+      .floor-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .floor-ph::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(7, 19, 38, 0.92),
+          rgba(7, 19, 38, 0.55) 60%,
+          rgba(7, 19, 38, 0.3)
+        );
+      }
+      .floor .w {
+        position: relative;
+        z-index: 1;
+      }
+      .floor h2 {
+        font-size: clamp(30px, 4.2vw, 54px);
+        max-width: 13em;
+        margin-bottom: 44px;
+      }
+      .fs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        max-width: 760px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 14px;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+      .fs div {
+        padding: 22px 24px;
+        background: rgba(7, 19, 38, 0.55);
+      }
+      .fs b {
+        display: block;
+        font: 800 clamp(30px, 3.6vw, 46px) / 1 var(--sans);
+        font-variant-numeric: tabular-nums;
+        color: var(--orange2);
+      }
+      .fs span {
+        display: block;
+        margin-top: 8px;
+        font-size: 13.5px;
+        color: #b9c6dc;
+      }
+      @media (max-width: 760px) {
+        .hero-ph::after {
+          background: linear-gradient(
+            180deg,
+            rgba(7, 19, 38, 0.86),
+            rgba(7, 19, 38, 0.74) 55%,
+            var(--navy2)
+          );
+        }
+      }
+      @media (max-width: 640px) {
+        .fs {
+          grid-template-columns: 1fr;
+        }
+        .hud {
+          display: none;
+        }
+      }
+      .hero .w {
+        z-index: 2;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 56px;
+        align-items: center;
+      }
+      .hero h1 {
+        text-wrap: balance;
+      }
+      html[lang='zh-Hant'] h1 {
+        font-feature-settings: 'halt';
+      }
+      .hero h1 em {
+        white-space: nowrap;
+        font-style: normal;
+        background: linear-gradient(90deg, var(--orange), #ffb066);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero .lead {
+        font-size: 18px;
+        color: #a9b8d0;
+        max-width: 33em;
+        margin: 22px 0 32px;
+      }
+      .cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .certs {
+        display: flex;
+        gap: 10px 22px;
+        flex-wrap: wrap;
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font: 600 12.5px var(--mono);
+        color: #9fb0cc;
+        letter-spacing: 0.04em;
+      }
+      .certs span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .certs .ic {
+        color: var(--ok);
+        font-size: 15px;
+      }
+      .est {
+        background: #fff;
+        color: var(--ink);
+        border-radius: 18px;
+        box-shadow:
+          0 40px 90px -20px rgba(0, 0, 0, 0.65),
+          0 0 0 1px rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+      .est-top {
+        position: relative;
+        background: linear-gradient(160deg, #102545, #0b1b33);
+        padding: 22px 22px 12px;
+        color: #fff;
+      }
+      .est-top .tag {
+        position: absolute;
+        left: 18px;
+        top: 16px;
+        font: 700 10.5px var(--mono);
+        letter-spacing: 0.14em;
+        color: #7f93b3;
+      }
+      .est-top .live {
+        position: absolute;
+        right: 18px;
+        top: 16px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font: 700 10.5px var(--mono);
+        letter-spacing: 0.1em;
+        color: #7fe0b3;
+      }
+      .est-top .live::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2ee59d;
+        animation: blip 1.8s infinite;
+      }
+      @keyframes blip {
+        50% {
+          opacity: 0.25;
+        }
+      }
+      .est-top svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-top: 14px;
+      }
+      .dr {
+        fill: none;
+        stroke: #9db6dd;
+        stroke-width: 1.4;
+        stroke-linejoin: round;
+      }
+      .dr.main {
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-dasharray: 900;
+        stroke-dashoffset: 900;
+        animation: draw 2.4s 0.4s ease forwards;
+      }
+      .dr.dim {
+        stroke: var(--orange2);
+        stroke-width: 1.2;
+        stroke-dasharray: 240;
+        stroke-dashoffset: 240;
+        animation: draw 1.6s 1.6s ease forwards;
+      }
+      .dt {
+        font: 700 11px var(--mono);
+        fill: var(--orange2);
+        opacity: 0;
+        animation: fade 0.6s 2.6s ease forwards;
+      }
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes fade {
+        to {
+          opacity: 1;
+        }
+      }
+      .est-body {
+        padding: 20px 22px 24px;
+      }
+      .est-body .lbl {
+        font: 700 11px var(--mono);
+        letter-spacing: 0.12em;
+        color: var(--ink3);
+        text-transform: uppercase;
+        margin: 0 0 8px;
+      }
+      .seg {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .seg button {
+        flex: 1;
+        min-width: 0;
+        border: 1.5px solid var(--line);
+        background: #fff;
+        border-radius: 8px;
+        padding: 9px 6px;
+        font: 600 13px var(--sans);
+        color: var(--ink2);
+        cursor: pointer;
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .seg button:hover {
+        border-color: #b7c3d8;
+      }
+      .seg button[aria-pressed='true'] {
+        border-color: var(--navy);
+        background: var(--navy);
+        color: #fff;
+      }
+      .res {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        background: var(--soft);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 4px 0 14px;
+      }
+      .res small {
+        display: block;
+        font: 700 10.5px var(--mono);
+        letter-spacing: 0.1em;
+        color: var(--ink3);
+        text-transform: uppercase;
+      }
+      .res b {
+        display: block;
+        font: 800 22px/1.2 var(--sans);
+        letter-spacing: -0.02em;
+        margin-top: 4px;
+      }
+      .res b span {
+        color: var(--orange);
+      }
+      .est .btn {
+        width: 100%;
+      }
+      .est .fine {
+        font-size: 11.5px;
+        color: var(--ink3);
+        text-align: center;
+        margin-top: 10px;
+      }
+      .trust {
+        padding: 34px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .trust .w {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .trust small {
+        font: 700 11px var(--mono);
+        letter-spacing: 0.14em;
+        color: var(--ink3);
+        text-transform: uppercase;
+        max-width: 9em;
+      }
+      .trust .lg {
+        flex: 1;
+        display: flex;
+        gap: 28px 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .trust .lg span {
+        font: 800 20px/1 var(--sans);
+        letter-spacing: 0.02em;
+        color: #aab5c8;
+        text-transform: uppercase;
+      }
+      section.s {
+        padding: clamp(64px, 8vw, 112px) 0;
+      }
+      section.soft {
+        background: var(--soft);
+      }
+      .head {
+        max-width: 700px;
+        margin-bottom: 48px;
+      }
+      .head p {
+        color: var(--ink2);
+        font-size: 17px;
+        margin-top: 16px;
+      }
+      .head.c {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 24px 50px -18px rgba(11, 27, 51, 0.28);
+        border-color: #cbd5e4;
+      }
+      .svc .art {
+        background: linear-gradient(160deg, #102545, #0b1b33);
+        height: 170px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        position: relative;
+      }
+      .svc .art svg {
+        width: 150px;
+        height: auto;
+      }
+      .svc .art::after {
+        content: attr(data-n);
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        font: 700 12px var(--mono);
+        color: #5e7399;
+      }
+      .svc .tx {
+        padding: 24px 26px 28px;
+      }
+      .svc p {
+        color: var(--ink2);
+        font-size: 15px;
+        margin: 10px 0 16px;
+      }
+      .svc ul {
+        list-style: none;
+        margin: 0 0 20px;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .svc li {
+        font: 600 11.5px var(--mono);
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 4px 8px;
+        color: var(--ink2);
+      }
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+        color: var(--orange);
+        text-decoration: none;
+        font-size: 14.5px;
+      }
+      .link:hover {
+        gap: 10px;
+      }
+      .link {
+        transition: gap 0.2s;
+      }
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 210px;
+        gap: 16px;
+      }
+      .tile {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        padding: 24px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: var(--navy);
+        isolation: isolate;
+      }
+      .tile::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: var(--g, linear-gradient(160deg, #16335e, #0b1b33));
+      }
+      .tile::after {
+        content: '';
+        position: absolute;
+        right: -30px;
+        top: -30px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 26px solid rgba(255, 255, 255, 0.07);
+        z-index: -1;
+      }
+      .tile b {
+        font: 800 40px/1 var(--sans);
+        letter-spacing: -0.03em;
+      }
+      .tile span {
+        display: block;
+        font-weight: 700;
+        margin-top: 8px;
+        font-size: 16px;
+      }
+      .tile small {
+        display: block;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 13px;
+        margin-top: 2px;
+      }
+      .tile.big {
+        grid-column: span 2;
+        grid-row: span 2;
+        --g: linear-gradient(150deg, #f26b1d, #b8420a);
+      }
+      .tile.big b {
+        font-size: 72px;
+      }
+      .tile.t2 {
+        --g: linear-gradient(160deg, #1b3a6b, #0b1b33);
+      }
+      .tile.t3 {
+        --g: linear-gradient(160deg, #0e5f52, #0b1b33);
+      }
+      .tile.w2 {
+        grid-column: span 2;
+        --g: linear-gradient(120deg, #2b2f6b, #0b1b33);
+      }
+      .tile .ic {
+        position: absolute;
+        right: 22px;
+        top: 22px;
+        font-size: 28px;
+        opacity: 0.9;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1.05fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .bars {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 30px;
+        box-shadow: 0 30px 60px -30px rgba(11, 27, 51, 0.25);
+      }
+      .bars h3 {
+        font-size: 15px;
+        font-family: var(--mono);
+        letter-spacing: 0.06em;
+        color: var(--ink3);
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 22px;
+      }
+      .bar {
+        margin-bottom: 22px;
+      }
+      .bar:last-child {
+        margin-bottom: 0;
+      }
+      .bar .t {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 14.5px;
+        margin-bottom: 8px;
+      }
+      .bar .t em {
+        font: 700 13px var(--mono);
+        font-style: normal;
+        color: var(--ink3);
+      }
+      .bar .tr {
+        height: 12px;
+        border-radius: 99px;
+        background: var(--soft);
+        overflow: hidden;
+      }
+      .bar .tr i {
+        display: block;
+        height: 100%;
+        width: 0;
+        border-radius: 99px;
+        background: #c3ccdb;
+        transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .bar.us .tr i {
+        background: linear-gradient(90deg, var(--orange), #ffb066);
+      }
+      .bars.in .bar .tr i {
+        width: var(--w);
+      }
+      .checks {
+        list-style: none;
+        margin: 26px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+      .checks li {
+        display: flex;
+        gap: 12px;
+        color: var(--ink2);
+        font-size: 16px;
+      }
+      .checks .ic {
+        color: var(--ok);
+        font-size: 20px;
+        margin-top: 3px;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        counter-reset: st;
+      }
+      .step {
+        position: relative;
+        padding-right: 22px;
+      }
+      .step::before {
+        counter-increment: st;
+        content: '0' counter(st);
+        display: block;
+        font: 700 13px var(--mono);
+        color: var(--orange);
+        margin-bottom: 14px;
+      }
+      .step::after {
+        content: '';
+        position: absolute;
+        top: 6px;
+        left: 34px;
+        right: 14px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--orange), rgba(255, 255, 255, 0.12));
+      }
+      .step:last-child::after {
+        display: none;
+      }
+      .step h3 {
+        font-size: 18px;
+        color: #fff;
+      }
+      .step p {
+        color: #93a5c2;
+        font-size: 14.5px;
+        margin-top: 8px;
+      }
+      .dark {
+        background: var(--navy2);
+        color: #fff;
+      }
+      .dark .head p {
+        color: #a9b8d0;
+      }
+      .feat {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 0;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .feat .vis {
+        background: linear-gradient(150deg, #102545, #0b1b33);
+        color: #fff;
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+      }
+      .feat .vis .kp {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .feat .vis b {
+        display: block;
+        font: 800 52px/1 var(--sans);
+        letter-spacing: -0.03em;
+        color: var(--orange2);
+      }
+      .feat .vis span {
+        font-size: 13.5px;
+        color: #9fb0cc;
+      }
+      .feat .tx {
+        padding: 36px;
+      }
+      .feat .tx p {
+        color: var(--ink2);
+        margin: 12px 0 22px;
+      }
+      .q {
+        margin-top: 22px;
+        border-left: 3px solid var(--orange);
+        padding: 4px 0 4px 18px;
+        color: var(--ink);
+        font-size: 16px;
+      }
+      .q small {
+        display: block;
+        color: var(--ink3);
+        margin-top: 8px;
+        font-size: 13px;
+      }
+      .cta-band {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(120deg, #f26b1d, #c94e0c);
+        color: #fff;
+        border-radius: 22px;
+        padding: clamp(34px, 5vw, 60px);
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .cta-band::after {
+        content: '';
+        position: absolute;
+        right: -60px;
+        top: -80px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 44px solid rgba(255, 255, 255, 0.12);
+      }
+      .cta-band h2 {
+        font-size: clamp(26px, 3.4vw, 40px);
+        max-width: 16em;
+      }
+      .cta-band .btn {
+        position: relative;
+        z-index: 1;
+      }
+      footer.ft {
+        background: var(--navy2);
+        color: #8fa2c2;
+        padding: 56px 0 30px;
+        font-size: 14px;
+      }
+      footer.ft .w {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 34px;
+      }
+      footer.ft b {
+        color: #fff;
+        display: block;
+        margin-bottom: 12px;
+        font-size: 13px;
+        font-family: var(--mono);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      footer.ft a {
+        display: block;
+        color: #8fa2c2;
+        text-decoration: none;
+        padding: 4px 0;
+      }
+      footer.ft a:hover {
+        color: #fff;
+      }
+      footer.ft .copy {
+        grid-column: 1/-1;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 22px;
+        margin-top: 6px;
+        font-size: 12.5px;
+      }
+      .pagehead {
+        position: relative;
+        background: var(--navy2);
+        color: #fff;
+        padding: clamp(52px, 7vw, 92px) 0;
+        overflow: hidden;
+      }
+      .pagehead::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(50% 90% at 90% 0%, rgba(242, 107, 29, 0.2), transparent 60%),
+          linear-gradient(rgba(143, 163, 191, 0.06) 1px, transparent 1px) 0 0/56px 56px,
+          linear-gradient(90deg, rgba(143, 163, 191, 0.06) 1px, transparent 1px) 0 0/56px 56px;
+      }
+      .pagehead .w {
+        position: relative;
+      }
+      .pagehead p {
+        color: #a9b8d0;
+        max-width: 38em;
+        margin-top: 18px;
+        font-size: 17px;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+      }
+      .tab {
+        background: #fff;
+        border: 1.5px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 20px;
+        font: 600 14px var(--sans);
+        cursor: pointer;
+        color: var(--ink2);
+        transition: all 0.15s;
+      }
+      .tab:hover {
+        border-color: #b7c3d8;
+      }
+      .tab[aria-pressed='true'] {
+        background: var(--navy);
+        border-color: var(--navy);
+        color: #fff;
+      }
+      .prod {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 22px;
+        align-items: center;
+        padding: 20px;
+      }
+      .prod[hidden] {
+        display: none;
+      }
+      .part {
+        background: linear-gradient(160deg, #102545, #0b1b33);
+        border-radius: 12px;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        color: #fff;
+      }
+      .part svg {
+        width: 72%;
+      }
+      .prod p {
+        color: var(--ink2);
+        font-size: 14.5px;
+        margin: 6px 0 10px;
+      }
+      .spec {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .spec i {
+        font: 600 11.5px var(--mono);
+        font-style: normal;
+        border: 1px solid var(--line);
+        background: var(--soft);
+        border-radius: 6px;
+        padding: 3px 8px;
+        color: var(--ink2);
+      }
+      table.t {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        font-size: 14.5px;
+      }
+      table.t th {
+        background: var(--navy);
+        color: #fff;
+        text-align: left;
+        padding: 15px 18px;
+        font: 700 12px var(--mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      table.t td {
+        padding: 14px 18px;
+        border-top: 1px solid var(--line);
+      }
+      table.t tr:nth-child(even) td {
+        background: #fafbfd;
+      }
+      table.t td:first-child {
+        font-weight: 700;
+      }
+      .tbl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tbl table {
+        min-width: 580px;
+      }
+      .mat {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .mat span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 99px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .mat span::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--c, #9db6dd);
+      }
+      .cert {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        padding: 26px;
+      }
+      .cert .seal {
+        flex: none;
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font: 800 12px/1.15 var(--mono);
+        text-align: center;
+        box-shadow:
+          0 0 0 4px #fff,
+          0 0 0 5px var(--orange);
+      }
+      .cert p {
+        color: var(--ink2);
+        font-size: 14.5px;
+        margin-top: 6px;
+      }
+      .case {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        margin-bottom: 22px;
+        background: #fff;
+      }
+      .case .vis {
+        background: linear-gradient(135deg, #102545, #0b1b33);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        padding: 30px;
+        min-height: 230px;
+      }
+      .case .vis svg {
+        width: 150px;
+      }
+      .case .body {
+        padding: 32px;
+      }
+      .case .body p {
+        color: var(--ink2);
+        margin-top: 10px;
+      }
+      .kpis {
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .kpis b {
+        display: block;
+        font: 800 36px/1 var(--sans);
+        letter-spacing: -0.03em;
+        color: var(--orange);
+      }
+      .kpis span {
+        font-size: 13px;
+        color: var(--ink2);
+      }
+      .rep {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -30px rgba(11, 27, 51, 0.3);
+        font-size: 13.5px;
+      }
+      .rep header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        background: var(--navy);
+        color: #fff;
+        font: 700 12px var(--mono);
+        letter-spacing: 0.06em;
+      }
+      .rep header i {
+        font-style: normal;
+        background: var(--ok);
+        padding: 3px 9px;
+        border-radius: 99px;
+        font-size: 11px;
+      }
+      .rep table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: var(--mono);
+        font-size: 12.5px;
+      }
+      .rep th {
+        text-align: left;
+        color: var(--ink3);
+        font-weight: 700;
+        padding: 10px 18px;
+        border-bottom: 1px solid var(--line);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .rep td {
+        padding: 10px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+      .rep td:last-child {
+        color: var(--ok);
+        font-weight: 700;
+      }
+      .form-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: clamp(24px, 4vw, 42px);
+        box-shadow: 0 30px 60px -34px rgba(11, 27, 51, 0.3);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      label {
+        display: block;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 7px;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        font: inherit;
+        font-size: 15px;
+        padding: 12px 14px;
+        border: 1.5px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        transition: border-color 0.15s;
+      }
+      input:hover,
+      select:hover,
+      textarea:hover {
+        border-color: #b7c3d8;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--orange);
+        box-shadow: 0 0 0 4px rgba(242, 107, 29, 0.15);
+      }
+      .fld {
+        margin-bottom: 18px;
+      }
+      .drop {
+        position: relative;
+        border: 2px dashed #c3cddd;
+        border-radius: 12px;
+        padding: 26px;
+        text-align: center;
+        color: var(--ink2);
+        font-size: 14px;
+        background: var(--soft);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .drop:hover,
+      .drop.on {
+        border-color: var(--orange);
+        background: #fff5ee;
+      }
+      .drop .ic {
+        font-size: 28px;
+        color: var(--orange);
+        display: block;
+        margin: 0 auto 8px;
+      }
+      .drop input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+      }
+      .layout2 {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 30px;
+        align-items: start;
+      }
+      .side {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .side .card {
+        padding: 26px;
+      }
+      .chk {
+        list-style: none;
+        margin: 14px 0 0;
+        padding: 0;
+      }
+      .chk li {
+        padding: 7px 0 7px 30px;
+        position: relative;
+        color: var(--ink2);
+        font-size: 15px;
+      }
+      .chk li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 11px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--ok)
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4 8.5 2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+          center/100% no-repeat;
+      }
+      .form-status {
+        color: var(--ok);
+      }
+      @media (max-width: 1020px) {
+        .hero .w {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .est {
+          max-width: 520px;
+        }
+        .grid3 {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bento {
+          grid-template-columns: 1fr 1fr;
+        }
+        .tile.big {
+          grid-column: span 2;
+        }
+        .split,
+        .feat,
+        .case,
+        .layout2 {
+          grid-template-columns: 1fr;
+        }
+        .split {
+          gap: 36px;
+        }
+        .steps {
+          grid-template-columns: 1fr 1fr;
+          row-gap: 32px;
+        }
+        .step::after {
+          display: none;
+        }
+        footer.ft .w {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 760px) {
+        nav.main {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: var(--navy2);
+          flex-direction: column;
+          padding: 10px 24px 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        body.menu-open nav.main {
+          display: flex;
+        }
+        nav.main a.active::after {
+          display: none;
+        }
+        .burger {
+          display: block;
+        }
+        .hd > .btn {
+          display: none;
+        }
+        .grid3,
+        .grid2,
+        .row,
+        .bento {
+          grid-template-columns: 1fr;
+        }
+        .tile.big,
+        .tile.w2 {
+          grid-column: auto;
+        }
+        .tile.big {
+          grid-row: span 1;
+        }
+        .tile.big b {
+          font-size: 56px;
+        }
+        .prod {
+          grid-template-columns: 92px 1fr;
+        }
+        .w {
+          padding: 0 20px;
+        }
+        .est-body {
+          padding: 18px;
+        }
+        footer.ft .w {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-ph img,
+        .scan,
+        .hud i,
+        .tick div,
+        .hero .w > div:first-child > *,
+        .hero .est {
+          animation: none;
+        }
+        .scan {
+          display: none;
+        }
+        .dr.main,
+        .dr.dim {
+          animation: none;
+          stroke-dashoffset: 0;
+        }
+        .dt {
+          animation: none;
+          opacity: 1;
+        }
+        .est-top .live::before {
+          animation: none;
+        }
+        .btn,
+        .card,
+        .bar .tr i {
+          transition: none;
+        }
+        .bars .bar .tr i {
+          width: var(--w);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" /></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24">
+        <path d="M4 16v-4l2-5h12l2 5v4M4 16h16M4 16v2h3v-2M17 16v2h3v-2" />
+        <circle cx="8" cy="13" r=".6" />
+        <circle cx="16" cy="13" r=".6" />
+      </symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24">
+        <rect x="5" y="8" width="14" height="10" rx="2" />
+        <path d="M12 8V4M9 13h.01M15 13h.01M3 13h2M19 13h2" />
+      </symbol>
+      <symbol id="i-med" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+        <rect x="3.5" y="3.5" width="17" height="17" rx="4" />
+      </symbol>
+      <symbol id="i-chip" viewBox="0 0 24 24">
+        <rect x="7" y="7" width="10" height="10" rx="1.5" />
+        <path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4" />
+      </symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 16V5M7 10l5-5 5 5M5 19h14" /></symbol>
+    </svg>
+
+    <div class="ann">
+      <b data-en="Every quote includes a free DFM review.">每一份報價都附免費可製造性評估。</b>
+      <i data-en="Reply within 24h →">24 小時內回覆 →</i>
+    </div>
+
+    <header class="site">
+      <div class="w hd">
+        <a class="logo" href="#/home" data-go="home" aria-label="Hongda Precision">
+          <svg
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="#F26B1D"
+            stroke-width="2.2"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M16 3l3 3.5 4.5-.8.8 4.5L29 12l-2.5 4 2.5 4-4.7 1.8-.8 4.5-4.5-.8L16 29l-3-3.5-4.5.8-.8-4.5L3 20l2.5-4L3 12l4.7-1.8.8-4.5 4.5.8z"
+            />
+            <circle cx="16" cy="16" r="4.5" />
+          </svg>
+          <span>Hongda<small data-en="PRECISION MACHINING">宏達精密</small></span>
+        </a>
+        <nav class="main" aria-label="Main" data-en-label="Main">
+          <a href="#/home" data-go="home" data-en="Home">首頁</a>
+          <a href="#/capabilities" data-go="capabilities" data-en="Capabilities">產品與製程</a>
+          <a href="#/quality" data-go="quality" data-en="Quality &amp; Cases">品質與案例</a>
+          <a href="#/quote" data-go="quote" data-en="Contact">詢價與聯絡</a>
+        </nav>
+        <a class="btn btn-o" href="#/quote" data-go="quote"
+          ><span data-en="Get instant quote">立即報價</span
+          ><svg class="ic"><use href="#i-arrow" /></svg
+        ></a>
+        <button
+          class="burger"
+          type="button"
+          aria-label="Menu"
+          onclick="document.body.classList.toggle('menu-open')"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div data-page="home" data-title="首頁" data-title-en="Home">
+        <section class="hero">
+          <div class="hero-ph" data-par="0.12" aria-hidden="true">
+            <img src="img/hero.jpg" alt="" width="1800" height="2520" fetchpriority="high" />
+          </div>
+          <div class="scan" aria-hidden="true"></div>
+          <div class="hud" aria-hidden="true">
+            <span><i></i><span data-en="Cell 03 · live">3 號機 · 運轉中</span></span>
+            <span data-en="SPINDLE <b>24,000</b> RPM">主軸轉速 <b>24,000</b> RPM</span>
+            <span data-en="Ra <b>0.4</b> µm">粗糙度 Ra <b>0.4</b> µm</span>
+          </div>
+          <div class="w">
+            <div>
+              <div class="kicker">
+                <span data-en="CNC · Stamping · Assembly">CNC・沖壓・組裝</span>
+              </div>
+              <h1 data-en="Precision parts, <em>on time</em>, every batch.">
+                精密零件，<em>準時交貨</em>,批批如一。
+              </h1>
+              <p
+                class="lead"
+                data-en="From one prototype to 100,000 parts. Tolerances down to ±0.005 mm. Every shipment comes with an inspection report."
+              >
+                從 1 件試作到 10 萬件量產。公差可達 ±0.005 mm。每批出貨都附檢驗報告。
+              </p>
+              <div class="cta">
+                <a class="btn btn-o" href="#/quote" data-go="quote"
+                  ><span data-en="Upload a drawing">上傳圖面詢價</span
+                  ><svg class="ic"><use href="#i-up" /></svg
+                ></a>
+                <a
+                  class="btn btn-l"
+                  href="#/capabilities"
+                  data-go="capabilities"
+                  data-en="See what we make"
+                  >看我們做什麼</a
+                >
+              </div>
+              <div class="certs">
+                <span
+                  ><svg class="ic"><use href="#i-check" /></svg>ISO 9001:2015</span
+                >
+                <span
+                  ><svg class="ic"><use href="#i-check" /></svg>IATF 16949</span
+                >
+                <span
+                  ><svg class="ic"><use href="#i-check" /></svg>ISO 14001</span
+                >
+                <span
+                  ><svg class="ic"><use href="#i-check" /></svg>RoHS</span
+                >
+              </div>
+            </div>
+
+            <div class="est" id="est">
+              <div class="est-top">
+                <span class="tag">PART HD-2041 · REV C</span
+                ><span class="live" data-en="LIVE">即時</span>
+                <svg viewBox="0 0 400 190" aria-hidden="true">
+                  <path class="dr main" d="M70 50h260v90H70z" />
+                  <circle class="dr main" cx="120" cy="95" r="20" />
+                  <circle class="dr main" cx="200" cy="95" r="20" />
+                  <circle class="dr main" cx="280" cy="95" r="20" />
+                  <path class="dr" d="M70 95h300M200 30v140" stroke-dasharray="6 5" opacity=".35" />
+                  <path class="dr dim" d="M70 168h260M70 160v16M330 160v16" />
+                  <path class="dr dim" d="M352 50v90M344 50h16M344 140h16" />
+                  <path class="dr dim" d="M120 95l-14-26h-22" />
+                  <text class="dt" x="200" y="160" text-anchor="middle">120.00</text>
+                  <text
+                    class="dt"
+                    x="358"
+                    y="100"
+                    transform="rotate(90 358 100)"
+                    text-anchor="middle"
+                  >
+                    40.00
+                  </text>
+                  <text class="dt" x="64" y="62" text-anchor="end">Ø12 ±0.01</text>
+                </svg>
+              </div>
+              <div class="est-body">
+                <p class="lbl" data-en="Process">製程</p>
+                <div class="seg" data-k="p">
+                  <button type="button" data-v="cnc" aria-pressed="true" data-en="CNC">CNC</button>
+                  <button type="button" data-v="stamp" aria-pressed="false" data-en="Stamping">
+                    沖壓
+                  </button>
+                  <button type="button" data-v="asm" aria-pressed="false" data-en="Assembly">
+                    組裝
+                  </button>
+                </div>
+                <p class="lbl" data-en="Material">材質</p>
+                <div class="seg" data-k="m">
+                  <button type="button" data-v="al" aria-pressed="true">Al 6061</button>
+                  <button type="button" data-v="sus" aria-pressed="false">SUS304</button>
+                  <button type="button" data-v="ti" aria-pressed="false">Ti Gr5</button>
+                </div>
+                <p class="lbl" data-en="Quantity">數量</p>
+                <div class="seg" data-k="q">
+                  <button type="button" data-v="0" aria-pressed="false">1</button>
+                  <button type="button" data-v="1" aria-pressed="true">10</button>
+                  <button type="button" data-v="2" aria-pressed="false">100</button>
+                  <button type="button" data-v="3" aria-pressed="false">1k</button>
+                  <button type="button" data-v="4" aria-pressed="false">10k</button>
+                </div>
+                <div class="res" aria-live="polite">
+                  <div><small data-en="Unit price">單價</small><b id="eP">–</b></div>
+                  <div><small data-en="Lead time">交期</small><b id="eL">–</b></div>
+                </div>
+                <a class="btn btn-o" href="#/quote" data-go="quote" id="eGo"
+                  ><span data-en="Send to an engineer">交給工程師確認</span
+                  ><svg class="ic"><use href="#i-arrow" /></svg
+                ></a>
+                <p class="fine" data-en="Sample estimate for this demo. Not a real quote.">
+                  示範用估算，非實際報價。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="trust">
+          <div class="w">
+            <small data-en="Trusted by engineering teams">工程團隊信賴</small>
+            <div class="lg" aria-label="Customers" data-en-label="Customers">
+              <span>Axiom Auto</span><span>NovaTech</span><span>Pacific Drive</span
+              ><span>Helix Medical</span><span>Orion Robotics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tick" aria-hidden="true">
+          <div>
+            <span data-en="CNC machining">CNC 加工</span><span data-en="Stamping">沖壓</span
+            ><span data-en="Assembly">組裝</span><span>ISO 9001</span><span>IATF 16949</span
+            ><span data-en="CMM report every lot">每批 CMM 報告</span
+            ><span data-en="Quote in 24 h">24 小時報價</span
+            ><span data-en="CNC machining">CNC 加工</span><span data-en="Stamping">沖壓</span
+            ><span data-en="Assembly">組裝</span><span>ISO 9001</span><span>IATF 16949</span
+            ><span data-en="CMM report every lot">每批 CMM 報告</span
+            ><span data-en="Quote in 24 h">24 小時報價</span>
+          </div>
+        </div>
+
+        <section class="s">
+          <div class="w">
+            <div class="head rv">
+              <div class="kicker"><b>01 /</b> <span data-en="What we make">我們做什麼</span></div>
+              <h2 data-en="Three processes. One quality system.">三種製程，一套品質系統。</h2>
+              <p
+                data-en="You get one supplier, one contact and one set of documents. It works for a single bracket or a full assembly."
+              >
+                您只需要一家供應商、一位窗口、一套文件。單一支架或整組總成都一樣。
+              </p>
+            </div>
+            <div class="grid3">
+              <article class="card svc rv">
+                <div class="art" data-n="01">
+                  <svg
+                    viewBox="0 0 160 110"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="22" y="26" width="116" height="58" rx="6" />
+                    <circle cx="52" cy="55" r="12" />
+                    <circle cx="108" cy="55" r="12" />
+                    <path d="M22 40h116M80 14v82" stroke-dasharray="4 4" opacity=".4" />
+                  </svg>
+                </div>
+                <div class="tx">
+                  <h3 data-en="CNC machining">CNC 精密加工</h3>
+                  <p
+                    data-en="3, 4 and 5-axis milling and turning. Aluminum, stainless, titanium and plastics."
+                  >
+                    三、四、五軸銑削與車削。鋁、不鏽鋼、鈦合金與工程塑膠。
+                  </p>
+                  <ul>
+                    <li>±0.005</li>
+                    <li>Ra 0.4</li>
+                    <li data-en="5-axis">五軸</li>
+                  </ul>
+                  <a class="link" href="#/capabilities" data-go="capabilities"
+                    ><span data-en="Quote CNC parts">CNC 零件詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card svc rv">
+                <div class="art" data-n="02">
+                  <svg
+                    viewBox="0 0 160 110"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M28 86V34l24-14h56l24 14v52z" />
+                    <path d="M52 20v66M108 20v66" stroke-dasharray="3 5" opacity=".45" />
+                    <circle cx="80" cy="56" r="10" />
+                  </svg>
+                </div>
+                <div class="tx">
+                  <h3 data-en="Stamping &amp; sheet metal">沖壓與鈑金</h3>
+                  <p
+                    data-en="Progressive dies, deep draw and laser cutting. Tooling is built in our own shop."
+                  >
+                    連續模、深拉伸與雷射切割。模具在自家工廠製作。
+                  </p>
+                  <ul>
+                    <li>1,200 spm</li>
+                    <li>t0.3–3.0</li>
+                    <li>1M+/mo</li>
+                  </ul>
+                  <a class="link" href="#/capabilities" data-go="capabilities"
+                    ><span data-en="Quote stamped parts">沖壓件詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card svc rv">
+                <div class="art" data-n="03">
+                  <svg
+                    viewBox="0 0 160 110"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="26" y="22" width="52" height="52" rx="6" />
+                    <rect x="84" y="46" width="52" height="46" rx="6" />
+                    <path d="M78 44h18v2M60 74v10h24" opacity=".6" />
+                  </svg>
+                </div>
+                <div class="tx">
+                  <h3 data-en="Assembly &amp; testing">組裝與測試</h3>
+                  <p
+                    data-en="Sub-assembly, torque and leak tests, laser marking. Packed ready for your line."
+                  >
+                    次總成組裝、扭力與洩漏測試、雷射刻印。包裝好，直接上您的產線。
+                  </p>
+                  <ul>
+                    <li data-en="100% test">全數測試</li>
+                    <li data-en="Traceable">可追溯</li>
+                    <li>ESD</li>
+                  </ul>
+                  <a class="link" href="#/capabilities" data-go="capabilities"
+                    ><span data-en="Quote assembly">組裝詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="s soft">
+          <div class="w">
+            <div class="head rv">
+              <div class="kicker"><b>02 /</b> <span data-en="Industries">服務產業</span></div>
+              <h2 data-en="Parts that go into demanding products">用在要求最高的產品裡</h2>
+            </div>
+            <div class="bento rv">
+              <div class="tile big">
+                <svg class="ic"><use href="#i-car" /></svg><b data-count="62" data-sfx="%">62%</b
+                ><span data-en="Automotive">汽車</span
+                ><small data-en="Housings, brackets and drive parts for tier-1 suppliers"
+                  >給 Tier-1 的殼體、支架與傳動零件</small
+                >
+              </div>
+              <div class="tile t2">
+                <svg class="ic"><use href="#i-bot" /></svg><b>18%</b
+                ><span data-en="Robotics">機器人</span>
+              </div>
+              <div class="tile t3">
+                <svg class="ic"><use href="#i-med" /></svg><b>12%</b
+                ><span data-en="Medical">醫材</span>
+              </div>
+              <div class="tile w2">
+                <svg class="ic"><use href="#i-chip" /></svg><b>8%</b
+                ><span data-en="Semiconductor">半導體</span
+                ><small data-en="Clean-room packaging on request">可提供無塵室包裝</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="floor">
+          <div class="floor-ph" data-par="0.1" aria-hidden="true">
+            <img src="img/cut.jpg" alt="" width="1800" height="1202" loading="lazy" />
+          </div>
+          <div class="w">
+            <div class="kicker rv"><span data-en="On the shop floor">生產現場</span></div>
+            <h2 class="rv" data-en="42 machines. Running 24 hours a day.">
+              42 台設備，一天 24 小時運轉。
+            </h2>
+            <div class="fs rv">
+              <div>
+                <b data-count="42">42</b
+                ><span data-en="CNC and press machines">CNC 與沖床設備</span>
+              </div>
+              <div>
+                <b data-count="99.2" data-dec="1" data-sfx="%">99.2%</b
+                ><span data-en="On-time delivery">準時交貨率</span>
+              </div>
+              <div><b>24h</b><span data-en="Drawing review reply">圖面回覆時間</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="s">
+          <div class="w split">
+            <div class="rv">
+              <div class="kicker"><b>03 /</b> <span data-en="Why Hongda">為什麼選宏達</span></div>
+              <h2 data-en="Tighter tolerances. Fewer surprises.">公差更緊，意外更少。</h2>
+              <ul class="checks">
+                <li>
+                  <svg class="ic"><use href="#i-check" /></svg
+                  ><span data-en="An engineer reviews every drawing before we quote."
+                    >每張圖面報價前，都由工程師檢視。</span
+                  >
+                </li>
+                <li>
+                  <svg class="ic"><use href="#i-check" /></svg
+                  ><span data-en="We measure parts during production, not only at the end."
+                    >我們在生產中量測，不是只在最後檢驗。</span
+                  >
+                </li>
+                <li>
+                  <svg class="ic"><use href="#i-check" /></svg
+                  ><span data-en="Every lot ships with a CMM report and material certificate."
+                    >每批出貨附三次元報告與材質證明。</span
+                  >
+                </li>
+              </ul>
+              <div style="margin-top: 30px">
+                <a class="btn btn-d" href="#/quality" data-go="quality"
+                  ><span data-en="See our quality system">看品質系統</span
+                  ><svg class="ic"><use href="#i-arrow" /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="bars rv" id="bars">
+              <h3 data-en="Typical tolerance (mm, smaller is better)">一般公差（mm,越小越好）</h3>
+              <div class="bar us" style="--w: 6%">
+                <div class="t"><span>Hongda</span><em>±0.005</em></div>
+                <div class="tr"><i></i></div>
+              </div>
+              <div class="bar" style="--w: 28%">
+                <div class="t"><span data-en="Industry average">業界平均</span><em>±0.025</em></div>
+                <div class="tr"><i></i></div>
+              </div>
+              <div class="bar" style="--w: 56%">
+                <div class="t"><span data-en="Low-cost shops">低價工廠</span><em>±0.05</em></div>
+                <div class="tr"><i></i></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="s dark">
+          <div class="w">
+            <div class="head rv">
+              <div class="kicker"><b>04 /</b> <span data-en="How it works">合作流程</span></div>
+              <h2 data-en="From drawing to dock in five steps">從圖面到出貨，五步完成</h2>
+            </div>
+            <div class="steps">
+              <div class="step rv">
+                <h3 data-en="Send drawing">提供圖面</h3>
+                <p data-en="STEP, PDF or DWG. NDA on request.">
+                  STEP、PDF、DWG 皆可。可先簽保密協議。
+                </p>
+              </div>
+              <div class="step rv">
+                <h3 data-en="DFM review">可製造性評估</h3>
+                <p data-en="We flag cost and tolerance risks in 24 hours.">
+                  24 小時內告訴您成本與公差風險。
+                </p>
+              </div>
+              <div class="step rv">
+                <h3 data-en="Quote &amp; sample">報價與試作</h3>
+                <p data-en="Clear quote. First articles in 7–10 days.">
+                  報價清楚。7–10 天交付首件。
+                </p>
+              </div>
+              <div class="step rv">
+                <h3 data-en="Production">量產</h3>
+                <p data-en="We inspect at every shift change.">每個班次交接都巡檢。</p>
+              </div>
+              <div class="step rv">
+                <h3 data-en="Ship with report">出貨附報告</h3>
+                <p data-en="CMM report, material cert, lot trace.">
+                  量測報告、材質證明、批號追溯。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="s">
+          <div class="w">
+            <div class="feat rv">
+              <div class="vis">
+                <div class="kicker" style="color: var(--orange2); margin: 0">
+                  <span data-en="Case study · Automotive">案例・汽車</span>
+                </div>
+                <h2
+                  style="font-size: clamp(26px, 3vw, 36px)"
+                  data-en="Housing scrap cut from 4.2% to 0.6%"
+                >
+                  殼體不良率從 4.2% 降到 0.6%
+                </h2>
+                <div class="kp">
+                  <div>
+                    <b data-count="86" data-sfx="%">86%</b
+                    ><span data-en="less scrap">報廢降低</span>
+                  </div>
+                  <div>
+                    <b data-count="3" data-sfx="wk">3wk</b
+                    ><span data-en="faster launch">更快量產</span>
+                  </div>
+                </div>
+              </div>
+              <div class="tx">
+                <h3 data-en="New fixtures and in-process probing">新治具加上製程量測</h3>
+                <p
+                  data-en="We redesigned the fixturing and added probing on a 5-axis cell. The customer skipped a full re-qualification."
+                >
+                  我們重新設計治具，並在五軸加工中加入量測。客戶省下一次完整的重新驗證。
+                </p>
+                <a class="link" href="#/quality" data-go="quality"
+                  ><span data-en="Read more cases">看更多案例</span
+                  ><svg class="ic"><use href="#i-arrow" /></svg
+                ></a>
+                <div class="q">
+                  <span
+                    data-en="“They answer drawings in hours, not days. Their report always matches our incoming check.”"
+                    >「他們回覆圖面用小時算，不是用天。報告和我們進料檢驗總是一致。」</span
+                  ><small data-en="Purchasing manager, NovaTech (fictional)"
+                    >NovaTech 採購經理（虛構）</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 28px">
+              <div class="cta-band rv">
+                <h2 data-en="Have a drawing? Get a quote in 24 hours.">
+                  手上有圖面？24 小時內給您報價。
+                </h2>
+                <a class="btn btn-w" href="#/quote" data-go="quote"
+                  ><span data-en="Request a quote">立即詢價</span
+                  ><svg class="ic"><use href="#i-arrow" /></svg
+                ></a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div data-page="capabilities" data-title="產品與製程" data-title-en="Capabilities">
+        <section class="pagehead">
+          <div class="w">
+            <div class="kicker"><span data-en="Capabilities">製程能力</span></div>
+            <h1 data-en="Built for tight specs">為嚴苛規格而生</h1>
+            <p data-en="Browse by process. Every part ships with inspection data.">
+              依製程瀏覽。每批零件都附檢驗數據。
+            </p>
+          </div>
+        </section>
+        <section class="s">
+          <div class="w">
+            <div class="tabs" role="group" aria-label="Filter" data-en-label="Filter">
+              <button type="button" class="tab" data-f="all" aria-pressed="true" data-en="All">
+                全部
+              </button>
+              <button type="button" class="tab" data-f="cnc" aria-pressed="false" data-en="CNC">
+                CNC 加工
+              </button>
+              <button
+                type="button"
+                class="tab"
+                data-f="stamp"
+                aria-pressed="false"
+                data-en="Stamping"
+              >
+                沖壓鈑金
+              </button>
+              <button
+                type="button"
+                class="tab"
+                data-f="asm"
+                aria-pressed="false"
+                data-en="Assembly"
+              >
+                組裝測試
+              </button>
+            </div>
+            <div class="grid2" id="prods">
+              <article class="card prod" data-k="cnc">
+                <div class="part">
+                  <svg
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="12" y="22" width="56" height="36" rx="4" />
+                    <circle cx="28" cy="40" r="7" />
+                    <circle cx="52" cy="40" r="7" />
+                    <path d="M12 32h56" stroke-dasharray="3 3" opacity=".5" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 data-en="Aluminum housings">鋁合金殼體</h3>
+                  <p data-en="5-axis enclosures for sensors and drives. Anodized or powder coated.">
+                    感測器與驅動器的五軸外殼。可陽極或粉體塗裝。
+                  </p>
+                  <div class="spec"><i>Al 6061/7075</i><i>±0.01</i><i>Ra 0.8</i></div>
+                  <a class="link" href="#/quote" data-go="quote" data-q="cnc"
+                    ><span data-en="Quote this">詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card prod" data-k="cnc">
+                <div class="part">
+                  <svg
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  >
+                    <circle cx="40" cy="40" r="24" />
+                    <circle cx="40" cy="40" r="8" />
+                    <path d="M40 16v8M40 56v8M16 40h8M56 40h8" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 data-en="Turned shafts &amp; fittings">車削軸類與接頭</h3>
+                  <p data-en="Swiss-type turning for small parts in large volumes.">
+                    瑞士型車床，適合小型大量零件。
+                  </p>
+                  <div class="spec"><i>SUS303/316</i><i>±0.005</i><i>Ø1–32</i></div>
+                  <a class="link" href="#/quote" data-go="quote" data-q="cnc"
+                    ><span data-en="Quote this">詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card prod" data-k="stamp">
+                <div class="part">
+                  <svg
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M14 58V26l14-8h24l14 8v32z" />
+                    <path d="M28 18v40M52 18v40" stroke-dasharray="2 4" opacity=".5" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 data-en="Progressive-die brackets">連續模支架</h3>
+                  <p data-en="High-speed stamping with in-die tapping and sensors. Runs 24/7.">
+                    高速沖壓，模內攻牙與感測。可 24 小時連續生產。
+                  </p>
+                  <div class="spec"><i>SPCC/SUS301</i><i>t0.3–3.0</i><i>1M+/mo</i></div>
+                  <a class="link" href="#/quote" data-go="quote" data-q="stamp"
+                    ><span data-en="Quote this">詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card prod" data-k="stamp">
+                <div class="part">
+                  <svg
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M16 60c0-24 8-40 24-40s24 16 24 40z" />
+                    <path d="M28 60c0-14 4-24 12-24s12 10 12 24" opacity=".6" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 data-en="Deep-drawn cases">深拉伸殼件</h3>
+                  <p data-en="Seamless cups and covers for batteries and sensors.">
+                    電池與感測器用的無縫杯形與外蓋。
+                  </p>
+                  <div class="spec">
+                    <i>SUS304</i><i data-en="Draw 3:1">拉伸比 3:1</i
+                    ><i data-en="Leak test">氣密測試</i>
+                  </div>
+                  <a class="link" href="#/quote" data-go="quote" data-q="stamp"
+                    ><span data-en="Quote this">詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card prod" data-k="asm">
+                <div class="part">
+                  <svg
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="14" y="14" width="24" height="24" rx="3" />
+                    <rect x="42" y="42" width="24" height="24" rx="3" />
+                    <path d="M38 26h12v16M42 54H30V38" opacity=".6" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 data-en="Drive sub-assemblies">傳動次總成</h3>
+                  <p
+                    data-en="Press-fit and torque-controlled assembly with a 100% functional test."
+                  >
+                    壓入與扭力控制組裝，100% 功能測試。
+                  </p>
+                  <div class="spec">
+                    <i data-en="Torque log">扭力紀錄</i><i data-en="Serial trace">序號追溯</i
+                    ><i>ESD</i>
+                  </div>
+                  <a class="link" href="#/quote" data-go="quote" data-q="asm"
+                    ><span data-en="Quote this">詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+              <article class="card prod" data-k="asm">
+                <div class="part">
+                  <svg
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  >
+                    <rect x="16" y="22" width="48" height="36" rx="4" />
+                    <path d="M24 34h16M24 42h28M24 50h10" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 data-en="Laser marking &amp; kitting">雷射刻印與集貨</h3>
+                  <p data-en="QR and DataMatrix marking. Kitting to your line-side spec.">
+                    QR 與 DataMatrix 刻印。依您的線邊規格集貨。
+                  </p>
+                  <div class="spec">
+                    <i>DataMatrix</i><i data-en="Kitting">套件配套</i
+                    ><i data-en="Trays">料盤包裝</i>
+                  </div>
+                  <a class="link" href="#/quote" data-go="quote" data-q="asm"
+                    ><span data-en="Quote this">詢價</span
+                    ><svg class="ic"><use href="#i-arrow" /></svg
+                  ></a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="s soft" style="padding-top: clamp(56px, 7vw, 90px)">
+          <div class="w">
+            <div class="head rv"><h2 data-en="Materials we run">我們加工的材料</h2></div>
+            <div class="mat rv">
+              <span style="--c: #b8c4d6">Al 6061 / 7075</span
+              ><span style="--c: #7f8fa6">SUS303 / 304 / 316</span
+              ><span style="--c: #6d7b93">Ti Gr2 / Gr5</span
+              ><span style="--c: #c98a3c">Brass C3604</span
+              ><span style="--c: #e0975b">Copper C1100</span
+              ><span style="--c: #3fa7d6">POM / PEEK</span
+              ><span style="--c: #8b6fd3">SPCC / SECC</span>
+            </div>
+            <div class="head rv" style="margin-top: 56px">
+              <h2 data-en="Equipment list">設備清單</h2>
+            </div>
+            <div class="tbl rv">
+              <table class="t">
+                <thead>
+                  <tr>
+                    <th data-en="Process">製程</th>
+                    <th data-en="Equipment">設備</th>
+                    <th data-en="Qty">數量</th>
+                    <th data-en="Capacity">能力</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-en="5-axis milling">五軸銑削</td>
+                    <td>DMG MORI DMU 50</td>
+                    <td>8</td>
+                    <td>600 × 500 × 400 mm</td>
+                  </tr>
+                  <tr>
+                    <td data-en="CNC turning">CNC 車削</td>
+                    <td>Citizen L20 / Star SR-20</td>
+                    <td>16</td>
+                    <td>Ø1–32 mm</td>
+                  </tr>
+                  <tr>
+                    <td data-en="Stamping">沖壓</td>
+                    <td>Aida 80–300T</td>
+                    <td>12</td>
+                    <td data-en="Up to 1,200 spm">最高 1,200 spm</td>
+                  </tr>
+                  <tr>
+                    <td data-en="Laser cutting">雷射切割</td>
+                    <td>Trumpf TruLaser</td>
+                    <td>3</td>
+                    <td>3000 × 1500 mm</td>
+                  </tr>
+                  <tr>
+                    <td data-en="Inspection">檢驗</td>
+                    <td>Zeiss CMM / Keyence IM</td>
+                    <td>6</td>
+                    <td>±0.002 mm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div data-page="quality" data-title="品質與案例" data-title-en="Quality &amp; Cases">
+        <section class="pagehead">
+          <div class="w">
+            <div class="kicker"><span data-en="Quality &amp; cases">品質與案例</span></div>
+            <h1 data-en="Proof, not promises">用數據說話</h1>
+            <p
+              data-en="Certified systems, results you can measure, and customers who stay for years."
+            >
+              有認證的品質系統、量得出的成果，以及長期合作的客戶。
+            </p>
+          </div>
+        </section>
+        <section class="s">
+          <div class="w">
+            <div class="grid3" style="margin-bottom: 64px">
+              <div class="card cert rv">
+                <div class="seal">ISO<br />9001</div>
+                <div>
+                  <h3 data-en="Quality management">品質管理系統</h3>
+                  <p data-en="Audited every year, from design review to final inspection.">
+                    每年稽核，從設計審查到最終檢驗。
+                  </p>
+                </div>
+              </div>
+              <div class="card cert rv">
+                <div class="seal">IATF<br />16949</div>
+                <div>
+                  <h3 data-en="Automotive grade">車用等級</h3>
+                  <p data-en="PPAP, APQP and FMEA for tier-1 suppliers.">
+                    提供 PPAP、APQP、FMEA,符合 Tier-1 要求。
+                  </p>
+                </div>
+              </div>
+              <div class="card cert rv">
+                <div class="seal">ISO<br />14001</div>
+                <div>
+                  <h3 data-en="Environmental">環境管理</h3>
+                  <p data-en="Coolant recycling and full metal scrap recovery.">
+                    切削液回收與金屬廢料全回收。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="split" style="margin-bottom: 72px">
+              <div class="rv">
+                <div class="kicker"><span data-en="Inspection report">檢驗報告</span></div>
+                <h2 data-en="Every shipment, fully documented">每批出貨，文件齊全</h2>
+                <ul class="checks">
+                  <li>
+                    <svg class="ic"><use href="#i-check" /></svg
+                    ><span data-en="Dimensions measured on a CMM, with your tolerances."
+                      >以三次元量測，對照您的公差。</span
+                    >
+                  </li>
+                  <li>
+                    <svg class="ic"><use href="#i-check" /></svg
+                    ><span data-en="Material certificate and lot number on every box."
+                      >每箱都有材質證明與批號。</span
+                    >
+                  </li>
+                  <li>
+                    <svg class="ic"><use href="#i-check" /></svg
+                    ><span data-en="Digital copy sent the day we ship.">出貨當天寄送電子檔。</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="rep rv">
+                <header>
+                  <span data-en="INSPECTION REPORT · LOT 24-0817">檢驗報告 · 批號 24-0817</span
+                  ><i data-en="PASS">合格</i>
+                </header>
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-en="Feature">項目</th>
+                      <th data-en="Spec">規格</th>
+                      <th data-en="Actual">實測</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ø12 H7</td>
+                      <td>12.000 / +0.018</td>
+                      <td>12.009</td>
+                      <td>✓</td>
+                    </tr>
+                    <tr>
+                      <td data-en="Length">長度</td>
+                      <td>120.00 ±0.02</td>
+                      <td>120.01</td>
+                      <td>✓</td>
+                    </tr>
+                    <tr>
+                      <td data-en="Flatness">平面度</td>
+                      <td>≤ 0.010</td>
+                      <td>0.004</td>
+                      <td>✓</td>
+                    </tr>
+                    <tr>
+                      <td>Ra</td>
+                      <td>≤ 0.8</td>
+                      <td>0.52</td>
+                      <td>✓</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="head rv">
+              <div class="kicker"><span data-en="Case studies">合作案例</span></div>
+              <h2 data-en="Results our customers measure">客戶量得出的成果</h2>
+            </div>
+            <article class="case rv">
+              <div class="vis">
+                <svg
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linejoin="round"
+                >
+                  <rect x="12" y="22" width="56" height="36" rx="4" />
+                  <circle cx="28" cy="40" r="7" />
+                  <circle cx="52" cy="40" r="7" />
+                </svg>
+              </div>
+              <div class="body">
+                <div class="kicker" style="margin-bottom: 12px">
+                  <span data-en="Automotive · Tier-1">汽車・Tier-1</span>
+                </div>
+                <h3 data-en="Housing scrap cut from 4.2% to 0.6%">殼體不良率從 4.2% 降到 0.6%</h3>
+                <p
+                  data-en="New fixtures and in-process probing on a 5-axis cell. The customer skipped a re-qualification cycle."
+                >
+                  五軸加工導入新治具與製程量測。客戶省下一次重新驗證。
+                </p>
+                <div class="kpis">
+                  <div>
+                    <b data-count="86" data-sfx="%">86%</b
+                    ><span data-en="less scrap">報廢降低</span>
+                  </div>
+                  <div>
+                    <b data-count="3" data-sfx="wk">3wk</b
+                    ><span data-en="faster launch">更快量產</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="case rv">
+              <div class="vis">
+                <svg
+                  viewBox="0 0 80 80"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 58V26l14-8h24l14 8v32z" />
+                </svg>
+              </div>
+              <div class="body">
+                <div class="kicker" style="margin-bottom: 12px">
+                  <span data-en="Robotics">機器人</span>
+                </div>
+                <h3 data-en="Stamped bracket: 22% lower unit cost">沖壓支架單價降低 22%</h3>
+                <p
+                  data-en="We swapped a machined part for a progressive-die design. Same strength, one tenth of the cycle time."
+                >
+                  我們把加工件改成連續模設計。強度相同，週期縮短為十分之一。
+                </p>
+                <div class="kpis">
+                  <div>
+                    <b data-count="22" data-sfx="%">22%</b
+                    ><span data-en="lower unit cost">單價降低</span>
+                  </div>
+                  <div>
+                    <b data-count="10" data-sfx="×">10×</b
+                    ><span data-en="faster cycle">週期縮短</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div data-page="quote" data-title="詢價與聯絡" data-title-en="Contact">
+        <section class="pagehead">
+          <div class="w">
+            <div class="kicker"><span data-en="Request a quote">詢價與聯絡</span></div>
+            <h1 data-en="Send a drawing. Get a plan.">傳圖面，拿方案。</h1>
+            <p data-en="We reply with a DFM review and a price within 24 hours on business days.">
+              工作日 24 小時內回覆可製造性評估與報價。
+            </p>
+          </div>
+        </section>
+        <section class="s">
+          <div class="w layout2">
+            <form class="form-card" data-demo novalidate>
+              <div class="row">
+                <div class="fld">
+                  <label for="c1" data-en="Company">公司名稱</label
+                  ><input
+                    id="c1"
+                    type="text"
+                    placeholder="例：軒達汽車零件股份有限公司"
+                    data-en-ph="Axiom Auto Co."
+                  />
+                </div>
+                <div class="fld">
+                  <label for="c2" data-en="Contact">聯絡人</label
+                  ><input id="c2" type="text" placeholder="王先生" data-en-ph="Alex Wang" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="fld">
+                  <label for="c3" data-en="Email">電子郵件</label
+                  ><input id="c3" type="email" placeholder="name@company.com" />
+                </div>
+                <div class="fld">
+                  <label for="c4" data-en="Process">製程</label
+                  ><select id="c4">
+                    <option value="cnc" data-en="CNC machining">CNC 加工</option>
+                    <option value="stamp" data-en="Stamping / sheet metal">沖壓 / 鈑金</option>
+                    <option value="asm" data-en="Assembly">組裝</option>
+                    <option value="na" data-en="Not sure">不確定</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="fld">
+                  <label for="c5" data-en="Annual volume">年需求量</label
+                  ><select id="c5">
+                    <option>&lt; 1,000</option>
+                    <option>1,000 – 10,000</option>
+                    <option>10,000 – 100,000</option>
+                    <option>100,000+</option>
+                  </select>
+                </div>
+                <div class="fld">
+                  <label for="c6" data-en="Material">材質</label
+                  ><input
+                    id="c6"
+                    type="text"
+                    placeholder="SUS304 / Al 6061"
+                    data-en-ph="SUS304 / Al 6061"
+                  />
+                </div>
+              </div>
+              <div class="fld">
+                <label data-en="Drawing (demo: nothing is uploaded)">圖面（示範：不會上傳）</label>
+                <div class="drop" id="drop">
+                  <svg class="ic"><use href="#i-up" /></svg
+                  ><span id="dropT" data-en="Drag STEP / PDF / DWG here, or click"
+                    >將 STEP / PDF / DWG 拖曳至此，或點擊選擇</span
+                  ><input type="file" id="file" aria-label="Drawing" data-en-label="Drawing" />
+                </div>
+              </div>
+              <div class="fld">
+                <label for="c7" data-en="Requirements">需求說明</label
+                ><textarea
+                  id="c7"
+                  rows="4"
+                  placeholder="公差、表面處理、交期…"
+                  data-en-ph="Tolerance, finish, lead time…"
+                ></textarea>
+              </div>
+              <button class="btn btn-o" type="submit">
+                <span data-en="Submit request">送出詢價</span
+                ><svg class="ic"><use href="#i-arrow" /></svg>
+              </button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+            <div class="side">
+              <div class="card">
+                <h3 data-en="What happens next">送出後會發生什麼</h3>
+                <ul class="chk">
+                  <li data-en="An engineer reviews your drawing">工程師檢視您的圖面</li>
+                  <li data-en="DFM feedback within 24 hours">24 小時內回覆 DFM 建議</li>
+                  <li data-en="Quote with lead time and MOQ">附交期與最小量的報價</li>
+                  <li data-en="Samples in 7–10 days">7–10 天交付樣品</li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3 data-en="Factory">工廠</h3>
+                <p
+                  style="color: var(--ink2); margin-top: 10px"
+                  data-en="No. 88, Industrial Rd., Taichung, Taiwan<br>Mon–Fri 08:30–17:30"
+                >
+                  台中市工業路 88 號<br />週一至週五 08:30–17:30
+                </p>
+                <p style="margin-top: 8px; font-family: var(--mono)">+886-4-0000-0000</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="ft">
+      <div class="w">
+        <div>
+          <b>Hongda Precision</b
+          ><span
+            data-en="Precision CNC, stamping and assembly for automotive, robotics and medical customers."
+            >為汽車、機器人與醫材客戶提供 CNC、沖壓與組裝。</span
+          >
+        </div>
+        <div>
+          <b data-en="Pages">頁面</b><a href="#/home" data-go="home" data-en="Home">首頁</a
+          ><a href="#/capabilities" data-go="capabilities" data-en="Capabilities">產品與製程</a
+          ><a href="#/quality" data-go="quality" data-en="Quality &amp; Cases">品質與案例</a
+          ><a href="#/quote" data-go="quote" data-en="Contact">詢價與聯絡</a>
+        </div>
+        <div>
+          <b data-en="Contact">聯絡</b><a href="#/quote" data-go="quote">sales@hongda.example.tw</a
+          ><span>+886-4-0000-0000</span>
+        </div>
+        <div
+          class="copy"
+          data-en="Demo website built by Kairos.ai. Hongda Precision is a fictional company."
+        >
+          示範網站由優時科技 Kairos.ai 製作。宏達精密為虛構企業。
+        </div>
+      </div>
+    </footer>
+
+    <script src="../demo.js"></script>
+    <script>
+      (function () {
+        var sel = { p: 'cnc', m: 'al', q: 1 };
+        var BASE = { cnc: 480, stamp: 46, asm: 150 },
+          MAT = { al: 1, sus: 1.5, ti: 4.2 },
+          DISC = [1, 0.6, 0.38, 0.26, 0.18];
+        var LEAD = {
+          cnc: ['3–5', '5–7', '7–10', '10–14', '14–21'],
+          stamp: ['15–20', '15–20', '18–22', '20–25', '25–30'],
+          asm: ['5–7', '7–10', '10–14', '14–18', '18–25'],
+        };
+        var L = function () {
+          return window.DemoLang() === 'zh' ? 0 : 1;
+        };
+        function calc() {
+          var base = BASE[sel.p] * MAT[sel.m] * DISC[sel.q];
+          if (sel.p === 'stamp' && sel.q < 2) base *= 9;
+          if (sel.p === 'asm')
+            base = BASE.asm * DISC[sel.q] * (sel.m === 'ti' ? 1.8 : sel.m === 'sus' ? 1.3 : 1);
+          var lo = base * 0.9,
+            hi = base * 1.15,
+            en = L() === 1;
+          var f = function (v) {
+            v = en ? v * 0.031 : v;
+            var s = en ? 'US$' : 'NT$';
+            return (
+              s + (en && hi * 0.031 < 100 ? v.toFixed(2) : Math.round(v).toLocaleString('en-US'))
+            );
+          };
+          document.getElementById('eP').innerHTML = '<span>' + f(lo) + '</span> – ' + f(hi);
+          document.getElementById('eL').textContent = LEAD[sel.p][sel.q] + (en ? ' days' : ' 天');
+        }
+        document.querySelectorAll('#est .seg').forEach(function (g) {
+          g.addEventListener('click', function (e) {
+            var b = e.target.closest('button');
+            if (!b) return;
+            g.querySelectorAll('button').forEach(function (x) {
+              x.setAttribute('aria-pressed', String(x === b));
+            });
+            var k = g.dataset.k;
+            sel[k] = k === 'q' ? +b.dataset.v : b.dataset.v;
+            calc();
+          });
+        });
+        document.addEventListener('demolang', calc);
+        document.getElementById('eGo').addEventListener('click', function () {
+          var s = document.getElementById('c4');
+          s.value = sel.p;
+          document.getElementById('c6').value = { al: 'Al 6061', sus: 'SUS304', ti: 'Ti Gr5' }[
+            sel.m
+          ];
+          document.getElementById('c5').selectedIndex = Math.min(3, Math.max(0, sel.q - 1));
+        });
+        document.addEventListener('click', function (e) {
+          var a = e.target.closest('[data-q]');
+          if (a) document.getElementById('c4').value = a.dataset.q;
+        });
+        calc();
+
+        var tabs = document.querySelectorAll('.tab'),
+          prods = document.querySelectorAll('#prods .prod');
+        tabs.forEach(function (t) {
+          t.addEventListener('click', function () {
+            tabs.forEach(function (x) {
+              x.setAttribute('aria-pressed', String(x === t));
+            });
+            prods.forEach(function (p) {
+              p.hidden = !(t.dataset.f === 'all' || p.dataset.k === t.dataset.f);
+            });
+          });
+        });
+
+        var bars = document.getElementById('bars');
+        if (bars) {
+          if ('IntersectionObserver' in window) {
+            var o = new IntersectionObserver(
+              function (es) {
+                if (es[0].isIntersecting) {
+                  bars.classList.add('in');
+                  o.disconnect();
+                }
+              },
+              { threshold: 0.4 },
+            );
+            o.observe(bars);
+          } else bars.classList.add('in');
+        }
+        var f = document.getElementById('file'),
+          dt = document.getElementById('dropT'),
+          dr = document.getElementById('drop');
+        f.addEventListener('change', function () {
+          if (f.files[0]) {
+            dt.removeAttribute('data-en');
+            dt.textContent = f.files[0].name;
+            dr.classList.add('on');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
