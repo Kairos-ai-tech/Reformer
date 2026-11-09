@@ -644,13 +644,14 @@
         border-bottom: 1.5px solid var(--brown);
         overflow: hidden;
       }
-      .prod .pic svg {
-        width: 56%;
-        filter: drop-shadow(0 14px 10px rgba(58, 31, 18, 0.28));
-        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      .prod .pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .prod:hover .pic svg {
-        transform: scale(1.1) rotate(-4deg);
+      .prod:hover .pic img {
+        transform: scale(1.07);
       }
       .prod .pic em {
         position: absolute;
@@ -895,9 +896,10 @@
         position: relative;
         overflow: hidden;
       }
-      .story .photo svg {
-        width: 58%;
-        filter: drop-shadow(0 18px 14px rgba(58, 31, 18, 0.3));
+      .story .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .timeline {
         list-style: none;
@@ -1245,11 +1247,13 @@
         border-radius: 14px;
         background: var(--bg, #fbe9c6);
         border: 1.5px solid var(--brown);
-        display: grid;
-        place-items: center;
+        overflow: hidden;
       }
-      .li .th svg {
-        width: 70%;
+      .li .th img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
       .li b {
         display: block;
@@ -1422,7 +1426,7 @@
         .btn,
         .card,
         .drawer,
-        .prod .pic svg {
+        .prod .pic img {
           transition: none;
         }
       }
@@ -1457,180 +1461,6 @@
           <path d="M0 0v12" stroke="#9A5A0C" stroke-opacity=".38" stroke-width="2.4" />
         </pattern>
       </defs>
-      <symbol id="s-turtle" viewBox="0 0 120 120">
-        <ellipse cx="60" cy="90" rx="54" ry="17" fill="#3E8E4F" />
-        <path
-          d="M12 90c10-12 26-16 48-16s38 4 48 16"
-          fill="none"
-          stroke="#2C6B3A"
-          stroke-width="3"
-        />
-        <path
-          d="M60 30c30 0 50 14 50 34S90 98 60 98 10 84 10 64s20-34 50-34z"
-          fill="url(#gRed)"
-          stroke="#8E1A10"
-          stroke-width="2.5"
-        />
-        <g
-          fill="none"
-          stroke="#fff"
-          stroke-opacity=".55"
-          stroke-width="3"
-          stroke-linejoin="round"
-          stroke-linecap="round"
-        >
-          <path d="M60 50l13 7.5v15L60 80 47 72.5v-15z" />
-          <path d="M60 50V36M73 57.5l13-7M73 72.5l13 7M60 80v14M47 72.5l-13 7M47 57.5l-13-7" />
-        </g>
-        <ellipse
-          cx="40"
-          cy="44"
-          rx="15"
-          ry="6"
-          fill="#fff"
-          opacity=".3"
-          transform="rotate(-18 40 44)"
-        />
-      </symbol>
-      <symbol id="s-pine" viewBox="0 0 120 120">
-        <rect
-          x="16"
-          y="32"
-          width="88"
-          height="62"
-          rx="16"
-          fill="url(#gGold)"
-          stroke="#8A560C"
-          stroke-width="2.5"
-        />
-        <rect x="16" y="32" width="88" height="62" rx="16" fill="url(#hatch)" />
-        <path
-          d="M26 46c8-8 20-10 34-10"
-          fill="none"
-          stroke="#fff"
-          stroke-opacity=".6"
-          stroke-width="4"
-          stroke-linecap="round"
-        />
-        <circle cx="60" cy="24" r="2" fill="#3E8E4F" />
-      </symbol>
-      <symbol id="s-moon" viewBox="0 0 120 120">
-        <g fill="url(#gBrown)" stroke="#5A2B0E" stroke-width="2">
-          <circle cx="60" cy="60" r="46" />
-        </g>
-        <g fill="url(#gBrown)" stroke="#5A2B0E" stroke-width="2">
-          <circle cx="60" cy="14" r="6" />
-          <circle cx="83" cy="20" r="6" />
-          <circle cx="100" cy="37" r="6" />
-          <circle cx="106" cy="60" r="6" />
-          <circle cx="100" cy="83" r="6" />
-          <circle cx="83" cy="100" r="6" />
-          <circle cx="60" cy="106" r="6" />
-          <circle cx="37" cy="100" r="6" />
-          <circle cx="20" cy="83" r="6" />
-          <circle cx="14" cy="60" r="6" />
-          <circle cx="20" cy="37" r="6" />
-          <circle cx="37" cy="20" r="6" />
-        </g>
-        <circle cx="60" cy="60" r="46" fill="url(#gBrown)" />
-        <g fill="#F4C27A" opacity=".75">
-          <ellipse cx="60" cy="38" rx="7" ry="14" />
-          <ellipse cx="60" cy="82" rx="7" ry="14" />
-          <ellipse cx="38" cy="60" rx="14" ry="7" />
-          <ellipse cx="82" cy="60" rx="14" ry="7" />
-        </g>
-        <circle cx="60" cy="60" r="7" fill="#F4C27A" />
-      </symbol>
-      <symbol id="s-rice" viewBox="0 0 120 120">
-        <path
-          d="M14 62h92c0 28-20 44-46 44S14 90 14 62z"
-          fill="#C9492F"
-          stroke="#7E2514"
-          stroke-width="2.5"
-        />
-        <path
-          d="M22 60c4-24 20-36 38-36s34 12 38 36z"
-          fill="#FFF3DA"
-          stroke="#D9B56A"
-          stroke-width="2.5"
-        />
-        <g fill="#7A4A25">
-          <circle cx="48" cy="48" r="4" />
-          <circle cx="68" cy="42" r="4.5" />
-          <circle cx="78" cy="54" r="3.5" />
-          <circle cx="58" cy="56" r="3" />
-        </g>
-        <g fill="#E8744F">
-          <ellipse cx="42" cy="56" rx="4" ry="2.5" />
-          <ellipse cx="72" cy="30" rx="4" ry="2.5" />
-        </g>
-      </symbol>
-      <symbol id="s-gift" viewBox="0 0 120 120">
-        <rect
-          x="16"
-          y="50"
-          width="88"
-          height="56"
-          rx="6"
-          fill="url(#gRed)"
-          stroke="#8E1A10"
-          stroke-width="2.5"
-        />
-        <rect
-          x="10"
-          y="38"
-          width="100"
-          height="22"
-          rx="6"
-          fill="#E04030"
-          stroke="#8E1A10"
-          stroke-width="2.5"
-        />
-        <rect
-          x="52"
-          y="38"
-          width="16"
-          height="68"
-          fill="#FFC93C"
-          stroke="#A8780C"
-          stroke-width="2"
-        />
-        <path
-          d="M60 38C44 14 22 20 34 34c6 6 18 4 26 4zM60 38c16-24 38-18 26-4-6 6-18 4-26 4z"
-          fill="#FFC93C"
-          stroke="#A8780C"
-          stroke-width="2.5"
-          stroke-linejoin="round"
-        />
-      </symbol>
-      <symbol id="s-wed" viewBox="0 0 120 120">
-        <rect
-          x="16"
-          y="50"
-          width="88"
-          height="56"
-          rx="6"
-          fill="url(#gPink)"
-          stroke="#9A2434"
-          stroke-width="2.5"
-        />
-        <rect
-          x="10"
-          y="38"
-          width="100"
-          height="22"
-          rx="6"
-          fill="#F27A88"
-          stroke="#9A2434"
-          stroke-width="2.5"
-        />
-        <path
-          d="M60 98c-20-14-26-24-26-32 0-8 6-12 12-12 6 0 11 3 14 8 3-5 8-8 14-8 6 0 12 4 12 12 0 8-6 18-26 32z"
-          fill="#fff"
-          opacity=".95"
-          transform="scale(.7) translate(26 22)"
-        />
-      </symbol>
       <symbol id="i-sun" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" />
@@ -1977,7 +1807,7 @@
         <section class="s">
           <div class="w story">
             <div class="photo rv" aria-hidden="true">
-              <svg viewBox="0 0 120 120"><use href="#s-turtle" /></svg>
+              <img src="img/p-turtle.jpg" alt="" width="900" height="1350" loading="lazy" />
             </div>
             <div class="rv">
               <h2 data-en="It started with one steamer">從一個蒸籠開始</h2>
@@ -2196,7 +2026,7 @@
           {
             id: 1,
             k: 'cake',
-            s: 's-turtle',
+            img: 'img/p-turtle.jpg',
             bg: '#FFD3C9',
             p: 120,
             tag: ['熱銷', 'Best seller'],
@@ -2206,7 +2036,7 @@
           {
             id: 2,
             k: 'pastry',
-            s: 's-pine',
+            img: 'img/p-pine.jpg',
             bg: '#FFE7A8',
             p: 480,
             tag: ['人氣', 'Popular'],
@@ -2216,7 +2046,7 @@
           {
             id: 3,
             k: 'cake',
-            s: 's-rice',
+            img: 'img/p-rice.jpg',
             bg: '#FBE0B8',
             p: 180,
             tag: ['', ''],
@@ -2226,7 +2056,7 @@
           {
             id: 4,
             k: 'pastry',
-            s: 's-moon',
+            img: 'img/p-moon.jpg',
             bg: '#F7D9B0',
             p: 380,
             tag: ['中秋', 'Mid-Autumn'],
@@ -2236,7 +2066,7 @@
           {
             id: 5,
             k: 'gift',
-            s: 's-gift',
+            img: 'img/p-gift.jpg',
             bg: '#CFE8D3',
             p: 1280,
             tag: ['送禮', 'Gift'],
@@ -2246,7 +2076,7 @@
           {
             id: 6,
             k: 'gift',
-            s: 's-wed',
+            img: 'img/p-wed.jpg',
             bg: '#FFD6DC',
             p: 2180,
             tag: ['喜餅', 'Wedding'],
@@ -2277,9 +2107,9 @@
             p.bg +
             '" aria-hidden="true">' +
             (p.tag[i] ? '<em>' + p.tag[i] + '</em>' : '') +
-            '<svg viewBox="0 0 120 120"><use href="#' +
-            p.s +
-            '"/></svg></div><div class="info"><h3>' +
+            '<img src="' +
+            p.img +
+            '" alt="" width="900" height="738" loading="lazy"></div><div class="info"><h3>' +
             p.n[i] +
             '</h3><p>' +
             p.d[i] +
@@ -2345,9 +2175,9 @@
                 return (
                   '<div class="li"><div class="th" style="--bg:' +
                   p.bg +
-                  '"><svg viewBox="0 0 120 120"><use href="#' +
-                  p.s +
-                  '"/></svg></div><div><b>' +
+                  '"><img src="' +
+                  p.img +
+                  '" alt="" width="64" height="64"></div><div><b>' +
                   p.n[L()] +
                   '</b><small>' +
                   fmt(p.p) +
