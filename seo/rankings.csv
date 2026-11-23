@@ -1,1 +1,28 @@
 date,locale,type,query,found,position,top_domains,source,approx
+2026-11-23,zh,seo,"網站改版",no,,pro360.com.tw;medium.com;blog.udn.com,websearch,yes
+2026-11-23,zh,seo,"企業官網設計",no,,gitcode.csdn.net;163.com;we0.ai,websearch,yes
+2026-11-23,zh,seo,"免費網站健檢",no,,fansdig.blueeyes.tw;whc.ca;support.wix.com,websearch,yes
+2026-11-23,zh,seo,"GEO 優化",no,,ionos.com;mecanik.dev;hostinger.com,websearch,yes
+2026-11-23,zh,seo,"SEO",no,,developer.mozilla.org;hubspot.com;britannica.com,websearch,yes
+2026-11-23,zh,geo,"網站改版會影響 SEO 排名嗎",no,,blog.udn.com;developers.google.com;sohu.com,websearch,yes
+2026-11-23,zh,geo,"網站改版價格多少",no,,pro360.com.tw;blog.udn.com;contra.com,websearch,yes
+2026-11-23,zh,geo,"SEO 跟 GEO 有什麼不同",no,,inside.com.tw;open.edu;techtarget.com,websearch,yes
+2026-11-23,zh,geo,"沒有官網只有粉專可以嗎",no,,inside.com.tw;ithome.com.tw;bnext.com.tw,websearch,yes
+2026-11-23,zh,geo,"官網做好後網域和原始碼歸誰",no,,orbitmedia.com;slideshare.net;ithelp.ithome.com.tw,websearch,yes
+2026-11-23,zh,geo,"怎麼讓 ChatGPT 推薦我的公司",no,,bnext.com.tw;techradar.com;sidehustlenation.com,websearch,yes
+2026-11-23,en,seo,"website redesign",no,,godaddy.com;shopify.com;figma.com,websearch,yes
+2026-11-23,en,seo,"free website health check",no,,producthunt.com;dev.to;acquia.com,websearch,yes
+2026-11-23,en,seo,"SEO Taiwan",no,,storeboard.com;clutch.co;honichi.com,websearch,yes
+2026-11-23,en,seo,"GEO generative engine optimization Taiwan",no,,vocus.cc;baiyuan-tech.github.io;hao.cnyes.com,websearch,yes
+2026-11-23,en,geo,"Will a website redesign hurt my SEO rankings",no,,shopify.com;siteimprove.com;ahrefs.com,websearch,yes
+2026-11-23,en,geo,"How much does a website redesign cost",no,,clay.global;clutch.co;impactplus.com,websearch,yes
+2026-11-23,en,geo,"What is the difference between SEO and GEO",no,,techtarget.com;open.edu;ahrefs.com,websearch,yes
+2026-11-23,en,geo,"How do I get ChatGPT to recommend my business",no,,skool.com;impactplus.com;entrepreneur.com,websearch,yes
+2026-11-23,ja,seo,"サイトリニューアル",no,,shopify.com;webtan.impress.co.jp;mitsubishielectric.co.jp,websearch,yes
+2026-11-23,ja,seo,"無料サイト診断",no,,imitsu.jp;surmado.com;unima.co.jp,websearch,yes
+2026-11-23,ja,seo,"SEO 台湾",no,,honichi.com;storeboard.com;epochtimes.com,websearch,yes
+2026-11-23,ja,seo,"GEO 台湾",no,,wikipedia.org;zenodo.org;basin.earth.ncu.edu.tw,websearch,yes
+2026-11-23,ko,seo,"홈페이지 리뉴얼",no,,ko.wix.com;kmong.com;insight.co.kr,websearch,yes
+2026-11-23,ko,seo,"무료 홈페이지 진단",no,,kmong.com;soomgo.com;help.3o3.co.kr,websearch,yes
+2026-11-23,ko,seo,"SEO 대만",no,,ranktracker.com;developer.mozilla.org;storeboard.com,websearch,yes
+2026-11-23,ko,seo,"GEO 대만",no,,zenodo.org;earthobservations.org;cloud.csiss.gmu.edu,websearch,yes
